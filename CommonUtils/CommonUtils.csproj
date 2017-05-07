@@ -1,0 +1,305 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{AB19409B-693D-4EFB-A445-C8B4820A1C27}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>CommonUtils</RootNamespace>
+    <AssemblyName>CommonUtils</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignAssembly>false</SignAssembly>
+  </PropertyGroup>
+  <PropertyGroup>
+    <AssemblyOriginatorKeyFile>key.pfx</AssemblyOriginatorKeyFile>
+  </PropertyGroup>
+  <PropertyGroup>
+    <DelaySign>false</DelaySign>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="ChineseConverter, Version=1.0.0.0, Culture=neutral, PublicKeyToken=9ecab500adebae88, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Library\ChineseConverter.1.0.0\lib\net20\ChineseConverter.dll</HintPath>
+    </Reference>
+    <Reference Include="ChineseConverterVSIP">
+      <HintPath>..\Libraries\ChineseConverterVSIP.dll</HintPath>
+    </Reference>
+    <Reference Include="ChnCharInfo">
+      <HintPath>..\Libraries\ChnCharInfo.dll</HintPath>
+    </Reference>
+    <Reference Include="EcmaScript.NET, Version=1.0.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Library\EcmaScript.Net.1.0.1.0\lib\net20\EcmaScript.NET.dll</HintPath>
+    </Reference>
+    <Reference Include="FSharp.Core, Version=4.3.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\Library\ScrapySharp.2.2.63\lib\net40\FSharp.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="HtmlAgilityPack, Version=1.4.6.0, Culture=neutral, PublicKeyToken=bd319b19eaf3b43a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Library\ScrapySharp.2.2.63\lib\net40\HtmlAgilityPack.dll</HintPath>
+    </Reference>
+    <Reference Include="ICSharpCode.SharpZipLib, Version=0.86.0.518, Culture=neutral, PublicKeyToken=1b03e6acf1164f73, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Library\SharpZipLib.0.86.0\lib\20\ICSharpCode.SharpZipLib.dll</HintPath>
+    </Reference>
+    <Reference Include="Interop.SpeechLib">
+      <HintPath>..\Libraries\Interop.SpeechLib.dll</HintPath>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="Ionic.Zip, Version=1.9.3.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Library\DotNetZip.1.9.3\lib\net20\Ionic.Zip.dll</HintPath>
+    </Reference>
+    <Reference Include="log4net, Version=1.2.13.0, Culture=neutral, PublicKeyToken=669e0ddf0bb1aa2a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Library\log4net.2.0.3\lib\net40-full\log4net.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.Office.Interop.Word, Version=12.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c">
+      <SpecificVersion>False</SpecificVersion>
+      <EmbedInteropTypes>False</EmbedInteropTypes>
+      <HintPath>..\MvcSite\bin\Microsoft.Office.Interop.Word.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.VisualBasic" />
+    <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Library\Newtonsoft.Json.6.0.7\lib\net40\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="ScrapySharp, Version=2.5.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Library\ScrapySharp.2.2.63\lib\net40\ScrapySharp.dll</HintPath>
+    </Reference>
+    <Reference Include="ScrapySharp.Core, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Library\ScrapySharp.2.2.63\lib\net40\ScrapySharp.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="SevenZipSharp, Version=0.64.3890.29348, Culture=neutral, PublicKeyToken=20de82c62b055c88, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Library\SevenZipSharp.0.64\lib\SevenZipSharp.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.configuration" />
+    <Reference Include="System.Configuration.Install" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Management" />
+    <Reference Include="System.Runtime.Caching" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ServiceModel.Web" />
+    <Reference Include="System.ServiceProcess" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="Yahoo.Yui.Compressor, Version=2.7.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Library\YUICompressor.NET.2.7.0.0\lib\NET20\Yahoo.Yui.Compressor.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Algorithm\BitmapSort.cs" />
+    <Compile Include="Algorithm\BubbleSort.cs" />
+    <Compile Include="API\Alipay\AlipayConfig.cs" />
+    <Compile Include="API\Alipay\AlipayCore.cs" />
+    <Compile Include="API\Alipay\AlipayNotify.cs" />
+    <Compile Include="API\Alipay\AlipayService.cs" />
+    <Compile Include="API\Alipay\AlipaySubmit.cs" />
+    <Compile Include="API\Discuz\AsyncHelper.cs" />
+    <Compile Include="API\Discuz\DiscuzSessionHelper.cs" />
+    <Compile Include="API\Discuz\Toolkit\Arg.cs" />
+    <Compile Include="API\Discuz\Toolkit\AttachmentInfo.cs" />
+    <Compile Include="API\Discuz\Toolkit\DiscuzException.cs" />
+    <Compile Include="API\Discuz\Toolkit\DiscuzParam.cs" />
+    <Compile Include="API\Discuz\Toolkit\DiscuzSession.cs" />
+    <Compile Include="API\Discuz\Toolkit\Enums.cs" />
+    <Compile Include="API\Discuz\Toolkit\Error.cs" />
+    <Compile Include="API\Discuz\Toolkit\ErrorDetails.cs" />
+    <Compile Include="API\Discuz\Toolkit\Forum.cs" />
+    <Compile Include="API\Discuz\Toolkit\Friend.cs" />
+    <Compile Include="API\Discuz\Toolkit\Location.cs" />
+    <Compile Include="API\Discuz\Toolkit\Notification.cs" />
+    <Compile Include="API\Discuz\Toolkit\Post.cs" />
+    <Compile Include="API\Discuz\Toolkit\PrivateMessage.cs" />
+    <Compile Include="API\Discuz\Toolkit\Reply.cs" />
+    <Compile Include="API\Discuz\Toolkit\Responses.cs" />
+    <Compile Include="API\Discuz\Toolkit\SessionWrapper.cs" />
+    <Compile Include="API\Discuz\Toolkit\Topic.cs" />
+    <Compile Include="API\Discuz\Toolkit\User.cs" />
+    <Compile Include="API\Discuz\Toolkit\Util.cs" />
+    <Compile Include="DEncrypt\DEncrypt.cs" />
+    <Compile Include="DEncrypt\DESEncrypt.cs" />
+    <Compile Include="DEncrypt\HashEncode.cs" />
+    <Compile Include="DEncrypt\RSACryption.cs" />
+    <Compile Include="Helper\ColorHelper.cs" />
+    <Compile Include="Helper\ControlExtensions.cs" />
+    <Compile Include="Helper\ExeclHelper.cs" />
+    <Compile Include="Helper\GZipHelper.cs" />
+    <Compile Include="Helper\IntHelper.cs" />
+    <Compile Include="Helper\SevenZipSharpHelper.cs" />
+    <Compile Include="Helper\UriHelper.cs" />
+    <Compile Include="Helper\ZipHelper.cs" />
+    <Compile Include="IHttpModule\ErrorModule.cs" />
+    <Compile Include="IHttpModule\GlobalModule.cs" />
+    <Compile Include="JavaScriptConverter\DataContractJsonHelper.cs" />
+    <Compile Include="API\Tenpay\MD5Util.cs" />
+    <Compile Include="API\Tenpay\PayRequestHandler.cs" />
+    <Compile Include="API\Tenpay\PayResponseHandler.cs" />
+    <Compile Include="API\Tenpay\RequestHandler.cs" />
+    <Compile Include="API\Tenpay\ResponseHandler.cs" />
+    <Compile Include="API\Tenpay\TenpayUtil.cs" />
+    <Compile Include="Utils.cs" />
+    <Compile Include="Utils\AliPay.cs" />
+    <Compile Include="Helper\BarCodeHelper.cs" />
+    <Compile Include="Helper\FlashPaperHelper.cs" />
+    <Compile Include="Utils\AppSettings.cs" />
+    <Compile Include="Utils\Binder.cs" />
+    <Compile Include="Helper\CacheHelper.cs" />
+    <Compile Include="Helper\CdImageHelper.cs" />
+    <Compile Include="Helper\YahooYuiHelper.cs" />
+    <Compile Include="Utils\CRC32.cs" />
+    <Compile Include="Helper\CSVHelper.cs" />
+    <Compile Include="Helper\DateHelper.cs" />
+    <Compile Include="Helper\IISHelper.cs" />
+    <Compile Include="kroppr\Kroppr.bak.cs" />
+    <Compile Include="kroppr\KropprResult.cs" />
+    <Compile Include="kroppr\Kroppr.cs" />
+    <Compile Include="Helper\MoneyHelper.cs" />
+    <Compile Include="Enum\EFileListFormat.cs" />
+    <Compile Include="Enum\INTERNET_CONNECTION.cs" />
+    <Compile Include="Enum\SizeUnit.cs" />
+    <Compile Include="Utils\ExcelReader.cs" />
+    <Compile Include="Helper\FileHelper.cs" />
+    <Compile Include="Utils\CmdUtil.cs" />
+    <Compile Include="Utils\CodeCompiled.cs" />
+    <Compile Include="Utils\common.cs" />
+    <Compile Include="Helper\ComputerHelper.cs" />
+    <Compile Include="Helper\ControlHelper.cs" />
+    <Compile Include="JavaScriptConverter\DataRowConverter.cs" />
+    <Compile Include="JavaScriptConverter\DataSetConverter.cs" />
+    <Compile Include="JavaScriptConverter\DataTableConverter.cs" />
+    <Compile Include="JavaScriptConverter\DateTimeConverter.cs" />
+    <Compile Include="Helper\CookieHelper.cs" />
+    <Compile Include="Utils\DataExport.cs" />
+    <Compile Include="Helper\AlertHelper.cs" />
+    <Compile Include="Helper\FtpHelper.cs" />
+    <Compile Include="Helper\HttpWebClient.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="IHttpModule\ImageHandler.cs" />
+    <Compile Include="Helper\Log4NetHelper.cs" />
+    <Compile Include="Helper\MailHelper.cs" />
+    <Compile Include="Helper\EncryptHelper.cs" />
+    <Compile Include="Enum\ButtonAction.cs" />
+    <Compile Include="Helper\EnumHelper.cs" />
+    <Compile Include="Enum\WatermarkLocation.cs" />
+    <Compile Include="Enum\WatermarkType.cs" />
+    <Compile Include="Utils\ErrorMsg.cs" />
+    <Compile Include="Helper\HttpHelper.cs" />
+    <Compile Include="Utils\EmbeddedAssembly.cs" />
+    <Compile Include="Utils\HttpProc.cs" />
+    <Compile Include="Utils\IdentifyEncoding.cs" />
+    <Compile Include="IHttpModule\AuthCode.cs" />
+    <Compile Include="IHttpModule\Upload.cs" />
+    <Compile Include="Utils\INIFile.cs" />
+    <Compile Include="Utils\LogFile.cs" />
+    <Compile Include="Helper\NetworkHelper.cs" />
+    <Compile Include="IHttpModule\Image.cs" />
+    <Compile Include="JavaScriptConverter\JavaScriptSerializer.cs" />
+    <Compile Include="Helper\KeywordFilterHelper.cs" />
+    <Compile Include="Helper\MathHelper.cs" />
+    <Compile Include="Helper\ImageHelper.cs" />
+    <Compile Include="Utils\MessageBox.cs" />
+    <Compile Include="Utils\PingService.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Helper\ReflectionHelper.cs" />
+    <Compile Include="Helper\RegexHelper.cs" />
+    <Compile Include="Helper\ConvertHelper.cs" />
+    <Compile Include="Helper\ServiceHelper.cs" />
+    <Compile Include="Helper\SessionHelper.cs" />
+    <Compile Include="Utils\RMB.cs" />
+    <Compile Include="Utils\SiteData.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Helper\SnapWebSiteHelper.cs" />
+    <Compile Include="Helper\SpVoiceHelper.cs" />
+    <Compile Include="Helper\SqlHelper.cs" />
+    <Compile Include="kroppr\KropprParameter.cs" />
+    <Compile Include="Helper\TextHelper.cs" />
+    <Compile Include="Helper\ValidatorHelper.cs" />
+    <Compile Include="Utils\Version.cs" />
+    <Compile Include="Helper\VideoThumbnailHelper.cs" />
+    <Compile Include="Utils\WapSession.cs" />
+    <Compile Include="Helper\WeatherHelper.cs" />
+    <Compile Include="Helper\WordHelper.cs" />
+    <Compile Include="Utils\XmlConfig.cs" />
+    <Compile Include="Utils\XmlControl.cs" />
+    <Compile Include="扩展方法.cs" />
+    <Compile Include="Win32API\ERROR.cs" />
+    <Compile Include="Win32API\GDI.cs" />
+    <Compile Include="Win32API\Kernel.cs" />
+    <Compile Include="Win32API\Multimedia.cs" />
+    <Compile Include="Win32API\NetApi.cs" />
+    <Compile Include="Win32API\Shell.cs" />
+    <Compile Include="Win32API\User.cs" />
+    <Compile Include="Win32API\Win32.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\FastReflectionLib\FastReflectionLib.csproj">
+      <Project>{672BF23A-1A69-4E89-9BCB-4E3CA5780541}</Project>
+      <Name>FastReflectionLib</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\MSSQLDB\MSSQLDB.csproj">
+      <Project>{7C765658-1C2D-40D2-8388-1DF1790A3FED}</Project>
+      <Name>MSSQLDB</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\WebSite.Controls\WebSite.Controls.csproj">
+      <Project>{501C2DC1-5E0E-44F4-8C81-93584BCB8CE9}</Project>
+      <Name>WebSite.Controls</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\WebSite.Interface\WebSite.Interface.csproj">
+      <Project>{4AB63BB5-01B1-42BA-912C-9A6BA704CBCF}</Project>
+      <Name>WebSite.Interface</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="key.pfx" />
+    <None Include="key.snk" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

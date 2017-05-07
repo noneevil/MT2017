@@ -1,0 +1,148 @@
+/*CSS Digg style pagination*/
+DIV.digg { margin: 3px; padding: 3px; text-align: center; }
+DIV.digg A { border: 1px solid #aad; color: #009; margin: 2px; padding: 2px 5px; text-decoration: none; }
+DIV.digg A:hover, DIV.digg A:active { border: 1px solid #009; color: #000; }
+DIV.digg SPAN.current { background-color: #009; border: 1px solid #009; color: #fff; font-weight: bold; margin: 2px; padding: 2px 5px; }
+DIV.digg SPAN.disabled { border: 1px solid #eee; color: #ddd; margin: 2px; padding: 2px 5px; }
+/*CSS yahoo style pagination*/
+DIV.yahoo { margin: 3px; padding: 3px; text-align: center; }
+DIV.yahoo A { border: 1px solid #fff; color: #009; margin: 2px; padding: 2px 5px; text-decoration: underline; }
+DIV.yahoo A:active { border: 1px solid #009; color: red; }
+DIV.yahoo A:hover { border: 1px solid #009; color: #000; }
+DIV.yahoo SPAN.current { background-color: #fff; border: 1px solid #fff; color: #000; font-weight: bold; margin: 2px; padding: 2px 5px; }
+DIV.yahoo SPAN.disabled { border: 1px solid #fff; color: #ddd; margin: 2px; padding: 2px 5px; }
+/*CSS meneame style pagination*/
+DIV.meneame { color: #ff6500; font-size: 80%; margin: 3px; padding: 3px; text-align: center; }
+DIV.meneame A { background: url(<%=WebResource("WebSite.Controls.Repeater.Repeater_3.gif") %>); background-position: 50% bottom; border: 1px solid #ff9600; color: #ff6500; margin-right: 3px; padding: 5px 7px; text-decoration: none; }
+DIV.meneame A:hover, DIV.meneame A:active { background-color: #ffc794; background-image: none; border: 1px solid #ff9600; color: #ff6500; }
+DIV.meneame SPAN.current { background-color: #ffbe94; border: 1px solid #ff6500; color: #ff6500; font-weight: bold; margin-right: 3px; padding: 5px 7px; }
+DIV.meneame SPAN.disabled { border: 1px solid #ffe3c6; color: #ffe3c6; margin-right: 3px; padding: 5px 7px; }
+/*CSS flickr style pagination*/
+DIV.flickr { margin: 3px; padding: 3px; text-align: center; }
+DIV.flickr A { border: 1px solid #dedfde; color: #0061de; margin-right: 3px; padding: 2px 6px; text-decoration: none; }
+DIV.flickr A:hover, DIV.meneame A:active { background-color: #0061de; border: 1px solid #000; color: #fff; }
+DIV.flickr SPAN.current { color: #ff0084; font-weight: bold; margin-right: 3px; padding: 2px 6px; }
+DIV.flickr SPAN.disabled { color: #adaaad; margin-right: 3px; padding: 2px 6px; }
+/*CSS sabrosus style pagination*/
+DIV.sabrosus { margin: 3px; padding: 3px; text-align: center; }
+DIV.sabrosus A { border: #9aafe5 1px solid; color: #2e6ab1; margin-right: 2px; padding: 2px 5px; text-decoration: none; }
+DIV.sabrosus A:hover, DIV.pagination A:active { background-color: #FFFFE0; border: #2b66a5 1px solid; color: #000; }
+DIV.sabrosus SPAN.current { background-color: #2e6ab1; border: navy 1px solid; color: #fff; font-weight: bold; margin-right: 2px; padding: 2px 5px; }
+DIV.sabrosus SPAN.disabled { border: #929292 1px solid; color: #929292; margin-right: 2px; padding: 2px 5px; }
+/*CSS scott style pagination*/
+DIV.scott { padding: 3px; margin: 3px; text-align: center; }
+DIV.scott A { border: 1px solid #ddd; padding: 2px 5px; color: #88af3f; margin-right: 2px; text-decoration: none; }
+DIV.scott A:hover { border: 1px solid #85bd1e; color: #638425; background-color: #f1ffd6; }
+DIV.scott A:active { border: 1px solid #85bd1e; color: #638425; background-color: #f1ffd6; }
+DIV.scott SPAN.current { border: 1px solid #b2e05d; padding: 2px 5px; font-weight: bold; color: #fff; margin-right: 2px; background-color: #b2e05d; }
+DIV.scott SPAN.disabled { border: 1px solid #f3f3f3; padding: 2px 5px; color: #ccc; margin-right: 2px; }
+/*CSS black style pagination*/
+DIV.black { background-color: #000; color: #a0a0a0; font-size: 80%; margin: 3px; padding: 10px 3px; text-align: center; }
+DIV.black A { border: 1px solid #909090; color: silver; margin-right: 3px; padding: 2px 5px; text-decoration: none; }
+DIV.black A:hover, DIV.black A:active { background-color: #404040; border: 1px solid #f0f0f0; color: #fff; }
+DIV.black SPAN.current { background-color: #606060; border: 1px solid #fff; color: #fff; font-weight: bold; margin-right: 3px; padding: 2px 5px; }
+DIV.black SPAN.disabled { border: 1px solid #606060; color: gray; margin-right: 3px; padding: 2px 5px; }
+/*CSS black2 style pagination*/
+DIV.black2 { margin: 3px; padding: 7px; text-align: center; }
+DIV.black2 A { border: #000 1px solid; color: #000; margin: 2px; padding: 2px 5px; text-decoration: none; }
+DIV.black2 A:hover, DIV.black2 A:active { background-color: #000; border: #000 1px solid; color: #fff; }
+DIV.black2 SPAN.current { background-color: #000; border: #000 1px solid; color: #fff; font-weight: bold; margin: 2px; padding: 2px 5px; }
+DIV.black2 SPAN.disabled { border: #eee 1px solid; color: #ddd; margin: 2px; padding: 2px 5px; }
+/*CSS quotes style pagination*/
+DIV.quotes { margin: 3px; padding: 3px; text-align: center; }
+DIV.quotes A { border: #ddd 1px solid; color: #aaa; margin-right: 2px; padding: 2px 5px; text-decoration: none; }
+DIV.quotes A:hover, DIV.quotes A:active { border: #a0a0a0 1px solid; margin-right: 2px; padding: 2px 5px; }
+DIV.quotes SPAN.current { background-color: #f0f0f0; border: #e0e0e0 1px solid; color: #aaa; font-weight: bold; margin-right: 2px; padding: 2px 5px; }
+DIV.quotes SPAN.disabled { border: #f3f3f3 1px solid; color: #ccc; margin-right: 2px; padding: 2px 5px; }
+/*CSS blackred style pagination*/
+DIV.blackred { background-color: #3e3e3e; color: #fff; }
+DIV.blackred A { background-color: #3e3e3e; color: #fff; margin: 2px; padding: 2px 5px; text-decoration: none; }
+DIV.blackred A:hover, DIV.blackred A:active { background-color: #ec5210; color: #fff; }
+DIV.blackred SPAN.current { background-color: #313131; color: #fff; font-weight: bold; margin: 2px; padding: 2px 5px; }
+DIV.blackred SPAN.disabled { background-color: #3e3e3e; color: #868686; margin: 2px; padding: 2px 5px; }
+/*CSS grayr style pagination*/
+DIV.grayr { background-color: #c1c1c1; padding: 2px; }
+DIV.grayr A { background-color: #c1c1c1; color: #000; margin: 2px; padding: 2px 5px; text-decoration: none; }
+DIV.grayr A:hover, DIV.grayr A:active { background-color: #9ff; color: #000; }
+DIV.grayr SPAN.current { background-color: #fff; color: #303030; font-weight: bold; margin: 2px; padding: 2px 5px; }
+DIV.grayr SPAN.disabled { background-color: #c1c1c1; color: #797979; margin: 2px; padding: 2px 5px; }
+/*CSS yellow style pagination*/
+DIV.yellow { margin: 3px; padding: 7px; text-align: center; }
+DIV.yellow A { border: #ccc 1px solid; color: #000; margin: 2px; padding: 2px 5px; text-decoration: none; }
+DIV.yellow A:hover, DIV.yellow A:active { border: #f0f0f0 1px solid; color: #000; }
+DIV.yellow SPAN.current { background-color: #d9d300; border: #d9d300 1px solid; color: #fff; font-weight: bold; margin: 2px; padding: 2px 5px; }
+DIV.yellow SPAN.disabled { border: #eee 1px solid; color: #ddd; margin: 2px; padding: 2px 5px; }
+/*CSS jogger style pagination*/
+DIV.jogger { margin: 7px; padding: 2px; }
+DIV.jogger A { background-color: #ee4e4e; color: #fff; margin: 2px; padding: .5em .64em .43em; text-decoration: none; }
+DIV.jogger A:hover, DIV.jogger A:active { background-color: #de1818; color: #fff; margin: 2px; padding: .5em .64em .43em; }
+DIV.jogger SPAN.current { background-color: #f6efcc; color: #6d643c; margin: 2px; padding: .5em .64em .43em; }
+DIV.jogger SPAN.disabled { display: none; }
+/*CSS starcraft2 style pagination*/
+DIV.starcraft2 { background-color: #000; color: #fff; font-weight: bold; margin: 3px; padding: 3px; text-align: center; }
+DIV.starcraft2 A { background-color: #000; color: #fa0; margin: 2px; text-decoration: none; }
+DIV.starcraft2 A:hover, DIV.starcraft2 A:active { background-color: #000; color: #fff; }
+DIV.starcraft2 SPAN.current { background-color: #000; color: #fff; font-weight: bold; margin: 2px; }
+DIV.starcraft2 SPAN.disabled { background-color: #000; color: #444; margin: 2px; }
+/*CSS tres style pagination*/
+DIV.tres { font-weight: bold; margin: 3px; padding: 7px; text-align: center; }
+DIV.tres A { background-color: #d90; border: #d9d300 2px solid; color: #fff; margin: 2px; padding: 2px 5px; text-decoration: none; }
+DIV.tres A:hover, DIV.tres A:active { background-color: #ff0; border: #ff0 2px solid; color: #000; }
+DIV.tres SPAN.current { border: #fff 2px solid; color: #000; font-weight: bold; margin: 2px; padding: 2px 5px; }
+DIV.tres SPAN.disabled { display: none; }
+/*CSS megas512 style pagination*/
+DIV.megas512 { margin: 3px; padding: 3px; text-align: center; }
+DIV.megas512 A { border: #dedfde 1px solid; color: #99210b; margin-right: 3px; padding: 2px 6px; text-decoration: none; }
+DIV.megas512 A:hover, DIV.megas512 A:active { background-color: #777; border: #000 1px solid; color: #fff; }
+DIV.megas512 SPAN.current { color: #99210b; font-weight: bold; margin-right: 3px; padding: 2px 6px; }
+DIV.megas512 SPAN.disabled { color: #adaaad; margin-right: 3px; padding: 2px 6px; }
+/*CSS technorati style pagination*/
+DIV.technorati { margin: 3px; padding: 3px; text-align: center; }
+DIV.technorati A { border: #ccc 1px solid; color: #4261de; font-weight: bold; margin-right: 3px; padding: 2px 6px; text-decoration: none; }
+DIV.technorati A:hover, DIV.technorati A:active { background-color: #4261df; color: #fff; }
+DIV.technorati SPAN.current { color: #000; font-weight: bold; margin-right: 3px; padding: 2px 6px; }
+DIV.technorati SPAN.disabled { display: none; }
+/*CSS youtube style pagination*/
+DIV.youtube { background-color: #cecfce; border-top: #9c9a9c 1px dotted; color: #313031; padding: 4px 6px 4px 0; text-align: right; }
+DIV.youtube A { color: #0030ce; font-weight: bold; margin: 0 1px; padding: 1px 3px; text-decoration: underline; }
+DIV.youtube SPAN.current { background-color: #fff; color: #000; padding: 1px 2px; }
+DIV.youtube SPAN.disabled { display: none; }
+/*CSS msdn style pagination*/
+DIV.msdn { background-color: #fff; color: #313031; padding: 4px 6px 4px 0; text-align: right; }
+DIV.msdn A { border: #b7d8ee 1px solid; color: #0030ce; margin: 0 3px; padding: 5px 6px 4px 5px; text-decoration: none; }
+DIV.msdn A:hover, DIV.pagination A:active { background-color: #d2eaf6; border: #b7d8ee 1px solid; color: #0066a7; }
+DIV.msdn SPAN.current { background-color: #d2eaf6; border: #b7d8ee 1px solid; color: #444; font-weight: bold; margin: 0 3px; padding: 5px 6px 4px 5px; }
+DIV.msdn SPAN.disabled { display: none; }
+/*CSS badoo style pagination*/
+DIV.badoo { background-color: #fff; color: #48b9ef; padding: 10px 0; text-align: center; }
+DIV.badoo A { border: #f0f0f0 2px solid; color: #48b9ef; margin: 0 2px; padding: 2px 5px; text-decoration: none; }
+DIV.badoo A:hover, DIV.badoo A:active { border: #ff5a00 2px solid; color: #ff5a00; }
+DIV.badoo SPAN.current { background-color: #ff6c16; border: #ff5a00 2px solid; color: #fff; font-weight: bold; padding: 2px 5px; }
+DIV.badoo SPAN.disabled { display: none; }
+/*CSS manu style pagination*/
+DIV.manu { margin: 3px; padding: 3px; text-align: center; }
+DIV.manu .current { background-color: #036cb4; border: #036cb4 1px solid; color: #fff; font-weight: bold; margin: 2px; padding: 2px 5px; }
+DIV.manu .disabled { border: #eee 1px solid; color: #ddd; margin: 2px; padding: 2px 5px; }
+DIV.manu A { border: #eee 1px solid; color: #036cb4; margin: 2px; padding: 2px 5px; text-decoration: none; }
+DIV.manu A:hover, .manu A:active { border: #999 1px solid; color: #666; }
+/*CSS greenblack style pagination*/
+DIV.greenblack { margin: 3px; padding: 3px; text-align: center; }
+DIV.greenblack A { background: url(<%=WebResource("WebSite.Controls.Repeater.Repeater_1.gif") %>) #2c2c2c; border: #2c2c2c 1px solid; color: #fff; margin-right: 2px; padding: 2px 5px; text-decoration: none; }
+DIV.greenblack A:hover, DIV.greenblack A:active { background: url(<%=WebResource("WebSite.Controls.Repeater.Repeater_2.gif") %>) #aad83e; border: #aad83e 1px solid; color: #fff; }
+DIV.greenblack SPAN.current { background: url(<%=WebResource("WebSite.Controls.Repeater.Repeater_2.gif") %>) #aad83e; border: #aad83e 1px solid; color: #fff; font-weight: bold; margin-right: 2px; padding: 2px 5px; }
+DIV.greenblack SPAN.disabled { border: #f3f3f3 1px solid; color: #ccc; margin-right: 2px; padding: 2px 5px; }
+/*CSS viciao style pagination*/
+DIV.viciao { margin-bottom: 10px; margin-top: 20px; }
+DIV.viciao A { border: #8db5d7 1px solid; color: #000; margin-right: 2px; padding: 2px 5px; text-decoration: none; }
+DIV.viciao A:hover, DIV.viciao A:active { border: red 1px solid; margin-right: 2px; padding: 2px 5px; }
+DIV.viciao SPAN.current { background-color: #ffca7d; border: #e89954 1px solid; color: #000; font-weight: bold; margin-right: 2px; padding: 2px 5px; }
+DIV.viciao SPAN.disabled { border: #ccc 1px solid; color: #ccc; margin-right: 2px; padding: 2px 5px; }
+/*CSS yahoo2 style pagination*/
+DIV.yahoo2 { margin: 3px; padding: 3px; text-align: center; }
+DIV.yahoo2 A { border: #ccdbe4 1px solid; color: #0061de; margin-right: 3px; padding: 2px 8px; text-decoration: none; }
+DIV.yahoo2 A.next { border: #ccdbe4 2px solid; margin: 0 0 0 10px; }
+DIV.yahoo2 A.next:hover, DIV.yahoo2 A.prev:hover { border: #2b55af 2px solid; }
+DIV.yahoo2 A.prev { border: #ccdbe4 2px solid; margin: 0 10px 0 0; }
+DIV.yahoo2 A:hover, DIV.yahoo2 A:active { background-color: #3666d4; border: #2b55af 1px solid; color: #fff; }
+DIV.yahoo2 SPAN.current { color: #000; font-weight: bold; margin-right: 3px; padding: 2px 6px; }
+DIV.yahoo2 SPAN.disabled { display: none; }

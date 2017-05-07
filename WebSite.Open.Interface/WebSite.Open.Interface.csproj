@@ -1,0 +1,101 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{AEB09A78-E2B2-4F6B-8E3E-E83449065349}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>WebSite.Open.Interface</RootNamespace>
+    <AssemblyName>WebSite.Open.Interface</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.JScript" />
+    <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Library\Newtonsoft.Json.6.0.7\lib\net40\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Baidu\BaiduApiClient.cs" />
+    <Compile Include="Baidu\BaiduApiException.cs" />
+    <Compile Include="Baidu\BaiduApiInvoker.cs" />
+    <Compile Include="Baidu\Interface\IAuthService.cs" />
+    <Compile Include="Baidu\Interface\IFriendsService.cs" />
+    <Compile Include="Baidu\Interface\IHao123Service.cs" />
+    <Compile Include="Baidu\Interface\IUsersService.cs" />
+    <Compile Include="Baidu\OAuthClient.cs" />
+    <Compile Include="Baidu\OAuthException.cs" />
+    <Compile Include="Baidu\OAuthMessage.cs" />
+    <Compile Include="Baidu\Services\AuthService.cs" />
+    <Compile Include="Baidu\Services\BaseService.cs" />
+    <Compile Include="Baidu\Services\FriendsService.cs" />
+    <Compile Include="Baidu\Services\Hao123Service.cs" />
+    <Compile Include="Baidu\Services\UsersService.cs" />
+    <Compile Include="Baidu\Utils\HttpUtils.cs" />
+    <Compile Include="Baidu\Utils\Log.cs" />
+    <Compile Include="Baidu\Utils\Md5Utils.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Sina\BaseHttpRequest.cs" />
+    <Compile Include="Sina\HttpGet.cs" />
+    <Compile Include="Sina\HttpPost.cs" />
+    <Compile Include="Sina\HttpRequestFactory.cs" />
+    <Compile Include="Sina\IHttpRequestMethod.cs" />
+    <Compile Include="Sina\Method.cs" />
+    <Compile Include="Sina\oAuthBase.cs" />
+    <Compile Include="Sina\SinaApi.cs" />
+    <Compile Include="Sina\SinaConfig.cs" />
+    <Compile Include="Sina\SinaEntity.cs" />
+    <Compile Include="Tentent\DataFormatEnum.cs" />
+    <Compile Include="Tentent\OAuthHelper.cs" />
+    <Compile Include="Tentent\Utility.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\CommonUtils\CommonUtils.csproj">
+      <Project>{AB19409B-693D-4EFB-A445-C8B4820A1C27}</Project>
+      <Name>CommonUtils</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

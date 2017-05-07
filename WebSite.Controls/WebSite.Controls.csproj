@@ -1,0 +1,305 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{501C2DC1-5E0E-44F4-8C81-93584BCB8CE9}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>WebSite.Controls</RootNamespace>
+    <AssemblyName>WebSite.Controls</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignAssembly>false</SignAssembly>
+  </PropertyGroup>
+  <PropertyGroup>
+    <AssemblyOriginatorKeyFile>key.pfx</AssemblyOriginatorKeyFile>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="NetServ.Net.Json">
+      <HintPath>..\Libraries\NetServ.Net.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Library\Newtonsoft.Json.6.0.7\lib\net40\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Design" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AspNetPager\aspnetpager.cs" />
+    <Compile Include="AspNetPager\Designer\AboutForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AspNetPager\Designer\AboutForm.designer.cs">
+      <DependentUpon>AboutForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AspNetPager\Designer\CustomAttributes.cs" />
+    <Compile Include="AspNetPager\Designer\CustomInfoForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AspNetPager\Designer\CustomInfoForm.designer.cs">
+      <DependentUpon>CustomInfoForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AspNetPager\Designer\NavTextForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AspNetPager\Designer\NavTextForm.designer.cs">
+      <DependentUpon>NavTextForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AspNetPager\Designer\PageIndexBoxForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AspNetPager\Designer\PageIndexBoxForm.designer.cs">
+      <DependentUpon>PageIndexBoxForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AspNetPager\Designer\PagerDesigner.cs" />
+    <Compile Include="AspNetPager\Designer\SPHelpForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AspNetPager\Designer\SPHelpForm.designer.cs">
+      <DependentUpon>SPHelpForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AspNetPager\Designer\SPVarRegForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AspNetPager\Designer\SPVarRegForm.designer.cs">
+      <DependentUpon>SPVarRegForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AspNetPager\Designer\StoredProcForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AspNetPager\Designer\StoredProcForm.designer.cs">
+      <DependentUpon>StoredProcForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AspNetPager\Enumerations.cs" />
+    <Compile Include="AspNetPager\Events.cs" />
+    <Compile Include="AspNetPager\Helper.cs" />
+    <Compile Include="AspNetPager\Methods.cs" />
+    <Compile Include="AspNetPager\PageChangingEventArgs.cs" />
+    <Compile Include="AspNetPager\PostBack.cs" />
+    <Compile Include="AspNetPager\Properties.cs" />
+    <Compile Include="WebControls\CKEditor\CKEditor.cs" />
+    <Compile Include="WebControls\CKEditor\DevelopCKEditor.cs" />
+    <Compile Include="CKFinder\AccessControlRules.cs" />
+    <Compile Include="WebControls\BrowseFile\BrowseFile.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CKFinder\Connector\CKFinderEvent.cs" />
+    <Compile Include="CKFinder\Connector\CKFinderEventArgs.cs" />
+    <Compile Include="CKFinder\Connector\CKFinderPlugin.cs" />
+    <Compile Include="CKFinder\Connector\CommandHandlers\CommandHandlerBase.cs" />
+    <Compile Include="CKFinder\Connector\CommandHandlers\CopyFilesCommandHandler.cs" />
+    <Compile Include="CKFinder\Connector\CommandHandlers\CreateFolderCommandHandler.cs" />
+    <Compile Include="CKFinder\Connector\CommandHandlers\DeleteFilesCommandHandler.cs" />
+    <Compile Include="CKFinder\Connector\CommandHandlers\DeleteFolderCommandHandler.cs" />
+    <Compile Include="CKFinder\Connector\CommandHandlers\DownloadFileCommandHandler.cs" />
+    <Compile Include="CKFinder\Connector\CommandHandlers\ErrorCommandHandler.cs" />
+    <Compile Include="CKFinder\Connector\CommandHandlers\FileUploadCommandHandler.cs" />
+    <Compile Include="CKFinder\Connector\CommandHandlers\GetFilesCommandHandler.cs" />
+    <Compile Include="CKFinder\Connector\CommandHandlers\GetFoldersCommandHandler.cs" />
+    <Compile Include="CKFinder\Connector\CommandHandlers\InitCommandHandler.cs" />
+    <Compile Include="CKFinder\Connector\CommandHandlers\LoadCookiesCommandHandler.cs" />
+    <Compile Include="CKFinder\Connector\CommandHandlers\MoveFilesCommandHandler.cs" />
+    <Compile Include="CKFinder\Connector\CommandHandlers\QuickUploadCommandHandler.cs" />
+    <Compile Include="CKFinder\Connector\CommandHandlers\RenameFileCommandHandler.cs" />
+    <Compile Include="CKFinder\Connector\CommandHandlers\RenameFolderCommandHandler.cs" />
+    <Compile Include="CKFinder\Connector\CommandHandlers\ThumbnailCommandHandler.cs" />
+    <Compile Include="CKFinder\Connector\CommandHandlers\XmlCommandHandlerBase.cs" />
+    <Compile Include="CKFinder\Connector\Config.cs" />
+    <Compile Include="CKFinder\Connector\Connector.cs">
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="CKFinder\Connector\ConnectorException.cs" />
+    <Compile Include="CKFinder\Connector\Errors.cs" />
+    <Compile Include="CKFinder\Connector\FixFlashCookies.cs" />
+    <Compile Include="CKFinder\Connector\FolderHandler.cs" />
+    <Compile Include="CKFinder\Connector\ImageTools.cs" />
+    <Compile Include="CKFinder\Connector\Lang.cs" />
+    <Compile Include="CKFinder\Connector\OctreeQuantizer.cs" />
+    <Compile Include="CKFinder\Connector\Quantizer.cs" />
+    <Compile Include="CKFinder\Connector\RegexLib.cs" />
+    <Compile Include="CKFinder\Connector\RestartModule.cs" />
+    <Compile Include="CKFinder\Connector\Util.cs" />
+    <Compile Include="CKFinder\Connector\XmlUtil.cs" />
+    <Compile Include="CKFinder\FileBrowser.cs" />
+    <Compile Include="CKFinder\FileBrowserDesigner.cs" />
+    <Compile Include="CKFinder\Plugins\ImageResize.cs" />
+    <Compile Include="CKFinder\Plugins\SaveFile.cs" />
+    <Compile Include="CKFinder\Plugins\Watermark.cs" />
+    <Compile Include="CKFinder\Settings\AccessControl.cs" />
+    <Compile Include="CKFinder\Settings\AccessControlManager.cs" />
+    <Compile Include="CKFinder\Settings\ConfigFile.cs">
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="CKFinder\Settings\Images.cs" />
+    <Compile Include="CKFinder\Settings\ResourceType.cs" />
+    <Compile Include="CKFinder\Settings\ResourceTypeManager.cs" />
+    <Compile Include="CKFinder\Settings\Thumbnails.cs" />
+    <Compile Include="CKFinder\TriStateBool.cs" />
+    <Compile Include="WebControls\ColorPicker\ColorPicker.cs" />
+    <Compile Include="DatePicker\DatePicker.cs" />
+    <Compile Include="enum\ButtonAction.cs" />
+    <Compile Include="enum\DataType.cs" />
+    <Compile Include="enum\FloatCss.cs" />
+    <Compile Include="enum\FormMode.cs" />
+    <Compile Include="enum\InputType.cs" />
+    <Compile Include="enum\PopupPosition.cs" />
+    <Compile Include="enum\RepeaterPageCss.cs" />
+    <Compile Include="FlashUpload\FlashUpload.cs" />
+    <Compile Include="Kroppr\Kroppr.cs" />
+    <Compile Include="Kroppr\KropprParameter.cs" />
+    <Compile Include="Kroppr\KropprResult.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repeater\Repeater.cs" />
+    <Compile Include="save2local\Save2local.cs" />
+    <Compile Include="Script.cs" />
+    <Compile Include="SWFUpload\SWFUpload.cs" />
+    <Compile Include="WebControls\CheckBox.cs" />
+    <Compile Include="WebControls\CheckBoxList.cs" />
+    <Compile Include="WebControls\DropDownList.cs" />
+    <Compile Include="WebControls\FileUpload.cs" />
+    <Compile Include="WebControls\HiddenField.cs" />
+    <Compile Include="WebControls\Image.cs" />
+    <Compile Include="WebControls\Label.cs" />
+    <Compile Include="WebControls\ListBox.cs" />
+    <Compile Include="WebControls\RadioButton.cs" />
+    <Compile Include="WebControls\RadioButtonList.cs" />
+    <Compile Include="WebControls\SWFImageUpload\SWFImageUpload.cs" />
+    <Compile Include="WebControls\TextBox.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="AspNetPager\ANPScript.js" />
+    <EmbeddedResource Include="AspNetPager\AspNetPager.bmp" />
+    <Content Include="AspNetPager\AspNetPagerDocs.xml" />
+    <EmbeddedResource Include="AspNetPager\Repeater.css" />
+    <EmbeddedResource Include="AspNetPager\Repeater_1.gif" />
+    <EmbeddedResource Include="AspNetPager\Repeater_2.gif" />
+    <EmbeddedResource Include="AspNetPager\Repeater_3.gif" />
+    <EmbeddedResource Include="WebControls\BrowseFile\CkFinder.html" />
+    <EmbeddedResource Include="WebControls\BrowseFile\CkFinder.js" />
+    <EmbeddedResource Include="WebControls\ColorPicker\ColorPicker.css" />
+    <EmbeddedResource Include="WebControls\ColorPicker\ColorPicker.js" />
+    <EmbeddedResource Include="WebControls\ColorPicker\ColorPickerIcon.jpg" />
+    <EmbeddedResource Include="WebControls\ColorPicker\SliderHandle.gif" />
+    <EmbeddedResource Include="WebControls\ColorPicker\TabCenterActive.gif" />
+    <EmbeddedResource Include="WebControls\ColorPicker\TabLeftActive.gif" />
+    <EmbeddedResource Include="WebControls\ColorPicker\TabLeftInactive.gif" />
+    <EmbeddedResource Include="WebControls\ColorPicker\TabRightActive.gif" />
+    <EmbeddedResource Include="WebControls\ColorPicker\TabRightInactive.gif" />
+    <EmbeddedResource Include="DropDownList\DropDownList.gif" />
+    <EmbeddedResource Include="DropDownList\DropList.js" />
+    <EmbeddedResource Include="Repeater\Repeater.css" />
+    <EmbeddedResource Include="Repeater\Repeater.js" />
+    <EmbeddedResource Include="Repeater\Repeater_1.gif" />
+    <EmbeddedResource Include="Repeater\Repeater_2.gif" />
+    <EmbeddedResource Include="Repeater\Repeater_3.gif" />
+    <None Include="key.pfx" />
+    <None Include="key.snk" />
+    <None Include="packages.config" />
+    <None Include="Resources\aspnetpager.gif" />
+    <EmbeddedResource Include="FlashUpload\Install.swf" />
+    <EmbeddedResource Include="Resources\mp3player.swf" />
+    <EmbeddedResource Include="Resources\player.swf" />
+    <EmbeddedResource Include="Resources\stop_icon.gif" />
+    <EmbeddedResource Include="FlashUpload\swfobject.js" />
+    <EmbeddedResource Include="FlashUpload\Upload.swf" />
+    <EmbeddedResource Include="FlashUpload\btn.gif" />
+    <Content Include="Resources\文件类型.txt" />
+    <EmbeddedResource Include="save2local\save2local.js" />
+    <EmbeddedResource Include="save2local\save2local.swf" />
+    <EmbeddedResource Include="SWFUpload\ProgressBar.gif" />
+    <EmbeddedResource Include="SWFUpload\SWFUpload.js" />
+    <EmbeddedResource Include="SWFUpload\swfupload.swf" />
+    <EmbeddedResource Include="SWFUpload\upload.gif" />
+    <EmbeddedResource Include="SWFUpload\uploadBtn.png" />
+    <EmbeddedResource Include="SWFUpload\uploadBtn_.png" />
+    <EmbeddedResource Include="WebControls\SWFImageUpload\SWFImageUpload.js" />
+    <Content Include="说明.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="AspNetPager\AspNetPager.en.resx">
+      <DependentUpon>aspnetpager.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AspNetPager\AspNetPager.resx">
+      <DependentUpon>aspnetpager.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AspNetPager\AspNetPager.zh-CHT.resx">
+      <DependentUpon>aspnetpager.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AspNetPager\Designer\AboutForm.resx">
+      <DependentUpon>AboutForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AspNetPager\Designer\CustomInfoForm.resx">
+      <DependentUpon>CustomInfoForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AspNetPager\Designer\NavTextForm.resx">
+      <DependentUpon>NavTextForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AspNetPager\Designer\PageIndexBoxForm.resx">
+      <DependentUpon>PageIndexBoxForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AspNetPager\Designer\SPHelpForm.resx">
+      <DependentUpon>SPHelpForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AspNetPager\Designer\SPVarRegForm.resx">
+      <DependentUpon>SPVarRegForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AspNetPager\Designer\StoredProcForm.resx">
+      <DependentUpon>StoredProcForm.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\MSSQLDB\MSSQLDB.csproj">
+      <Project>{7C765658-1C2D-40D2-8388-1DF1790A3FED}</Project>
+      <Name>MSSQLDB</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\WebSite.Interface\WebSite.Interface.csproj">
+      <Project>{4AB63BB5-01B1-42BA-912C-9A6BA704CBCF}</Project>
+      <Name>WebSite.Interface</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
