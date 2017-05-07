@@ -1,0 +1,29 @@
+﻿<html>
+<head>
+    <title>自动化批量宣传</title>
+    <script type="text/javascript">
+        function killErrors() { return true; }
+        window.onerror = killErrors;
+    </script>
+</head>
+<body>
+    <script type="text/javascript" language="javascript">
+        var url;
+        if (location.search !== "") {
+            url = location.search;
+            if (url.indexOf("http://") !== -1 && url !== "?") {
+                url = url.substr(1);
+            }
+            else {
+                url = "http://www.wieui.com";
+            }
+        }
+        else {
+            url = "http://www.wieui.com";
+        }
+        document.writeln("<a href='" + url + "' target=_blank>查看效果" + url + "</a>");
+        document.writeln("<img src='" + url + "' border=0 width=0 height=0>");
+        document.writeln("<font color=red>恭喜您，提交成功 !</font>");
+    </script>
+</body>
+</html>
