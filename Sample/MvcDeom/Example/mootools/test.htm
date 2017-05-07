@@ -1,0 +1,35 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>省市联动</title>
+    <script src="/Scripts/mootools-core-1.4.5.js" type="text/javascript"></script>
+    <style type="text/css">
+        body{ font-size:12px;}
+        a{ display:block; float:left; padding:10px;}
+    </style>
+    <script type="text/ecmascript">
+        function add(event) {
+            alert(typeof(this));
+        }
+        window.addEvent('domready', function () {
+            var elements = $$('a,span');
+            for (var i = 0; i < elements.length; i++) {
+                var el = elements[i];
+                //el.removeEvent('click');
+                //                el.onclick = '';
+                el.setAttribute('onclick', null);
+            };
+        });
+    </script>
+</head>
+<body>
+    <a href="javascript:" onclick="add();">测试</a>
+    <a href="javascript:" onclick="add();">测试</a>
+    <a href="javascript:" onclick="add();">测试</a>
+    <a href="javascript:" onclick="add();">测试</a>
+    <a href="javascript:" onclick="add();">测试</a>
+    <a href="javascript:" onclick="add();">测试</a>
+    <a href="javascript:" onclick="add();">测试</a>
+    <span onclick="add();">测试</span>
+</body>
+</html>

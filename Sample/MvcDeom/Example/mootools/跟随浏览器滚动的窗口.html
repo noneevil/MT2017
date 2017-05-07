@@ -1,0 +1,41 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>跟随浏览器滚动的窗口</title>
+    <style type="text/css">
+        #box{right: 3px; bottom: 3px; width: 280px; height: 200px; overflow: hidden;display: block; position: absolute; background-color: #fff; font-size: 12px;}
+        #box .title{width: 270px; height: 15px; padding: 5px; overflow: hidden; background: url(/Content/bg.gif);}
+        #box .content{width: 272px; height: 167px; overflow: hidden; padding: 3px; border: 1px solid #ccc;}
+    </style>
+    <script src="/Scripts/mootools-core-1.4.5.js" type="text/javascript"></script>
+    <script type="text/javascript">
+        window.addEvent('domready', function () {
+            for (i = 0; i < 1000; i++) {
+                new Element('br').inject(document.body, 'after');
+            }
+        });
+        var movbox;
+        window.addEvent('scroll', function () {
+            if ($('box')) {
+                var win = window.getScroll();
+                if (movbox) movbox.cancel();
+                movbox = new Fx.Morph($('box'), {
+                    duration: 5000,
+                    transition: Fx.Transitions.Elastic.easeOut
+                }).start({ top: win.y + window.getSize().y - 203 });
+            }
+        });
+    </script>
+</head>
+<body>
+    <div id="box">
+        <div class="title">
+            <img style="cursor: pointer; float: right;" onclick="$('box').destroy();" title="关闭" align="middle" src="/Content/close.gif" width="15" height="15">
+            视频
+        </div>
+        <div class="content">
+            <img src="/Content/159130308.h264_1.jpg" height="160" width="268" />
+        </div>
+    </div>
+</body>
+</html>

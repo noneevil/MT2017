@@ -1,0 +1,84 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>格式化工具</title>
+    <style type="text/css">
+        html, body { height: 100%; }
+        body { margin: 10px; padding: 0; font-size: 12px; }
+        textarea { height: 80%; width: 100%; }
+        textarea span { cursor: pointer; }
+    </style>
+    <script src="mootools-core-1.4.5.js" type="text/javascript"></script>
+    <script type="text/javascript">
+        var FormatJSON = function () {
+            var json = JSON.decode($('json').get('text'));
+            var level = 0;
+            var tab = '    ';
+            var html = '[';
+            var repeat = function (s, count) {
+                return new Array(count + 1).join(s);
+            };
+            var arr = [
+                '{blank}"<span style="color: #008000;">{key}</span>" : <span style="color: #0000FF;">{value}</span>',
+                '{blank}"<span style="color: #0000FF;">{key}</span>" : {value}',
+                '{blank}"<span style="color: #2B91AF;">{key}</span>" : \'<span style="color: #A31515">{value}</span>\'',
+                '{blank}"<span style="color: #2B91AF;">{key}</span>" : {value}'
+            ];
+            function html_encode(str) {
+                var s = "";
+                if (str.length == 0) return "";
+                s = str.replace(/&/g, "&amp;");
+                s = s.replace(/</g, "&lt;");
+                s = s.replace(/>/g, "&gt;");
+                //s = s.replace(/ /g, "&nbsp;");
+                //s = s.replace(/\'/g, "&#39;");
+                //s = s.replace(/\"/g, "&quot;");
+                //s = s.replace(/\n/g, "<br>");
+                return s;
+            }
+
+            var map = function (obj) {
+                var maparray = [];
+                level += 1;
+                var str = repeat(tab, level + 1);
+
+                Object.map(obj, function (val, key) {
+                    if (val == null) {
+                        maparray.push(arr[0].substitute({ 'blank': str, 'key': key, 'value': 'null' }));
+                    }
+                    else if (typeof (val) == 'object') {
+                        maparray.push(arr[1].substitute({ 'blank': str, 'key': key, 'value': map(val) }));
+                        level -= 1;
+                    }
+                    else if (typeof (val) == 'string') {
+                        maparray.push(arr[2].substitute({ 'blank': str, 'key': key, 'value': html_encode(val) }));
+                    }
+                    else {
+                        maparray.push(arr[3].substitute({ 'blank': str, 'key': key, 'value': val }));
+                    }
+                });
+                str = repeat(tab, level);
+                return '<br/>' + str + '{<br/>' + maparray.join(',<br/>') + '<br/>' + str + '}';
+            };
+            var mapobj = [];
+            json.each(function (obj, index) {
+                mapobj.push(map(obj));
+                level -= 1;
+            });
+
+            html += mapobj.join(',');
+            html += '<br/>]';
+            $('json').set('html', html);
+            $('json').getElements('span').addEvent('click', function () {
+                window.clipboardData.setData("Text", this.get('text'));
+            });
+        }
+    </script>
+</head>
+<body>
+    <textarea id="json">
+   [{"Province_Id":"520000","Province_Name":"贵州省","Province_Letter":"G","City":{"City_Id":"520300","City_Name":"遵义市","Province_Id":"520000","City_Letter":"Z","Area":{"Area_Id":null,"Area_Name":null,"City_Id":"520300"}}},{"Province_Id":"520000","Province_Name":"贵州省","Province_Letter":"G","City":{"City_Id":"522300","City_Name":"黔西南布依族苗族自治州","Province_Id":"520000","City_Letter":"Q","Area":{"Area_Id":null,"Area_Name":null,"City_Id":"522300"}}},{"Province_Id":"520000","Province_Name":"贵州省","Province_Letter":"G","City":{"City_Id":"522700","City_Name":"黔南布依族苗族自治州","Province_Id":"520000","City_Letter":"Q","Area":{"Area_Id":null,"Area_Name":null,"City_Id":"522700"}}},{"Province_Id":"520000","Province_Name":"贵州省","Province_Letter":"G","City":{"City_Id":"522600","City_Name":"黔东南苗族侗族自治州","Province_Id":"520000","City_Letter":"Q","Area":{"Area_Id":null,"Area_Name":null,"City_Id":"522600"}}},{"Province_Id":"520000","Province_Name":"贵州省","Province_Letter":"G","City":{"City_Id":"522400","City_Name":"毕节地区","Province_Id":"520000","City_Letter":"B","Area":{"Area_Id":null,"Area_Name":null,"City_Id":"522400"}}},{"Province_Id":"520000","Province_Name":"贵州省","Province_Letter":"G","City":{"City_Id":"520400","City_Name":"安顺市","Province_Id":"520000","City_Letter":"A","Area":{"Area_Id":null,"Area_Name":null,"City_Id":"520400"}}},{"Province_Id":"520000","Province_Name":"贵州省","Province_Letter":"G","City":{"City_Id":"520200","City_Name":"六盘水市","Province_Id":"520000","City_Letter":"L","Area":{"Area_Id":null,"Area_Name":null,"City_Id":"520200"}}},{"Province_Id":"520000","Province_Name":"贵州省","Province_Letter":"G","City":{"City_Id":"520100","City_Name":"贵阳市","Province_Id":"520000","City_Letter":"G","Area":{"Area_Id":null,"Area_Name":null,"City_Id":"520100"}}},{"Province_Id":"520000","Province_Name":"贵州省","Province_Letter":"G","City":{"City_Id":"522200","City_Name":"铜仁地区","Province_Id":"520000","City_Letter":"T","Area":{"Area_Id":null,"Area_Name":null,"City_Id":"522200"}}}]
+   </textarea>
+    <input type="button" onclick="FormatJSON();" value="FormatJSON" />
+</body>
+</html>

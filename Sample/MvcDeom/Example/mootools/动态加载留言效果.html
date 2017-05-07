@@ -1,0 +1,80 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>动态加载留言效果</title>
+    <style type="text/css">
+        body { margin: 0; padding: 10px; font-size: 12px; }
+        ul { margin: 0 auto; padding: 10px; list-style-type: none; width: 500px; height: 295px; overflow: hidden; border: 1px solid #ccc; }
+        ul li { background-color: #ccc; padding: 5px; margin-top: 3px; }
+        ul img { width: 100px; height: 80px; border: 1px solid #fff; padding: 3px; }
+        ul div { float: right; width: 370px; line-height: 30px; }
+    </style>
+    <script src="/Scripts/mootools-core-1.4.5.js" type="text/javascript"></script>
+    <script type="text/javascript">
+        window.addEvents({
+            'domready': function () {
+                $('talkList').load('/home/ViewUserControl1');
+                (function () {
+                    var el = [];
+                    var li = $$('#talkList li');
+                    $$('#talkList li').each(function (item, index) {
+                        item.store('height', item.getCoordinates().height);
+                        item.setStyle('display', 'none');
+                        el.push(item);
+                    });
+                    $('talkList').empty();
+                    el.reverse(); //数组倒序
+
+                    //初始化显示3条数据
+                    for (i = 0; i < 3; i++) {
+                        el[i].setStyle('display', '');
+                        el[i].inject($('talkList'), 'top');
+                    }
+
+                    (function () {
+                        var obj = el[this.index];
+                        if (obj) {
+                            this.index++;
+                            obj.inject($('talkList'), 'top');
+                            obj.setStyles({ /*height: 1, 'margin-top': -100,*/opacity: 0, display: 'block' });
+                            obj.fade('in');
+                        }
+                        else {
+                            this.index = 0;
+                        }
+                    }).periodical(1000, { index: 3 });
+                } .delay(1000));
+            }
+        });
+    </script>
+</head>
+<body>
+    <ul id="talkList">
+        <!--<li>
+            <img src="/Content/159130308.h264_1.jpg" />
+            <div>
+                1分钟前</div>
+        </li>
+        <li>
+            <img src="/Content/img_20120203044632.jpg" />
+            <div>
+                2分钟前</div>
+        </li>
+        <li>
+            <img src="/Content/img_20120203044638.jpg" />
+            <div>
+                3分钟前</div>
+        </li>
+        <li>
+            <img src="/Content/img_20120203044644.jpg" />
+            <div>
+                4分钟前</div>
+        </li>
+        <li>
+            <img src="/Content/img_20120203044649.jpg" />
+            <div>
+                5分钟前</div>
+        </li>-->
+    </ul>
+</body>
+</html>

@@ -1,0 +1,47 @@
+﻿<!DOCTYPE HTML>
+<html lang="en-US">
+<head>
+	<meta charset="UTF-8">
+	<title>MooBox demo</title>
+	<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7" />   
+	<link rel="stylesheet" type="text/css" href="css/reset.css" media="all" />
+	<link rel="stylesheet" type="text/css" href="css/fonts.css" media="all" />
+	<link rel="stylesheet" type="text/css" href="css/MooBox.css" media="all" />
+	<script type="text/javascript" src="js/mootools-core-1.4.2.js"></script>
+	<script type="text/javascript" src="js/mootools-more-1.4.0.js"></script>
+	<style type="text/css">
+		#MooBox {
+			left: 50px;
+			top: 50px;
+			width: 250px;
+		}
+		#MooBox .moo-box-body {
+			width: 200px;
+			height: 150px;
+		}
+	</style>
+</head>
+<body>
+	<div id="MooBox" class="moo-box-container" title="Here is box title">
+		<div class="moo-box-titlebar">
+			<h3 class="moo-box-title">Here is box title</h3>
+			<a href="#" class="moo-box-toggle">-</a>
+			<a href="#" class="moo-box-close">x</a>
+		</div>
+		<div class="moo-box-body">
+			
+		</div>
+		<div class="moo-box-buttonbar">
+			<div class="moo-box-buttonset">
+				<button class="moo-box-btn">
+					<span class="moo-box-btn-text">Delete all items</span>
+				</button>
+				<button class="moo-box-btn">
+					<span class="moo-box-btn-text">Cancel</span>
+				</button>
+			</div>
+		</div>
+		<div class="moo-box-resize"></div>
+	</div>
+</body>
+</html>

@@ -1,0 +1,58 @@
+[Version]
+Signature="$CHICAGO$"
+Provider=邹丰
+
+[DefaultInstall]
+; DelReg=初始化_DelReg
+AddReg=初始化_AddReg
+
+[初始化_DelReg]
+
+[初始化_AddReg]
+hkcu,"Software\Macromedia\FlashPaper Printer",,,""
+
+hkcu,"Software\Macromedia\FlashPaper Printer\2",,,""
+
+hkcu,"Software\Macromedia\FlashPaper Printer\2\Preferences","DevPaperSize",,"9"
+hkcu,"Software\Macromedia\FlashPaper Printer\2\Preferences","DevCustomWidthMM1000",,"100000"
+hkcu,"Software\Macromedia\FlashPaper Printer\2\Preferences","DevCustomSizeUnit",,"1"
+hkcu,"Software\Macromedia\FlashPaper Printer\2\Preferences","DevCustomHeightMM1000",,"150000"
+
+hklm,"SOFTWARE\Macromedia\FlashPaper Printer","CurrentVersion",,"2"
+
+hklm,"SOFTWARE\Macromedia\FlashPaper Printer\2",,,""
+
+hklm,"SOFTWARE\Macromedia\FlashPaper Printer\2\Installation","XmlSchemaName",,"FlashPaper.xsd"
+hklm,"SOFTWARE\Macromedia\FlashPaper Printer\2\Installation",,,""
+hklm,"SOFTWARE\Macromedia\FlashPaper Printer\2\Installation","AppPath",,"%01%\FlashPrinter.exe"
+hklm,"SOFTWARE\Macromedia\FlashPaper Printer\2\Installation","InstallPath",,"%01%\"
+hklm,"SOFTWARE\Macromedia\FlashPaper Printer\2\Installation","BasePath",,"%01%\"
+hklm,"SOFTWARE\Macromedia\FlashPaper Printer\2\Installation","DefaultViewerInterfaceName",,"DefaultViewer2"
+
+hklm,"SOFTWARE\Macromedia\Application Data\Activated","FlashPaper",,"yes"
+
+hklm,"SOFTWARE\Macromedia\FlashPaper\2.0\Registration","Serial Number",,"42E65C96-15E8-40c0-B04A-90D5CCF6E2EBkeQVXjoEuNV+hMATILZwpQDKTs6BtiecpYvvMJHThRj+bzyBod5TklqdHvr55D8bjUGhda1MEBA="
+hklm,"SOFTWARE\Macromedia\FlashPaper\2.0\Registration","First Name",,""
+hklm,"SOFTWARE\Macromedia\FlashPaper\2.0\Registration","Last Name",,""
+hklm,"SOFTWARE\Macromedia\FlashPaper\2.0\Registration","Organization",,""
+hklm,"SOFTWARE\Macromedia\FlashPaper\2.0\Registration","Register",,"-1"
+hklm,"SOFTWARE\Macromedia\FlashPaper\2.0\Registration","Level",,"42E65C96-15E8-40c0-B04A-90D5CCF6E2EBaYV2uvCLcsdLaZyJzoKyNxdy0HEE27/90cZ4FDXmYxPeVQ0eQKhO8PukrDyU3BhFmjXsgaUYx30="
+hklm,"SOFTWARE\Macromedia\FlashPaper\2.0\Registration","Model",,"42E65C96-15E8-40c0-B04A-90D5CCF6E2EBlH3xauJrBxeR5BVeOgS41X6EwBMgtnClAMpOzoG2J5yli+8wkdOFGP5vPIGh3lOSWp0e+vnkPxuNQaF1rUwQEA=="
+hklm,"SOFTWARE\Macromedia\FlashPaper\2.0\Registration","IsWebRegisterEnabled",,"1"
+hklm,"SOFTWARE\Macromedia\FlashPaper\2.0\Registration","SplashScreenType",,"2"
+hklm,"SOFTWARE\Macromedia\FlashPaper\2.0\Registration","Hundur",,"42E65C96-15E8-40c0-B04A-90D5CCF6E2EBOL0NsEt/sGX6ZglpFFNTahXJb9lxxJjI"
+
+
+hklm,"SOFTWARE\Microsoft\Office\Excel\Addins\OfficePrintAddin.Connect","Description",,"Convert with FlashPaper"
+hklm,"SOFTWARE\Microsoft\Office\Excel\Addins\OfficePrintAddin.Connect","FriendlyName",,"Convert with FlashPaper"
+hklm,"SOFTWARE\Microsoft\Office\Excel\Addins\OfficePrintAddin.Connect","LoadBehavior",0x10001,03,00,00,00
+
+hklm,"SOFTWARE\Microsoft\Office\PowerPoint\Addins\OfficePrintAddin.Connect","LoadBehavior",0x10001,03,00,00,00
+hklm,"SOFTWARE\Microsoft\Office\PowerPoint\Addins\OfficePrintAddin.Connect","FriendlyName",,"Convert with FlashPaper"
+hklm,"SOFTWARE\Microsoft\Office\PowerPoint\Addins\OfficePrintAddin.Connect","Description",,"Convert with FlashPaper"
+
+hklm,"SOFTWARE\Microsoft\Office\Word\Addins\OfficePrintAddin.Connect","LoadBehavior",0x10001,03,00,00,00
+hklm,"SOFTWARE\Microsoft\Office\Word\Addins\OfficePrintAddin.Connect","FriendlyName",,"Convert with FlashPaper"
+hklm,"SOFTWARE\Microsoft\Office\Word\Addins\OfficePrintAddin.Connect","Description",,"Convert with FlashPaper"
+
+[Strings]

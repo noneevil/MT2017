@@ -1,0 +1,76 @@
+/* doc global --- start */
+#doc {
+	margin: 10px auto;
+	border: 1px solid #acacac;
+	padding: 10px;
+	width: 800px;
+	border-radius: 4px;
+	color: #333;
+	background: #FBFBFB;
+}
+#doc dl.prop-item {
+	overflow: hidden;
+	margin-bottom: 10px;
+}
+#doc dt.prop-label,
+#doc dd.prop-desc {
+	float: left;
+}
+#doc dt.prop-label {
+	padding-left: 5px;
+	margin-right: 10px;
+	width: 130px;
+}
+#doc dd.prop-desc {
+	width: 630px;
+}
+#doc span.require {
+	color: #990000;
+	font-weight: bold;
+}
+#doc span.sub {
+	display: block;
+}
+#doc div.separator {
+	margin-top: 10px;
+}
+#doc div.panel {
+	border: 1px solid #6699CC;
+	border-radius: 4px;
+	background: #fff;
+}
+
+div.panel h3.title {
+	padding: 3px 5px;
+	background: #D1E3F6;
+	color: #6633FF;
+	font-weight: bold;
+	border-radius: 4px 4px 0 0;
+	text-shadow: 0 1px #fff;
+}
+div.panel div.props {
+	padding: 5px;
+}
+div.panel dl.last-item {
+	margin-bottom: 0 !important;
+}
+
+/* base info --- start */
+dl.prop-item dt.prop-label {
+	font-weight: bold;
+	color: #336600;
+}
+
+/* options --- start */
+dt.prop-label span.name {
+	font-weight: bold;
+	color: #A21717;
+}
+dt.prop-label span.default {
+	font-weight: normal;
+	color: #822EFF;
+}
+dt.prop-label span.type {
+	font-weight: normal;
+	color: #74A217;
+}

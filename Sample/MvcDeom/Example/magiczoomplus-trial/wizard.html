@@ -1,0 +1,666 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+    <head>
+        <title>Settings wizard</title>
+	
+        <!--[if IE 6]>
+        <xml:namespace ns="urn:schemas-microsoft-com:vml" prefix="v"/>
+        <style>v\: * { behavior: url(#default#VML);display:inline-block; }</style>
+        <script type="text/javascript">
+            function fixpng() {
+                var re = /\.png$/i, img = null, css = '';
+                for( var i=0; i<document.images.length; i++ ) {
+                    img = document.images[i];
+                    if ( re.test(img.src) ) {
+                        css= 'width:' + img.width + 'px; height:' + img.height + 'px;';
+                        img.outerHTML = '<v:image src="'+img.src+'" style="' + css + '" />';
+                        i -= 1;
+                    }
+                }
+            }
+            window.attachEvent('onload', fixpng);
+        </script>
+        <![endif]--> 
+        <style type="text/css">
+            input { width: 124px; }
+            input.chk { width: auto; }
+            legend { font-weight: bold; color: #555; }
+            span.set { color: #555; font-style: italic; }
+            tr.sep td { font-size: 0em; height: 8px; }
+            #zoom-params table td { vertical-align: text-top; }
+            
+            .button { width: 72px !important; height: 48px !important; }
+            .button-big { width: 96px !important; height: 64px !important; }
+            .button-small { width: 54px !important; height: 36px !important; }
+            
+            #buttons-design span {display: inline-block; padding: 0.2em 0.8em;  text-align: center; position: static; }
+            #buttons-design span b {  display: block; margin-top: 2px;}
+            #buttons-design span b input { font-size: 0.6em; }
+            .apply-btn { margin: 20px 0 0 5px; }
+            .apply-btn button { font-size: 1.8em; width: 100px; }
+            .apply-btn p { font-size: 1.1em; }
+            p.mz-demo { text-align: center; }
+        </style>
+        
+        <script type="text/javascript">
+            var buttonsSize = '', cssRules = {box: null, a: null};
+
+            function applySettings(){
+                var  value = null, isDefault = true, newParams = Array(), lang = {};
+                magicJS.$(magicJS.$A(magicJS.$('zoom-params').getElementsByTagName("INPUT"))
+                    .concat(magicJS.$A(magicJS.$('zoom-params').getElementsByTagName('SELECT'))))
+                    .forEach(function(param){
+                        if ( 'buttons-design' == param.name || 'buttons-size' == param.name || 'expand-size-ex' == param.name ) {return;}
+                        value = ('checkbox'==param.type) ? param.checked.toString() : param.value;
+                        if ( 'expand-size' == param.name && ('width' == value || 'height' == value) ) {
+                                value += '='+magicJS.$('expand-size-ex').value;
+                        }
+
+                        isDefault = ('checkbox'==param.type) ? value == param.defaultChecked.toString() :
+                            ('SELECT'==param.tagName) ? 0 == param.selectedIndex : value == param.defaultValue;
+                            
+                        if ( null != value && !isDefault) { 
+                            if ( /button\-(previous|next|close)/i.test(param.name) ) {
+                                lang[param.name] = value;
+                            } else {
+                                newParams.push( param.name+': '+ value);
+                            }
+                        }
+                });
+
+                MagicZoomPlus.lang = lang;
+                magicJS.$('Zoomer').rel = newParams.join('; ');
+                changeContent(newParams.join('; '));
+
+                var designs = magicJS.$A(document.getElementsByName("buttons-design"));
+                for (var i=0, l=designs.length; i<l; i++) {
+                    if (designs[i].checked) {
+                        applyDesign(designs[i].parentNode.previousSibling);
+                        break;
+                    }
+                }
+
+                MagicZoomPlus.refresh('Zoomer');
+            }
+            
+            function changeButtonsPreview(size) {
+                if (  buttonsSize == size ) { return; }
+                buttonsSize = size;
+                var reg = /(.*)\/([^\/\-]+)[\-]{0,1}.*\.png$/i,
+                        tag = magicJS.j21.trident4 ? 'image' : 'img';
+                
+                magicJS.$A(magicJS.$('buttons-design').getElementsByTagName(tag)).forEach(function(img){
+                        if ( magicJS.j21.trident4 ) {
+                            img.outerHTML = '<v:image src="'+img.src.replace(reg, '\$1/\$2'+size+'.png')+'" class="' + 'button'+size + '" />';
+                        } else {
+                            img.src = img.src.replace(reg, '\$1/\$2'+size+'.png');
+                        } 
+                    });
+            }
+
+            function applyDesign(img) {
+                var sheets = document.styleSheets, rules = null;
+                for (var i=0,sl=sheets.length; i<sl; i++) {
+                    if (  cssRules.box && cssRules.a ) {
+                        break;
+                    }
+                    rules=sheets[i].cssRules? sheets[i].cssRules: sheets[i].rules;
+                    for (var j=0, rl=rules.length; j<rl; j++) {
+                        if ('.magicthumb-buttons' == rules[j].selectorText.toLowerCase()) {
+                            cssRules.box = rules[j];
+                        }
+                        if ('.magicthumb-buttons a' == rules[j].selectorText.toLowerCase()) {
+                            cssRules.a = rules[j];
+                        }
+                    }
+                }
+    
+                cssRules.box.style.backgroundImage = 'url(' + img.src + ')';
+                cssRules.box.style.height = (img.offsetHeight/2) + 'px';
+    
+                cssRules.a.style.height = (img.offsetHeight/2) + 'px';
+                cssRules.a.style.width = (img.offsetWidth/3) + 'px';
+            }
+            
+            function changeContent(str) {
+                txt = magicJS.$('_code_').innerHTML;
+                var re= new RegExp('(<span[^>]+>class</span><span[^>]+>=</span><span[^>]+>.*MagicZoomPlus.*</span> <span[^>]+>rel</span><span[^>]+>=</span><span[^>]+>)[^<]+(</span>)', 'i');
+                txt = txt.replace( re, '\$1"'+str+'"\$2') ;
+                magicJS.$('_code_').innerHTML = txt;
+            }
+
+        </script>
+
+
+
+        <!-- link to magiczoomplus.css file -->
+        <link href="magiczoomplus/magiczoomplus.css" rel="stylesheet" type="text/css" media="screen"/>
+        <!-- link to magiczoomplus.js file -->
+        <script src="magiczoomplus/magiczoomplus.js" type="text/javascript"></script>
+        
+
+    <style type="text/css"><!--
+        body {background:#fff; margin:0; padding:0; font-size: 100%;}
+        body, td {font-family:"Lucida Grande", Tahoma, Arial, Verdana, sans-serif; line-height: 1.5em;}
+        h1 {font-size:1.5em; font-weight:normal; color:#555;}
+        h2 {font-size:1.3em; font-weight:normal; color:#555;}
+        h2.caption {margin: 2.5em 0 0;}
+        h3 {font-size:1.1em; font-weight: normal; color:#555;}
+        h3.pad { margin: 2em 0 1em; }
+        h4 {font-size: 1em; font-weight:normal; color:#555;}
+        a {outline: none;}
+        p {font-size: 0.9em;}
+        p.pad { margin-top: 4em; }
+        table {margin:0; padding:0; border-collapse: collapse;}
+        th {background:#CCC; text-align: left; padding: 2px 4px; font-weight: normal;}
+        td {vertical-align: top; border: 1px;}
+        img {border:0;}
+        abbr {border-bottom: 1px dotted #000; cursor: help;}
+        .leftcol {background:#EDF6CA; padding: 20px; height: 100%}
+        .nav {width: 180px;}
+        .nav h2 {background: #658F11; margin:10px 0 0 0; padding: 3px 3px 5px 10px; font-size: 0.9em; color:#FFF;}
+        .nav ul {list-style-type: none; padding: 0 0 10px 0; margin:0 0 20px; background:#99CC33;}
+        .nav li a {text-decoration: none; display: block; padding: 3px 3px 3px 10px; margin: 0; font-size: 0.9em; color:#FFF; zoom: 1;}
+        .nav li a:hover {background: #B5DF61;}
+        .active {font-weight: bold;}
+        .arrow {text-align: right;}
+        .menuTd a {color:#fff; font-weight:bold;}
+        .code {font-size:12px; line-height:18px; margin:10px 0; display:block; padding:3px; border:1px solid #aaa;}
+        span.r {color:red;}
+        span.g {color:green;}
+        span.b {color:blue;}
+        table.tbl {background:#aaa; margin-bottom: 20px; font-size: 0.9em; border: 1px solid #999;}
+        caption {text-align: left; padding: 4px 12px; background: #999; color: #fff; font-size: 1.1em; margin: 0 0 0 -1px;}
+        caption a {color: #fff; padding: 2px;}
+        caption a:hover {background:#FFF; color: #999;}
+
+        table.params {background:#aaa; margin-bottom: 20px; font-size: 0.9em; border: 1px solid #999;}
+        .params th {background:#fff; padding:4px 8px 4px 16px;}
+        .params td {background:#fff; padding:4px 8px 4px 16px; vertical-align:top; text-alilgn: left; border-bottom: 1px #f0f0f0 solid; }
+        .params .sline, .params .sline td {background:#eee;}
+        .params td.name { font-weight: bold; white-space: nowrap; }
+        .params td .new { color: red; font-weight: bold; }
+        .params th.caption { background: #c0c0c0; padding: 6px 10px; font-weight: normal; font-size: 125%; }
+
+        .tbl th {background:#eee; padding:4px 8px 4px 16px;}
+        .tbl td {background:#fff; padding:4px 8px 4px 16px; vertical-align:top; border-bottom: 1px #999 solid;}
+        .tbl .tr1 td {background:#fff;}
+        .tbl .tr2 td {background:#f2f2f2;}
+        .mtbl {width:100%; height:100%;}
+        .rTd {padding:20px; width:100%;}
+        div.exmpl {margin:0 0 5px 0; font-weight:bold;}
+        .html4strict {border:1px solid #AAAAAA; display:block; font-size:12px; line-height:18px; margin:10px 0pt; padding:3px;}
+        .html4strict .de1, .html4strict .de2 {font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;}
+        .html4strict {font-family:monospace;}
+        .html4strict .imp {font-weight: bold; color: red;}
+        .html4strict li, .html4strict .li1 {font-weight: normal; vertical-align:top;}
+        .html4strict .ln {width:1px; text-align:right; margin:0; padding:0 2px; vertical-align:top;}
+        .html4strict .li2 {font-weight: bold; vertical-align:top;}
+        .html4strict .kw2 {color: #000000; font-weight: bold;}
+        .html4strict .kw3 {color: #000066;}
+        .html4strict .es0 {color: #000099; font-weight: bold;}
+        .html4strict .br0 {color: #66cc66;}
+        .html4strict .sy0 {color: #66cc66;}
+        .html4strict .st0 {color: #ff0000;}
+        .html4strict .nu0 {color: #cc66cc;}
+        .html4strict .sc-1 {color: #808080; font-style: italic;}
+        .html4strict .sc0 {color: #00bbdd;}
+        .html4strict .sc1 {color: #ddbb00;}
+        .html4strict .sc2 {color: #009900;}
+        .html4strict .ln-xtra, .html4strict li.ln-xtra, .html4strict div.ln-xtra {background-color: #ffc;}
+        .html4strict span.xtra {display:block;}
+
+        p.buttons {float: right; margin: -40px 0px 10px 0}
+        p.buttons a {
+            background: #FA9C0F; padding: 4px 10px 4px 12px;
+            margin-right: 6px; font-size: 1em; color:#fff; text-decoration: none;
+            line-height: 1em;outline: none; border: 1px solid #CF7E00
+        }
+        p.buttons a:hover {background: #FFBA4F}
+
+        ul.carts { list-style:none; margin:0 0 0 0; padding:0; }
+        ul.carts li { display:block; margin: 0 10px 0 0; float:left;}
+        ul.carts li a { border:2px solid #FFFFFF; display:block; line-height:0; font-size:0; }
+        ul.carts li a:hover { border:2px solid #93be1c; }
+        ul.carts li a span { border:4px solid #FFFFFF; border-right-width:6px; border-left-width:6px; display:block; width:80px; height:20px; text-indent:-5000px; background-image:url(images/platforms.jpg); line-height:0; font-size:0; }
+
+        .we span { background-position:0 -617px; }
+        .eb span { background-position:0 -597px; }
+        .vm span { background-position:0 -20px; }
+        .xt span { background-position:0 -40px; }
+        .oc span { background-position:0 -60px; }
+        .xc span { background-position:0 -80px; }
+        .wp span { background-position:0 -100px; }
+        .gl span { background-position:0 -120px; }
+        .dp span { background-position:0 -140px; }
+        .zc span { background-position:0 -160px; }
+        .ma span { background-position:0 -180px; }
+        .ns span { background-position:0 -200px; }
+        .cc span { background-position:0 -220px; }
+        .cl span { background-position:0 -240px; }
+        .wy span { background-position:0 -260px; }
+        .cs span { background-position:0 -280px; }
+        .et span { background-position:0 -300px; }
+        .ox span { background-position:0 -320px; }
+        .om span { background-position:0 -340px; }
+        .ps span { background-position:0 -360px; }
+        .rs span { background-position:0 -997px; }
+        .asp span { background-position:0 -897px; }
+        .blv span { background-position:0 -917px; }
+        .ltc span { background-position:0 -937px; }
+        .mmr span { background-position:0 -957px; }
+        .sf span { background-position:0 -977px; }
+        .op span { background-position:0 -637px; }
+        .vt span { background-position:0 -657px; }
+        .dp5 span { background-position:0 -677px; }
+        .dp6 span { background-position:0 -697px; }
+        .dp7 span { background-position:0 -717px; }
+        .jm1 span { background-position:0 -737px; }
+        .jm15 span { background-position:0 -757px; }
+        .jm16 span { background-position:0 -817px; }
+        .oc2 span { background-position:0 -777px; }
+        .oc3 span { background-position:0 -797px; }
+        .gl2 span { background-position:0 -857px; }
+        .gl3 span { background-position:0 -877px; }
+        .av span { background-position:0 -837px; }
+--></style>
+    </head>
+    <body>
+        <table class="mtbl">
+            <tr>
+                <td class="leftcol">
+                    <div class="nav">
+                        <h2>Magic Zoom Plus&trade;</h2>
+                        <ul>
+                            <li><a  href="index.html">Overview</a></li>
+                            <li><a  href="parameters.html">Parameters</a></li>
+                            <li><a class="active" href="wizard.html">Settings wizard</a></li>
+                        </ul>
+                    </div>
+                    <div class="nav">
+                        <h2>Examples</h2>
+                        <ul>
+                            <li><a  href="example1.html">Default</a></li>
+                            <li><a  href="example2.html">Dimensions</a></li>
+                            <li><a  href="example3.html">Multiple images</a></li>
+                            <li><a  href="example4.html">Pan zoom</a></li>
+                            <li><a  href="example5.html">Hotspots</a></li>
+                            <li><a  href="example6.html">Positions</a></li>
+                            <li><a  href="example7.html">Zoom alignment</a></li>
+                            <li><a  href="example8.html">Zoom fade/smoothing</a></li>
+                            <li><a  href="example9.html">Opacity</a></li>
+                            <li><a  href="example16.html">Hint</a></li>
+                            <li><a  href="example17.html">Title &amp; Caption</a></li>
+                            <li><a  href="example10.html">Styling</a></li>
+                            <li><a  href="example11.html">Buttons</a></li>
+                            <li><a  href="example14.html">Activate/Initialize</a></li>
+                            <li><a  href="example12.html">Zoom or Expand</a></li>
+                            <li><a  href="example18.html">Right click</a></li>
+                            <li><a  href="example13.html">Global options</a></li>
+                            <li><a  href="example15.html">Magic Zoom Plus&trade; API</a></li>
+                        </ul>
+                    </div>
+                </td>
+                <td class="rTd">
+                    <h1>Settings wizard</h1>
+                    <p class="buttons"><a href="http://www.magictoolbox.com/buy/magiczoomplus/">Buy now&nbsp;&nbsp;&pound;45</a> <a href="http://www.magictoolbox.com/support/">Get support</a></p>
+
+	    
+        <h4>Choose your settings then click Apply.</h4>
+        
+        <table style="font-size: 12px" id="zoom-params">
+            <tr>
+                <td>
+                    <fieldset>
+                        <legend>User experience</legend>
+                        <table>
+                            <tr><td>Disable zoom effect:</td><td><select name="disable-zoom" id="disable-zoom">
+                                <option value="false">No</option>
+                                <option value="true">Yes</option>
+                            </select></td></tr>
+                            <tr><td>Disable expand effect:</td><td><select name="disable-expand" id="disable-expand">
+                                <option value="false">No</option>
+                                <option value="true">Yes</option>
+                            </select></td></tr>
+                            <tr><td>Show right-click menu on the image:</td><td>
+                                <select name="right-click">
+                                    <option value="false">false</option>
+                                    <option value="true">true</option>
+                                    <option value="original">original</option>
+                                    <option value="expanded">expanded</option>
+                                </select>
+                            </td></tr>
+                        </table>
+                    </fieldset>
+                    <fieldset>
+                        <legend>Positioning & Geometry</legend>
+                        <table>
+                            <tr><td>Zoom width, px:</td><td><input type="text" name="zoom-width" value="300"/></td></tr>
+                            <tr><td>Zoom height, px:</td><td><input type="text" name="zoom-height" value="300"/></td></tr>
+                            <tr><td>Zoom position:</td><td>
+                                <select name="zoom-position">
+                                    <option value="right">right</option>
+                                    <option value="left">left</option>
+                                    <option value="top">top</option>
+                                    <option value="bottom">bottom</option>
+                                    <option value="inner">inner</option>
+                                </select>
+                                </td></tr>
+                            <tr><td>Zoom distance, px:</td><td><input type="text" name="zoom-distance" value="15"/></td></tr>
+                            <tr><td>Zoom align:</td><td>
+                                <select name="zoom-align">
+                                    <option value="top">top</option>
+                                    <option value="right">right</option>
+                                    <option value="left">left</option>
+                                    <option value="bottom">bottom</option>
+                                    <option value="center">center</option>
+                                </select>
+                                </td></tr>
+                            <tr><td>Size of the expanded image:</td><td>
+                                <select name="expand-size" onchange="magicJS.$('expand-size-ex').style.visibility = ('width' == this.value || 'height' == this.value) ? 'visible' : 'hidden'; ">
+                                    <option value="fit-screen">fit-screen</option>
+                                    <option value="original">original</option>
+                                    <option value="width">width=</option>
+                                    <option value="height">height=</option>
+                                </select>
+                                <input type="text" name="expand-size-ex" id="expand-size-ex" value=""  style="visibility: hidden;"/>
+                                </td></tr>
+                            <tr><td>Align expanded image relative to :</td><td>
+                                <select name="expand-align">
+                                    <option value="screen">screen</option>
+                                    <option value="image">image</option>
+                                </select>
+                                </td>
+                            </tr>
+                            <tr><td>Precise position of expanded image, px:</td>
+                                    <td>
+                                        <input type="text" name="expand-position" value="center"/><br/>
+                                        <small>Hint: <i>top=0, left=0</i> / <i>top=0, right=0</i> / <i>bottom=100, left=100</i></small>
+                                    </td>
+                            </tr>
+                        </table>
+                    </fieldset>
+                    <fieldset>
+                        <legend>Effects</legend>
+                        <table>
+                            <tr><td>Opacity, 0-100:</td><td><input type="text" name="opacity" value="50"/></td></tr>
+                            <tr><td>Opacity reverse:</td><td><input type="checkbox" name="opacity-reverse" value="true"/></td></tr>
+                            <tr><td>Smoothing:</td><td><input type="checkbox" name="smoothing" checked="true" onclick="magicJS.$('smoothing-speed').disabled = !this.checked;" value="true"/></td></tr>
+                            <tr><td>Smoothing speed, 0-100:</td><td><input type="text" name="smoothing-speed" id="smoothing-speed" value="40"/></td></tr>
+                            <tr><td>Zoom fade:</td><td><input type="checkbox" name="zoom-fade" value="true" checked="checked" onclick="magicJS.$('zoom-fade-in').disabled = !this.checked; magicJS.$('zoom-fade-out').disabled = !this.checked;"/></td></tr>
+                            <tr><td>Zoom fade-in speed, ms:</td><td><input type="text" name="zoom-fade-in-speed" id="zoom-fade-in" value="400"/></td></tr>
+                            <tr><td>Zoom fade-out speed, ms:</td><td><input type="text" name="zoom-fade-out-speed" id="zoom-fade-out" value="200"/></td></tr>
+                            <tr><td>Zoom window effect:</td><td>
+                                <select name="zoom-window-effect">
+                                    <option value="shadow">shadow</option>
+                                    <option value="glow">glow</option>
+                                    <option value="false">false</option>
+                                </select>
+                                </td></tr>
+                            <tr class="sep"><td colspan="2">&nbsp;</td></tr>
+                            <tr><td>Expand duration, ms:</td><td><input type="text" name="expand-speed" id="expand-speed" value="500"/></td></tr>
+                            <tr><td>Restore duration, ms:</td><td><input type="text" name="restore-speed" id="restore-speed" value=""/></td></tr>
+                            <tr><td>Effect for expanding image:</td>
+                                    <td><select name="expand-effect">
+                                                <option value="back">back</option>
+                                                <option value="linear">linear</option>
+                                                <option value="cubic">cubic</option>
+                                                <option value="elastic">elastic</option>
+                                                <option value="bounce">bounce</option>
+                                            </select>
+                                    </td>
+                            </tr>
+                            <tr><td>Effect for restoring image:</td>
+                                    <td><select name="restore-effect">
+                                                <option value="auto">auto</option>
+                                                <option value="linear">linear</option>
+                                                <option value="cubic">cubic</option>
+                                                <option value="back">back</option>
+                                                <option value="elastic">elastic</option>
+                                                <option value="bounce">bounce</option>
+                                            </select>
+                                    </td>
+                            </tr>
+                            <tr><td>Show thumbnail when image expanded:</td><td><input type="checkbox" name="keep-thumbnail" value="true" checked="checked"/></td></tr>
+                            <tr><td>Trigger for the expand effect:</td><td>
+                                <select name="expand-trigger" onchange="magicJS.$('expand-trigger-delay').disabled = !(this.value == 'mouseover');">
+                                    <option value="click">click</option>
+                                    <option value="mouseover">mouseover</option>
+                                </select>
+                                </td>
+                            </tr>
+                            <tr><td>Delay before mouseover triggers expansion, ms:</td>
+                                    <td><input type="text" name="expand-trigger-delay" id="expand-trigger-delay" disabled="true" value="200"/></td>
+                            </tr>
+                            <tr><td>Trigger to restore image to its small state:</td><td>
+                                <select name="restore-trigger">
+                                    <option value="auto">auto</option>
+                                    <option value="click">click</option>
+                                    <option value="mouseout">mouseout</option>
+                                </select>
+                                </td>
+                            </tr>
+                        </table>
+                    </fieldset>
+                    <fieldset>
+                        <legend>Multiple images</legend>
+                        <table>
+                            <tr><td>Selectors change:</td><td>
+                                <select name="selectors-change" onchange="magicJS.$('selectors-mouseover-delay').disabled = !(this.value == 'mouseover');">
+                                    <option value="click">click</option>
+                                    <option value="mouseover">mouseover</option>
+                                </select>
+                                </td></tr>
+                            <tr><td>Selectors mouseover delay, ms:</td><td><input type="text" name="selectors-mouseover-delay" id="selectors-mouseover-delay" disabled="true" value="60"/></td></tr>
+                            <tr><td>Selectors effect:</td><td>
+                                    <select name="selectors-effect" onchange="magicJS.$('selectors-effect-speed').disabled = (this.value == 'false');">
+                                    <option value="dissolve">dissolve</option>
+                                    <option value="fade">fade</option>
+                                    <option value="pounce">pounce</option>
+                                    <option value="false">false</option>
+                                </select>
+                                </td></tr>
+                            <tr><td>Selectors effect speed, ms:</td><td><input type="text" name="selectors-effect-speed" id="selectors-effect-speed" value="400"/></td></tr>
+                        </table>
+                    </fieldset>
+                    <fieldset>
+                        <legend>Zoom mode</legend>
+                        <table>
+                            <tr><td>Drag mode:</td><td><input type="checkbox" name="drag-mode" onclick="magicJS.$('move-on-click').disabled = !this.checked; magicJS.$('preserve-position').disabled = !this.checked; magicJS.$('x').disabled = !this.checked; magicJS.$('y').disabled = !this.checked;" value="true"/></td></tr>
+                            <tr><td>Move on click:</td><td><input type="checkbox" name="move-on-click" id="move-on-click" checked="checked" disabled="true" value="true"/></td></tr>
+                            <tr><td>Preserve position:</td><td><input type="checkbox" name="preserve-position" id="preserve-position" disabled="true" value="true"/></td></tr>
+                            <tr><td>x, px:</td><td><input type="text" name="x" id="x" disabled="true" value="-1"/></td></tr>
+                            <tr><td>y, px:</td><td><input type="text" name="y" id="y" disabled="true" value="-1"/></td></tr>
+                            <tr><td>Fit zoom window:</td><td><input type="checkbox" name="fit-zoom-window" value="true" checked="checked"/></td></tr>
+                            <tr><td>Entire image:</td><td><input type="checkbox" name="entire-image" value="true"/></td></tr>
+                        </table>
+                    </fieldset>
+                    <fieldset>
+                        <legend>Expand mode</legend>
+                        <table>
+                            <tr><td>Pan zoom (expand then zoom):</td><td><input type="checkbox" name="pan-zoom" value="true" checked="checked"/></td></tr>
+                            <!--  Slideshow -->
+                            <tr><td>Visual effect for switching expanded images:</td><td>
+                                <select name="slideshow-effect" onchange="magicJS.$('slideshow-speed').disabled = (this.value == 'expand');">
+                                    <option value="dissolve">dissolve</option>
+                                    <option value="fade">fade</option>
+                                    <option value="expand">expand</option>
+                                </select>
+                                </td>
+                            </tr>
+                            <tr><td>Speed of slideshow effect, ms:</td>
+                                    <td><input type="text" name="slideshow-speed" id="slideshow-speed" value="500"/></td>
+                            </tr>
+                            <tr><td>Restart slideshow after last image:</td><td><input type="checkbox" name="slideshow-loop" value="true" checked="true" style="width: auto;" /></td></tr>
+                        </table>
+                    </fieldset>
+                </td>
+                <td valign="top">
+                    <fieldset>
+                        <legend>Hint</legend>
+                        <table>
+                            <tr><td>Hint:</td><td><select name="hint" id="hint">
+                                <option value="true">Yes</option>
+                                <option value="false">No</option>
+                            </select></td></tr>
+                            <tr><td>Hint text:</td><td><input type="text" name="hint-text" id="hint-text"  value="Zoom"/></td></tr>
+                            <tr><td>Hint position:</td><td><select name="hint-position" id="hint-position">
+                                <option value="tl">top left (tl)</option>
+                                <option value="tr">top right (tr)</option>
+                                <option value="tc">top center (tc)</option>
+                                <option value="bl">bottom left (bl)</option>
+                                <option value="br">bottom right (br)</option>
+                                <option value="bc">bottom center (bc)</option>
+                            </select></td></tr>
+                            <tr><td>Hint opacity, 0-100:</td><td><input type="text" name="hint-opacity" value="75" id="hint-opacity" /></td></tr>
+                        </table>
+                    </fieldset>
+                    <fieldset>
+                        <legend>Title &amp; Caption</legend>
+                        <table>
+                            <tr><td>Show title:</td><td>
+                                <select name="show-title">
+                                    <option value="top">top</option>
+                                    <option value="bottom">bottom</option>
+                                    <option value="false">false</option>
+                                </select>
+                                </td></tr>
+                            <tr><td>Source of the title text :</td><td>
+                                <select name="title-source">
+                                    <option value="title">title</option>
+                                    <option value="#id">#id</option>
+                                </select>
+                                </td></tr>
+                            <tr><td>Source of caption text:</td>
+                                    <td><select name="caption-source">
+                                                <option value="span">span</option>
+                                                <option value="img:alt">alt of image</option>
+                                                <option value="img:title">title of image</option>
+                                                <option value="a:title">title of link</option>
+                                                <option value="#custom-caption-source">custom</option>
+                                            </select>
+                                    </td>
+                            </tr>
+                            <tr><td>Speed of caption slide effect, ms:</td><td><input type="text" name="caption-speed" value="250"/></td></tr>
+                            <tr><td>Where to position the caption:</td>
+                                    <td><select name="caption-position" onchange="magicJS.$('max-caption-width').disabled = !(magicJS.$('max-caption-height').disabled = 'bottom' != this.value); ">
+                                                <option value="bottom">bottom</option>
+                                                <option value="right">right</option>
+                                                <option value="left">left</option>
+                                            </select>
+                                    </td>
+                            </tr>
+                            <tr><td>Max height of bottom caption, px:</td><td><input type="text" name="caption-height" id="max-caption-height" value="300"/></td></tr>
+                            <tr><td>Max width of left/right caption, ms:</td><td><input type="text" name="caption-width" disabled="true" id="max-caption-width" value="300"/></td></tr>
+                        </table>
+                    </fieldset>
+                    <fieldset>
+                        <legend>Background</legend>
+                        <table>
+                            <tr><td>Background color behind large image:</td><td><input type="text" name="background-color" value="#000000"/></td></tr>
+                            <tr><td>Opacity of the background, 0-100 (0 = disabled):</td><td><input type="text" name="background-opacity" value="30"/></td></tr>
+                            <tr><td>Duration of background fade, ms:</td><td><input type="text" name="background-speed" value="200"/></td></tr>
+                        </table>
+                    </fieldset>
+                    <fieldset>
+                        <legend>Initialization</legend>
+                        <table>
+                            <tr><td>Initialize Magic Zoom Plus&trade; on:</td><td>
+                                <select name="initialize-on">
+                                    <option value="load">page load</option>
+                                    <option value="click">click</option>
+                                    <option value="mouseover">mouseover</option>
+                                </select>
+                            </td></tr>
+                            <tr><td>Click to activate:</td><td><input type="checkbox" name="click-to-activate" id="click-to-activate" value="true"/></td></tr>
+                            <tr><td>Click to deactivate:</td><td><input type="checkbox" name="click-to-deactivate" id="click-to-deactivate" value="true"/></td></tr>
+                            <tr><td>Loading message:</td><td><input type="checkbox" name="show-loading" id="show-loading" value="true" checked="checked" onclick="magicJS.$('loading-msg').disabled = !this.checked;"/></td></tr>
+                            <tr><td>Loading message text:</td><td><input type="text" name="loading-msg" id="loading-msg" value="Loading zoom..."/></td></tr>
+                        </table>
+                    </fieldset>
+                    <fieldset>
+                        <legend>Buttons</legend>
+                        <table>
+                        <!-- Buttons -->
+                        <tr><td>Whether or not to show buttons:</td>
+                                <td><select name="buttons">
+                                            <option value="show">show</option>
+                                            <option value="hide">hide</option>
+                                            <option value="autohide">autohide</option>
+                                        </select>
+                                </td>
+                        </tr>
+                        <tr><td>Buttons position:</td>
+                                <td><select name="buttons-position">
+                                            <option value="auto">auto</option>
+                                            <option value="top left">top left</option>
+                                            <option value="top right">top right</option>
+                                            <option value="bottom left">bottom left</option>
+                                            <option value="bottom right">bottom right</option>
+                                        </select>
+                                </td>
+                        </tr>
+                        <tr><td>Which buttons to show:</td><td><input type="text" name="buttons-display" value="previous, next, close"/></td></tr>
+                        <tr>
+                            <td colspan="2"><span class="set">Tooltips</span></td>
+                        </tr>
+                        <tr><td>&nbsp;&nbsp;Previous button:</td><td><input type="text" name="button-previous" value="Previous"/></td></tr>
+                        <tr><td>&nbsp;&nbsp;Next button:</td><td><input type="text" name="button-next" value="Next"/></td></tr>
+                        <tr><td>&nbsp;&nbsp;Close button:</td><td><input type="text" name="button-close" value="Close"/></td></tr>
+                        <tr>
+                            <td colspan="2">
+                                 <p>Choose size of buttons:
+                                    <select name="buttons-size" onchange="changeButtonsPreview(this.value);">
+                                        <option value="">Normal</option>
+                                        <option value="-big">Large</option>
+                                        <option value="-small">Small</option>
+                                    </select>
+                                </p>
+                                <p>Choose prefer design:</p>
+                                <div id="buttons-design">
+                                    <p>
+                                        <span><img src="magiczoomplus/graphics/buttons1.png" alt=""/><b><input class="chk" type="radio" name="buttons-design" value="1" checked="true"/></b></span>
+                                        <span><img src="magiczoomplus/graphics/buttons2.png" alt=""/><b><input class="chk" type="radio" name="buttons-design" value="2" /></b></span>
+                                        <span><img src="magiczoomplus/graphics/buttons3.png" alt=""/><b><input class="chk" type="radio" name="buttons-design" value="3" /></b></span>
+                                    </p>
+                                    <p>
+                                        <span><img src="magiczoomplus/graphics/buttons4.png" alt=""/><b><input class="chk" type="radio" name="buttons-design" value="4" /></b></span>
+                                        <span><img src="magiczoomplus/graphics/buttons5.png" alt=""/><b><input class="chk" type="radio" name="buttons-design" value="5" /></b></span>
+                                        <span><img src="magiczoomplus/graphics/buttons6.png" alt=""/><b><input class="chk" type="radio" name="buttons-design" value="6" /></b></span>
+                                    </p>
+                                    <p>
+                                        <span><img src="magiczoomplus/graphics/buttons7.png" alt=""/><b><input class="chk" type="radio" name="buttons-design" value="7" /></b></span>
+                                    </p>
+                                </div>
+                            </td>
+                        </tr>
+                        </table>
+                    </fieldset>
+                    <div class="apply-btn">
+                        <button onclick="applySettings();">Apply</button>
+                        <p>Your customised zoom and HTML are below.</p>
+                    </div>
+                </td>
+            </tr>
+        </table>
+        <p class="mz-demo">
+        
+<a id="Zoomer" href="images/harley1c-large.jpg" class="MagicZoomPlus" rel="" title="Harley-Davidson Dyna Wide Glide"><img src="images/harley1b.jpg"/></a> <br/>
+
+<a href="images/harley1c-large.jpg" rel="zoom-id: Zoomer" rev="images/harley1b.jpg"><img src="images/harley1a.jpg"/></a>
+<a href="images/harley2c.jpg" rel="zoom-id: Zoomer" rev="images/harley2b.jpg"><img src="images/harley2a.jpg"/></a>
+        
+        </p>
+        <br/>
+        
+
+                    <h2>Here's the code:</h2>
+                    <div id="_code_">
+		<div class="html4strict" style="font-family:monospace;"><ol><li style="font-weight: normal; vertical-align:top;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;"><span style="color: #009900;">&lt;<span style="color: #000000; font-weight: bold;">a</span> <span style="color: #000066;">id</span><span style="color: #66cc66;">=</span><span style="color: #ff0000;">&quot;Zoomer&quot;</span> <span style="color: #000066;">href</span><span style="color: #66cc66;">=</span><span style="color: #ff0000;">&quot;images/harley1c-large.jpg&quot;</span> <span style="color: #000066;">class</span><span style="color: #66cc66;">=</span><span style="color: #ff0000;">&quot;MagicZoomPlus&quot;</span> <span style="color: #000066;">rel</span><span style="color: #66cc66;">=</span><span style="color: #ff0000;">&quot;&quot;</span> <span style="color: #000066;">title</span><span style="color: #66cc66;">=</span><span style="color: #ff0000;">&quot;Harley-Davidson Dyna Wide Glide&quot;</span>&gt;&lt;<span style="color: #000000; font-weight: bold;">img</span> <span style="color: #000066;">src</span><span style="color: #66cc66;">=</span><span style="color: #ff0000;">&quot;images/harley1b.jpg&quot;</span><span style="color: #66cc66;">/</span>&gt;&lt;<span style="color: #66cc66;">/</span><span style="color: #000000; font-weight: bold;">a</span>&gt;</span> <span style="color: #009900;">&lt;<span style="color: #000000; font-weight: bold;">br</span><span style="color: #66cc66;">/</span>&gt;</span></div></li>
+<li style="font-weight: normal; vertical-align:top;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;">&nbsp;</div></li>
+<li style="font-weight: normal; vertical-align:top;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;"><span style="color: #009900;">&lt;<span style="color: #000000; font-weight: bold;">a</span> <span style="color: #000066;">href</span><span style="color: #66cc66;">=</span><span style="color: #ff0000;">&quot;images/harley1c-large.jpg&quot;</span> <span style="color: #000066;">rel</span><span style="color: #66cc66;">=</span><span style="color: #ff0000;">&quot;zoom-id: Zoomer&quot;</span> <span style="color: #000066;">rev</span><span style="color: #66cc66;">=</span><span style="color: #ff0000;">&quot;images/harley1b.jpg&quot;</span>&gt;&lt;<span style="color: #000000; font-weight: bold;">img</span> <span style="color: #000066;">src</span><span style="color: #66cc66;">=</span><span style="color: #ff0000;">&quot;images/harley1a.jpg&quot;</span><span style="color: #66cc66;">/</span>&gt;&lt;<span style="color: #66cc66;">/</span><span style="color: #000000; font-weight: bold;">a</span>&gt;</span></div></li>
+<li style="font-weight: normal; vertical-align:top;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;"><span style="color: #009900;">&lt;<span style="color: #000000; font-weight: bold;">a</span> <span style="color: #000066;">href</span><span style="color: #66cc66;">=</span><span style="color: #ff0000;">&quot;images/harley2c.jpg&quot;</span> <span style="color: #000066;">rel</span><span style="color: #66cc66;">=</span><span style="color: #ff0000;">&quot;zoom-id: Zoomer&quot;</span> <span style="color: #000066;">rev</span><span style="color: #66cc66;">=</span><span style="color: #ff0000;">&quot;images/harley2b.jpg&quot;</span>&gt;&lt;<span style="color: #000000; font-weight: bold;">img</span> <span style="color: #000066;">src</span><span style="color: #66cc66;">=</span><span style="color: #ff0000;">&quot;images/harley2a.jpg&quot;</span><span style="color: #66cc66;">/</span>&gt;&lt;<span style="color: #66cc66;">/</span><span style="color: #000000; font-weight: bold;">a</span>&gt;</span></div></li>
+</ol></div>
+                    </div>
+                </td>
+            </tr></table></body></html>

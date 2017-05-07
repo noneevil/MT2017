@@ -1,0 +1,232 @@
+﻿<!DOCTYPE HTML>
+<html lang="en-US">
+<head>
+	<meta charset="UTF-8">
+	<title>MooBox demo</title>
+	<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7" />   
+	<link rel="stylesheet" type="text/css" href="css/reset.css" media="all" />
+	<link rel="stylesheet" type="text/css" href="css/fonts.css" media="all" />
+	<link rel="stylesheet" type="text/css" href="css/doc.css" media="all" />
+	<script type="text/javascript" src="js/mootools-core-1.4.2.js"></script>
+	<script type="text/javascript" src="js/doc.js"></script>
+</head>
+<body>
+	<script type="text/javascript">
+		new Doc({
+			panels: [{
+				title: '组件信息',
+				props: [{
+					label: 'Description',
+					desc: '受jQuery UI Dialog的启发,MooBox是个mootools插件,用于快速生成Dialog'
+				}, {
+					type: 'require',
+					label: 'Requires',
+					desc: ['Mootools-core-1.4.2', 'Mootools-More-1.4.0/Drag']
+				}, {
+					type: 'author',
+					label: 'Author',
+					desc: {
+						author: 'Andrew Zhang',
+						email: 'longtian725@gmail.com',
+						blog: 'http://www.cnblogs.com/AndyWithPassion/'
+					}
+				},{
+					label: 'compatibility',
+					desc: 'IE7+, 其他标准浏览器'
+				}, {
+					label: 'Version',
+					desc: '1.0'
+				}, {
+					label: 'Date',
+					desc: '2011-1-7'
+				}, {
+					label: 'license',
+					desc: 'MIT-style license'
+				}]
+			}, {
+				separator: true,
+				title: '配置选项',
+				props: [{
+					type: 'option',
+					label: {
+						name: 'source',
+						def: 'null',
+						type: 'string | element'
+					},
+					desc: '指定用于填充Dialog内容的元素,可以是元素ID或者DOM引用'
+				}, {
+					type: 'option',
+					label: {
+						name: 'modal',
+						def: 'false',
+						type: 'boolean'
+					},
+					desc: '用于指定是否生成模态Dialog'
+				}, {
+					type: 'option',
+					label: {
+						name: 'autoOpen',
+						def: 'false',
+						type: 'boolean'
+					},
+					desc: '是否初始化后,立即显示Dialog'
+				}, {
+					type: 'option',
+					label: {
+						name: 'showPos',
+						def: '"center"',
+						type: 'string | array'
+					},
+					desc: '用于指定Dialog初次显示的位置,可以是"left", "right", "top", "bottom"或表示x,y的数组如["left","top"],[500,200]'
+				}, {
+					type: 'option',
+					label: {
+						name: 'draggable',
+						def: 'true',
+						type: 'boolean'
+					},
+					desc: '指定Dialog是否可拖拽'
+				}, {
+					type: 'option',
+					label: {
+						name: 'dragEvents',
+						def: '{}',
+						type: 'literal object'
+					},
+					desc: 'drag方面的事件,可以参考Mootools-More Docs Drag部分'
+				}, {
+					type: 'option',
+					label: {
+						name: 'resizable',
+						def: 'false',
+						type: 'boolean'
+					},
+					desc: '指定Dialog是否能扩大缩小'
+				}, {
+					type: 'option',
+					label: {
+						name: 'resizeEvents',
+						def: '{}',
+						type: 'literal object'
+					},
+					desc: 'resize方面的事件,可以参考Mootools-More Docs Drag部分'
+				}, {
+					type: 'option',
+					label: {
+						name: 'width',
+						def: '300',
+						type: 'number'
+					},
+					desc: '用于初始化Dialog的宽度'
+				}, {
+					type: 'option',
+					label: {
+						name: 'height',
+						def: '"auto"',
+						type: 'number'
+					},
+					desc: '用于初始化Dialog的高度'
+				}, {
+					type: 'option',
+					label: {
+						name: 'minWidth',
+						def: '150',
+						type: 'number'
+					},
+					desc: 'resizable启动的情况下,用于指定Dialog的最小宽度'
+				}, {
+					type: 'option',
+					label: {
+						name: 'minHeight',
+						def: '150',
+						type: 'number'
+					},
+					desc: 'resizable启动的情况下,用于指定Dialog的最小高度'
+				}, {
+					type: 'option',
+					label: {
+						name: 'maxWidth',
+						def: 'false',
+						type: 'number'
+					},
+					desc: '同minWidth相反'
+				}, {
+					type: 'option',
+					label: {
+						name: 'maxHeight',
+						def: 'false',
+						type: 'number'
+					},
+					desc: '同minHeigh相反'
+				}, {
+					type: 'option',
+					label: {
+						name: 'toggleBtn',
+						def: 'false', 
+						type: 'boolean'
+					},
+					desc: '指定Dialog是否可以收起'
+				}, {
+					type: 'option',
+					label: {
+						name: 'title',
+						def: '""',
+						type: 'string'
+					},
+					desc: '指定Dialog的标题,如果source元素上已有title属性,则以配置的title为准'
+				}, {
+					type: 'option',
+					label: {
+						name: 'zIndex',
+						def: '999',
+						type: 'number'
+					},
+					desc: '指定Dialog UI的z-index'
+				}, {
+					type: 'option',
+					label: {
+						name: 'buttons',
+						def: 'false',
+						type: 'literal object'
+					},
+					desc: '定义Dialog的按钮,如{ "ok": function() { ..}},可参看Demo源码'
+				}]
+			}, {
+				separator: true,
+				title: '方法和事件',
+				props: [{
+					type: 'option',
+					label: {
+						name: 'onBeforeClose',
+						def: '...',
+						type: 'function'
+					},
+					desc: '调用Dialog实例close方法前触发'
+				}, {
+					type: 'option',
+					label: {
+						name: 'onClose',
+						def: '...',
+						type: 'function'
+					},
+					desc: '调用Dialog实例close方法时触发'
+				}, {
+					type: 'option',
+					label: {
+						name: 'onOpen',
+						def: '...',
+						type: 'function'
+					},
+					desc: '调用Dialog实例open方法时触发'
+				}, {
+					label: 'NOTE',
+					desc: '以上函数签名:function(ui), ui指Dialog的最顶层的div,函数执行时context是Dialog实例,即this指向Dialog当前实例,具体可参考Demo源码'
+				}, {
+					label: 'methods',
+					desc: 'open()  close()  isOpen()  destroy()  restore(),具体可参考Demo源码'
+				}]
+			}]
+		}).execute();
+	</script>
+</body>
+</html>

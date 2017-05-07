@@ -1,0 +1,183 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>mootools下mbox全新插件测试页面</title>
+<link rel="stylesheet" href="http://www.zhangxinxu.com/study/css/zxx.lib.css" type="text/css" />
+<style>
+.mbox_win{border:1px solid #fff; -moz-border-radius:3px; -webkit-border-radius:3px; border-radius:3px; background-color:#ebebeb; -moz-box-shadow:0 0 5px rgba(0, 0, 0, .7); -webkit-box-shadow:0 0 5px rgba(0, 0, 0, .7); box-shadow:0 0 5px rgba(0, 0, 0, .7); overflow:hidden;}
+/*圆角*/
+.mbox_bar{line-height:18px; padding:6px 10px 7px; border-bottom:1px solid #ddd; background-color:#fbfbfb; font-size:13px;}
+.mbox_cont{}
+.mbox_close{width:14px; height:14px; margin:-25px 10px 0 0; border:1px solid #d8d8d8; color:#999; font:bold 12px/14px Tahoma; text-align:center; text-decoration:none; float:right; position:relative;}
+.mbox_close:hover{border-color:#ccc; background-color:#eee; color:#666; text-decoration:none;}
+.mbox_operate{padding:0 10px 10px; text-align:right;}
+
+.mbox_alert,.mbox_confirm,.mbox_remind{width:320px; padding:35px 20px;}
+.mbox_loading{width:180px; padding:30px 0; text-align:center;}
+.mbox_loading_image{margin:0 8px -8px 0;}
+
+/*测试页面样式*/
+.a_test_box{width:300px; padding:20px;}
+.for_scroll{height:600px;}
+</style>
+</head>
+
+<body class="f12 fa g3">
+<p><button id="test1">测试，显示</button></p>
+<p><button id="test2">加载外部图片</button></p>
+<p><button id="test3">加载中提示框</button></p>
+<p><button id="test4">提示，定时关闭</button></p>
+<p><button id="test5">alert提示</button></p>
+<p><button id="test6">确认提示框</button></p>
+<p><button id="test7">url参数加载静态页</button></p>
+<p><a id="test8" href="loaded.html">assign方法绑定加载</a></p>
+<p><a id="test9" href="#aTestBox">href加载页面元素</a></p>
+<p><button id="test10">加载Flash</button></p>
+<p><button id="test11">加载iFrame</button></p>
+<p><button id="test12">高度动态改变</button></p>
+<p><button id="test13">弹框关闭回调</button></p>
+<p><button id="test14">不跟随页面滚动</button></p>
+<p><button id="test15">定宽定高</button></p>
+<p><button id="test16">加载图片失败</button></p>
+<p><button id="test17">load HTML无效</button></p>
+
+<div class="for_scroll"></div>
+<div id="aTestBox" class="a_test_box dn">
+	俄罗斯媒体援引该国情报部门官员的话说，俄罗斯已派出专人，准备捉拿甚至追杀俄驻美国间谍机构的负责人。此人被曝为双重间谍，不但叛逃美国，还出卖了其在美国的10名同事，导致俄在美间谍网损失惨重。
+</div>
+</body>
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/mootools/1.3.0/mootools-yui-compressed.js"></script>
+<script type="text/javascript" src="../js/mt.mbox.js"></script>
+<script>
+$("test1").addEvent("click", function() {
+	Mbox.open({
+		url: "aTestBox",
+		openFrom: $("test1"),
+		useFx: true
+	});	
+});
+$("test2").addEvent("click", function() {
+	Mbox.open({
+		url: "http://image.zhangxinxu.com/image/study/s/s512/mm1.jpg",
+		type: "image",
+		ajax: true,
+		title: "美女图片"
+	});	
+});
+$("test3").addEvent("click", function() {
+	Mbox.loading();	
+});
+$("test4").addEvent("click", function() {
+	Mbox.remind("你的设置保存成功！", {
+		time: 2000,
+		overlay: false
+	});	
+});
+$("test5").addEvent("click", function() {
+	Mbox.alert("你已经成功添加<a href='//www.zhangxinxu.com/'>小张</a>为好友");	
+});
+$("test6").addEvent("click", function() {
+	Mbox.confirm("你确定删除此信息？", function() {
+		Mbox.alert("删除成功！", null, {
+			useFx: true,
+			height: 200	,
+			width:400
+		});	
+	});	
+});
+$("test7").addEvent("click", function() {
+	Mbox.open({
+		url: "loaded.html",
+		type: "ajax",
+		ajax: true	
+	});	
+});
+Mbox.assign($("test8"), {
+	type: "ajax",
+	ajax: true	
+});
+$("test9").addEvent("click", function() {
+	Mbox.open({}, this);	
+	return false;
+});
+$("test10").addEvent("click", function() {
+	Mbox.open({
+		url: "http://image.zhangxinxu.com/flash/blog/201006/ps-district.swf",
+		width: 550,
+		height: 200,
+		titleable:false,
+		closable: false,
+		overlayClosable: true,
+		opacity: 0.6,
+		type: "swf",
+		ajax: true	
+	});	
+});
+$("test11").addEvent("click", function() {
+	Mbox.open({
+		title: '<a href="http://t.sina.com.cn/">新浪微博</a> » <a href="http://t.sina.com.cn/zhangxinxu">张鑫旭</a>',
+		url: "http://t.sina.com.cn/zhangxinxu",
+		width: 880,
+		height: 600,
+		type: "iframe",
+		ajax: true	
+	});	
+});
+$("test12").addEvent("click", function() {
+	var nowHtml = '<div class="a_test_box">【高清组图：上海一栋28层公寓发生严重火灾】目前火势不断蔓延，外立面的防护网已经烧到了10层楼高。另据消息，上海警方已经调遣直升机赴现场。<div id="testMoreBox" class="dn">现场火势凶猛，浓烟滚滚。据附近居民介绍，胶州路718号胶州教师公寓内住着不少的退休教师</div><a id="testMore" href="javascript:;" rel="testMoreBox">显示更多&gt;&gt;</a></div>';
+	Mbox.open({
+		url: nowHtml,
+		type: "string",
+		onShow: function() {
+			var self = this;
+			if ($("testMore")) {
+				$("testMore").addEvent("click", function() {
+					var rel = this.getProperty("rel");
+					if (rel && $(rel)) {
+						$(rel).setStyle("display", "block");
+						this.dispose();
+						self.reposition(true);
+					}
+					return false;	
+				});
+			}
+		}
+	});
+});
+$("test13").addEvent("click", function() {
+	Mbox.alert("此弹框关闭后页面背景色改变~~", null, {
+		onClose: function() {
+			document.body.setStyle("background-color", "#123456");	
+		}
+	});	
+});
+$("test14").addEvent("click", function() {
+	Mbox.open({
+		url: '<div class="mbox_alert">弹框跟随滚动条滚动~~</div>',
+		reposition: false	
+	});
+});
+$("test15").addEvent("click", function() {
+	Mbox.open({
+		url: '<div class="mbox_alert">宽高固定</div>',
+		width: 500,
+		height:300	
+	});
+});
+$("test16").addEvent("click", function() {
+	Mbox.open({
+		url: "http://www.baidu.com/image/mm1.jpg",
+		type: "image",
+		ajax: true
+	});	
+});
+$("test17").addEvent("click", function() {
+	Mbox.open({
+		url: "http://www.baidu.com/image/",
+		type: "ajax",
+		ajax: true
+	});	
+});
+</script>
+</html>

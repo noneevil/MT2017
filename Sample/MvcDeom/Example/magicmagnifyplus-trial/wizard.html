@@ -1,0 +1,460 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+	<title>Settings wizard</title>
+	
+		<!-- link to magicmagnifyplus.css file -->
+		<link rel="stylesheet" href="magicmagnifyplus/magicmagnifyplus.css" type="text/css" media="screen, projection"/>
+        <!-- link to magicmagnify.js file -->
+        <script src="magicmagnifyplus/magicmagnifyplus.js" type="text/javascript"></script>
+        <script type="text/javascript">
+            MagicMagnifyPlus.options = {
+				'border-color'			:	'#9b9b9b',
+				'border-width'			:	'0',
+    			'progress-color'		:	'#CCCCCC',
+		    	'progress-height'		:	'0',
+				'magnifier'				:	'circle',
+		    	'magnifier-size'		:	'66%',
+    			'magnifier-size-x'		:	'66%',
+		    	'magnifier-size-y'		:	'66%',
+		    	'magnifier-effect'		:	'fade',
+		    	'magnifier-filter' 		:	'glow',
+		    	'magnifier-time' 		:	'200',
+		    	'magnifier-simulate'	:	'',
+				'magnifier-border-color':	'#9b9b9b',
+				'magnifier-border-width':	'1',
+				'lense-url'				:	'',
+				'lense-offset-x'		:	'0',
+				'lense-offset-y'		:	'0',
+				'lense-position'		:	'top',
+				'thumb-change'			:	'click',
+				'thumb-change-delay'	:	'200',
+				'thumb-change-time'		:	'500',
+		    	'change-time' 			:	'500',
+				'wheel-effect'			:	'20%',
+				'blur'					:	'false',
+				'transparency'			:	'100%',
+				//'pause-on-click'		:	'false',
+				//'link-url'				:	'',
+				//'link-window'			:	'_self',
+				'hide-cursor'			:	'false',
+				'disable-expand'		:	'false'
+            }
+            var MagicMagnifyPlusText = {
+				'border-color'			:	'Outside border color',
+				'border-width'			:	'Outside border width',
+    			'progress-color'		:	'Color of the loading bar',
+		    	'progress-height'		:	'Heigth of the loading bar',
+				'magnifier'				:	'Magnifier shape',
+		    	'magnifier-size'		:	'Magnifier size: % of small image width or fixed size in px',
+    			'magnifier-size-x'		:	'Magnifier width: % of small image width or fixed size in px',
+		    	'magnifier-size-y'		:	'Magnifier height: % of small image width or fixed size in px',
+		    	'magnifier-effect'		:	'Magnifier appearing effect',
+		    	'magnifier-filter' 		:	'Magnifier effect',
+		    	'magnifier-time' 		:	'Time for magnifier effect',
+		    	'magnifier-simulate'	:	'Create enlarged images from small ones with specified scale',
+				'magnifier-border-color':	'Magnifier border color',
+				'magnifier-border-width':	'Magnifier border thickness',
+				'lense-url'				:	'Custom image URL',
+				'lense-offset-x'		:	'Custom image x-offset',
+				'lense-offset-y'		:	'Custom image y-offset',
+				'lense-position'		:	'Custom image position',
+				'thumb-change'			:	'Method to switch between multiple images',
+				'thumb-change-delay'	:	'Delay before switching images',
+				'thumb-change-time'		:	'Speed of changing size of multiple images',
+		    	'change-time' 			:	'Speed of changing opacity of multiple images',
+				'wheel-effect'			:	'Wheel effect for changing magnifier size',
+				'blur'					:	'Blur effect of the main image when magnifier is shown',
+				'transparency'			:	'Transparency of the main image when magnifier is shown',
+				//'pause-on-click'		:	'Disable/Enable pause on click',
+				//'link-url'				:	'URL the image should link to (if any)',
+				//'link-window'			:	'Page where the link should load',
+				'hide-cursor'			:	'Hide mouse pointer',
+				'disable-expand'		:	'Disable/Enable expand effect'
+            }
+            var mmLength;
+            MagicMagnifyPlusDefault = new Array();
+            function setOptions() {
+            	mmLength = 0;
+            	for(var i in MagicMagnifyPlus.options) {
+            		MagicMagnifyPlusDefault[i] = MagicMagnifyPlus.options[i];
+            		mmLength++;
+            		var elm = document.optForm;
+            		if (elm[i]) {
+            			switch(elm[i].tagName) {
+            				case "INPUT" : 
+            					elm[i].value = MagicMagnifyPlus.options[i];
+            					break;
+            				case "SELECT" : 
+            					for(var j=0;j<elm[i].options.length;j++) {
+            						if (elm[i].options[j] && elm[i].options[j].value==MagicMagnifyPlus.options[i]) {
+            							elm[i].selectedIndex = j;
+            						}
+            					}
+            				break;				
+            			}
+            			var acronyms = elm[i].parentNode.parentNode.firstChild.getElementsByTagName('ACRONYM');
+            			if (acronyms[0]) {
+            				acronyms[0].title = MagicMagnifyPlusText[i];
+            			}
+            		}
+            	}
+            	printOptions(document.getElementById('printOptions'));
+            }
+            function refreshOptions() {
+            	MagicMagnifyPlus.stop();
+            	for(var i in MagicMagnifyPlus.options) {
+            		var elm = document.optForm;
+            		if (elm[i])  {
+            			switch(elm[i].tagName) {
+            				case "INPUT" : 
+            					MagicMagnifyPlus.options[i] = elm[i].value;
+            					break;
+            				case "SELECT" : 
+            					MagicMagnifyPlus.options[i] = elm[i].options[elm[i].selectedIndex].value;
+            				break;				
+            			}			
+            		}
+            	}
+            	printOptions(document.getElementById('printOptions'));
+            	MagicMagnifyPlus.start();
+            }
+            function printOptions(elm) {
+            	var str = '';//'&lt;script type="text/javascript"&gt;<br/>';
+            	//str += 'var MagicMagnifyPlus.options = { <br/>';
+            	var j = 0;
+            	for(var i in MagicMagnifyPlus.options) {
+            		
+            		var isNum = MagicMagnifyPlus.options[i]==parseInt(MagicMagnifyPlus.options[i]);
+            		var quote_s = (isNum)?"":"<span style=\"color: #ff0000;\">'";
+            		var quote_f = (isNum)?"":"'</span>";
+            		if (MagicMagnifyPlusDefault[i]+''!=MagicMagnifyPlus.options[i]+'') {
+            			if (str!='') {
+            				str += ",<br/>";
+            			}
+            			str += "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class='comment'>//"+MagicMagnifyPlusText[i].replace(/\(.*?\)/,"")+"</span><br/>";
+            			str += "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>'"+i+"'</b>&nbsp;&nbsp;<span style=\"color: rgb(102, 204, 102);\">:</span>&nbsp;&nbsp;"+quote_s+MagicMagnifyPlus.options[i]+quote_f;
+            			//str += "<br/>";
+            		}
+            		j++;
+            	}
+            	
+            	if (str!='') {
+            		str = '<div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;"><span style="color: #009900;">&lt;<span style="color: #000000; font-weight: bold;">script</span> <span style="color: #000066;">type</span><span style="color: #66cc66;">=</span><span style="color: #ff0000;">&quot;text/javascript&quot;</span>&gt;</span></div><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;">MagicMagnifyPlus.options = {</div>'+str;
+            		str += '<div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;">}</div>';
+            		str += '<div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;"><span style="color: #009900;">&lt;<span style="color: #66cc66;">/</span><span style="color: #000000; font-weight: bold;">script</span>&gt;</span></div>';
+            		elm.innerHTML = str;
+            	} else {
+            		elm.innerHTML = '';
+            	}
+            }
+
+            function change_html_output() {
+            	printOptions(document.getElementById('printOptions'));
+            }        
+        </script>
+        <style type="text/css">
+        </style>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+		
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<style type="text/css"><!--
+		body {background:#fff; margin:0; padding:0; font-size: 100%;}
+		body, td {font-family:"Lucida Grande", Tahoma, Arial, Verdana, sans-serif; line-height: 1.5em;}
+		h1 {font-size:1.5em; font-weight:normal; color:#555;}
+		h2 {font-size:1.3em; font-weight:normal; color:#555;}
+		h2.caption {margin: 2.5em 0 0;}
+		a {outline: none;}
+		table {margin:0; padding:0; border-collapse: collapse;}
+		td {vertical-align: top; border: 1px;}
+		img {border:0;}
+		.leftcol {background:#EDF6CA; padding: 20px;}
+		.nav {width: 180px;}
+		.nav h2 {background: #658F11; margin:10px 0 0 0; padding: 3px 3px 5px 10px; font-size: 0.9em; color:#FFF;}
+		.nav ul {list-style-type: none; padding: 0 0 10px 0; margin:0 0 20px; background:#99CC33;}
+		.nav li a {text-decoration: none; display: block; padding: 3px 3px 3px 10px; margin: 0; font-size: 0.9em; color:#FFF; zoom: 1;}
+		.nav li a:hover {background: #B5DF61;}
+		.active {font-weight: bold;}
+		.arrow {text-align: right;}
+		.menuTd a {color:#fff; font-weight:bold;}
+		.code {font-size:12px; line-height:18px; margin:10px 0; display:block; padding:3px; border:1px solid #aaa;}
+		span.r {color:red;}
+		span.g {color:green;}
+		span.b {color:blue;}
+		table.tbl {background:#aaa; margin-bottom: 20px; font-size: 0.9em; border: 1px solid #999;}
+		caption {text-align: left; padding: 4px 12px; background: #999; color: #fff; font-size: 1.1em; margin: 0 0 0 0;}
+		caption a {color: #fff; padding: 2px;}
+		caption a:hover {background:#FFF; color: #999;}
+		.tbl th { background:#fff; padding:4px 8px 4px 16px; vertical-align:top; border-bottom: 1px #999 solid; text-align:left;}
+		.tbl thead th { background:#eee;}
+		.tbl th.caption {background:#ccc; padding:4px 8px 4px 16px; text-align:left;border-bottom:1px solid #999999;}
+        .tbl td {background:#fff; padding:4px 8px 4px 16px; vertical-align:top; border-bottom: 1px #999 solid;}
+		.tbl .tr1 td {background:#fff;}
+		.tbl .tr2 td {background:#f2f2f2;}
+		.mtbl {width:100%; height:100%;}
+		.rTd {padding:20px; width:100%;}
+		div.exmpl {margin:0 0 5px 0; font-weight:bold;}
+		.html4strict {border:1px solid #AAAAAA; display:block; font-size:12px; line-height:18px; margin:10px 0pt; padding:3px;}
+		.html4strict .de1, .html4strict .de2 {font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;}
+		.html4strict {font-family:monospace;}
+		.html4strict .imp {font-weight: bold; color: red;}
+		.html4strict li, .html4strict .li1 {font-weight: normal; vertical-align:top;}
+		.html4strict .ln {width:1px; text-align:right; margin:0; padding:0 2px; vertical-align:top;}
+		.html4strict .li2 {font-weight: bold; vertical-align:top;}
+		.html4strict .kw2 {color: #000000; font-weight: bold;}
+		.html4strict .kw3 {color: #000066;}
+		.html4strict .es0 {color: #000099; font-weight: bold;}
+		.html4strict .br0 {color: #66cc66;}
+		.html4strict .sy0 {color: #66cc66;}
+		.html4strict .st0 {color: #ff0000;}
+		.html4strict .nu0 {color: #cc66cc;}
+		.html4strict .sc-1 {color: #808080; font-style: italic;}
+		.html4strict .sc0 {color: #00bbdd;}
+		.html4strict .sc1 {color: #ddbb00;}
+		.html4strict .sc2 {color: #009900;}
+		.html4strict .ln-xtra, .html4strict li.ln-xtra, .html4strict div.ln-xtra {background-color: #ffc;}
+		.html4strict span.xtra {display:block;}
+		.note { font-size:70%; }
+		.gray { color:#aaaaaa; font-size:90%; }
+		.gray a { color:#9999f8; }
+		.w50 { float:left; margin:0 20px 20px 0; padding:0 20px 20px;}
+		.clear { clear:both;}		
+        p.buttons {float: right; margin: -40px 0px 10px 0} 
+        .bBtn, p.buttons a { 
+                background: #FA9C0F; padding: 4px 10px 4px 12px; 
+                margin-right: 6px; font-size: 1em; color:#fff; text-decoration: none; 
+                line-height: 1em;outline: none; border: 1px solid #CF7E00;
+                cursor: pointer;
+        } 
+        .bBtn:hover, p.buttons a:hover {background: #FFBA4F} 
+		.tbl tr.odd td { background:#f3f3f3; }
+		.comment { color:#999;}
+	--></style>
+</head>
+<body>
+<table class="mtbl">
+<tr>
+    <td class="leftcol">
+		<div class="nav">
+			<h2>Magic Magnify Plus&#8482;</h2>
+			<ul>
+				<li><a  href="index.html">Overview</a></li>
+				<li><a class="active" href="wizard.html">Settings wizard</a></li>
+			</ul>
+		</div>
+		<div class="nav">
+			<h2>Examples</h2>
+			<ul>
+				<li><a  href="example1.html">Default parameters</a></li>
+				<li><a  href="example2.html">Borders</a></li>
+				<li><a  href="example3.html">Magnifier shape</a></li>
+				<li><a  href="example4.html">Magnifier effect</a></li>
+				<li><a  href="example5.html">Magnifier filter</a></li>
+				<li><a  href="example6.html">Custom image</a></li>
+				<li><a  href="example7.html">Enlargement</a></li>
+				<li><a  href="example8.html">Multiple images</a></li>
+				<li><a  href="example9.html">Blur and transparency</a></li>
+				<li><a  href="example10.html">Activate on click</a></li>				
+			</ul>
+		</div>
+	</td>
+	<td class="rTd">
+		<h1>Settings wizard</h1>
+        <p class="buttons"><a href="http://www.magictoolbox.com/buy/magicmagnifyplus/">Buy now&nbsp;&nbsp;&pound;39</a> <a href="http://www.magictoolbox.com/support/">Get support</a></p>
+		
+	    
+        
+       	<p>Change the settings and click Update. The source code is shown underneath.</p>
+
+       	<form method="GET" name="optForm" onsubmit="refreshOptions(); return false;" autocomplete = "off">
+
+               <table cellpadding="10">
+               	<tr valign="top">
+               		<td>
+               			<table class="tbl" cellspacing="1" style="width:350px">
+            			<caption>
+                			Choose your settings
+            			</caption>					
+               				
+               				<tr><td><acronym>border-color</acronym></td><td><input type="text" name="border-color" value=""/></td></tr>
+               				<tr class="odd"><td><acronym>border-width</acronym></td><td><input type="text" name="border-width" value=""/></td></tr>
+               				<tr><td><acronym>progress-color</acronym></td><td><input type="text" name="progress-color" value=""/></td></tr>
+               				<tr class="odd"><td><acronym>progress-height</acronym></td><td><input type="text" name="progress-height" value=""/></td></tr>
+
+               				<tr><td><acronym>magnifier</acronym></td>
+               					<td>
+               						<select name="magnifier">
+               							<option value="circle">circle</option>
+               							<option value="square">square</option>
+               							<option value="inner">inner</option>
+               						</select>
+               					</td>
+               				</tr>
+               				<tr class="odd"><td><acronym>magnifier-size</acronym></td><td><input type="text" onkeyup="document.optForm['magnifier-size-x'].value=document.optForm['magnifier-size-y'].value=this.value" name="magnifier-size" value=""/></td></tr>
+               				<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;<acronym>magnifier-size-x</acronym></td><td><input type="text" name="magnifier-size-x" value=""/></td></tr>
+               				<tr class="odd"><td>&nbsp;&nbsp;&nbsp;&nbsp;<acronym>magnifier-size-y</acronym></td><td><input type="text" name="magnifier-size-y" value=""/></td></tr>
+               				<tr><td><acronym>magnifier-effect</acronym></td>
+               					<td>
+               						<select name="magnifier-effect">
+               							<option value="">none</option>
+               							<option value="pulse">pulse</option>
+               							<option value="fade">fade</option>
+               						</select>
+               					</td>
+               				</tr>
+               				<tr class="odd"><td><acronym>magnifier-filter</acronym></td>
+               					<td>
+               						<select name="magnifier-filter">
+               							<option value="glow">glow</option>
+               							<option value="shadow">shadow</option>
+               						</select>
+               					</td>
+               				</tr>
+               				<tr><td><acronym>magnifier-simulate</acronym></td>
+               					<td><input type="text" name="magnifier-simulate"/></td>
+               				</tr>					
+               				<tr class="odd"><td><acronym>magnifier-time</acronym></td><td><input type="text" name="magnifier-time"/></td></tr>
+               				
+               				<tr><td><acronym>magnifier-border-color</acronym></td><td><input type="text" name="magnifier-border-color" value=""/></td></tr>
+               				<tr class="odd"><td><acronym>magnifier-border-width</acronym></td><td><input type="text" name="magnifier-border-width" value=""/></td></tr>
+               				
+               				<tr><td><acronym>lense-url</acronym></td><td><input type="text" name="lense-url" value=""/></td></tr>
+                         				
+               			</table>
+               		
+               		</td>
+               		<td style="width:100%">
+               			<table class="tbl" cellspacing="1" style="width:350px">
+               				
+     						<tr class="odd"><td><acronym>lense-offset-x</acronym></td><td><input type="text" name="lense-offset-x" value=""/></td></tr>
+               				<tr><td><acronym>lense-offset-y</acronym></td><td><input type="text" name="lense-offset-y" value=""/></td></tr>
+               				<tr class="odd"><td><acronym>lense-position</acronym></td>
+               					<td>
+               						<select name="lense-position">
+               							<option value="top">top</option>
+               							<option value="bottom">bottom</option>
+               						</select>
+               					</td>
+               				</tr>
+               				<tr><td><acronym>thumb-change</acronym></td>
+               					<td>
+               						<select name="thumb-change">
+               							<option value="click">click</option>
+               							<option value="mouseover">mouseover</option>
+               						</select>
+               					</td>
+               				</tr>
+               				<tr class="odd"><td><acronym>thumb-change-delay</acronym></td><td><input type="text" name="thumb-change-delay" value=""/></td></tr>
+               				<tr><td><acronym>thumb-change-time</acronym></td><td><input type="text" name="thumb-change-time" value=""/></td></tr>
+               				
+               				<tr class="odd"><td><acronym>change-time</acronym></td><td><input type="text" name="change-time" value=""/></td></tr>
+               				<tr><td><acronym>wheel-effect</acronym></td><td><input type="text" name="wheel-effect" value=""/></td></tr>
+               				<!--
+               				<tr class="odd"><td><acronym>disable-auto-start</acronym></td>
+               					<td>
+               						<select name="disable-auto-start">
+               							<option value="true">true</option>
+               							<option value="false">false</option>
+               						</select>
+               					</td>
+               				</tr>
+               				-->
+               				<tr class="odd"><td><acronym>blur</acronym></td><td><input type="text" name="blur" value=""/></td></tr>
+               				<tr><td><acronym>transparency</acronym></td><td><input type="text" name="transparency" value=""/></td></tr>
+               				
+               				<!--
+               				<tr class="odd"><td><acronym>pause-on-click</acronym></td>
+               					<td>
+               						<select name="pause-on-click">
+               							<option value="true">true</option>
+               							<option value="false">false</option>
+               						</select>
+               					</td>
+               				</tr>
+               				
+               				
+               				<tr><td><acronym>link-url</acronym></td><td><input type="text" name="link-url" value=""/></td></tr>					
+               				
+               				
+               				<tr class="odd"><td><acronym>link-window</acronym></td>
+               					<td>
+               						<select name="link-window">
+               							<option value="_self">_self</option>
+               							<option value="_blank">_blank</option>
+               							<option value="_parent">_parent</option>
+               							<option value="_top">_top</option>
+               						</select>
+               					</td>
+               				</tr>
+               				-->               				
+               				
+               				
+               				<tr><td><acronym>hide-cursor</acronym></td>
+               					<td>
+               						<select name="hide-cursor">
+               							<option value="true">true</option>
+               							<option value="false">false</option>
+               						</select>
+               					</td>
+               				</tr>
+               				
+               				<tr><td><acronym>disable-expand</acronym></td>
+               					<td>
+               						<select name="disable-expand">
+               							<option value="true">true</option>
+               							<option value="false">false</option>
+               						</select>
+               					</td>
+               				</tr>
+               				
+               			</table>
+						
+						<input type="submit" class="bBtn" value="Update"/><br/><br/>
+						
+						<span class="note">NOTE: Some features won't work offline. Use the <a href="http://demo.magictoolbox.com/magicmagnifyplus/wizard.html">online example</a> instead.</span>
+                       		
+               		</td>
+               	</tr>
+               	<tr>
+               		<td>
+						<a href="images/shoe_large.jpg" class="MagicMagnifyPlus" id="Magnifier1"><img alt="Adidas Black" src="images/shoe_small.jpg"/></a> 
+               		</td>
+               		<td>
+                       	<a href="images/shoe_large.jpg" rel="Magnifier1" rev="images/shoe_small.jpg" ><img alt="Adidas Black" src="images/sel.jpg"/></a><br/><br/>
+	                    <a href="images/shoe_large1.jpg" rel="Magnifier1" rev="images/shoe_small1.jpg" ><img alt="Adidas Blue" src="images/sel1.jpg"/></a><br/><br/>
+    	                <a href="images/shoe_large2.jpg" rel="Magnifier1" rev="images/shoe_small2.jpg" ><img alt="Adidas Red" src="images/sel2.jpg"/></a>
+               		</td>
+               	</tr>
+               </table>
+       		</form>
+
+    <h2>Here's the code:</h2>
+    <div class="html4strict" style="font-family: monospace;padding:10px;">
+    <div style="font: 1em/1.2em monospace; margin: 0pt; padding: 0pt; background: none repeat scroll 0% 0% transparent; vertical-align: top;"><span style="color: rgb(0, 153, 0);">&lt;<span style="color: rgb(0, 0, 0); font-weight: bold;">link</span> <span style="color: rgb(0, 0, 102);">rel</span><span style="color: rgb(102, 204, 102);">=</span><span style="color: rgb(255, 0, 0);">"stylesheet"</span> <span style="color: rgb(0, 0, 102);">href</span><span style="color: rgb(102, 204, 102);">=</span><span style="color: rgb(255, 0, 0);">"magicmagnifyplus/magicmagnifyplus.css"</span> <span style="color: rgb(0, 0, 102);">type</span><span style="color: rgb(102, 204, 102);">=</span><span style="color: rgb(255, 0, 0);">"text/css"</span> <span style="color: rgb(0, 0, 102);">media</span><span style="color: rgb(102, 204, 102);">=</span><span style="color: rgb(255, 0, 0);">"screen, projection"</span><span style="color: rgb(102, 204, 102);">/</span>&gt;</span></div>
+    <div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;"><span style="color: #009900;">&lt;<span style="color: #000000; font-weight: bold;">script</span> <span style="color: #000066;">src</span><span style="color: #66cc66;">=</span><span style="color: #ff0000;">&quot;magicmagnifyplus.js&quot;</span> <span style="color: #000066;">type</span><span style="color: #66cc66;">=</span><span style="color: #ff0000;">&quot;text/javascript&quot;</span>&gt;&lt;<span style="color: #66cc66;">/</span><span style="color: #000000; font-weight: bold;">script</span>&gt;</span></div>
+
+    <div id="printOptions"></div>
+
+    <br/>
+
+    <div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;"><span style="color: #009900;">&lt;<span style="color: #000000; font-weight: bold;">a</span> <span style="color: #000066;">href</span><span style="color: #66cc66;">=</span><span style="color: #ff0000;">&quot;images/shoe_large.jpg&quot;</span> <span style="color: #000066;">class</span><span style="color: #66cc66;">=</span><span style="color: #ff0000;">&quot;MagicMagnifyPlus&quot;</span> <span style="color: #000066;">id</span><span style="color: #66cc66;">=</span><span style="color: #ff0000;">&quot;Magnifier1&quot;</span>&gt;&lt;<span style="color: #000000; font-weight: bold;">img</span> <span style="color: #000066;">alt</span><span style="color: #66cc66;">=</span><span style="color: #ff0000;">&quot;Adidas Black&quot;</span> <span style="color: #000066;">src</span><span style="color: #66cc66;">=</span><span style="color: #ff0000;">&quot;images/shoe_small.jpg&quot;</span><span style="color: #66cc66;">/</span>&gt;&lt;<span style="color: #66cc66;">/</span><span style="color: #000000; font-weight: bold;">a</span>&gt;</span> <span style="color: #009900;">&lt;<span style="color: #000000; font-weight: bold;">br</span><span style="color: #66cc66;">/</span>&gt;</span></div>
+    <div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;"><span style="color: #808080; font-style: italic;">&lt;!-- selectors --&gt;</span>&nbsp; &nbsp; &nbsp; </div>
+    <div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;"><span style="color: #009900;">&lt;<span style="color: #000000; font-weight: bold;">a</span> <span style="color: #000066;">href</span><span style="color: #66cc66;">=</span><span style="color: #ff0000;">&quot;images/shoe_large.jpg&quot;</span> <span style="color: #000066;">rel</span><span style="color: #66cc66;">=</span><span style="color: #ff0000;">&quot;Magnifier1&quot;</span> <span style="color: #000066;">rev</span><span style="color: #66cc66;">=</span><span style="color: #ff0000;">&quot;images/shoe_small.jpg&quot;</span> &gt;&lt;<span style="color: #000000; font-weight: bold;">img</span> <span style="color: #000066;">alt</span><span style="color: #66cc66;">=</span><span style="color: #ff0000;">&quot;Adidas Black&quot;</span> <span style="color: #000066;">src</span><span style="color: #66cc66;">=</span><span style="color: #ff0000;">&quot;images/sel.jpg&quot;</span><span style="color: #66cc66;">/</span>&gt;&lt;<span style="color: #66cc66;">/</span><span style="color: #000000; font-weight: bold;">a</span>&gt;</span></div>
+    <div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;"><span style="color: #009900;">&lt;<span style="color: #000000; font-weight: bold;">a</span> <span style="color: #000066;">href</span><span style="color: #66cc66;">=</span><span style="color: #ff0000;">&quot;images/shoe_large1.jpg&quot;</span> <span style="color: #000066;">rel</span><span style="color: #66cc66;">=</span><span style="color: #ff0000;">&quot;Magnifier1&quot;</span> <span style="color: #000066;">rev</span><span style="color: #66cc66;">=</span><span style="color: #ff0000;">&quot;images/shoe_small1.jpg&quot;</span> &gt;&lt;<span style="color: #000000; font-weight: bold;">img</span> <span style="color: #000066;">alt</span><span style="color: #66cc66;">=</span><span style="color: #ff0000;">&quot;Adidas Blue&quot;</span> <span style="color: #000066;">src</span><span style="color: #66cc66;">=</span><span style="color: #ff0000;">&quot;images/sel1.jpg&quot;</span><span style="color: #66cc66;">/</span>&gt;&lt;<span style="color: #66cc66;">/</span><span style="color: #000000; font-weight: bold;">a</span>&gt;</span></div>
+    <div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;"><span style="color: #009900;">&lt;<span style="color: #000000; font-weight: bold;">a</span> <span style="color: #000066;">href</span><span style="color: #66cc66;">=</span><span style="color: #ff0000;">&quot;images/shoe_large2.jpg&quot;</span> <span style="color: #000066;">rel</span><span style="color: #66cc66;">=</span><span style="color: #ff0000;">&quot;Magnifier1&quot;</span> <span style="color: #000066;">rev</span><span style="color: #66cc66;">=</span><span style="color: #ff0000;">&quot;images/shoe_small2.jpg&quot;</span> &gt;&lt;<span style="color: #000000; font-weight: bold;">img</span> <span style="color: #000066;">alt</span><span style="color: #66cc66;">=</span><span style="color: #ff0000;">&quot;Adidas Red&quot;</span> <span style="color: #000066;">src</span><span style="color: #66cc66;">=</span><span style="color: #ff0000;">&quot;images/sel2.jpg&quot;</span><span style="color: #66cc66;">/</span>&gt;&lt;<span style="color: #66cc66;">/</span><span style="color: #000000; font-weight: bold;">a</span>&gt;</span></div>
+
+
+
+    </div>
+    </div>
+    </div>
+
+
+    	<script type="text/javascript">
+    		setOptions();
+    	</script>
+	
+	    
+		
+	</td>
+</tr></table></body></html>

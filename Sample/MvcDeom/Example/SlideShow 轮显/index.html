@@ -1,0 +1,54 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=GBK" />
+<title></title>
+
+<link href="css/cycle.css" rel="stylesheet" type="text/css">
+<script src="js/mootools-1.2-core.js" type="text/javascript"></script>
+<script src="js/mootools-1.2-more.js" type="text/javascript"></script>
+<script src="js/slideshow.js" type="text/javascript"></script>
+
+</head>
+<script language="javascript">
+//轮显数组，4个，这个可以用代码循环，所以没有写到js文件中
+var Switcher = new Array();  
+//调用轮显
+Switcher[0] 						=	Array();
+Switcher[0]['title']		= "网易首页"
+Switcher[0]['stitle']		= "轮显测试1的说明标题"
+Switcher[0]['url']			= "http://www.163.com/"
+Switcher[0]['pic']			= "images/Blue hills.jpg"
+
+Switcher[1] 						=	Array();
+Switcher[1]['title']		= "测试轮显2"
+Switcher[1]['stitle']		= "轮显测试2的说明标题"
+Switcher[1]['url']			= "url2.html"
+Switcher[1]['pic']			= "images/Sunset.jpg"
+
+Switcher[2] 						=	Array();
+Switcher[2]['title']		= "测试轮显3"
+Switcher[2]['stitle']		= "轮显测试3的说明标题"
+Switcher[2]['url']			= "url3.html"
+Switcher[2]['pic']			= "images/Water lilies.jpg"
+
+Switcher[3] 						=	Array();
+Switcher[3]['title']		= "测试轮显4"
+Switcher[3]['stitle']		= "轮显测试4的说明标题"
+Switcher[3]['url']			= "url4.html"
+Switcher[3]['pic']			= "images/Winter.jpg"
+</script>
+
+<div class="cycle" id="cycle">
+  <a id="bighref" target="_blank"><img src="images/back.jpg" width="345" height="260" border="0" id="bigpic" /></a>
+  <div class="smallpic">
+    <ul>
+      <li id="li0"><a href="#"><img id="cycle_img0" border="0" src="images/back.jpg" width="80" ></a>
+      <li id="li1"><a href="#"><img id="cycle_img1" src="images/back.jpg" border="0" width="80"></a>
+      <li id="li2"><a href="#"><img id="cycle_img2" src="images/back.jpg" border="0" width="80"></a>
+      <li id="li3"><a href="#"><img id="cycle_img3" src="images/back.jpg" border="0" width="80"></a>
+    </ul>
+  </div>
+  <div id="SwitchTitle"></div>
+  <div id="bg"></div>
+</div>

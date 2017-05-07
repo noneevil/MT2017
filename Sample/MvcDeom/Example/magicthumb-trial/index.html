@@ -1,0 +1,146 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+	<title>Magic Thumb&trade;</title>
+	
+    <!--[if IE]>
+    <style type="text/css">
+    .MagicThumb, .MagicThumb:hover { cursor: url(magicthumb/graphics/zoomin.cur), pointer; }
+    .MagicThumb-expanded { cursor: url(magicthumb/graphics/zoomout.cur), pointer; }
+    </style>
+    <![endif]--> 
+	<style type="text/css"><!--
+		body {background:#fff; margin:0; padding:0; font-size: 100%;}
+		body, td {font-family:"Lucida Grande", Tahoma, Arial, Verdana, sans-serif; line-height: 1.5em;}
+		h1 {font-size:1.5em; font-weight:normal; color:#555;}
+		h2 {font-size:1.3em; font-weight:normal; color:#555;}
+		h2.caption {margin: 2.5em 0 0;}
+		h4 {font-size: 1em; font-weight:normal; color:#555;}
+		p { font-size: 0.9em; }
+		a {outline: none;}
+		table {margin:0; padding:0; border-collapse: collapse;}
+		th {background:#CCC; text-align: left; padding: 2px 4px; font-weight: normal;}
+		td {vertical-align: top; border: 1px;}
+		img {border:0;}
+		.leftcol {background:#EDF6CA; padding: 20px; height: 100%}
+		.nav {width: 180px;}
+		.nav h2 {background: #658F11; margin:10px 0 0 0; padding: 3px 3px 5px 10px; font-size: 0.9em; color:#FFF;}
+		.nav ul {list-style-type: none; padding: 0 0 10px 0; margin:0 0 20px; background:#99CC33;}
+		.nav li a {text-decoration: none; display: block; padding: 3px 3px 3px 10px; margin: 0; font-size: 0.9em; color:#FFF; zoom: 1;}
+		.nav li a:hover {background: #B5DF61;}
+		.active {font-weight: bold;}
+		.arrow {text-align: right;}
+		.menuTd a {color:#fff; font-weight:bold;}
+		.code {font-size:12px; line-height:18px; margin:10px 0; display:block; padding:3px; border:1px solid #aaa;}
+		span.r {color:red;}
+		span.g {color:green;}
+		span.b {color:blue;}
+		table.tbl {background:#aaa; margin-bottom: 20px; font-size: 0.9em; border: 1px solid #999;}
+		caption {text-align: left; padding: 4px 12px; background: #999; color: #fff; font-size: 1.1em; margin: 0 0 0 -1px;}
+		caption a {color: #fff; padding: 2px;}
+		caption a:hover {background:#FFF; color: #999;}
+		.tbl th {background:#eee; padding:4px 8px 4px 16px;}
+        .tbl td {background:#fff; padding:4px 8px 4px 16px; vertical-align:top; border-bottom: 1px #999 solid;}
+		.tbl .tr1 td {background:#fff;}
+		.tbl .tr2 td {background:#f2f2f2;}
+		.mtbl {width:100%; height:100%;}
+		.rTd {padding:20px; width:100%;}
+		div.exmpl {margin:0 0 5px 0; font-weight:bold;}
+		.html4strict {border:1px solid #AAAAAA; display:block; font-size:12px; line-height:18px; margin:10px 0pt; padding:3px;}
+		.html4strict .de1, .html4strict .de2 {font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;}
+		.html4strict {font-family:monospace;}
+		.html4strict .imp {font-weight: bold; color: red;}
+		.html4strict li, .html4strict .li1 {font-weight: normal; vertical-align:top;}
+		.html4strict .ln {width:1px; text-align:right; margin:0; padding:0 2px; vertical-align:top;}
+		.html4strict .li2 {font-weight: bold; vertical-align:top;}
+		.html4strict .kw2 {color: #000000; font-weight: bold;}
+		.html4strict .kw3 {color: #000066;}
+		.html4strict .es0 {color: #000099; font-weight: bold;}
+		.html4strict .br0 {color: #66cc66;}
+		.html4strict .sy0 {color: #66cc66;}
+		.html4strict .st0 {color: #ff0000;}
+		.html4strict .nu0 {color: #cc66cc;}
+		.html4strict .sc-1 {color: #808080; font-style: italic;}
+		.html4strict .sc0 {color: #00bbdd;}
+		.html4strict .sc1 {color: #ddbb00;}
+		.html4strict .sc2 {color: #009900;}
+		.html4strict .ln-xtra, .html4strict li.ln-xtra, .html4strict div.ln-xtra {background-color: #ffc;}
+		.html4strict span.xtra {display:block;}
+
+        p.buttons {float: right; margin: -40px 0px 10px 0} 
+        p.buttons a { 
+                background: #FA9C0F; padding: 4px 10px 4px 12px; 
+                margin-right: 6px; font-size: 1em; color:#fff; text-decoration: none; 
+                line-height: 1em;outline: none; border: 1px solid #CF7E00
+        } 
+        p.buttons a:hover {background: #FFBA4F} 
+	--></style>
+</head>
+<body>
+<table class="mtbl">
+<tr>
+    <td class="leftcol">
+		<div class="nav">
+			<h2>Magic Thumb&trade;</h2>
+			<ul>
+                <li><a class="active" href="index.html">Overview</a></li>
+                <li><a  href="parameters.html">Parameters</a></li>
+                <li><a  href="wizard.html">Settings wizard</a></li>
+			</ul>
+		</div>
+		<div class="nav">
+			<h2>Examples</h2>
+			<ul>
+	            <li><a  href="example1.html">Default</a></li>
+	            <li><a  href="example2.html">Multiple images</a></li>
+	            <li><a  href="example3.html">Caption</a></li>
+	            <li><a  href="example4.html">Position</a></li>
+	            <li><a  href="example5.html">Background</a></li>
+	            <li><a  href="example6.html">Effects</a></li>
+	            <li><a  href="example7.html">Image size</a></li>
+	            <li><a  href="example8.html">Buttons</a></li>
+                <li><a  href="example9.html">Slideshow</a></li>
+	            <li><a  href="example10.html">Initialize on click</a></li>
+	            <li><a  href="example11.html">Link on image</a></li>
+	            <li><a  href="example12.html">Thumbnail effects</a></li>
+	            <li><a  href="example13.html">Global options</a></li>
+	            <li><a  href="example14.html">Magic Thumb&trade; API</a></li>
+			</ul>
+		</div>
+	</td>
+	<td class="rTd">
+		<h1>Magic Thumb&trade;</h1>
+		<p class="buttons"><a href="http://www.magictoolbox.com/buy/magicthumb/">Buy now&nbsp;&nbsp;&pound;25</a> <a href="http://www.magictoolbox.com/support/">Get support</a></p>
+	
+	    
+
+<p>Magic Thumb&trade; is a popular way to enlarge images. <a href="example1.html">Try it now!</a></p>
+<p>There are more than 30 ways to customise the tool for your website.</p>
+
+<h2>What's new in Magic Thumb&trade; 2.0?</h2>
+
+<ul>
+    <li>Five enlargement effects  (<a href="example6.html">example</a>)</li>
+    <li>Automatically fit to enlarged image screen (<a href="example7.html">example</a>)</li>
+    <li>Multiple images with thumbnails (<a href="example2.html">example</a>)</li>
+    <li>Place the enlarged image wherever you like (<a href="example4.html">example</a>)</li>
+    <li>Move between images in a slideshow style (<a href="example9.html">example</a>)</li>
+    <li>Always visible close button (<a href="example8.html">example</a>)</li>
+    <li>Option to download the large image on click  (<a href="example10.html">example</a>)</li>
+    <li>Position the text to left, right or bottom (<a href="example3.html">example</a>)</li>
+    <li>Position the buttons in any corner  (<a href="example8.html">example</a>)</li>
+    <li>Choose which buttons to show (<a href="example8.html">example</a>)</li>
+    <li>Group images together into a set (<a href="example9.html">example</a>)</li>
+    <li>Link enlarged image to a URL (<a href="example11.html">example</a>)</li>
+    <li>Give different options to each image (<a href="example5.html">example</a>)</li>
+    <li>New API functions (<a href="example14.html">example</a>)</li>
+</ul>
+
+
+
+        
+        <div id="_code_">
+		
+        </div>
+	</td>
+</tr></table></body></html>

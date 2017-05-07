@@ -1,0 +1,133 @@
+.cycle {
+	padding:4px;
+	position:relative;
+	width:430px;
+	height:260px;
+	overflow:hidden;
+	border:1px solid #CCC;
+	text-align:left;
+}
+.cycle h3 {
+	/* FF hack */	
+	top:200px;
+
+	/* IE7 hack */	
+	*top:215px;
+
+	/* IE6 hack */	
+	_top:215px;
+	
+	/* 所有 */
+	position:absolute;
+	left:20px;
+	width:284px;
+	height:20px;
+	z-index:2;
+	text-align:left;
+}
+.cycle h3 a {
+	font:bold 14px Tahoma;
+	color:#FFFFFF;
+	line-height:20px;
+}
+.cycle h3 a:hover {
+	color:#F20000;
+}
+.cycle p {
+	/* FF hack */	
+	top:225px;
+
+	/* IE7 hack */	
+	*top:235px;
+
+	/* IE6 hack */	
+	_top:235px;
+	
+	/* 所有 */
+	position:absolute;
+	left:20px;
+	width:284px;
+	height:20px;
+	font:12px Tahoma;
+	color:#FFF;
+	line-height:20px;
+	z-index:2;
+	text-align:left;
+}
+
+.cycle p a {
+	font:12px Tahoma;
+	color:#FFF;
+	line-height:20px;
+}
+.cycle p a:hover {
+	color:#F20000;
+}
+.cycle ul {
+	margin:0 auto;
+	padding:0;
+	list-style:none;
+}
+.cycle ul li {
+	float:right;
+	width:86px;
+	height:65px;
+	line-height:65px;
+	text-align:center;
+	margin-left:1px;
+}
+.cycle ul li a{
+	display:block;
+	width:15px;
+	height:50px;
+}
+.cycle ul li a:hover, .cycle ul li a.sel {
+	color:#F20000;
+}
+.cycle .smallpic {
+	margin-top:4px;
+	margin-right:4px;
+	position:absolute;
+	right:0;
+	top:0;
+	width:82px;
+	height:260px;
+	vertical-align:middle;
+}
+.cycle .smallpic li {
+	padding:0 0 0 5px;
+	width:77px;
+	height:65px;
+	text-align:center;
+	background-position:-2px;
+}
+.cycle .smallpic a img {
+	/* FF hack */	
+	margin-left:5px;
+
+	/* IE7 hack */	
+	*margin-left:-26px;
+
+	/* IE6 hack */	
+	_margin-left:0px;
+	
+	/* 所有 */
+	margin-top:5px;
+	width:65px;
+	height:55px;
+}
+
+.cycle #bg {
+	margin-left:4px;
+	margin-bottom:4px;
+	position:absolute;
+	left:0px;
+	bottom:0px;
+	width:345px;
+	height:60px;
+	background:#000000;
+	filter:alpha(opacity=39);
+	-moz-opacity:0.39;
+	opacity:0.39;
+	text-align:left;
+}

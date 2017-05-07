@@ -1,0 +1,95 @@
+/*
+
+
+   Magic Magnify Plus v2.3.4 
+   Copyright 2012 Magic Toolbox
+   Buy a license: www.magictoolbox.com/MagicMagnifyPlus/
+   License agreement: http://www.magictoolbox.com/license/
+
+
+*/
+
+/* Style of the small image link */
+.MagicThumb, .MagicThumb:hover {
+cursor: url(graphics/zoomin.cur), pointer;
+outline: 0 !important;
+}
+
+/* Style of the small image when the large image is expanded */ 
+.MagicThumb-expanded-thumbnail {
+cursor: default;
+}
+
+/* Style of the span inside the small image link */
+.MagicThumb span {
+display: none !important;
+}
+
+/* Style of the small image */
+.MagicThumb img {
+border: 0;
+outline: 0;
+}
+
+/* Style of the expanded image */
+.MagicThumb-expanded {
+cursor: url(graphics/zoomout.cur), pointer;
+background: transparent;
+border: 1px solid #ccc;
+outline: 0;
+padding: 0;
+}
+
+/* Style of the caption for the expanded image */
+.MagicThumb-caption {
+color: #333;
+font: normal 10pt Verdana, Helvetica;
+background: #ccc;
+text-align: left;
+padding: 8px;
+border: 0 !important;
+outline: 0 !important;
+}
+
+/* Style of the close/next/previous buttons */
+.MagicThumb-buttons {
+background: transparent url(graphics/buttons1.png) no-repeat 0 0;
+height: 24px;
+display: block;
+}
+
+.MagicThumb-buttons a {
+width: 24px;
+height: 24px;
+margin: 0px 1px !important;
+overflow: hidden;
+}
+
+/* Style of the loading message box */
+.MagicThumb-loader {
+font: normal 12pt sans-serif;
+border: 1px solid #000;
+background: #fff url(graphics/loader.gif) no-repeat 2px 50%;
+padding: 2px 2px 2px 22px;
+margin: 0;
+text-decoration: none;
+text-align: left;
+}
+
+/* Style of the small images which swap the main image */
+.MagicThumb-swap {
+}
+
+/* Style to hide caption on page. Only needed for #id method. */
+.MagicThumb-external-caption {
+display: none;
+}
+
+/* Style of the span inside the small image link */
+.MagicMagnifyPlus span {
+display: none !important;
+}
+
+.MagicMagnifyPlus img {
+display: block;
+}

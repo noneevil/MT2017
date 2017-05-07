@@ -1,0 +1,11 @@
+#fancymenu { background: url("images/bg.gif") no-repeat 50% top; margin: 10px 0px; padding: 15px; width: 421px; height: 29px; overflow: hidden; position: relative; }
+
+#fancymenu ul { margin: 0px; padding: 0px; }
+#fancymenu ul li { float: left; list-style-type: none; }
+#fancymenu ul li a { height: 30px; text-indent: -500em; overflow: hidden; float: left; display: block; position: relative; z-index: 10; }
+#menu_home a { background: url("images/menu_home.png") no-repeat center 50%; width: 59px; }
+#menu_plantatree a { background: url("images/menu_plantatree.png") no-repeat center 50%; width: 119px; }
+#menu_travel a { background: url("images/menu_travel.png") no-repeat center 50%; width: 70px; }
+#menu_rideanelephant a { background: url("images/menu_rideanelephant.png") no-repeat center 50%; width: 142px; }
+#fancymenu li.background { background: url("images/bg_menu_right.gif") no-repeat right top; visibility: hidden; position: absolute; z-index: 8; }
+#fancymenu .background .left { background: url("images/bg_menu.gif") no-repeat left top; height: 30px; margin-right: 9px; }
