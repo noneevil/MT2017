@@ -1,0 +1,79 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<configuration>
+  <!--
+    参见:
+    http://blog.csdn.net/zhoufoxcn/article/details/2220533
+    http://logging.apache.org/log4net/release/sdk/index.html 官方SDK
+  -->
+  <configSections>
+    <section name="log4net" type="log4net.Config.Log4NetConfigurationSectionHandler" />
+  </configSections>
+  
+  <log4net debug="true">
+    <root>
+      <!--文件形式记录日志-->
+      <appender-ref ref="LogFileAppender" />
+      <!--邮件形式记录日志-->
+      <appender-ref ref="SmtpAppender" />
+      <!--控制台控制显示日志-->
+      <!--<appender-ref ref="ConsoleAppender" />-->
+      <!--Windows事件日志-->
+      <!--<appender-ref ref="EventLogAppender" />-->
+      <!--如果不启用相应的日志记录，可以通过这种方式注释掉-->
+      <!--<appender-ref ref="AdoNetAppender_Access" />-->
+    </root>
+
+    <!--定义输出到文件中-->
+    <appender name="LogFileAppender" type="log4net.Appender.FileAppender">
+      <!--定义文件存放位置-->
+      <file value="LogFile/Log.log" />
+      <appendToFile value="true" />
+      <rollingStyle value="Size" />
+      <!--备份log文件的个数最多10个-->
+      <maxSizeRollBackups value="10" />
+      <!--每个log文件最大是2M，如果超过2M将重新创建一个新的log文件，并将原来的log文件备份。-->
+      <maximumFileSize value="5MB" />
+      <staticLogFileName value="true" />
+      <lockingModel type="log4net.Appender.FileAppender+MinimalLock" />
+      <layout type="log4net.Layout.PatternLayout">
+        <!--<param name="Header" value=""/>
+        <param name="Footer" value=""/>-->
+        <conversionPattern value="事件时间：%date %n日志级别：%-5level %n日志内容：%message%n%exception%n" />
+      </layout>
+    </appender>
+
+    <!--定义事件发送到邮箱中-->
+    <appender name="SmtpAppender" type="log4net.Appender.SmtpAppender">
+      <authentication value="Basic" />
+      <to value="webmaster@wieui.com" />
+      <from value="admin@wieui.com" />
+      <subject value="网站异常" />
+      <username value="admin@wieui.com" />
+      <password value="e9ebbe9942cfaf13ed26183434445d39" />
+      <smtphost value="smtp.wieui.com" />
+      <bufferSize value="512" />
+      <lossy value="true" />
+      <!--<enablessl value="true" />-->
+      <evaluator type="log4net.Core.LevelEvaluator">
+        <threshold value="ALL"/>
+      </evaluator>
+      <layout type="log4net.Layout.PatternLayout">
+        <conversionPattern value="事件时间：%date %n日志级别：%-5level %n日志内容：%message%n%exception%n" />
+      </layout>
+    </appender>
+
+    <!--定义输出到控制台命令行中-->
+    <appender name="ConsoleAppender" type="log4net.Appender.ConsoleAppender">
+      <layout type="log4net.Layout.PatternLayout">
+        <conversionPattern value="%date [%thread] %-5level %logger [%property{NDC}] - %message%newline" />
+      </layout>
+    </appender>
+
+    <!--定义输出到windows事件中-->
+    <appender name="EventLogAppender" type="log4net.Appender.EventLogAppender">
+      <layout type="log4net.Layout.PatternLayout">
+        <conversionPattern value="%date [%thread] %-5level %logger [%property{NDC}] - %message%newline" />
+      </layout>
+    </appender>
+  </log4net>
+</configuration>

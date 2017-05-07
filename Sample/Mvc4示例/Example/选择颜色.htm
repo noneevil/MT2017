@@ -1,0 +1,17 @@
+<div id="ColorPicker">
+    &nbsp;</div>
+<script language="javascript">
+    function pickColor() {
+        var sColor = dlgHelper.ChooseColorDlg();
+        ColorVal = sColor.toString(16);
+        colorvalue.value = (ColorVal.length == 6) ? "#" + ColorVal.toUpperCase() : "#" + (new Array(6 - ColorVal.length + 1).join("0")) + ColorVal.toUpperCase();
+        clipboardData.setData('text', colorvalue.value);
+        colorvalue.focus();
+        colorvalue.select();
+    }
+    function loadPicker() {
+        var html = '<OBJECT id=dlgHelper CLASSID="clsid:3050f819-98b5-11cf-bb82-00aa00bdce0b" WIDTH="0px" HEIGHT="0px"></OBJECT><input type="button" value="Ñ¡ÔñÑÕÉ«" onClick="pickColor()" class="input"><input type="text" name="colorvalue">';
+        document.getElementById("ColorPicker").innerHTML = html;
+    }
+    loadPicker();
+</script>

@@ -1,0 +1,372 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+	<title>Magic Thumb&trade; parameters</title>
+	
+    <!--[if IE]>
+    <style type="text/css">
+    .MagicThumb, .MagicThumb:hover { cursor: url(magicthumb/graphics/zoomin.cur), pointer; }
+    .MagicThumb-expanded { cursor: url(magicthumb/graphics/zoomout.cur), pointer; }
+    </style>
+    <![endif]--> 
+	<style type="text/css"><!--
+		body {background:#fff; margin:0; padding:0; font-size: 100%;}
+		body, td {font-family:"Lucida Grande", Tahoma, Arial, Verdana, sans-serif; line-height: 1.5em;}
+		h1 {font-size:1.5em; font-weight:normal; color:#555;}
+		h2 {font-size:1.3em; font-weight:normal; color:#555;}
+		h2.caption {margin: 2.5em 0 0;}
+		h4 {font-size: 1em; font-weight:normal; color:#555;}
+		p { font-size: 0.9em; }
+		a {outline: none;}
+		table {margin:0; padding:0; border-collapse: collapse;}
+		th {background:#CCC; text-align: left; padding: 2px 4px; font-weight: normal;}
+		td {vertical-align: top; border: 1px;}
+		img {border:0;}
+		.leftcol {background:#EDF6CA; padding: 20px; height: 100%}
+		.nav {width: 180px;}
+		.nav h2 {background: #658F11; margin:10px 0 0 0; padding: 3px 3px 5px 10px; font-size: 0.9em; color:#FFF;}
+		.nav ul {list-style-type: none; padding: 0 0 10px 0; margin:0 0 20px; background:#99CC33;}
+		.nav li a {text-decoration: none; display: block; padding: 3px 3px 3px 10px; margin: 0; font-size: 0.9em; color:#FFF; zoom: 1;}
+		.nav li a:hover {background: #B5DF61;}
+		.active {font-weight: bold;}
+		.arrow {text-align: right;}
+		.menuTd a {color:#fff; font-weight:bold;}
+		.code {font-size:12px; line-height:18px; margin:10px 0; display:block; padding:3px; border:1px solid #aaa;}
+		span.r {color:red;}
+		span.g {color:green;}
+		span.b {color:blue;}
+		table.tbl {background:#aaa; margin-bottom: 20px; font-size: 0.9em; border: 1px solid #999;}
+		caption {text-align: left; padding: 4px 12px; background: #999; color: #fff; font-size: 1.1em; margin: 0 0 0 -1px;}
+		caption a {color: #fff; padding: 2px;}
+		caption a:hover {background:#FFF; color: #999;}
+		.tbl th {background:#eee; padding:4px 8px 4px 16px;}
+        .tbl td {background:#fff; padding:4px 8px 4px 16px; vertical-align:top; border-bottom: 1px #999 solid;}
+		.tbl .tr1 td {background:#fff;}
+		.tbl .tr2 td {background:#f2f2f2;}
+		.mtbl {width:100%; height:100%;}
+		.rTd {padding:20px; width:100%;}
+		div.exmpl {margin:0 0 5px 0; font-weight:bold;}
+		.html4strict {border:1px solid #AAAAAA; display:block; font-size:12px; line-height:18px; margin:10px 0pt; padding:3px;}
+		.html4strict .de1, .html4strict .de2 {font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;}
+		.html4strict {font-family:monospace;}
+		.html4strict .imp {font-weight: bold; color: red;}
+		.html4strict li, .html4strict .li1 {font-weight: normal; vertical-align:top;}
+		.html4strict .ln {width:1px; text-align:right; margin:0; padding:0 2px; vertical-align:top;}
+		.html4strict .li2 {font-weight: bold; vertical-align:top;}
+		.html4strict .kw2 {color: #000000; font-weight: bold;}
+		.html4strict .kw3 {color: #000066;}
+		.html4strict .es0 {color: #000099; font-weight: bold;}
+		.html4strict .br0 {color: #66cc66;}
+		.html4strict .sy0 {color: #66cc66;}
+		.html4strict .st0 {color: #ff0000;}
+		.html4strict .nu0 {color: #cc66cc;}
+		.html4strict .sc-1 {color: #808080; font-style: italic;}
+		.html4strict .sc0 {color: #00bbdd;}
+		.html4strict .sc1 {color: #ddbb00;}
+		.html4strict .sc2 {color: #009900;}
+		.html4strict .ln-xtra, .html4strict li.ln-xtra, .html4strict div.ln-xtra {background-color: #ffc;}
+		.html4strict span.xtra {display:block;}
+
+        p.buttons {float: right; margin: -40px 0px 10px 0} 
+        p.buttons a { 
+                background: #FA9C0F; padding: 4px 10px 4px 12px; 
+                margin-right: 6px; font-size: 1em; color:#fff; text-decoration: none; 
+                line-height: 1em;outline: none; border: 1px solid #CF7E00
+        } 
+        p.buttons a:hover {background: #FFBA4F} 
+	--></style>
+</head>
+<body>
+<table class="mtbl">
+<tr>
+    <td class="leftcol">
+		<div class="nav">
+			<h2>Magic Thumb&trade;</h2>
+			<ul>
+                <li><a  href="index.html">Overview</a></li>
+                <li><a class="active" href="parameters.html">Parameters</a></li>
+                <li><a  href="wizard.html">Settings wizard</a></li>
+			</ul>
+		</div>
+		<div class="nav">
+			<h2>Examples</h2>
+			<ul>
+	            <li><a  href="example1.html">Default</a></li>
+	            <li><a  href="example2.html">Multiple images</a></li>
+	            <li><a  href="example3.html">Caption</a></li>
+	            <li><a  href="example4.html">Position</a></li>
+	            <li><a  href="example5.html">Background</a></li>
+	            <li><a  href="example6.html">Effects</a></li>
+	            <li><a  href="example7.html">Image size</a></li>
+	            <li><a  href="example8.html">Buttons</a></li>
+                <li><a  href="example9.html">Slideshow</a></li>
+	            <li><a  href="example10.html">Initialize on click</a></li>
+	            <li><a  href="example11.html">Link on image</a></li>
+	            <li><a  href="example12.html">Thumbnail effects</a></li>
+	            <li><a  href="example13.html">Global options</a></li>
+	            <li><a  href="example14.html">Magic Thumb&trade; API</a></li>
+			</ul>
+		</div>
+	</td>
+	<td class="rTd">
+		<h1>Magic Thumb&trade; parameters</h1>
+		<p class="buttons"><a href="http://www.magictoolbox.com/buy/magicthumb/">Buy now&nbsp;&nbsp;&pound;25</a> <a href="http://www.magictoolbox.com/support/">Get support</a></p>
+	
+	    
+
+<p>Use the <a href="wizard.html">settings wizard</a> to try out the many customizations.</p>
+
+<table class="tbl" cellpadding="0" cellspacing="1">
+    <caption>
+        Parameters for Magic Thumb&trade;
+    </caption>
+<tr> 
+	<th class="tdmedium">Parameter</th> 
+	<th>Default</th> 
+	<th>Options</th> 
+	<th class="tdwide">Description</th>
+</tr>
+<tr> 
+	<td><strong>expand-speed</strong></td> 
+	<td>500</td> 
+	<td>0-10000</td> 
+	<td>Expand duration (<abbr title="milliseconds" lang="en">ms</abbr>)</td> 
+</tr> 
+<tr> 
+	<td><strong>restore-speed</strong></td> 
+	<td></td> 
+	<td>0-10000</td> 
+	<td>Restore duration (<abbr title="milliseconds" lang="en">ms</abbr>), optional</td> 
+</tr> 
+<tr> 
+	<td><strong>expand-effect</strong></td> 
+	<td>linear</td> 
+	<td>linear / cubic / back / elastic / bounce</td> 
+	<td>Effect for expanding image <b style="color:red;">new in 2.0</b></td> 
+</tr> 
+<tr> 
+	<td><strong>restore-effect</strong></td> 
+	<td>auto</td> 
+	<td>auto / linear / cubic / back / elastic / bounce</td> 
+	<td>Effect for restoring image <b style="color:red;">new in 2.0</b></td> 
+</tr> 
+<tr> 
+	<td><strong>expand-trigger</strong></td> 
+	<td>click</td> 
+	<td>click / mouseover</td> 
+	<td>Trigger for the enlarge effect</td> 
+</tr> 
+<tr> 
+	<td><strong>expand-trigger-delay</strong></td> 
+	<td>500</td> 
+	<td>0-1000</td> 
+	<td>Delay before mouseover triggers enlargement</td> 
+</tr> 
+<tr> 
+	<td><strong>restore-trigger</strong></td> 
+	<td>auto</td> 
+	<td>auto / click / mouseout</td> 
+	<td>Trigger to restore image to its small state <b style="color:red;">new in 2.0</b></td> 
+</tr> 
+<tr> 
+	<td><strong>expand-align</strong></td> 
+	<td>screen</td> 
+	<td>screen / image</td> 
+	<td>Align image relative to screen or small image</td> 
+</tr> 
+<tr> 
+	<td><strong>expand-position</strong></td> 
+	<td>center</td> 
+	<td>center / <em>coordinates</em><br /><em>examples:</em> top:0, right:25 or bottom:100, left:100</td> 
+	<td>Precise position of enlarged image (px) <b style="color:red;">new in 2.0</b></td> 
+</tr> 
+<tr> 
+	<td><strong>image-size</strong></td> 
+	<td>fit-screen</td> 
+	<td>fit-screen / original</td> 
+	<td>Size of the enlarged image <b style="color:red;">new in 2.0</b></td> 
+</tr> 
+<tr> 
+	<td><strong>keep-thumbnail</strong></td> 
+	<td>false</td> 
+	<td>true / false</td> 
+	<td>Show/hide thumbnail when image enlarged</td> 
+</tr> 
+<tr> 
+	<td><strong>click-to-initialize</strong></td> 
+	<td>false</td> 
+	<td>true / false</td> 
+	<td>Click to fetch large image <b style="color:red;">new in 2.0</b></td> 
+</tr> 
+<tr> 
+	<td><strong>background-color</strong></td> 
+	<td>#000000</td> 
+	<td></td> 
+	<td>Background color behind large image</td> 
+</tr> 
+<tr> 
+	<td><strong>background-opacity</strong></td> 
+	<td>0</td> 
+	<td>0-100</td> 
+	<td>Opacity of the background, 0 = disabled</td> 
+</tr> 
+<tr> 
+	<td><strong>background-speed</strong></td> 
+	<td>200</td> 
+	<td>0-10000</td> 
+	<td>Duration of background fade (<abbr title="milliseconds" lang="en">ms</abbr>)</td> 
+</tr> 
+<tr> 
+	<td><strong>caption-source</strong></td> 
+	<td>span</td> 
+	<td>span / img:alt / img:title / a:title / #id </td> 
+	<td>Source of caption text <b style="color:red;">improved in 2.0</b></td> 
+</tr> 
+<tr> 
+	<td><strong>caption-speed</strong></td> 
+	<td>250</td> 
+	<td>0-10000</td> 
+	<td>Speed of caption slide effect (<abbr title="milliseconds" lang="en">ms</abbr>)</td> 
+</tr> 
+<tr> 
+	<td><strong>caption-position</strong></td> 
+	<td>bottom</td> 
+	<td>bottom / right / left</td> 
+	<td>Where to position the caption <b style="color:red;">new in 2.0</b></td> 
+</tr> 
+<tr> 
+	<td><strong>caption-height</strong></td> 
+	<td>300</td> 
+	<td>&nbsp;</td> 
+	<td>Max height of bottom caption (px) <b style="color:red;">new in 2.0</b></td> 
+</tr> 
+<tr> 
+	<td><strong>caption-width</strong></td> 
+	<td>300</td> 
+	<td>&nbsp;</td> 
+	<td>Max width of left/right caption (px) <b style="color:red;">new in 2.0</b></td> 
+</tr> 
+<tr> 
+	<td><strong>buttons</strong></td> 
+	<td>show</td> 
+	<td>show / hide / autohide</td> 
+	<td>Whether or not to show buttons <b style="color:red;">improved in 2.0</b></td> 
+</tr> 
+<tr> 
+	<td><strong>buttons-position</strong></td> 
+	<td>auto</td> 
+	<td>auto / top left / top right / bottom left / bottom right</td> 
+	<td>Corner position of buttons <b style="color:red;">improved in 2.0</b></td> 
+</tr> 
+<tr> 
+	<td><strong>buttons-display</strong></td> 
+	<td>previous, next, close</td> 
+	<td>previous / next / close</td> 
+	<td>Show all three buttons or just one or two</td> 
+</tr> 
+<tr> 
+    <td><strong>group</strong></td> 
+    <td>&nbsp;</td> 
+    <td><em>any name</em></td> 
+    <td>Group images together into a set <b style="color:red;">new in 2.0</b></td> 
+</tr> 
+<tr> 
+	<td><strong>slideshow-effect</strong></td> 
+	<td>dissolve</td> 
+	<td>dissolve / fade / expand</td> 
+	<td>Slideshow effect to move between large images <b style="color:red;">new in 2.0</b></td> 
+</tr> 
+<tr> 
+	<td><strong>slideshow-speed</strong></td> 
+	<td>500</td> 
+	<td>0-10000</td> 
+	<td>Speed of slideshow effect (<abbr title="milliseconds" lang="en">ms</abbr>) <b style="color:red;">new in 2.0</b></td> 
+</tr> 
+<tr> 
+	<td><strong>slideshow-loop</strong></td> 
+	<td>true</td> 
+	<td>true / false</td> 
+	<td>Restart slideshow after last image <b style="color:red;">new in 2.0</b></td> 
+</tr> 
+<tr> 
+	<td><strong>link</strong></td> 
+	<td>&nbsp;</td> 
+	<td>http://www.example.com</td> 
+	<td>Link enlarged image to a URL <b style="color:red;">new in 2.0</b></td> 
+</tr> 
+<tr> 
+	<td><strong>link-target</strong></td> 
+	<td>_self</td> 
+	<td>_blank / _self / _parent / _top</td> 
+	<td>Open link in browser window/frame <b style="color:red;">new in 2.0</b></td> 
+</tr> 
+<tr> 
+	<td><strong>thumb-id</strong></td> 
+	<td>&nbsp;</td> 
+	<td><em>id of main image</em></td> 
+	<td>Choose related images for multiple image swapping <b style="color:red;">new in 2.0</b></td> 
+</tr> 
+<tr> 
+    <td><strong>swap-image</strong></td> 
+    <td>click</td> 
+    <td>click / mouseover</td> 
+    <td>Method to switch between multiple images <b style="color:red;">new in 2.0</b></td> 
+</tr> 
+<tr> 
+    <td><strong>swap-image-delay</strong></td> 
+    <td>100</td> 
+    <td>0-1000</td> 
+    <td>Delay before switching images (<abbr title="milliseconds" lang="en">ms</abbr>) <b style="color:red;">new in 2.0</b></td> 
+</tr> 
+<tr> 
+    <td><strong>show-loading</strong></td> 
+    <td>true</td> 
+    <td>true / false</td> 
+    <td>Show or not loading box</td> 
+</tr> 
+<tr> 
+    <td><strong>loading-msg</strong></td> 
+    <td>Loading...</td> 
+    <td></td> 
+    <td>Text of the loading message</td> 
+</tr> 
+<tr> 
+    <td><strong>loading-opacity</strong></td> 
+    <td>75</td> 
+    <td>0-100</td> 
+    <td>Opacity of the loading box</td> 
+</tr> 
+<tr> 
+	<td><strong>keyboard</strong></td> 
+	<td>true</td> 
+	<td>true / false</td> 
+	<td>Ability to use keyboard shortcuts</td> 
+</tr> 
+<tr> 
+	<td><strong>keyboard-ctrl</strong></td> 
+	<td>false</td> 
+	<td>true / false</td> 
+	<td>Require the Ctrl key to permit shortcuts</td> 
+</tr> 
+<tr> 
+    <td><strong>css-class</strong></td> 
+    <td></td> 
+    <td><em>any name</em></td> 
+    <td>Apply different styles to different images</td> 
+</tr> 
+<tr> 
+	<td><strong>z-index</strong></td> 
+	<td>10001</td> 
+	<td></td> 
+	<td>The z-index for the enlarged image</td> 
+</tr> 
+</table> 
+
+
+
+        
+        <div id="_code_">
+		
+        </div>
+	</td>
+</tr></table></body></html>

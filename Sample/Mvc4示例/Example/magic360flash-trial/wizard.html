@@ -1,0 +1,435 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<title>Settings wizard</title>
+	
+	
+        <!-- link to magic360flash.js file -->
+        <script src="magic360flash/magic360flash.js" type="text/javascript"></script>
+        <script type="text/javascript">
+        	Magic360Flash.options = {
+        		'spin' 					:'hover',
+        		'autostart' 			:'false',
+        		'pause-on-click' 		:'true',
+        		'smoothing'				:10,
+        		'blur' 					:10,
+        		'speed' 				:10,
+        		'border-color'			:'#CCCCCC',
+        		'border-width'			:0,
+        		'progress-color'		:'#CCCCCC',
+        		'progress-height'		:10,
+        		'magnifier'				:'circle',
+        		'magnifier-size'		:'66%',
+        		'magnifier-size-x'		:'66%',
+        		'magnifier-size-y'		:'66%',
+        		'magnifier-effect'		:'fade',
+        		'magnifier-filter' 		:'glow',
+        		'magnifier-time' 		:30,
+        		'magnifier-simulate'	:'',
+        		'magnifier-border-color':'#CCCCCC',
+        		'magnifier-border-width':1
+        	};
+        	var Magic360FlashText = {
+        		'spin' 					:'Method for spinning the image (drag|click|hover|none)',
+        		'autostart' 			:'Automatically start spin on page load (true|false)',
+        		'pause-on-click' 		:'Pause autostarted spin on click (true|false)',
+        		'smoothing'				:"Smoothly stop the image spinning (Numeric, 0=off)",
+        		'blur' 					:'Motion blur effect (Numeric)',
+        		'speed' 				:'Speed of spin (Numeric)',
+        		'border-color'			:'Outside border color',
+        		'border-width'			:'Outside border width (px)',
+        		'progress-color'		:'Color of the loading bar',
+        		'progress-height'		:"Height of the loading bar (0=off)",
+        		'magnifier'				:'Magnifier shape (circle|square)',
+        		'magnifier-size'		:'Magnifier size (% of small image width or fixed size in px)',
+        		'magnifier-size-x'		:'Magnifier width (% of small image width or fixed size in px)',
+        		'magnifier-size-y'		:'Magnifier height (% of small image width or fixed size in px)',
+        		'magnifier-effect'		:'Magnifier appearing effect (none|pulse|fade)',
+        		'magnifier-filter' 		:'Magnifier effect (glow|shadow)',
+        		'magnifier-time' 		:'Duration of magnifier to fade-in effect',
+        		'magnifier-simulate'	:"Create the zoom by scaling up the small images e.g. 200%",
+        		'magnifier-border-color':'Magnifier border color',
+        		'magnifier-border-width':'Magnifier border thickness (px)'
+        	};
+        	var m360length, Magic360FlashDefault = new Array();
+        	function setOptions() {
+        		m360length = 0;
+        		for(var i in Magic360Flash.options) {
+            		Magic360FlashDefault[i] = Magic360Flash.options[i];
+        			m360length++;
+        			var elm = document.optForm;
+        			if (elm[i]) {
+        				switch(elm[i].tagName) {
+        					case "INPUT" : 
+        						elm[i].value = Magic360Flash.options[i];
+        						break;
+        					case "SELECT" : 
+        						for(var j=0;j<elm[i].options.length;j++) {
+        							if (elm[i].options[j] && elm[i].options[j].value==Magic360Flash.options[i]) {
+        								elm[i].selectedIndex = j;
+        							}
+        						}
+        					break;				
+        				}
+        				var acronyms = elm[i].parentNode.parentNode.firstChild.getElementsByTagName('ACRONYM');
+        				if (acronyms[0]) {
+        					acronyms[0].title = Magic360FlashText[i];
+        				}
+        			}
+        		}
+        		printOptions(document.getElementById('printOptions'));
+        	}
+        	function refreshOptions() {
+        		Magic360Flash.stop();
+        		for(var i in Magic360Flash.options) {
+        			var elm = document.optForm;
+        			if (elm[i])  {
+        				switch(elm[i].tagName) {
+        					case "INPUT" : 
+        						Magic360Flash.options[i] = elm[i].value;
+        						break;
+        					case "SELECT" : 
+        						Magic360Flash.options[i] = elm[i].options[elm[i].selectedIndex].value;
+        					break;				
+        				}			
+        			}
+        		}
+        		printOptions(document.getElementById('printOptions'));
+        		Magic360Flash.start();
+        	}
+function printOptions(elm) {
+	var str = '';//'&lt;script type="text/javascript"&gt;<br/>';
+	//str += 'var Magic360Flash.options = { <br/>';
+	var j = 0;
+	for(var i in Magic360Flash.options) {
+		
+		var isNum = Magic360Flash.options[i]==parseInt(Magic360Flash.options[i]);
+		var quote_s = (isNum)?"":"<span style=\"color: #ff0000;\">'";
+		var quote_f = (isNum)?"":"'</span>";
+		if (Magic360FlashDefault[i]+''!=Magic360Flash.options[i]+'' && i!='delimiter' || i=='delimiter' && document.getElementById('html-separator').value!=Magic360FlashDefault[i]) {
+			if (str!='') {
+				str += ",<br/>";
+			}
+			str += "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class='comment'>//"+Magic360FlashText[i].replace(/\(.*?\)/,"")+"</span><br/>";
+			str += "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>'"+i+"'</b>&nbsp;&nbsp;<span style=\"color: rgb(102, 204, 102);\">:</span>&nbsp;&nbsp;"+quote_s+((i=='delimiter')?document.getElementById('html-separator').value:Magic360Flash.options[i])+quote_f;
+			//str += "<br/>";
+		}
+		j++;
+	}
+	//str += "&lt;\/script&gt;";
+	var html_number = parseInt(document.getElementById('html-number').value);
+	if (html_number) {
+		var str_small = '';
+		var str_big = '';
+		var small_img_src = document.getElementById('html-small-folder').value+(document.getElementById('html-format-f1').checked?'0':'')+'1.'+document.getElementById('html-extension').value;
+		for(var i=1;i<=html_number;i++) {
+			var n = i;
+			if (document.getElementById('html-format-f1').checked && i<10) {
+				n = '0'+i;
+			}
+			var add_separator = (i<html_number)?'*':''
+			str_big += document.getElementById('html-big-folder').value+n+'.'+document.getElementById('html-extension').value+add_separator;
+			str_small += document.getElementById('html-small-folder').value+n+'.'+document.getElementById('html-extension').value+add_separator;
+		}
+		document.getElementById('html3').innerHTML = '&quot;'+small_img_src+'&quot;';
+		document.getElementById('html2').innerHTML = '&quot;'+str_small+'&quot;';
+		document.getElementById('html1').innerHTML = '&quot;'+str_big+'&quot;';
+	}
+	
+	if (str!='') {
+		str = '<div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;"><span style="color: #009900;">&lt;<span style="color: #000000; font-weight: bold;">script</span> <span style="color: #000066;">type</span><span style="color: #66cc66;">=</span><span style="color: #ff0000;">&quot;text/javascript&quot;</span>&gt;</span></div><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;">Magic360Flash.options = {</div>'+str;
+		str += '<div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;">}</div>';
+		str += '<div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;"><span style="color: #009900;">&lt;<span style="color: #66cc66;">/</span><span style="color: #000000; font-weight: bold;">script</span>&gt;</span></div>';
+		elm.innerHTML = str + '<br/>';
+	} else {
+		elm.innerHTML = '<br/>';
+	}
+}
+
+        	function printOptions_(elm) {
+        		var str = '';//'&lt;script type="text/javascript"&gt;<br/>';
+        		//str += 'var Magic360Flash.options = { <br/>';
+        		var j = 0;
+        		for(var i in Magic360Flash.options) {
+        			var quote_s = (Magic360Flash.options[i]==parseInt(Magic360Flash.options[i]))?"":"<span style=\"color: #ff0000;\">'";
+        			var quote_f = (Magic360Flash.options[i]==parseInt(Magic360Flash.options[i]))?"":"'</span>";
+        			str += "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class='comment'>//"+Magic360FlashText[i]+"</span><br/>";
+        			str += "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>'"+i+"'</b>&nbsp;&nbsp;<span style=\"color: rgb(102, 204, 102);\">:</span>&nbsp;&nbsp;"+quote_s+Magic360Flash.options[i]+quote_f;
+        			if (j<m360length-1) {
+        				str += ",";
+        			}
+        			str += "<br/>";
+        			j++;
+        		}
+        		//str += "&lt;\/script&gt;";
+        		elm.innerHTML = str;
+
+        	}
+        </script>
+        <style type="text/css">
+            td label input { width: auto; }
+        </style>
+		
+
+	<style type="text/css"><!--
+		body {background:#fff; margin:0; padding:0; font-size: 100%;}
+		body, td {font-family:"Lucida Grande", Tahoma, Arial, Verdana, sans-serif; line-height: 1.5em;}
+		h1 {font-size:1.5em; font-weight:normal; color:#555;}
+		h2 {font-size:1.3em; font-weight:normal; color:#555;}
+		h2.caption {margin: 2.5em 0 0;}
+		a {outline: none;}
+		table {margin:0; padding:0; border-collapse: collapse;}
+		th {background:#CCC; text-align: left; padding: 2px 4px; font-weight: normal;}
+		td {vertical-align: top; border: 1px;}
+		img {border:0;}
+		.leftcol {background:#EDF6CA; padding: 20px; height: 100%}
+		.nav {width: 180px;}
+		.nav h2 {background: #658F11; margin:10px 0 0 0; padding: 3px 3px 5px 10px; font-size: 0.9em; color:#FFF;}
+		.nav ul {list-style-type: none; padding: 0 0 10px 0; margin:0 0 20px; background:#99CC33;}
+		.nav li a {text-decoration: none; display: block; padding: 5px 3px 5px 10px; margin: 0; font-size: 0.9em; color:#FFF; zoom: 1; line-height:normal; }
+		.nav li a:hover {background: #B5DF61;}
+		.active {font-weight: bold;}
+		.arrow {text-align: right;}
+		.menuTd a {color:#fff; font-weight:bold;}
+		.code {font-size:12px; line-height:18px; margin:10px 0; display:block; padding:3px; border:1px solid #aaa;}
+		span.r {color:red;}
+		span.g {color:green;}
+		span.b {color:blue;}
+		table.tbl {background:#aaa; margin-bottom: 20px; font-size: 0.9em; border: 1px solid #999;}
+		caption {text-align: left; padding: 4px 12px; background: #999; color: #fff; font-size: 1.1em; margin: 0 0 0 -1px;}
+		caption a {color: #fff; padding: 2px;}
+		caption a:hover {background:#FFF; color: #999;}
+		.tbl th {background:#eee; padding:4px 8px 4px 16px;}
+        .tbl td {background:#fff; padding:4px 8px 4px 16px; vertical-align:top; border-bottom: 1px #999 solid;}
+		.tbl .tr1 td {background:#fff;}
+		.tbl .tr2 td {background:#f2f2f2;}
+		.mtbl {width:100%; height:100%;}
+		.rTd {padding:20px; width:100%;}
+		div.exmpl {margin:0 0 5px 0; font-weight:bold;}
+		.html4strict {border:1px solid #AAAAAA; display:block; font-size:12px; line-height:18px; margin:10px 0pt; padding:3px;}
+		.html4strict .de1, .html4strict .de2 {font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;}
+		.html4strict {font-family:monospace;}
+		.html4strict .imp {font-weight: bold; color: red;}
+		.html4strict li, .html4strict .li1 {font-weight: normal; vertical-align:top;}
+		.html4strict .ln {width:1px; text-align:right; margin:0; padding:0 2px; vertical-align:top;}
+		.html4strict .li2 {font-weight: bold; vertical-align:top;}
+		.html4strict .kw2 {color: #000000; font-weight: bold;}
+		.html4strict .kw3 {color: #000066;}
+		.html4strict .es0 {color: #000099; font-weight: bold;}
+		.html4strict .br0 {color: #66cc66;}
+		.html4strict .sy0 {color: #66cc66;}
+		.html4strict .st0 {color: #ff0000;}
+		.html4strict .nu0 {color: #cc66cc;}
+		.html4strict .sc-1 {color: #808080; font-style: italic;}
+		.html4strict .sc0 {color: #00bbdd;}
+		.html4strict .sc1 {color: #ddbb00;}
+		.html4strict .sc2 {color: #009900;}
+		.html4strict .ln-xtra, .html4strict li.ln-xtra, .html4strict div.ln-xtra {background-color: #ffc;}
+		.html4strict span.xtra {display:block;}
+
+		.tbl tr.odd td { background:#f3f3f3; }
+
+		input { width:100%; }
+		.comment { color:#999;}
+		acronym {border-bottom:1px dotted #666; cursor:help;}
+        .nowrap {white-space: nowrap;}
+
+        p.buttons {float: right; margin: -40px 0px 10px 0} 
+        p.buttons a { 
+                background: #FA9C0F; padding: 4px 10px 4px 12px; 
+                margin-right: 6px; font-size: 1em; color:#fff; text-decoration: none; 
+                line-height: 1em;outline: none; border: 1px solid #CF7E00
+        } 
+        p.buttons a:hover {background: #FFBA4F} 
+
+	--></style>
+</head>
+<body>
+<table class="mtbl">
+<tr>
+    <td class="leftcol">
+		<div class="nav">
+			<h2>Magic 360 Flash™</h2>
+			<ul>
+				<li><a  href="index.html">Overview</a></li>
+				<li><a  href="parameters.html">Parameters</a></li>
+				<li><a class="active" href="wizard.html">Settings wizard</a></li>
+			</ul>
+		</div>
+		<div class="nav">
+			<h2>Examples</h2>
+			<ul>
+				<li><a  href="example1.html">Default</a></li>
+				<li><a  href="example2.html">Spin speed</a></li>
+				<li><a  href="example3.html">Motion blur</a></li>
+				<li><a  href="example4.html">Faster/slow spin</a></li>
+				<li><a  href="example5.html">Spin only</a></li>
+				<li><a  href="example6.html">Drag on click</a></li>
+				<li><a  href="example7.html">Multiple spins</a></li>
+				<li><a  href="example8.html">Large images only</a></li>
+				<li><a  href="example9.html">Simulated magnifier</a></li>
+				<li><a  href="example10.html">Magnifier disabled</a></li>
+			</ul>
+		</div>
+	</td>
+	<td class="rTd">
+		<h1>Settings wizard</h1>
+        <p class="buttons"><a href="http://www.magictoolbox.com/buy/magic360flash/">Buy now&nbsp;&nbsp;&pound;99</a> <a href="http://www.magictoolbox.com/support/">Get support</a></p>
+		
+	    
+
+			<p>Change the options below, then click Apply to see how is looks!</p>
+        
+
+<table cellpadding="10">
+	<tr valign="top">
+		<td>
+
+			<form method="GET" name="optForm" onsubmit="refreshOptions(); return false;" autocomplete = "off">
+				<table class="tbl" cellspacing="1" style="width:100%">
+    				<caption>
+        				Parameters for Magic 360 Flash&#153;
+    				</caption>					
+					<tr><td><acronym>autostart</acronym></td>
+						<td>
+							<select name="autostart">
+								<option value="true">true</option>
+								<option value="false">false</option>
+							</select>
+						</td>
+					</tr>
+					<tr class="odd"><td><acronym>spin</acronym></td>
+						<td>
+							<select name="spin">
+								<option value="drag">drag</option>
+								<option value="none">none</option>
+								<option value="hover">hover</option>
+								<option value="click">click</option>
+							</select>
+						</td>
+					</tr>
+					<tr><td><acronym>pause-on-click</acronym></td>
+						<td>
+							<select name="pause-on-click">
+								<option value="true">true</option>
+								<option value="false">false</option>
+							</select>
+						</td>
+					</tr>
+					<tr class="odd"><td><acronym>smoothing</acronym></td><td><input type="text" name="smoothing"/></td></tr>
+					<tr><td><acronym>blur</acronym></td><td><input type="text" name="blur"/></td></tr>
+					<tr class="odd"><td><acronym>speed</acronym></td><td><input type="text" name="speed"/></td></tr>
+					<tr><td><acronym>magnifier</acronym></td>
+						<td>
+							<select name="magnifier">
+								<option value="circle">circle</option>
+								<option value="square">square</option>
+							</select>
+						</td>
+					</tr>
+					<tr class="odd"><td><acronym>magnifier-size</acronym></td><td><input type="text" onkeyup="document.optForm['magnifier-size-x'].value=document.optForm['magnifier-size-y'].value=this.value" name="magnifier-size" value=""/></td></tr>
+					<tr><td>└&nbsp;<acronym>magnifier-size-x</acronym></td><td><input type="text" name="magnifier-size-x" value=""/></td></tr>
+					<tr class="odd"><td>└&nbsp;<acronym>magnifier-size-y</acronym></td><td><input type="text" name="magnifier-size-y" value=""/></td></tr>
+					<tr><td><acronym>magnifier-effect</acronym></td>
+						<td>
+							<select name="magnifier-effect">
+								<option value="">none</option>
+								<option value="pulse">pulse</option>
+								<option value="fade">fade</option>
+							</select>
+						</td>
+					</tr>
+					<tr class="odd"><td><acronym>magnifier-filter</acronym></td>
+						<td>
+							<select name="magnifier-filter">
+								<option value="glow">glow</option>
+								<option value="shadow">shadow</option>
+							</select>
+						</td>
+					</tr>
+					<tr><td><acronym>magnifier-simulate</acronym></td>
+						<td><input type="text" name="magnifier-simulate"/></td>
+					</tr>					
+					<tr class="odd"><td><acronym>magnifier-time</acronym></td><td><input type="text" name="magnifier-time"/></td></tr>
+					<tr><td><acronym>border-color</acronym></td><td><input type="text" name="border-color" value=""/></td></tr>
+					<tr class="odd"><td><acronym>border-width</acronym></td><td><input type="text" name="border-width" value=""/></td></tr>
+					<tr><td><acronym>magnifier-border-color</acronym></td><td><input type="text" name="magnifier-border-color" value=""/></td></tr>
+					<tr class="odd"><td><acronym>magnifier-border-width</acronym></td><td><input type="text" name="magnifier-border-width" value=""/></td></tr>
+					<tr><td><acronym>progress-color</acronym></td><td><input type="text" name="progress-color" value=""/></td></tr>
+					<tr class="odd"><td><acronym>progress-height</acronym></td><td><input type="text" name="progress-height" value=""/></td></tr>
+				</table>
+				
+                <table class="tbl" cellspacing="1">
+    				<caption>Your images</caption>					
+                    <tr><td class="nowrap">Small images folder and/or filename:</td><td style="width:100%"><input type="text" class="stretch text" value="images/small/" id="html-small-folder"/></td></tr>
+                    <tr><td class="nowrap">Big images folder and/or filename:</td><td><input type="text" class="stretch text" value="images/big/" id="html-big-folder"/></td></tr>
+                    <tr><td>Number of images:</td><td><input class="stretch text" type="text" value="32" id="html-number"/></td></tr>
+                    <tr><td>Number format:</td>
+                        <td>
+                            <label style="display:inline;"><input style="top:0.15em;" type="radio" name="html-format" checked="" id="html-format-f1" value="f1"/>01, 02, 03..</label>
+                            <label style="display:inline;"><input style="top:0.15em;" type="radio" name="html-format" id="html-format-f2" value="f2"/>1, 2, 3..</label>
+                        </td>
+                    </tr>
+                    <tr><td>Extension:</td><td><input class="stretch text" type="text" value="jpg" id="html-extension"/></td></tr>
+                </table>
+                
+                <input type="submit" value="Apply"/>
+			</form>
+		</td>
+		<td>
+			<a class="Magic360Flash" href="#" rel="images/big/01.jpg*images/big/02.jpg*images/big/03.jpg*images/big/04.jpg*images/big/05.jpg*images/big/06.jpg*images/big/07.jpg*images/big/08.jpg*images/big/09.jpg*images/big/10.jpg*images/big/11.jpg*images/big/12.jpg*images/big/13.jpg*images/big/14.jpg*images/big/15.jpg*images/big/16.jpg*images/big/17.jpg*images/big/18.jpg*images/big/19.jpg*images/big/20.jpg*images/big/21.jpg*images/big/22.jpg*images/big/23.jpg*images/big/24.jpg*images/big/25.jpg*images/big/26.jpg*images/big/27.jpg*images/big/28.jpg*images/big/29.jpg*images/big/30.jpg*images/big/31.jpg*images/big/32.jpg"><img src="images/small/01.jpg" rel="images/small/01.jpg*images/small/02.jpg*images/small/03.jpg*images/small/04.jpg*images/small/05.jpg*images/small/06.jpg*images/small/07.jpg*images/small/08.jpg*images/small/09.jpg*images/small/10.jpg*images/small/11.jpg*images/small/12.jpg*images/small/13.jpg*images/small/14.jpg*images/small/15.jpg*images/small/16.jpg*images/small/17.jpg*images/small/18.jpg*images/small/19.jpg*images/small/20.jpg*images/small/21.jpg*images/small/22.jpg*images/small/23.jpg*images/small/24.jpg*images/small/25.jpg*images/small/26.jpg*images/small/27.jpg*images/small/28.jpg*images/small/29.jpg*images/small/30.jpg*images/small/31.jpg*images/small/32.jpg"/></a>
+		</td>
+	</tr>
+</table>
+
+<h2>Here's the code:</h2>
+
+<div class="html4strict" style="border:none">
+
+
+    <div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;"><span style="color: #009900;">&lt;<span style="color: #000000; font-weight: bold;">script</span> <span style="color: #000066;">src</span><span style="color: #66cc66;">=</span><span style="color: #ff0000;">&quot;magic360flash/magic360flash.js&quot;</span> <span style="color: #000066;">type</span><span style="color: #66cc66;">=</span><span style="color: #ff0000;">&quot;text/javascript&quot;</span>&gt;&lt;<span style="color: #66cc66;">/</span><span style="color: #000000; font-weight: bold;">script</span>&gt;</span></div>
+    <div id="printOptions"></div>    
+    <div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;"><span style="color: #009900;">&lt;<span style="color: #000000; font-weight: bold;">a</span> <span style="color: #000066;">class</span><span style="color: #66cc66;">=</span><span style="color: #ff0000;">&quot;Magic360Flash&quot;</span> <span style="color: #000066;">href</span><span style="color: #66cc66;">=</span><span style="color: #ff0000;">&quot;#&quot;</span> <span style="color: #000066;">rel</span><span style="color: #66cc66;">=</span><span id="html1" style="color: #ff0000;">&quot;images/big/01.jpg*images/big/02.jpg*images/big/03.jpg*images/big/04.jpg*images/big/05.jpg*images/big/06.jpg*images/big/07.jpg*images/big/08.jpg*images/big/09.jpg*images/big/10.jpg*images/big/11.jpg*images/big/12.jpg*images/big/13.jpg*images/big/14.jpg*images/big/15.jpg*images/big/16.jpg*images/big/17.jpg*images/big/18.jpg*images/big/19.jpg*images/big/20.jpg*images/big/21.jpg*images/big/22.jpg*images/big/23.jpg*images/big/24.jpg*images/big/25.jpg*images/big/26.jpg*images/big/27.jpg*images/big/28.jpg*images/big/29.jpg*images/big/30.jpg*images/big/31.jpg*images/big/32.jpg&quot;</span>&gt;
+    <br/>
+    &lt;<span style="color: #000000; font-weight: bold;">img</span> <span style="color: #000066;">src</span><span style="color: #66cc66;">=</span><span id="html3" style="color: #ff0000;">&quot;images/small/01.jpg&quot;</span> <span style="color: #000066;">rel</span><span style="color: #66cc66;">=</span><span id="html2" style="color: #ff0000;">&quot;images/small/01.jpg*images/small/02.jpg*images/small/03.jpg*images/small/04.jpg*images/small/05.jpg*images/small/06.jpg*images/small/07.jpg*images/small/08.jpg*images/small/09.jpg*images/small/10.jpg*images/small/11.jpg*images/small/12.jpg*images/small/13.jpg*images/small/14.jpg*images/small/15.jpg*images/small/16.jpg*images/small/17.jpg*images/small/18.jpg*images/small/19.jpg*images/small/20.jpg*images/small/21.jpg*images/small/22.jpg*images/small/23.jpg*images/small/24.jpg*images/small/25.jpg*images/small/26.jpg*images/small/27.jpg*images/small/28.jpg*images/small/29.jpg*images/small/30.jpg*images/small/31.jpg*images/small/32.jpg&quot;</span><span style="color: #66cc66;">/</span>&gt;
+    <br/>
+    &lt;<span style="color: #66cc66;">/</span><span style="color: #000000; font-weight: bold;">a</span>&gt;</span></div>
+
+</div>
+
+<!--
+<div class="html4strict" style="font-family: monospace;padding:10px;">
+<div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;"><span style="color: #009900;">&lt;<span style="color: #000000; font-weight: bold;">script</span> <span style="color: #000066;">src</span><span style="color: #66cc66;">=</span><span style="color: #ff0000;">&quot;magic360flash.js&quot;</span> <span style="color: #000066;">type</span><span style="color: #66cc66;">=</span><span style="color: #ff0000;">&quot;text/javascript&quot;</span>&gt;&lt;<span style="color: #66cc66;">/</span><span style="color: #000000; font-weight: bold;">script</span>&gt;</span></div>
+<div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;"><span style="color: #009900;">&lt;<span style="color: #000000; font-weight: bold;">script</span> <span style="color: #000066;">type</span><span style="color: #66cc66;">=</span><span style="color: #ff0000;">&quot;text/javascript&quot;</span>&gt;</span></div>
+<div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;">Magic360Flash.options = {</div>
+<div id="printOptions"></div>
+<div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;">}</div>
+<div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;"><span style="color: #009900;">&lt;<span style="color: #66cc66;">/</span><span style="color: #000000; font-weight: bold;">script</span>&gt;</span></div>
+
+<br/>
+
+<div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;"><span style="color: #009900;">&lt;<span style="color: #000000; font-weight: bold;">a</span> <span style="color: #000066;">class</span><span style="color: #66cc66;">=</span><span style="color: #ff0000;">&quot;Magic360Flash&quot;</span> <span style="color: #000066;">href</span><span style="color: #66cc66;">=</span><span style="color: #ff0000;">&quot;#&quot;</span> <span style="color: #000066;">rel</span><span style="color: #66cc66;">=</span><span style="color: #ff0000;">&quot;images/big/01.jpg*images/big/02.jpg*images/big/03.jpg*images/big/04.jpg*images/big/05.jpg*images/big/06.jpg*images/big/07.jpg*images/big/08.jpg*images/big/09.jpg*images/big/10.jpg*images/big/11.jpg*images/big/12.jpg*images/big/13.jpg*images/big/14.jpg*images/big/15.jpg*images/big/16.jpg*images/big/17.jpg*images/big/18.jpg*images/big/19.jpg*images/big/20.jpg*images/big/21.jpg*images/big/22.jpg*images/big/23.jpg*images/big/24.jpg*images/big/25.jpg*images/big/26.jpg*images/big/27.jpg*images/big/28.jpg*images/big/29.jpg*images/big/30.jpg*images/big/31.jpg*images/big/32.jpg&quot;</span>&gt;
+
+<br/>
+
+&lt;<span style="color: #000000; font-weight: bold;">img</span> <span style="color: #000066;">src</span><span style="color: #66cc66;">=</span><span style="color: #ff0000;">&quot;images/small/32.jpg&quot;</span> <span style="color: #000066;">rel</span><span style="color: #66cc66;">=</span><span style="color: #ff0000;">&quot;images/small/01.jpg*images/small/02.jpg*images/small/03.jpg*images/small/04.jpg*images/small/05.jpg*images/small/06.jpg*images/small/07.jpg*images/small/08.jpg*images/small/09.jpg*images/small/10.jpg*images/small/11.jpg*images/small/12.jpg*images/small/13.jpg*images/small/14.jpg*images/small/15.jpg*images/small/16.jpg*images/small/17.jpg*images/small/18.jpg*images/small/19.jpg*images/small/20.jpg*images/small/21.jpg*images/small/22.jpg*images/small/23.jpg*images/small/24.jpg*images/small/25.jpg*images/small/26.jpg*images/small/27.jpg*images/small/28.jpg*images/small/29.jpg*images/small/30.jpg*images/small/31.jpg*images/small/32.jpg&quot;</span><span style="color: #66cc66;">/</span>&gt;
+
+<br/>
+
+&lt;<span style="color: #66cc66;">/</span><span style="color: #000000; font-weight: bold;">a</span>&gt;</span></div>
+</div>
+</div>
+-->
+
+	<script type="text/javascript">
+		setOptions();
+	</script>
+	
+
+        
+        <div id="_code_">
+		
+        </div>
+	</td>
+</tr></table></body></html>

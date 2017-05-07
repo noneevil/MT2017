@@ -1,0 +1,121 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>省市联动</title>
+    <script src="/Scripts/mootools-core-1.4.5.js" type="text/javascript"></script>
+    <style type="text/css">
+        body{ font-size:12px;}
+        h1{ font-size:15px; clear:both;}
+        ul{ list-style-type:none; clear:both;}
+        ul li{ float:left; padding:5px; margin:3px; border:1px solid #ccc; cursor:pointer;}
+    </style>
+    <script type="text/ecmascript">
+        window.addEvent('domready', function () {
+            var Province = $('Province');
+            new Request.JSON({
+                url: '/home/getprovince',
+                data: $(document.body).toQueryString(),
+                onRequest: function () {
+                    //{"Province_Id":"110000","Province_Name":"北京市","Province_Letter":"B"}
+                    Province.empty();
+                },
+                onSuccess: function (txt) {
+                    
+                    txt.each(function (item) {
+                        var li = new Element('li', {
+                            text: item.Province_Name
+                        }).inject(Province);
+                        li.store('Province_Id', item.Province_Id);
+                        li.store('Province_Name', item.Province_Name);
+                        li.store('Province_Letter', item.Province_Letter); //retrieve
+                        li.addEvent('click', function () {
+                            Province.getElements('li').setStyle('background-color', '');
+                            this.setStyle('background-color', '#FFC900');
+                            LoadCity(this.retrieve('Province_Id'));
+                        });
+                        //new Element('span', { text: item.Province_Letter }).inject(li);
+                    });
+                },
+                onFailure: function () {
+                    Province.set('text', 'Sorry, your request failed :(');
+                }
+            }).send();
+        });
+
+        var LoadCity = function (id) {
+            var City = $('City');
+            new Request.JSON({
+                url: '/home/getcity',
+                data: { id: id },
+                onRequest: function () {
+                    //{"City_Id":"120100","City_Name":"市辖区","Province_Id":"120000","City_Letter":"S"}
+                    City.empty();
+                    $('Area').empty();
+                },
+                onSuccess: function (txt) {
+                    txt.each(function (item) {
+                        var li = new Element('li', {
+                            text: item.City_Name
+                        }).inject(City);
+                        li.store('City_Id', item.City_Id);
+                        li.store('City_Name', item.City_Name);
+                        li.store('Province_Id', item.Province_Id);
+                        li.store('City_Letter', item.City_Letter);
+                        li.addEvent('click', function () {
+                            City.getElements('li').setStyle('background-color', '');
+                            this.setStyle('background-color', '#FFC900');
+                            LoadArea(this.retrieve('City_Id'));
+                        });
+                    });
+                },
+                onFailure: function () {
+                    City.set('text', 'Sorry, your request failed :(');
+                }
+            }).send();
+        };
+
+        var LoadArea = function (id) {
+            var Area = $('Area');
+            new Request.JSON({
+                url: '/home/getarea',
+                data: { id: id },
+                onRequest: function () {
+                    //{"Area_Id":"430501","Area_Name":"市辖区","City_Id":"430500"}
+                    Area.empty();
+                },
+                onSuccess: function (txt) {
+                    txt.each(function (item) {
+                        var li = new Element('li', {
+                            text: item.Area_Name
+                        }).inject(Area);
+                        li.store('Area_Id', item.Area_Id);
+                        li.store('Area_Name', item.Area_Name);
+                        li.store('City_Id', item.City_Id);
+                        li.addEvent('click', function () {
+                            Area.getElements('li').setStyle('background-color', '');
+                            this.setStyle('background-color', '#FFC900');
+                        });
+                    });
+                },
+                onFailure: function () {
+                    Area.set('text', 'Sorry, your request failed :(');
+                }
+            }).send();
+        };
+    </script>
+</head>
+<body>
+    <h1 class="tips">
+        1.选择省份</h1>
+    <ul id="Province">
+    </ul>
+    <h1 class="tips">
+        2.选择城市</h1>
+    <ul id="City">
+    </ul>
+    <h1 class="tips">
+        3.选择县(区)</h1>
+    <ul id="Area">
+    </ul>
+</body>
+</html>

@@ -1,0 +1,346 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+	<title>Magic Magnify&#153;</title>
+	
+	<style type="text/css"><!--
+		body {background:#fff; margin:0; padding:0; font-size: 100%;}
+		body, td {font-family:"Lucida Grande", Tahoma, Arial, Verdana, sans-serif; line-height: 1.5em;}
+		h1 {font-size:1.5em; font-weight:normal; color:#555;}
+		h2 {font-size:1.3em; font-weight:normal; color:#555;}
+		h2.caption {margin: 2.5em 0 0;}
+		a {outline: none;}
+		table {margin:0; padding:0; border-collapse: collapse;}
+		td {vertical-align: top; border: 1px;}
+		img {border:0;}
+		.leftcol {background:#EDF6CA; padding: 20px;}
+		.nav {width: 180px;}
+		.nav h2 {background: #658F11; margin:10px 0 0 0; padding: 3px 3px 5px 10px; font-size: 0.9em; color:#FFF;}
+		.nav ul {list-style-type: none; padding: 0 0 10px 0; margin:0 0 20px; background:#99CC33;}
+		.nav li a {text-decoration: none; display: block; padding: 3px 3px 3px 10px; margin: 0; font-size: 0.9em; color:#FFF; zoom: 1;}
+		.nav li a:hover {background: #B5DF61;}
+		.active {font-weight: bold;}
+		.arrow {text-align: right;}
+		.menuTd a {color:#fff; font-weight:bold;}
+		.code {font-size:12px; line-height:18px; margin:10px 0; display:block; padding:3px; border:1px solid #aaa;}
+		span.r {color:red;}
+		span.g {color:green;}
+		span.b {color:blue;}
+		table.tbl {background:#aaa; margin-bottom: 20px; font-size: 0.9em; border: 1px solid #999;}
+		caption {text-align: left; padding: 4px 12px; background: #999; color: #fff; font-size: 1.1em; margin: 0 0 0 0;}
+		caption a {color: #fff; padding: 2px;}
+		caption a:hover {background:#FFF; color: #999;}
+		.tbl th { background:#fff; padding:4px 8px 4px 16px; vertical-align:top; border-bottom: 1px #999 solid; text-align:left;}
+		.tbl thead th { background:#eee;}
+		.tbl th.caption {background:#ccc; padding:4px 8px 4px 16px; text-align:left;border-bottom:1px solid #999999;}
+        .tbl td {background:#fff; padding:4px 8px 4px 16px; vertical-align:top; border-bottom: 1px #999 solid;}
+		.tbl .tr1 td {background:#fff;}
+		.tbl .tr2 td {background:#f2f2f2;}
+		.mtbl {width:100%; height:100%;}
+		.rTd {padding:20px; width:100%;}
+		div.exmpl {margin:0 0 5px 0; font-weight:bold;}
+		.html4strict {border:1px solid #AAAAAA; display:block; font-size:12px; line-height:18px; margin:10px 0pt; padding:3px;}
+		.html4strict .de1, .html4strict .de2 {font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;}
+		.html4strict {font-family:monospace;}
+		.html4strict .imp {font-weight: bold; color: red;}
+		.html4strict li, .html4strict .li1 {font-weight: normal; vertical-align:top;}
+		.html4strict .ln {width:1px; text-align:right; margin:0; padding:0 2px; vertical-align:top;}
+		.html4strict .li2 {font-weight: bold; vertical-align:top;}
+		.html4strict .kw2 {color: #000000; font-weight: bold;}
+		.html4strict .kw3 {color: #000066;}
+		.html4strict .es0 {color: #000099; font-weight: bold;}
+		.html4strict .br0 {color: #66cc66;}
+		.html4strict .sy0 {color: #66cc66;}
+		.html4strict .st0 {color: #ff0000;}
+		.html4strict .nu0 {color: #cc66cc;}
+		.html4strict .sc-1 {color: #808080; font-style: italic;}
+		.html4strict .sc0 {color: #00bbdd;}
+		.html4strict .sc1 {color: #ddbb00;}
+		.html4strict .sc2 {color: #009900;}
+		.html4strict .ln-xtra, .html4strict li.ln-xtra, .html4strict div.ln-xtra {background-color: #ffc;}
+		.html4strict span.xtra {display:block;}
+		.note { font-size:70%; }
+		.gray { color:#aaaaaa; font-size:90%; }
+		.gray a { color:#9999f8; }
+		.w50 { float:left; margin:0 20px 20px 0; padding:0 20px 20px;}
+		.clear { clear:both;}		
+        p.buttons {float: right; margin: -40px 0px 10px 0} 
+        .bBtn, p.buttons a { 
+                background: #FA9C0F; padding: 4px 10px 4px 12px; 
+                margin-right: 6px; font-size: 1em; color:#fff; text-decoration: none; 
+                line-height: 1em;outline: none; border: 1px solid #CF7E00;
+                cursor: pointer;
+        } 
+        .bBtn:hover, p.buttons a:hover {background: #FFBA4F} 
+		.tbl tr.odd td { background:#f3f3f3; }
+		.comment { color:#999;}
+	--></style>
+</head>
+<body>
+<table class="mtbl">
+<tr>
+    <td class="leftcol">
+		<div class="nav">
+			<h2>Magic Magnify&#8482;</h2>
+			<ul>
+				<li><a class="active" href="index.html">Overview</a></li>
+				<li><a  href="wizard.html">Settings wizard</a></li>
+			</ul>
+		</div>
+		<div class="nav">
+			<h2>Examples</h2>
+			<ul>
+				<li><a  href="example1.html">Default parameters</a></li>
+				<li><a  href="example2.html">Borders</a></li>
+				<li><a  href="example3.html">Magnifier shape</a></li>
+				<li><a  href="example4.html">Magnifier effect</a></li>
+				<li><a  href="example5.html">Magnifier filter</a></li>
+				<li><a  href="example6.html">Custom image</a></li>
+				<li><a  href="example7.html">Multiple images</a></li>
+				<li><a  href="example8.html">Blur and transparency</a></li>
+				<li><a  href="example9.html">Link to URL</a></li>
+				<li><a  href="example10.html">Activate on click</a></li>
+				<li><a  href="example11.html">Click to hold</a></li>
+				<li><a  href="example12.html">Callback function</a></li>
+				<li><a  href="example13.html">Magnifier simulate</a></li>
+			</ul>
+		</div>
+	</td>
+	<td class="rTd">
+		<h1>Magic Magnify&#153;</h1>
+        <p class="buttons"><a href="http://www.magictoolbox.com/buy/magicmagnify/">Buy now&nbsp;&nbsp;&pound;29</a> <a href="http://www.magictoolbox.com/support/">Get support</a></p>
+		
+	    
+
+            <p>An elegant effect to reveal beautiful detail in your images.</p>
+            
+			<h2>New in version 4.0:</h2>
+
+			<p>Bags of new features including:</p> 
+			<ul>
+				<li><a href="example3.html">custom shapes</a></li>
+				<li><a href="example1.html">mousewheel control</a></li>
+				<li><a href="example7.html">new thumbnail effects</a></li>
+				<li><a href="example8.html">blur and transparency</a>.</li>
+			</ul>
+            <table class="tbl" cellpadding="0" cellspacing="1">
+    <caption>
+        List of Magic Magnify&trade; parameters.
+    </caption>
+    <thead>
+        <tr>
+            <th>Parameter name</th>
+            <th>Default</th>
+            <th>Options</th>
+            <th class="tdwide">Description</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <th>magnifier</th>
+            <td>circle</td>
+            <td>circle|square|inner|custom(x1,y1,x2,y2,..)</td>
+            <td>Magnifier shape</td>
+        </tr>
+        <tr class="sline">
+            <th>magnifier-size</th>
+            <td>66%</td>
+            <td>Numeric or %</td>
+            <td>Magnifier size: % of small image width or fixed size in px</td>
+        </tr>
+        <tr>
+            <th>magnifier-size-x</th>
+            <td>66%</td>
+            <td>Numeric or %</td>
+            <td>Magnifier width: % of small image width or fixed size in px</td>
+        </tr>
+        <tr class="sline">
+            <th>magnifier-size-y</th>
+            <td>66%</td>
+            <td>Numeric or %</td>
+            <td>Magnifier height: % of small image width or fixed size in px</td>
+        </tr>
+        <tr>
+            <th>magnifier-effect</th>
+            <td>fade</td>
+            <td>none|pulse|fade</td>
+            <td>Magnifier appearing effect</td>
+        </tr>
+        <tr class="sline">
+            <th>magnifier-filter</th>
+            <td>glow</td>
+            <td>glow|shadow</td>
+            <td>Magnifier effect</td>
+        </tr>
+        <tr>
+            <th>magnifier-time</th>
+            <td>200</td>
+            <td>milliseconds</td>
+            <td>Time for magnifier effect</td>
+        </tr>
+        <tr class="sline">
+            <th>magnifier-simulate</th>
+            <td>false</td>
+            <td>% ('false'=off)</td>
+            <td>Create enlarged images from small ones with specified scale</td>
+        </tr>
+        <tr>
+            <th class="nowrap">magnifier-border-color</th>
+            <td>#CCCCCC</td>
+            <td></td>
+            <td>Magnifier border color</td>
+        </tr>
+        <tr class="sline">
+            <th class="nowrap">magnifier-border-width</th>
+            <td>1</td>
+            <td>px</td>
+            <td>Magnifier border thickness</td>
+        </tr>
+
+
+
+        
+        <tr>
+            <th>border-color</th>
+            <td>#CCCCCC</td>
+            <td></td>
+            <td>Outside border color</td>
+        </tr>
+        <tr class="sline">
+            <th>border-width</th>
+            <td>0</td>
+            <td>Numeric, px</td>
+            <td>Outside border width</td>
+        </tr>
+        <tr>
+            <th>progress-color</th>
+            <td>#CCCCCC</td>
+            <td></td>
+            <td>Color of the loading bar</td>
+        </tr>
+        <tr class="sline">
+            <th>progress-height</th>
+            <td>0</td>
+            <td>Numeric, px</td>
+            <td>Height of the loading bar</td>
+        </tr>
+
+        <tr>
+        	<th>wheel-effect</th>
+        	<td>20%</td>
+        	<td>0-100%</td>
+        	<td>Wheel effect for changing magnifier size</td>
+        </tr>
+
+        <tr class="sline">
+        	<th>lense-url</th>
+        	<td></td>
+        	<td></td>
+        	<td>Custom image URL</td>
+        </tr>
+        <tr>
+        	<th>lense-offset-x</th>
+        	<td>0</td>
+        	<td>Numeric, px</td>
+        	<td>Custom image x-offset</td>
+        </tr>
+        <tr class="sline">
+        	<th>lense-offset-y</th>
+        	<td>0</td>
+        	<td>Numeric, px</td>
+        	<td>Custom image y-offset</td>
+        </tr>
+        <tr>
+        	<th>lense-position</th>
+        	<td>top</td>
+        	<td>top|bottom</td>
+        	<td>Custom image position</td>
+        </tr>
+        
+        <tr class="sline">
+        	<th>disable-auto-start</th>
+        	<td>false</td>
+        	<td>true|false</td>
+        	<td>Disable magnify effect until clicked</td>
+        </tr>
+        <tr>
+        	<th>pause-on-click</th>
+        	<td>false</td>
+        	<td>true|false</td>
+        	<td>Disable/Enable pause on click</td>
+        </tr>
+        
+
+        <tr class="sline">
+        	<th>blur</th>
+        	<td>0</td>
+        	<td>Numeric, px</td>
+        	<td>Blur effect of the main image when magnifier is shown</td>
+        </tr>
+        <tr>
+        	<th>transparency</th>
+        	<td>100%</td>
+        	<td>0-100%</td>
+        	<td>Transparency of the main image when magnifier is shown</td>
+        </tr>
+        <tr class="sline">
+        	<th>link-url</th>
+        	<td></td>
+        	<td>URL</td>
+        	<td>URL the image should link to (if any)</td>
+        </tr>
+        <tr>
+        	<th>link-window</th>
+        	<td>_self</td>
+        	<td>_self|_blank|_parent|_top</td>
+        	<td>Page where the link should load</td>
+        </tr>
+        <tr class="sline">
+        	<th>hide-cursor</th>
+        	<td>true</td>
+        	<td>true|false</td>
+        	<td>Hide mouse pointer</td>
+        </tr>
+        <tr class="last">
+        	<th>callback</th>
+        	<td></td>
+        	<td></td>
+        	<td>JavaScript function name for mouse click callback</td>
+        </tr>
+
+		<tr><th colspan="4" class="caption">Thumbnails</th></tr>        
+		
+        <tr>
+        	<th>thumb-change</th>
+        	<td>click</td>
+        	<td>click|mouseover</td>
+        	<td>Method to switch between multiple images</td>
+        </tr>
+        <tr class="sline">
+        	<th>thumb-change-delay</th>
+        	<td>200</td>
+        	<td>milliseconds</td>
+        	<td>Delay before switching images</td>
+        </tr>
+        <tr>
+        	<th>thumb-change-time</th>
+        	<td>500</td>
+        	<td>milliseconds</td>
+        	<td>Speed of changing size of multiple images</td>
+        </tr>
+        <tr class="sline">
+        	<th>change-time</th>
+        	<td>500</td>
+        	<td>milliseconds</td>
+        	<td>Speed of changing opacity of multiple images</td>
+        </tr>
+        
+    </tbody>
+			</table>            
+
+
+
+	    
+		
+	</td>
+</tr></table></body></html>

@@ -1,0 +1,161 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Core</title>
+    <style type="text/css">
+        #myForm fieldset { margin-bottom: 10px; padding: 10px; border: 1px solid #c0c0c0; border-radius: 5px; -webkit-border-radius: 5px; -moz-border-radius: 5px; }
+        #myForm ul { list-style: none; }
+        #myForm li { position: relative; }
+        #myForm li [type=text] { width: 300px; }
+        #myForm [type=text], #myForm [type=submit], #myForm textarea { margin-top: 3px; padding: 1px; border: 1px solid #000000; border-radius: 3px; -webkit-border-radius: 3px; -moz-border-radius: 3px; }
+        #myForm [type=check], #myForm [type=radio], #myForm [type=submit] { cursor: pointer; }
+        #myForm label { display: block; }
+        #myForm [type=check] + label, #myForm [type=radio] + label { display: inline-block; cursor: pointer; }
+        #myForm input:hover, #myForm textarea:hover, #myForm input:focus, #myForm textarea:focus { background-color: #ddffdd; }
+        #myForm .validation-failed { border-color: #ff0000; background-color: #ffdddd; }
+        #myForm .validation-advice { padding-bottom: 5px; font-weight: bold; color: #ff0000; }
+        #myForm #myResult { margin-top: 10px; padding: 10px; border: 1px solid #0000ff; background-color: #ddddff; }
+        #myForm #myResult:empty { border-width: 0; padding: 0; }
+        #myForm .spinner { border-radius: 3px; -webkit-border-radius: 3px; -moz-border-radius: 3px; background-color: #f0f0f0; }
+        #myForm .overTxtLabel { color: #888888; }
+    </style>
+    <script src="/Scripts/mootools-core-1.4.5.js" type="text/javascript"></script>
+    <script src="/Scripts/mootools-more-1.4.0.1%20source.js" type="text/javascript"></script>
+    <script type="text/javascript">
+        window.addEvent('domready', function () {
+            var myMask = new Mask($(document.body),
+            {
+                style: {
+                    opacity: .5,
+                    'background-color': '#ccc'
+                },
+                onClick: function (e) {
+                    this.hide();
+                }
+            });
+//            myMask.show();
+
+            Form.Validator.add('mytest', {
+                errorMsg: function (element, props) {
+                    if (typeOf(props.mytest) != 'null')
+                        return '请至少输入 {minLength} 个字符 (已输入 {length} 个)。'.substitute(
+                        {
+                            minLength: props.mytest,
+                            length: element.get('value').trim().length
+                        });
+                    else
+                        return '';
+                },
+                test: function (element, props) {
+                    if (typeOf(props.mytest) != 'null')
+                        return (element.get('value').trim().length >= (props.mytest || 0));
+                    else
+                        return true;
+                }
+            });
+            Locale.use("zh-CHS");
+            //alert(Locale.get('Date.months'));
+            // The elements used.
+            var myForm = $('myForm');
+            var myResult = $('myResult');
+
+            // Labels over the inputs.
+            myForm.getElements('[type=text],textarea').each(function (el) {
+                new OverText(el);
+            });
+            //            new Form.Validator(myForm, {
+            //                useTitles: true,
+            //                onFormValidate: function () {
+            //                    alert('aa');
+            //                }
+            //            });
+
+            // Validation.
+            new Form.Validator.Inline(myForm, {
+                scrollToErrorsOnSubmit: true,
+                scrollToErrorsOnBlur: true,
+                //                'useTitles': true,
+                errorPrefix: ""
+            });
+
+            // Ajax (integrates with the validator).
+            //            new Form.Request(myForm, myResult, {
+            //                requestOptions: {
+            //                    'spinnerTarget': myForm
+            //                },
+            //                extraData: { // This is just to make this example work.
+            //                    'html': 'Form sent.'
+            //                }
+            //            });
+        });
+    </script>
+</head>
+<body>
+    <form id="myForm" action="/echo/html/" method="post">
+    <fieldset>
+        <legend>Contact form example</legend>
+        <ul>
+            <li>
+                <input type="text" class="mytest:10" title="不能输入内容" /></li>
+            <li>
+                <input type="text" class="required" title="不能为空" /></li>
+            <li>
+                <input type="text" class="validate-numeric" title="只能是数字" /></li>
+            <li>
+                <input type="text" class="validate-integer" title="只能是整数" /></li>
+            <li>
+                <input type="text" class="validate-digits" title="数字和标点符号" /></li>
+            <li>
+                <input type="text" class="validate-alpha" title="字母" /></li>
+            <li>
+                <input type="text" class="validate-alphanum" title="字母和数字" /></li>
+            <li>
+                <input type="text" class="validate-date" title="日期" /></li>
+            <li>
+                <input type="text" class="validate-email" title="邮箱" /></li>
+            <li>
+                <input type="text" class="validate-url" title="网址" /></li>
+            <li>
+                <input type="text" data-validators="minLength:10" title="最小长度为10" /></li>
+            <li>
+                <input type="text" class="minLength:10" title="最小长度为10" /></li>
+            <li>
+                <input type="text" class="maxLength:10" title="最大长度为10" /></li>
+            <li>
+                <input type="text" class="length:10" title="长度为10" /></li>
+            <li>
+                <input type="text" class="minLength maxLength" data-validator-properties="{minLength: 5, maxLength:10}"
+                    title="最小长度为5,最大长度为10" /></li>
+            <li>
+                <input type="text" name="a4" class="required" data-validators="validate-date dateFormat:'%d/%m/%Y'"
+                    title="日期格式必须为 月/日/年" /></li>
+            <li>
+                <input type="text" name="name" class="required validate-date" title="Name" /></li>
+            <li>
+                <input type="text" name="email" class="required validate-email" title="Email" /></li>
+            <li>
+                <input type="text" name="phone" title="Phone" /></li>
+            <li>
+                <input type="text" name="url" title="Website / blog" /></li>
+            <li>
+                <textarea id="myMessage" name="message" class="required" title="Message" rows="5"
+                    cols="30"></textarea></li>
+            <li>
+                <label>
+                    Would you like to &lt;something&gt;?</label>
+                <input type="radio" id="news_y" name="newsletter" />
+                <label for="news_y">
+                    Yes</label>
+                <input type="radio" id="news_n" name="newsletter" class="validate-one-required" />
+                <label for="news_n">
+                    No</label>
+            </li>
+        </ul>
+        <div>
+            <input type="submit" value="Send" /><input type="reset" value="reset" onclick="$('myForm').reset();" /></div>
+    </fieldset>
+    <div id="myResult">
+    </div>
+    </form>
+</body>
+</html>

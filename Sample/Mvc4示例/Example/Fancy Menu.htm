@@ -1,0 +1,49 @@
+﻿<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3c.org/TR/1999/REC-html401-19991224/loose.dtd">
+<!-- saved from url=(0055)http://www.mb5u.com/jscode/html/Mootools/989_fancymenu/ -->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Fancy Menu Demo By http://www.mb5u.com</title>
+    <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+    <link rel="stylesheet" type="text/css" href="Fancy%20Menu_files/menu.css" media="screen">
+    <script type="text/javascript" src="Fancy%20Menu_files/mootools.js"></script>
+    <script type="text/javascript" src="Fancy%20Menu_files/menu.js"></script>
+    <script type="text/javascript">
+        window.addEvent('domready', function () {
+            // orange menu demo
+            if ($('fancymenu'))
+                FancyExample = new SlideList($E('ul', 'fancymenu'), { transition: Fx.Transitions.backOut, duration: 700, onClick: function (ev, item) { ev.stop(); } });
+
+            // profile demo
+            //if ($('pictureselect')) PictureSelect = new SlideList('pictureselect', { onClick: function (ev, item) { ev.stop(); } });
+
+        });
+    </script>
+    <meta name="GENERATOR" content="MSHTML 9.00.8112.16457">
+</head>
+<body>
+    <div id="fancymenu">
+        <ul>
+            <li id="menu_home" class="current"><a href="http://www.mb5u.com/">Home</a></li>
+            <li id="menu_plantatree"><a href="http://www.mb5u.com/">Plant a tree</a></li>
+            <li id="menu_travel"><a href="http://www.mb5u.com/">Travel</a></li>
+            <li id="menu_rideanelephant"><a href="http://www.mb5u.com/">Ride an elephant</a></li></ul>
+    </div>
+    <!--<br>
+    <br>
+    <br>
+    <form id="userprofile">
+    <h4>
+        Fill in your name:</h4>
+    <p class="input">
+        <input type="text"></p>
+    <h4>
+        Select a picture:</h4>
+    <ul id="pictureselect">
+        <li id="picture_1"><a href="http://www.mb5u.com/">Picture 1</a></li>
+        <li id="picture_2"><a href="http://www.mb5u.com/">Picture 2</a></li>
+        <li id="picture_3"><a href="http://www.mb5u.com/">Picture 3</a></li>
+        <li id="picture_4"><a href="http://www.mb5u.com/">Picture 4</a></li></ul>
+    </form>-->
+</body>
+</html>

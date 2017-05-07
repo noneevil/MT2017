@@ -1,0 +1,1984 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{5019AE5B-9511-4059-9EE0-20AB5EC5C21D}</ProjectGuid>
+    <ProjectTypeGuids>{E3E379DF-F4C6-4180-9B81-6769533ABE47};{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Mvc4Example</RootNamespace>
+    <AssemblyName>Mvc4示例</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <MvcBuildViews>false</MvcBuildViews>
+    <UseIISExpress>true</UseIISExpress>
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Antlr3.Runtime, Version=3.3.1.7705, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Library\WebGrease.1.3.0\lib\Antlr3.Runtime.dll</HintPath>
+    </Reference>
+    <Reference Include="Dapper, Version=1.38.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Library\Dapper.1.38\lib\net40\Dapper.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Library\EntityFramework.6.1.2\lib\net40\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.Extended">
+      <HintPath>..\..\Library\EntityFramework.Extended.6.1.0.121\lib\net40\EntityFramework.Extended.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Library\EntityFramework.6.1.2\lib\net40\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="FSharp.Core, Version=4.3.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\..\Library\ScrapySharp.2.2.63\lib\net40\FSharp.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="HtmlAgilityPack, Version=1.4.6.0, Culture=neutral, PublicKeyToken=bd319b19eaf3b43a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Library\ScrapySharp.2.2.63\lib\net40\HtmlAgilityPack.dll</HintPath>
+    </Reference>
+    <Reference Include="log4net, Version=1.2.13.0, Culture=neutral, PublicKeyToken=669e0ddf0bb1aa2a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Library\log4net.2.0.3\lib\net40-full\log4net.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\..\Library\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Web.Mvc.FixedDisplayModes, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Library\Microsoft.AspNet.Mvc.FixedDisplayModes.1.0.0\lib\net40\Microsoft.Web.Mvc.FixedDisplayModes.dll</HintPath>
+    </Reference>
+    <Reference Include="MvcPaging">
+      <HintPath>..\..\Library\MvcPaging.2.1.2\lib\net40\MvcPaging.dll</HintPath>
+    </Reference>
+    <Reference Include="MySql.Data, Version=6.9.5.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Library\MySql.Data.6.9.5\lib\net40\MySql.Data.dll</HintPath>
+    </Reference>
+    <Reference Include="MySql.Data.Entity.EF6, Version=6.9.5.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Library\MySql.Data.Entity.6.9.5\lib\net40\MySql.Data.Entity.EF6.dll</HintPath>
+    </Reference>
+    <Reference Include="MySql.Web, Version=6.9.5.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Library\MySql.Web.6.9.5\lib\net40\MySql.Web.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Library\Newtonsoft.Json.6.0.7\lib\net40\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="RouteDebug">
+      <HintPath>..\..\Libraries\RouteDebug.dll</HintPath>
+    </Reference>
+    <Reference Include="ScrapySharp, Version=2.5.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Library\ScrapySharp.2.2.63\lib\net40\ScrapySharp.dll</HintPath>
+    </Reference>
+    <Reference Include="ScrapySharp.Core, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Library\ScrapySharp.2.2.63\lib\net40\ScrapySharp.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Data.Linq" />
+    <Reference Include="System.Data.SQLite, Version=1.0.94.0, Culture=neutral, PublicKeyToken=db937bc2d44ff139, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Library\System.Data.SQLite.Core.1.0.94.0\lib\net40\System.Data.SQLite.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Data.SQLite.EF6">
+      <HintPath>..\..\Library\System.Data.SQLite.EF6.1.0.94.0\lib\net40\System.Data.SQLite.EF6.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Data.SQLite.Linq">
+      <HintPath>..\..\Library\System.Data.SQLite.Linq.1.0.94.1\lib\net40\System.Data.SQLite.Linq.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\..\Library\Microsoft.Net.Http.2.0.20710.0\lib\net40\System.Net.Http.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http.Formatting, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\..\Library\Microsoft.AspNet.WebApi.Client.4.0.20710.0\lib\net40\System.Net.Http.Formatting.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http.WebRequest, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\..\Library\Microsoft.Net.Http.2.0.20710.0\lib\net40\System.Net.Http.WebRequest.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime.Caching" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Abstractions" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Helpers, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\..\Library\Microsoft.AspNet.WebPages.2.0.20710.0\lib\net40\System.Web.Helpers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Http, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\..\Library\Microsoft.AspNet.WebApi.Core.4.0.20710.0\lib\net40\System.Web.Http.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Http.WebHost, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\..\Library\Microsoft.AspNet.WebApi.WebHost.4.0.20710.0\lib\net40\System.Web.Http.WebHost.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Mvc, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Library\Microsoft.AspNet.Mvc.4.0.20710.0\lib\net40\System.Web.Mvc.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.Optimization, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Library\Microsoft.AspNet.Web.Optimization.1.0.0\lib\net40\System.Web.Optimization.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Providers">
+      <HintPath>..\..\Library\Microsoft.AspNet.Providers.Core.1.2\lib\net40\System.Web.Providers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Razor, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\..\Library\Microsoft.AspNet.Razor.2.0.20715.0\lib\net40\System.Web.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Routing" />
+    <Reference Include="System.Web.WebPages, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\..\Library\Microsoft.AspNet.WebPages.2.0.20710.0\lib\net40\System.Web.WebPages.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Deployment, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\..\Library\Microsoft.AspNet.WebPages.2.0.20710.0\lib\net40\System.Web.WebPages.Deployment.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Razor, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\..\Library\Microsoft.AspNet.WebPages.2.0.20710.0\lib\net40\System.Web.WebPages.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="WebGrease, Version=1.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Library\WebGrease.1.3.0\lib\WebGrease.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="App_Code\MVC\Filter\Base64Filter.cs" />
+    <Compile Include="App_Code\MVC\Filter\RequireHttpsAttribute.cs" />
+    <Compile Include="App_Code\MVC\JsonNetValueProviderFactory.cs" />
+    <Compile Include="App_Code\MVC\MvcHandleError.cs" />
+    <Compile Include="App_Code\MVC\Filter\SevenZipFilter.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="App_Code\Web Api\CompressionAttribute.cs" />
+    <Compile Include="App_Code\MVC\UserAuthorizeAttribute.cs" />
+    <Compile Include="App_Code\Web Api\WebApiExceptionFilter.cs" />
+    <Compile Include="App_Code\Web Api\UserAuthorizeHandler.cs" />
+    <Compile Include="App_Start\BundleConfig.cs" />
+    <Compile Include="App_Start\FilterConfig.cs" />
+    <Compile Include="App_Code\Web Api\JsonpMediaTypeFormatter.cs" />
+    <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Content\kroppr\v1.5\kroppr v1.5.aspx.cs">
+      <DependentUpon>kroppr v1.5.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Content\kroppr\v1.5\kroppr v1.5.aspx.designer.cs">
+      <DependentUpon>kroppr v1.5.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Content\kroppr\v1.5\Kroppr.ashx.cs">
+      <DependentUpon>Kroppr.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="App_Code\MVC\CompressionAttribute.cs" />
+    <Compile Include="Controllers\BaseController.cs" />
+    <Compile Include="Controllers\CalendarController.cs" />
+    <Compile Include="Controllers\CompressController.cs" />
+    <Compile Include="Controllers\EF6Controller.cs" />
+    <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="App_Code\MVC\JsonpPartialViewResult.cs" />
+    <Compile Include="App_Code\MVC\JsonpResult.cs" />
+    <Compile Include="Controllers\OpenApiController.cs" />
+    <Compile Include="App_Code\MVC\Filter\WhiteSpaceFilter.cs" />
+    <Compile Include="Controllers\SaveFormController.cs" />
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Handler1.ashx.cs">
+      <DependentUpon>Handler1.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="Content\kroppr\v1.4\kroppr v1.4.aspx.cs">
+      <DependentUpon>kroppr v1.4.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Content\kroppr\v1.4\kroppr v1.4.aspx.designer.cs">
+      <DependentUpon>kroppr v1.4.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Models\AccountModels.cs" />
+    <Compile Include="Models\Entity Framework 6\NewFolder1\dbContext.cs" />
+    <Compile Include="Models\Entity Framework 6\NewFolder1\T_Area.cs" />
+    <Compile Include="Models\Entity Framework 6\NewFolder1\T_City.cs" />
+    <Compile Include="Models\Entity Framework 6\NewFolder1\T_Group.cs" />
+    <Compile Include="Models\Entity Framework 6\NewFolder1\T_News.cs" />
+    <Compile Include="Models\Entity Framework 6\NewFolder1\T_Province.cs" />
+    <Compile Include="Models\Entity Framework 6\NewFolder1\T_Radios.cs" />
+    <Compile Include="Models\Northwind\Models\Category.cs" />
+    <Compile Include="Models\Northwind\Models\Customer.cs" />
+    <Compile Include="Models\Northwind\Models\CustomerDemographic.cs" />
+    <Compile Include="Models\DataModels.cs" />
+    <Compile Include="Models\Northwind\Models\dtproperty.cs" />
+    <Compile Include="Models\Northwind\Models\Employee.cs" />
+    <Compile Include="Models\IResult.cs" />
+    <Compile Include="Models\Northwind\Mapping\CategoryMap.cs" />
+    <Compile Include="Models\Northwind\Mapping\CustomerDemographicMap.cs" />
+    <Compile Include="Models\Northwind\Mapping\CustomerMap.cs" />
+    <Compile Include="Models\Northwind\Mapping\dtpropertyMap.cs" />
+    <Compile Include="Models\Northwind\Mapping\EmployeeMap.cs" />
+    <Compile Include="Models\Northwind\Mapping\OrderMap.cs" />
+    <Compile Include="Models\Northwind\Mapping\Order_DetailMap.cs" />
+    <Compile Include="Models\Northwind\Mapping\ProductMap.cs" />
+    <Compile Include="Models\Northwind\Mapping\RegionMap.cs" />
+    <Compile Include="Models\Northwind\Mapping\ShipperMap.cs" />
+    <Compile Include="Models\Northwind\Mapping\SupplierMap.cs" />
+    <Compile Include="Models\Northwind\Mapping\TerritoryMap.cs" />
+    <Compile Include="Models\Northwind\NorthwindContext.cs" />
+    <Compile Include="Models\Northwind\Models\Order.cs" />
+    <Compile Include="Models\Northwind\Models\Order_Detail.cs" />
+    <Compile Include="Models\Northwind\Models\Product.cs" />
+    <Compile Include="Models\Northwind\Models\Region.cs" />
+    <Compile Include="Models\Northwind\Models\Shipper.cs" />
+    <Compile Include="Models\Northwind\Models\Supplier.cs" />
+    <Compile Include="Models\Northwind\Models\Territory.cs" />
+    <Compile Include="Models\T_Radios.cs" />
+    <Compile Include="Models\T_Url_Index.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="App_Code\MVC\JsonModelBinder.cs" />
+    <Compile Include="WebForm1.aspx.cs">
+      <DependentUpon>WebForm1.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="WebForm1.aspx.designer.cs">
+      <DependentUpon>WebForm1.aspx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="..\..\Plugins\CDIMAGE.exe">
+      <Link>App_Data\CDIMAGE.exe</Link>
+    </Content>
+    <Content Include="..\..\Plugins\ffmpeg.exe">
+      <Link>App_Data\ffmpeg.exe</Link>
+    </Content>
+    <Content Include="..\..\Plugins\Rar.exe">
+      <Link>App_Data\Rar.exe</Link>
+    </Content>
+    <Content Include="App_Data\ContentType.xml" />
+    <Content Include="App_Data\data.mdb" />
+    <Content Include="App_Data\Log4Net.xml" />
+    <Content Include="App_Data\northwnd.ldf">
+      <DependentUpon>northwnd.mdf</DependentUpon>
+    </Content>
+    <Content Include="App_Data\northwnd.mdf" />
+    <Content Include="App_Data\SqlFilterWord.xml" />
+    <Content Include="bin\7z.dll" />
+    <Content Include="Content\blank.gif" />
+    <Content Include="Content\icons\icon_arrow.png" />
+    <Content Include="Content\kroppr\v1.4\mootools-core-1.4.5.js" />
+    <Content Include="Content\kroppr\v1.4\mootools-more-1.4.0.1.js" />
+    <Content Include="Content\kroppr\v1.5\kroppr v1.5.aspx" />
+    <Content Include="Content\kroppr\v1.5\mootools-core-1.5.1.min.js" />
+    <Content Include="Content\kroppr\v1.5\mootools-more-1.5.1.min.js" />
+    <Content Include="Content\NewFolder1\159130308.h264_1.flv" />
+    <Content Include="Content\NewFolder1\159130308.h264_1.jpg" />
+    <Content Include="Content\NewFolder1\2013-01-05_163939.jpg" />
+    <Content Include="Content\NewFolder1\2013-01-05_164235.jpg" />
+    <Content Include="Content\NewFolder1\bg.gif" />
+    <Content Include="Content\NewFolder1\btn_hover.png" />
+    <Content Include="Content\NewFolder1\Edit.CAB" />
+    <Content Include="Content\NewFolder1\Edit.HTM" />
+    <Content Include="Content\icons\btn_ignore.png" />
+    <Content Include="Content\icons\btn_upgrade_ignore.png" />
+    <Content Include="Content\icons\btn_upgrade_no_ignore.png" />
+    <Content Include="Content\icons\catalog_-1.png" />
+    <Content Include="Content\icons\catalog_1.png" />
+    <Content Include="Content\icons\catalog_10.png" />
+    <Content Include="Content\icons\catalog_11.png" />
+    <Content Include="Content\icons\catalog_12.png" />
+    <Content Include="Content\icons\catalog_13.png" />
+    <Content Include="Content\icons\catalog_14.png" />
+    <Content Include="Content\icons\catalog_15.png" />
+    <Content Include="Content\icons\catalog_16.png" />
+    <Content Include="Content\icons\catalog_17.png" />
+    <Content Include="Content\icons\catalog_18.png" />
+    <Content Include="Content\icons\catalog_19.png" />
+    <Content Include="Content\icons\catalog_3.png" />
+    <Content Include="Content\icons\catalog_4.png" />
+    <Content Include="Content\icons\catalog_5.png" />
+    <Content Include="Content\icons\catalog_6.png" />
+    <Content Include="Content\icons\catalog_7.png" />
+    <Content Include="Content\icons\catalog_8.png" />
+    <Content Include="Content\icons\catalog_9.png" />
+    <Content Include="Content\icons\catalog_basicsoft.png" />
+    <Content Include="Content\icons\catalog_basicsoft_hover.png" />
+    <Content Include="Content\icons\catalog_inactive.png" />
+    <Content Include="Content\icons\catalog_nominate.png" />
+    <Content Include="Content\icons\checkbox.png" />
+    <Content Include="Content\icons\close.gif" />
+    <Content Include="Content\icons\cloudsearch_declare.png" />
+    <Content Include="Content\icons\have_1.png" />
+    <Content Include="Content\icons\have_2.png" />
+    <Content Include="Content\icons\icon_cancel.png" />
+    <Content Include="Content\icons\icon_info_blue.png" />
+    <Content Include="Content\icons\icon_info_green.png" />
+    <Content Include="Content\icons\icon_question.png" />
+    <Content Include="Content\icons\icon_search.png" />
+    <Content Include="Content\icons\icon_search_cancel.png" />
+    <Content Include="Content\icons\ico_bit64.png" />
+    <Content Include="Content\icons\ico_fee.png" />
+    <Content Include="Content\icons\ico_plugin.png" />
+    <Content Include="Content\icons\list_all.png" />
+    <Content Include="Content\icons\list_basic.png" />
+    <Content Include="Content\icons\list_uninst.png" />
+    <Content Include="Content\icons\list_upgrade.png" />
+    <Content Include="Content\icons\loading %282%29.gif" />
+    <Content Include="Content\icons\loading.gif" />
+    <Content Include="Content\icons\marker.png" />
+    <Content Include="Content\icons\msg_blue.gif" />
+    <Content Include="Content\icons\msg_green.gif" />
+    <Content Include="Content\icons\msg_red.gif" />
+    <Content Include="Content\icons\refresh.png" />
+    <Content Include="Content\icons\restore.png" />
+    <Content Include="Content\icons\restoresize.png" />
+    <Content Include="Content\icons\running.gif" />
+    <Content Include="Content\icons\setup_ico01.png" />
+    <Content Include="Content\icons\softtastmgr_btn_cancel.png" />
+    <Content Include="Content\icons\softtastmgr_btn_pause.png" />
+    <Content Include="Content\icons\softtastmgr_btn_refresh.png" />
+    <Content Include="Content\icons\softtastmgr_btn_resume.png" />
+    <Content Include="Content\icons\SoftTips_close.png" />
+    <Content Include="Content\icons\softweb_back.png" />
+    <Content Include="Content\icons\soft_important.png" />
+    <Content Include="Content\icons\split_btnleft.png" />
+    <Content Include="Content\icons\split_btnright.png" />
+    <Content Include="Content\icons\star.png" />
+    <Content Include="Content\icons\textimg.png" />
+    <Content Include="Content\icons\tips_arrow.png" />
+    <Content Include="Content\icons\treecheck.png" />
+    <Content Include="Content\icons\uninstprompt.png" />
+    <Content Include="Content\icons\upgrade_collapseed.png" />
+    <Content Include="Content\icons\upgrade_uncollapseed.png" />
+    <Content Include="Content\icons\warning.gif" />
+    <Content Include="Content\NewFolder1\img_20120203044632.jpg" />
+    <Content Include="Content\NewFolder1\img_20120203044638.jpg" />
+    <Content Include="Content\NewFolder1\img_20120203044644.jpg" />
+    <Content Include="Content\NewFolder1\img_20120203044649.jpg" />
+    <Content Include="Content\NewFolder1\img_20120203044654.jpg" />
+    <Content Include="Content\NewFolder1\logoPlugIn.swf" />
+    <Content Include="Content\NewFolder1\silder3.swf" />
+    <Content Include="Content\Site.css" />
+    <Content Include="Content\NewFolder1\vcastr3.swf" />
+    <Content Include="Example\24款纯css翻页代码\css.css" />
+    <Content Include="Example\24款纯css翻页代码\image1.gif" />
+    <Content Include="Example\24款纯css翻页代码\image2.gif" />
+    <Content Include="Example\24款纯css翻页代码\index.html" />
+    <Content Include="Example\24款纯css翻页代码\meneame.jpg" />
+    <Content Include="Example\Bcastr 40 Example\bcastr.xml" />
+    <Content Include="Example\Bcastr 40 Example\bcastr4.html" />
+    <Content Include="Example\Bcastr 40 Example\bcastr4.swf" />
+    <Content Include="Example\Bcastr 40 Example\images\image1.jpg" />
+    <Content Include="Example\Bcastr 40 Example\images\image2.jpg" />
+    <Content Include="Example\Bcastr 40 Example\images\image3.jpg" />
+    <Content Include="Example\Bcastr 40 Example\images\image4.jpg" />
+    <Content Include="Example\Bcastr 40 Example\images\image5.jpg" />
+    <Content Include="Example\Fancy Menu.htm" />
+    <Content Include="Example\Fancy Menu_files\images\bg.gif" />
+    <Content Include="Example\Fancy Menu_files\images\bg_form.gif" />
+    <Content Include="Example\Fancy Menu_files\images\bg_images.gif" />
+    <Content Include="Example\Fancy Menu_files\images\bg_menu.gif" />
+    <Content Include="Example\Fancy Menu_files\images\bg_menu_right.gif" />
+    <Content Include="Example\Fancy Menu_files\images\menu_home.png" />
+    <Content Include="Example\Fancy Menu_files\images\menu_plantatree.png" />
+    <Content Include="Example\Fancy Menu_files\images\menu_rideanelephant.png" />
+    <Content Include="Example\Fancy Menu_files\images\menu_travel.png" />
+    <Content Include="Example\Fancy Menu_files\menu.css" />
+    <Content Include="Example\Fancy Menu_files\menu.js" />
+    <Content Include="Example\Fancy Menu_files\mootools.js" />
+    <Content Include="Example\Flash 幻灯片展示.htm" />
+    <Content Include="Example\Flash 视频播放控件.htm" />
+    <Content Include="Example\imagezoom\images\caption.png" />
+    <Content Include="Example\imagezoom\images\closebox.gif" />
+    <Content Include="Example\imagezoom\images\closebox.png" />
+    <Content Include="Example\imagezoom\images\loading.gif" />
+    <Content Include="Example\imagezoom\images\next.gif" />
+    <Content Include="Example\imagezoom\images\next.png" />
+    <Content Include="Example\imagezoom\images\prev.gif" />
+    <Content Include="Example\imagezoom\images\prev.png" />
+    <Content Include="Example\imagezoom\images\shadow_bl.png" />
+    <Content Include="Example\imagezoom\images\shadow_bottom.png" />
+    <Content Include="Example\imagezoom\images\shadow_br.png" />
+    <Content Include="Example\imagezoom\images\shadow_left.png" />
+    <Content Include="Example\imagezoom\images\shadow_right.png" />
+    <Content Include="Example\imagezoom\images\shadow_tl.png" />
+    <Content Include="Example\imagezoom\images\shadow_top.png" />
+    <Content Include="Example\imagezoom\images\shadow_tr.png" />
+    <Content Include="Example\imagezoom\imagezoom.css" />
+    <Content Include="Example\imagezoom\imagezoom.js" />
+    <Content Include="Example\JavaScript图片切换展示效果\HTMLPage1.htm" />
+    <Content Include="Example\JavaScript图片切换展示效果\images\01.jpg" />
+    <Content Include="Example\JavaScript图片切换展示效果\images\02.jpg" />
+    <Content Include="Example\JavaScript图片切换展示效果\images\03.jpg" />
+    <Content Include="Example\JavaScript图片切换展示效果\index.html" />
+    <Content Include="Example\javascript拖拽翻页效果.htm" />
+    <Content Include="Example\js进度条\images\bramus\custom1_bar.gif" />
+    <Content Include="Example\js进度条\images\bramus\custom1_box.gif" />
+    <Content Include="Example\js进度条\images\bramus\percentImage.png" />
+    <Content Include="Example\js进度条\images\bramus\percentImage_back.png" />
+    <Content Include="Example\js进度条\images\bramus\percentImage_back1.png" />
+    <Content Include="Example\js进度条\images\bramus\percentImage_back2.png" />
+    <Content Include="Example\js进度条\images\bramus\percentImage_back3.png" />
+    <Content Include="Example\js进度条\images\bramus\percentImage_back4.png" />
+    <Content Include="Example\js进度条\images\icons\add.gif" />
+    <Content Include="Example\js进度条\images\icons\empty.gif" />
+    <Content Include="Example\js进度条\images\icons\fill.gif" />
+    <Content Include="Example\js进度条\images\icons\get.gif" />
+    <Content Include="Example\js进度条\images\icons\minus.gif" />
+    <Content Include="Example\js进度条\images\icons\set.gif" />
+    <Content Include="Example\js进度条\index.html" />
+    <Content Include="Example\js进度条\js\bramus\jsProgressBarHandler.js" />
+    <Content Include="Example\js进度条\js\prototype\prototype.js" />
+    <Content Include="Example\magic360-trial\example1.html" />
+    <Content Include="Example\magic360-trial\example10.html" />
+    <Content Include="Example\magic360-trial\example2.html" />
+    <Content Include="Example\magic360-trial\example3.html" />
+    <Content Include="Example\magic360-trial\example4.html" />
+    <Content Include="Example\magic360-trial\example5.html" />
+    <Content Include="Example\magic360-trial\example6.html" />
+    <Content Include="Example\magic360-trial\example7.html" />
+    <Content Include="Example\magic360-trial\example8.html" />
+    <Content Include="Example\magic360-trial\example9.html" />
+    <Content Include="Example\magic360-trial\images\bag\bag-400-01-01.jpg" />
+    <Content Include="Example\magic360-trial\images\bag\bag-400-01-02.jpg" />
+    <Content Include="Example\magic360-trial\images\bag\bag-400-01-03.jpg" />
+    <Content Include="Example\magic360-trial\images\bag\bag-400-01-04.jpg" />
+    <Content Include="Example\magic360-trial\images\bag\bag-400-01-05.jpg" />
+    <Content Include="Example\magic360-trial\images\bag\bag-400-01-06.jpg" />
+    <Content Include="Example\magic360-trial\images\bag\bag-400-01-07.jpg" />
+    <Content Include="Example\magic360-trial\images\bag\bag-400-01-08.jpg" />
+    <Content Include="Example\magic360-trial\images\bag\bag-400-01-09.jpg" />
+    <Content Include="Example\magic360-trial\images\bag\bag-400-01-10.jpg" />
+    <Content Include="Example\magic360-trial\images\bag\bag-400-01-11.jpg" />
+    <Content Include="Example\magic360-trial\images\bag\bag-400-01-12.jpg" />
+    <Content Include="Example\magic360-trial\images\bag\bag-400-02-01.jpg" />
+    <Content Include="Example\magic360-trial\images\bag\bag-400-02-02.jpg" />
+    <Content Include="Example\magic360-trial\images\bag\bag-400-02-03.jpg" />
+    <Content Include="Example\magic360-trial\images\bag\bag-400-02-04.jpg" />
+    <Content Include="Example\magic360-trial\images\bag\bag-400-02-05.jpg" />
+    <Content Include="Example\magic360-trial\images\bag\bag-400-02-06.jpg" />
+    <Content Include="Example\magic360-trial\images\bag\bag-400-02-07.jpg" />
+    <Content Include="Example\magic360-trial\images\bag\bag-400-02-08.jpg" />
+    <Content Include="Example\magic360-trial\images\bag\bag-400-02-09.jpg" />
+    <Content Include="Example\magic360-trial\images\bag\bag-400-02-10.jpg" />
+    <Content Include="Example\magic360-trial\images\bag\bag-400-02-11.jpg" />
+    <Content Include="Example\magic360-trial\images\bag\bag-400-02-12.jpg" />
+    <Content Include="Example\magic360-trial\images\bag\bag-400-03-01.jpg" />
+    <Content Include="Example\magic360-trial\images\bag\bag-400-03-02.jpg" />
+    <Content Include="Example\magic360-trial\images\bag\bag-400-03-03.jpg" />
+    <Content Include="Example\magic360-trial\images\bag\bag-400-03-04.jpg" />
+    <Content Include="Example\magic360-trial\images\bag\bag-400-03-05.jpg" />
+    <Content Include="Example\magic360-trial\images\bag\bag-400-03-06.jpg" />
+    <Content Include="Example\magic360-trial\images\bag\bag-400-03-07.jpg" />
+    <Content Include="Example\magic360-trial\images\bag\bag-400-03-08.jpg" />
+    <Content Include="Example\magic360-trial\images\bag\bag-400-03-09.jpg" />
+    <Content Include="Example\magic360-trial\images\bag\bag-400-03-10.jpg" />
+    <Content Include="Example\magic360-trial\images\bag\bag-400-03-11.jpg" />
+    <Content Include="Example\magic360-trial\images\bag\bag-400-03-12.jpg" />
+    <Content Include="Example\magic360-trial\images\bag\bag-400-04-01.jpg" />
+    <Content Include="Example\magic360-trial\images\bag\bag-400-04-02.jpg" />
+    <Content Include="Example\magic360-trial\images\bag\bag-400-04-03.jpg" />
+    <Content Include="Example\magic360-trial\images\bag\bag-400-04-04.jpg" />
+    <Content Include="Example\magic360-trial\images\bag\bag-400-04-05.jpg" />
+    <Content Include="Example\magic360-trial\images\bag\bag-400-04-06.jpg" />
+    <Content Include="Example\magic360-trial\images\bag\bag-400-04-07.jpg" />
+    <Content Include="Example\magic360-trial\images\bag\bag-400-04-08.jpg" />
+    <Content Include="Example\magic360-trial\images\bag\bag-400-04-09.jpg" />
+    <Content Include="Example\magic360-trial\images\bag\bag-400-04-10.jpg" />
+    <Content Include="Example\magic360-trial\images\bag\bag-400-04-11.jpg" />
+    <Content Include="Example\magic360-trial\images\bag\bag-400-04-12.jpg" />
+    <Content Include="Example\magic360-trial\images\bag\bag-800-01-01.jpg" />
+    <Content Include="Example\magic360-trial\images\bag\bag-800-01-02.jpg" />
+    <Content Include="Example\magic360-trial\images\bag\bag-800-01-03.jpg" />
+    <Content Include="Example\magic360-trial\images\bag\bag-800-01-04.jpg" />
+    <Content Include="Example\magic360-trial\images\bag\bag-800-01-05.jpg" />
+    <Content Include="Example\magic360-trial\images\bag\bag-800-01-06.jpg" />
+    <Content Include="Example\magic360-trial\images\bag\bag-800-01-07.jpg" />
+    <Content Include="Example\magic360-trial\images\bag\bag-800-01-08.jpg" />
+    <Content Include="Example\magic360-trial\images\bag\bag-800-01-09.jpg" />
+    <Content Include="Example\magic360-trial\images\bag\bag-800-01-10.jpg" />
+    <Content Include="Example\magic360-trial\images\bag\bag-800-01-11.jpg" />
+    <Content Include="Example\magic360-trial\images\bag\bag-800-01-12.jpg" />
+    <Content Include="Example\magic360-trial\images\bag\bag-800-02-01.jpg" />
+    <Content Include="Example\magic360-trial\images\bag\bag-800-02-02.jpg" />
+    <Content Include="Example\magic360-trial\images\bag\bag-800-02-03.jpg" />
+    <Content Include="Example\magic360-trial\images\bag\bag-800-02-04.jpg" />
+    <Content Include="Example\magic360-trial\images\bag\bag-800-02-05.jpg" />
+    <Content Include="Example\magic360-trial\images\bag\bag-800-02-06.jpg" />
+    <Content Include="Example\magic360-trial\images\bag\bag-800-02-07.jpg" />
+    <Content Include="Example\magic360-trial\images\bag\bag-800-02-08.jpg" />
+    <Content Include="Example\magic360-trial\images\bag\bag-800-02-09.jpg" />
+    <Content Include="Example\magic360-trial\images\bag\bag-800-02-10.jpg" />
+    <Content Include="Example\magic360-trial\images\bag\bag-800-02-11.jpg" />
+    <Content Include="Example\magic360-trial\images\bag\bag-800-02-12.jpg" />
+    <Content Include="Example\magic360-trial\images\bag\bag-800-03-01.jpg" />
+    <Content Include="Example\magic360-trial\images\bag\bag-800-03-02.jpg" />
+    <Content Include="Example\magic360-trial\images\bag\bag-800-03-03.jpg" />
+    <Content Include="Example\magic360-trial\images\bag\bag-800-03-04.jpg" />
+    <Content Include="Example\magic360-trial\images\bag\bag-800-03-05.jpg" />
+    <Content Include="Example\magic360-trial\images\bag\bag-800-03-06.jpg" />
+    <Content Include="Example\magic360-trial\images\bag\bag-800-03-07.jpg" />
+    <Content Include="Example\magic360-trial\images\bag\bag-800-03-08.jpg" />
+    <Content Include="Example\magic360-trial\images\bag\bag-800-03-09.jpg" />
+    <Content Include="Example\magic360-trial\images\bag\bag-800-03-10.jpg" />
+    <Content Include="Example\magic360-trial\images\bag\bag-800-03-11.jpg" />
+    <Content Include="Example\magic360-trial\images\bag\bag-800-03-12.jpg" />
+    <Content Include="Example\magic360-trial\images\bag\bag-800-04-01.jpg" />
+    <Content Include="Example\magic360-trial\images\bag\bag-800-04-02.jpg" />
+    <Content Include="Example\magic360-trial\images\bag\bag-800-04-03.jpg" />
+    <Content Include="Example\magic360-trial\images\bag\bag-800-04-04.jpg" />
+    <Content Include="Example\magic360-trial\images\bag\bag-800-04-05.jpg" />
+    <Content Include="Example\magic360-trial\images\bag\bag-800-04-06.jpg" />
+    <Content Include="Example\magic360-trial\images\bag\bag-800-04-07.jpg" />
+    <Content Include="Example\magic360-trial\images\bag\bag-800-04-08.jpg" />
+    <Content Include="Example\magic360-trial\images\bag\bag-800-04-09.jpg" />
+    <Content Include="Example\magic360-trial\images\bag\bag-800-04-10.jpg" />
+    <Content Include="Example\magic360-trial\images\bag\bag-800-04-11.jpg" />
+    <Content Include="Example\magic360-trial\images\bag\bag-800-04-12.jpg" />
+    <Content Include="Example\magic360-trial\images\platforms.jpg" />
+    <Content Include="Example\magic360-trial\images\shoe\shoe-360-01.jpg" />
+    <Content Include="Example\magic360-trial\images\shoe\shoe-360-02.jpg" />
+    <Content Include="Example\magic360-trial\images\shoe\shoe-360-03.jpg" />
+    <Content Include="Example\magic360-trial\images\shoe\shoe-360-04.jpg" />
+    <Content Include="Example\magic360-trial\images\shoe\shoe-360-05.jpg" />
+    <Content Include="Example\magic360-trial\images\shoe\shoe-360-06.jpg" />
+    <Content Include="Example\magic360-trial\images\shoe\shoe-360-07.jpg" />
+    <Content Include="Example\magic360-trial\images\shoe\shoe-360-08.jpg" />
+    <Content Include="Example\magic360-trial\images\shoe\shoe-360-09.jpg" />
+    <Content Include="Example\magic360-trial\images\shoe\shoe-360-10.jpg" />
+    <Content Include="Example\magic360-trial\images\shoe\shoe-360-11.jpg" />
+    <Content Include="Example\magic360-trial\images\shoe\shoe-360-12.jpg" />
+    <Content Include="Example\magic360-trial\images\shoe\shoe-360-13.jpg" />
+    <Content Include="Example\magic360-trial\images\shoe\shoe-360-14.jpg" />
+    <Content Include="Example\magic360-trial\images\shoe\shoe-360-15.jpg" />
+    <Content Include="Example\magic360-trial\images\shoe\shoe-360-16.jpg" />
+    <Content Include="Example\magic360-trial\images\shoe\shoe-360-17.jpg" />
+    <Content Include="Example\magic360-trial\images\shoe\shoe-360-18.jpg" />
+    <Content Include="Example\magic360-trial\images\shoe\shoe-360-19.jpg" />
+    <Content Include="Example\magic360-trial\images\shoe\shoe-360-20.jpg" />
+    <Content Include="Example\magic360-trial\images\shoe\shoe-360-21.jpg" />
+    <Content Include="Example\magic360-trial\images\shoe\shoe-360-22.jpg" />
+    <Content Include="Example\magic360-trial\images\shoe\shoe-360-23.jpg" />
+    <Content Include="Example\magic360-trial\images\shoe\shoe-360-24.jpg" />
+    <Content Include="Example\magic360-trial\images\shoe\shoe-360-25.jpg" />
+    <Content Include="Example\magic360-trial\images\shoe\shoe-360-26.jpg" />
+    <Content Include="Example\magic360-trial\images\shoe\shoe-360-27.jpg" />
+    <Content Include="Example\magic360-trial\images\shoe\shoe-360-28.jpg" />
+    <Content Include="Example\magic360-trial\images\shoe\shoe-360-29.jpg" />
+    <Content Include="Example\magic360-trial\images\shoe\shoe-360-30.jpg" />
+    <Content Include="Example\magic360-trial\images\shoe\shoe-360-31.jpg" />
+    <Content Include="Example\magic360-trial\images\shoe\shoe-360-32.jpg" />
+    <Content Include="Example\magic360-trial\images\shoe\shoe-360-33.jpg" />
+    <Content Include="Example\magic360-trial\images\shoe\shoe-360-34.jpg" />
+    <Content Include="Example\magic360-trial\images\shoe\shoe-360-35.jpg" />
+    <Content Include="Example\magic360-trial\images\shoe\shoe-360-36.jpg" />
+    <Content Include="Example\magic360-trial\images\shoe\shoe-800-01.jpg" />
+    <Content Include="Example\magic360-trial\images\shoe\shoe-800-02.jpg" />
+    <Content Include="Example\magic360-trial\images\shoe\shoe-800-03.jpg" />
+    <Content Include="Example\magic360-trial\images\shoe\shoe-800-04.jpg" />
+    <Content Include="Example\magic360-trial\images\shoe\shoe-800-05.jpg" />
+    <Content Include="Example\magic360-trial\images\shoe\shoe-800-06.jpg" />
+    <Content Include="Example\magic360-trial\images\shoe\shoe-800-07.jpg" />
+    <Content Include="Example\magic360-trial\images\shoe\shoe-800-08.jpg" />
+    <Content Include="Example\magic360-trial\images\shoe\shoe-800-09.jpg" />
+    <Content Include="Example\magic360-trial\images\shoe\shoe-800-10.jpg" />
+    <Content Include="Example\magic360-trial\images\shoe\shoe-800-11.jpg" />
+    <Content Include="Example\magic360-trial\images\shoe\shoe-800-12.jpg" />
+    <Content Include="Example\magic360-trial\images\shoe\shoe-800-13.jpg" />
+    <Content Include="Example\magic360-trial\images\shoe\shoe-800-14.jpg" />
+    <Content Include="Example\magic360-trial\images\shoe\shoe-800-15.jpg" />
+    <Content Include="Example\magic360-trial\images\shoe\shoe-800-16.jpg" />
+    <Content Include="Example\magic360-trial\images\shoe\shoe-800-17.jpg" />
+    <Content Include="Example\magic360-trial\images\shoe\shoe-800-18.jpg" />
+    <Content Include="Example\magic360-trial\images\shoe\shoe-800-19.jpg" />
+    <Content Include="Example\magic360-trial\images\shoe\shoe-800-20.jpg" />
+    <Content Include="Example\magic360-trial\images\shoe\shoe-800-21.jpg" />
+    <Content Include="Example\magic360-trial\images\shoe\shoe-800-22.jpg" />
+    <Content Include="Example\magic360-trial\images\shoe\shoe-800-23.jpg" />
+    <Content Include="Example\magic360-trial\images\shoe\shoe-800-24.jpg" />
+    <Content Include="Example\magic360-trial\images\shoe\shoe-800-25.jpg" />
+    <Content Include="Example\magic360-trial\images\shoe\shoe-800-26.jpg" />
+    <Content Include="Example\magic360-trial\images\shoe\shoe-800-27.jpg" />
+    <Content Include="Example\magic360-trial\images\shoe\shoe-800-28.jpg" />
+    <Content Include="Example\magic360-trial\images\shoe\shoe-800-29.jpg" />
+    <Content Include="Example\magic360-trial\images\shoe\shoe-800-30.jpg" />
+    <Content Include="Example\magic360-trial\images\shoe\shoe-800-31.jpg" />
+    <Content Include="Example\magic360-trial\images\shoe\shoe-800-32.jpg" />
+    <Content Include="Example\magic360-trial\images\shoe\shoe-800-33.jpg" />
+    <Content Include="Example\magic360-trial\images\shoe\shoe-800-34.jpg" />
+    <Content Include="Example\magic360-trial\images\shoe\shoe-800-35.jpg" />
+    <Content Include="Example\magic360-trial\images\shoe\shoe-800-36.jpg" />
+    <Content Include="Example\magic360-trial\index.html" />
+    <Content Include="Example\magic360-trial\installation.html" />
+    <Content Include="Example\magic360-trial\LICENSE.txt" />
+    <Content Include="Example\magic360-trial\magic360-trial\example1.html" />
+    <Content Include="Example\magic360-trial\magic360-trial\example10.html" />
+    <Content Include="Example\magic360-trial\magic360-trial\example2.html" />
+    <Content Include="Example\magic360-trial\magic360-trial\example3.html" />
+    <Content Include="Example\magic360-trial\magic360-trial\example4.html" />
+    <Content Include="Example\magic360-trial\magic360-trial\example5.html" />
+    <Content Include="Example\magic360-trial\magic360-trial\example6.html" />
+    <Content Include="Example\magic360-trial\magic360-trial\example7.html" />
+    <Content Include="Example\magic360-trial\magic360-trial\example8.html" />
+    <Content Include="Example\magic360-trial\magic360-trial\example9.html" />
+    <Content Include="Example\magic360-trial\magic360-trial\images\bag\bag-400-01-01.jpg" />
+    <Content Include="Example\magic360-trial\magic360-trial\images\bag\bag-400-01-02.jpg" />
+    <Content Include="Example\magic360-trial\magic360-trial\images\bag\bag-400-01-03.jpg" />
+    <Content Include="Example\magic360-trial\magic360-trial\images\bag\bag-400-01-04.jpg" />
+    <Content Include="Example\magic360-trial\magic360-trial\images\bag\bag-400-01-05.jpg" />
+    <Content Include="Example\magic360-trial\magic360-trial\images\bag\bag-400-01-06.jpg" />
+    <Content Include="Example\magic360-trial\magic360-trial\images\bag\bag-400-01-07.jpg" />
+    <Content Include="Example\magic360-trial\magic360-trial\images\bag\bag-400-01-08.jpg" />
+    <Content Include="Example\magic360-trial\magic360-trial\images\bag\bag-400-01-09.jpg" />
+    <Content Include="Example\magic360-trial\magic360-trial\images\bag\bag-400-01-10.jpg" />
+    <Content Include="Example\magic360-trial\magic360-trial\images\bag\bag-400-01-11.jpg" />
+    <Content Include="Example\magic360-trial\magic360-trial\images\bag\bag-400-01-12.jpg" />
+    <Content Include="Example\magic360-trial\magic360-trial\images\bag\bag-400-02-01.jpg" />
+    <Content Include="Example\magic360-trial\magic360-trial\images\bag\bag-400-02-02.jpg" />
+    <Content Include="Example\magic360-trial\magic360-trial\images\bag\bag-400-02-03.jpg" />
+    <Content Include="Example\magic360-trial\magic360-trial\images\bag\bag-400-02-04.jpg" />
+    <Content Include="Example\magic360-trial\magic360-trial\images\bag\bag-400-02-05.jpg" />
+    <Content Include="Example\magic360-trial\magic360-trial\images\bag\bag-400-02-06.jpg" />
+    <Content Include="Example\magic360-trial\magic360-trial\images\bag\bag-400-02-07.jpg" />
+    <Content Include="Example\magic360-trial\magic360-trial\images\bag\bag-400-02-08.jpg" />
+    <Content Include="Example\magic360-trial\magic360-trial\images\bag\bag-400-02-09.jpg" />
+    <Content Include="Example\magic360-trial\magic360-trial\images\bag\bag-400-02-10.jpg" />
+    <Content Include="Example\magic360-trial\magic360-trial\images\bag\bag-400-02-11.jpg" />
+    <Content Include="Example\magic360-trial\magic360-trial\images\bag\bag-400-02-12.jpg" />
+    <Content Include="Example\magic360-trial\magic360-trial\images\bag\bag-400-03-01.jpg" />
+    <Content Include="Example\magic360-trial\magic360-trial\images\bag\bag-400-03-02.jpg" />
+    <Content Include="Example\magic360-trial\magic360-trial\images\bag\bag-400-03-03.jpg" />
+    <Content Include="Example\magic360-trial\magic360-trial\images\bag\bag-400-03-04.jpg" />
+    <Content Include="Example\magic360-trial\magic360-trial\images\bag\bag-400-03-05.jpg" />
+    <Content Include="Example\magic360-trial\magic360-trial\images\bag\bag-400-03-06.jpg" />
+    <Content Include="Example\magic360-trial\magic360-trial\images\bag\bag-400-03-07.jpg" />
+    <Content Include="Example\magic360-trial\magic360-trial\images\bag\bag-400-03-08.jpg" />
+    <Content Include="Example\magic360-trial\magic360-trial\images\bag\bag-400-03-09.jpg" />
+    <Content Include="Example\magic360-trial\magic360-trial\images\bag\bag-400-03-10.jpg" />
+    <Content Include="Example\magic360-trial\magic360-trial\images\bag\bag-400-03-11.jpg" />
+    <Content Include="Example\magic360-trial\magic360-trial\images\bag\bag-400-03-12.jpg" />
+    <Content Include="Example\magic360-trial\magic360-trial\images\bag\bag-400-04-01.jpg" />
+    <Content Include="Example\magic360-trial\magic360-trial\images\bag\bag-400-04-02.jpg" />
+    <Content Include="Example\magic360-trial\magic360-trial\images\bag\bag-400-04-03.jpg" />
+    <Content Include="Example\magic360-trial\magic360-trial\images\bag\bag-400-04-04.jpg" />
+    <Content Include="Example\magic360-trial\magic360-trial\images\bag\bag-400-04-05.jpg" />
+    <Content Include="Example\magic360-trial\magic360-trial\images\bag\bag-400-04-06.jpg" />
+    <Content Include="Example\magic360-trial\magic360-trial\images\bag\bag-400-04-07.jpg" />
+    <Content Include="Example\magic360-trial\magic360-trial\images\bag\bag-400-04-08.jpg" />
+    <Content Include="Example\magic360-trial\magic360-trial\images\bag\bag-400-04-09.jpg" />
+    <Content Include="Example\magic360-trial\magic360-trial\images\bag\bag-400-04-10.jpg" />
+    <Content Include="Example\magic360-trial\magic360-trial\images\bag\bag-400-04-11.jpg" />
+    <Content Include="Example\magic360-trial\magic360-trial\images\bag\bag-400-04-12.jpg" />
+    <Content Include="Example\magic360-trial\magic360-trial\images\bag\bag-800-01-01.jpg" />
+    <Content Include="Example\magic360-trial\magic360-trial\images\bag\bag-800-01-02.jpg" />
+    <Content Include="Example\magic360-trial\magic360-trial\images\bag\bag-800-01-03.jpg" />
+    <Content Include="Example\magic360-trial\magic360-trial\images\bag\bag-800-01-04.jpg" />
+    <Content Include="Example\magic360-trial\magic360-trial\images\bag\bag-800-01-05.jpg" />
+    <Content Include="Example\magic360-trial\magic360-trial\images\bag\bag-800-01-06.jpg" />
+    <Content Include="Example\magic360-trial\magic360-trial\images\bag\bag-800-01-07.jpg" />
+    <Content Include="Example\magic360-trial\magic360-trial\images\bag\bag-800-01-08.jpg" />
+    <Content Include="Example\magic360-trial\magic360-trial\images\bag\bag-800-01-09.jpg" />
+    <Content Include="Example\magic360-trial\magic360-trial\images\bag\bag-800-01-10.jpg" />
+    <Content Include="Example\magic360-trial\magic360-trial\images\bag\bag-800-01-11.jpg" />
+    <Content Include="Example\magic360-trial\magic360-trial\images\bag\bag-800-01-12.jpg" />
+    <Content Include="Example\magic360-trial\magic360-trial\images\bag\bag-800-02-01.jpg" />
+    <Content Include="Example\magic360-trial\magic360-trial\images\bag\bag-800-02-02.jpg" />
+    <Content Include="Example\magic360-trial\magic360-trial\images\bag\bag-800-02-03.jpg" />
+    <Content Include="Example\magic360-trial\magic360-trial\images\bag\bag-800-02-04.jpg" />
+    <Content Include="Example\magic360-trial\magic360-trial\images\bag\bag-800-02-05.jpg" />
+    <Content Include="Example\magic360-trial\magic360-trial\images\bag\bag-800-02-06.jpg" />
+    <Content Include="Example\magic360-trial\magic360-trial\images\bag\bag-800-02-07.jpg" />
+    <Content Include="Example\magic360-trial\magic360-trial\images\bag\bag-800-02-08.jpg" />
+    <Content Include="Example\magic360-trial\magic360-trial\images\bag\bag-800-02-09.jpg" />
+    <Content Include="Example\magic360-trial\magic360-trial\images\bag\bag-800-02-10.jpg" />
+    <Content Include="Example\magic360-trial\magic360-trial\images\bag\bag-800-02-11.jpg" />
+    <Content Include="Example\magic360-trial\magic360-trial\images\bag\bag-800-02-12.jpg" />
+    <Content Include="Example\magic360-trial\magic360-trial\images\bag\bag-800-03-01.jpg" />
+    <Content Include="Example\magic360-trial\magic360-trial\images\bag\bag-800-03-02.jpg" />
+    <Content Include="Example\magic360-trial\magic360-trial\images\bag\bag-800-03-03.jpg" />
+    <Content Include="Example\magic360-trial\magic360-trial\images\bag\bag-800-03-04.jpg" />
+    <Content Include="Example\magic360-trial\magic360-trial\images\bag\bag-800-03-05.jpg" />
+    <Content Include="Example\magic360-trial\magic360-trial\images\bag\bag-800-03-06.jpg" />
+    <Content Include="Example\magic360-trial\magic360-trial\images\bag\bag-800-03-07.jpg" />
+    <Content Include="Example\magic360-trial\magic360-trial\images\bag\bag-800-03-08.jpg" />
+    <Content Include="Example\magic360-trial\magic360-trial\images\bag\bag-800-03-09.jpg" />
+    <Content Include="Example\magic360-trial\magic360-trial\images\bag\bag-800-03-10.jpg" />
+    <Content Include="Example\magic360-trial\magic360-trial\images\bag\bag-800-03-11.jpg" />
+    <Content Include="Example\magic360-trial\magic360-trial\images\bag\bag-800-03-12.jpg" />
+    <Content Include="Example\magic360-trial\magic360-trial\images\bag\bag-800-04-01.jpg" />
+    <Content Include="Example\magic360-trial\magic360-trial\images\bag\bag-800-04-02.jpg" />
+    <Content Include="Example\magic360-trial\magic360-trial\images\bag\bag-800-04-03.jpg" />
+    <Content Include="Example\magic360-trial\magic360-trial\images\bag\bag-800-04-04.jpg" />
+    <Content Include="Example\magic360-trial\magic360-trial\images\bag\bag-800-04-05.jpg" />
+    <Content Include="Example\magic360-trial\magic360-trial\images\bag\bag-800-04-06.jpg" />
+    <Content Include="Example\magic360-trial\magic360-trial\images\bag\bag-800-04-07.jpg" />
+    <Content Include="Example\magic360-trial\magic360-trial\images\bag\bag-800-04-08.jpg" />
+    <Content Include="Example\magic360-trial\magic360-trial\images\bag\bag-800-04-09.jpg" />
+    <Content Include="Example\magic360-trial\magic360-trial\images\bag\bag-800-04-10.jpg" />
+    <Content Include="Example\magic360-trial\magic360-trial\images\bag\bag-800-04-11.jpg" />
+    <Content Include="Example\magic360-trial\magic360-trial\images\bag\bag-800-04-12.jpg" />
+    <Content Include="Example\magic360-trial\magic360-trial\images\platforms.jpg" />
+    <Content Include="Example\magic360-trial\magic360-trial\images\shoe\shoe-360-01.jpg" />
+    <Content Include="Example\magic360-trial\magic360-trial\images\shoe\shoe-360-02.jpg" />
+    <Content Include="Example\magic360-trial\magic360-trial\images\shoe\shoe-360-03.jpg" />
+    <Content Include="Example\magic360-trial\magic360-trial\images\shoe\shoe-360-04.jpg" />
+    <Content Include="Example\magic360-trial\magic360-trial\images\shoe\shoe-360-05.jpg" />
+    <Content Include="Example\magic360-trial\magic360-trial\images\shoe\shoe-360-06.jpg" />
+    <Content Include="Example\magic360-trial\magic360-trial\images\shoe\shoe-360-07.jpg" />
+    <Content Include="Example\magic360-trial\magic360-trial\images\shoe\shoe-360-08.jpg" />
+    <Content Include="Example\magic360-trial\magic360-trial\images\shoe\shoe-360-09.jpg" />
+    <Content Include="Example\magic360-trial\magic360-trial\images\shoe\shoe-360-10.jpg" />
+    <Content Include="Example\magic360-trial\magic360-trial\images\shoe\shoe-360-11.jpg" />
+    <Content Include="Example\magic360-trial\magic360-trial\images\shoe\shoe-360-12.jpg" />
+    <Content Include="Example\magic360-trial\magic360-trial\images\shoe\shoe-360-13.jpg" />
+    <Content Include="Example\magic360-trial\magic360-trial\images\shoe\shoe-360-14.jpg" />
+    <Content Include="Example\magic360-trial\magic360-trial\images\shoe\shoe-360-15.jpg" />
+    <Content Include="Example\magic360-trial\magic360-trial\images\shoe\shoe-360-16.jpg" />
+    <Content Include="Example\magic360-trial\magic360-trial\images\shoe\shoe-360-17.jpg" />
+    <Content Include="Example\magic360-trial\magic360-trial\images\shoe\shoe-360-18.jpg" />
+    <Content Include="Example\magic360-trial\magic360-trial\images\shoe\shoe-360-19.jpg" />
+    <Content Include="Example\magic360-trial\magic360-trial\images\shoe\shoe-360-20.jpg" />
+    <Content Include="Example\magic360-trial\magic360-trial\images\shoe\shoe-360-21.jpg" />
+    <Content Include="Example\magic360-trial\magic360-trial\images\shoe\shoe-360-22.jpg" />
+    <Content Include="Example\magic360-trial\magic360-trial\images\shoe\shoe-360-23.jpg" />
+    <Content Include="Example\magic360-trial\magic360-trial\images\shoe\shoe-360-24.jpg" />
+    <Content Include="Example\magic360-trial\magic360-trial\images\shoe\shoe-360-25.jpg" />
+    <Content Include="Example\magic360-trial\magic360-trial\images\shoe\shoe-360-26.jpg" />
+    <Content Include="Example\magic360-trial\magic360-trial\images\shoe\shoe-360-27.jpg" />
+    <Content Include="Example\magic360-trial\magic360-trial\images\shoe\shoe-360-28.jpg" />
+    <Content Include="Example\magic360-trial\magic360-trial\images\shoe\shoe-360-29.jpg" />
+    <Content Include="Example\magic360-trial\magic360-trial\images\shoe\shoe-360-30.jpg" />
+    <Content Include="Example\magic360-trial\magic360-trial\images\shoe\shoe-360-31.jpg" />
+    <Content Include="Example\magic360-trial\magic360-trial\images\shoe\shoe-360-32.jpg" />
+    <Content Include="Example\magic360-trial\magic360-trial\images\shoe\shoe-360-33.jpg" />
+    <Content Include="Example\magic360-trial\magic360-trial\images\shoe\shoe-360-34.jpg" />
+    <Content Include="Example\magic360-trial\magic360-trial\images\shoe\shoe-360-35.jpg" />
+    <Content Include="Example\magic360-trial\magic360-trial\images\shoe\shoe-360-36.jpg" />
+    <Content Include="Example\magic360-trial\magic360-trial\images\shoe\shoe-800-01.jpg" />
+    <Content Include="Example\magic360-trial\magic360-trial\images\shoe\shoe-800-02.jpg" />
+    <Content Include="Example\magic360-trial\magic360-trial\images\shoe\shoe-800-03.jpg" />
+    <Content Include="Example\magic360-trial\magic360-trial\images\shoe\shoe-800-04.jpg" />
+    <Content Include="Example\magic360-trial\magic360-trial\images\shoe\shoe-800-05.jpg" />
+    <Content Include="Example\magic360-trial\magic360-trial\images\shoe\shoe-800-06.jpg" />
+    <Content Include="Example\magic360-trial\magic360-trial\images\shoe\shoe-800-07.jpg" />
+    <Content Include="Example\magic360-trial\magic360-trial\images\shoe\shoe-800-08.jpg" />
+    <Content Include="Example\magic360-trial\magic360-trial\images\shoe\shoe-800-09.jpg" />
+    <Content Include="Example\magic360-trial\magic360-trial\images\shoe\shoe-800-10.jpg" />
+    <Content Include="Example\magic360-trial\magic360-trial\images\shoe\shoe-800-11.jpg" />
+    <Content Include="Example\magic360-trial\magic360-trial\images\shoe\shoe-800-12.jpg" />
+    <Content Include="Example\magic360-trial\magic360-trial\images\shoe\shoe-800-13.jpg" />
+    <Content Include="Example\magic360-trial\magic360-trial\images\shoe\shoe-800-14.jpg" />
+    <Content Include="Example\magic360-trial\magic360-trial\images\shoe\shoe-800-15.jpg" />
+    <Content Include="Example\magic360-trial\magic360-trial\images\shoe\shoe-800-16.jpg" />
+    <Content Include="Example\magic360-trial\magic360-trial\images\shoe\shoe-800-17.jpg" />
+    <Content Include="Example\magic360-trial\magic360-trial\images\shoe\shoe-800-18.jpg" />
+    <Content Include="Example\magic360-trial\magic360-trial\images\shoe\shoe-800-19.jpg" />
+    <Content Include="Example\magic360-trial\magic360-trial\images\shoe\shoe-800-20.jpg" />
+    <Content Include="Example\magic360-trial\magic360-trial\images\shoe\shoe-800-21.jpg" />
+    <Content Include="Example\magic360-trial\magic360-trial\images\shoe\shoe-800-22.jpg" />
+    <Content Include="Example\magic360-trial\magic360-trial\images\shoe\shoe-800-23.jpg" />
+    <Content Include="Example\magic360-trial\magic360-trial\images\shoe\shoe-800-24.jpg" />
+    <Content Include="Example\magic360-trial\magic360-trial\images\shoe\shoe-800-25.jpg" />
+    <Content Include="Example\magic360-trial\magic360-trial\images\shoe\shoe-800-26.jpg" />
+    <Content Include="Example\magic360-trial\magic360-trial\images\shoe\shoe-800-27.jpg" />
+    <Content Include="Example\magic360-trial\magic360-trial\images\shoe\shoe-800-28.jpg" />
+    <Content Include="Example\magic360-trial\magic360-trial\images\shoe\shoe-800-29.jpg" />
+    <Content Include="Example\magic360-trial\magic360-trial\images\shoe\shoe-800-30.jpg" />
+    <Content Include="Example\magic360-trial\magic360-trial\images\shoe\shoe-800-31.jpg" />
+    <Content Include="Example\magic360-trial\magic360-trial\images\shoe\shoe-800-32.jpg" />
+    <Content Include="Example\magic360-trial\magic360-trial\images\shoe\shoe-800-33.jpg" />
+    <Content Include="Example\magic360-trial\magic360-trial\images\shoe\shoe-800-34.jpg" />
+    <Content Include="Example\magic360-trial\magic360-trial\images\shoe\shoe-800-35.jpg" />
+    <Content Include="Example\magic360-trial\magic360-trial\images\shoe\shoe-800-36.jpg" />
+    <Content Include="Example\magic360-trial\magic360-trial\index.html" />
+    <Content Include="Example\magic360-trial\magic360-trial\installation.html" />
+    <Content Include="Example\magic360-trial\magic360-trial\LICENSE.txt" />
+    <Content Include="Example\magic360-trial\magic360-trial\magic360\graphics\buttons01.png" />
+    <Content Include="Example\magic360-trial\magic360-trial\magic360\graphics\buttons02.png" />
+    <Content Include="Example\magic360-trial\magic360-trial\magic360\graphics\buttons03.png" />
+    <Content Include="Example\magic360-trial\magic360-trial\magic360\graphics\buttons04.png" />
+    <Content Include="Example\magic360-trial\magic360-trial\magic360\graphics\buttons05.png" />
+    <Content Include="Example\magic360-trial\magic360-trial\magic360\graphics\buttons06.png" />
+    <Content Include="Example\magic360-trial\magic360-trial\magic360\graphics\buttons07.png" />
+    <Content Include="Example\magic360-trial\magic360-trial\magic360\graphics\buttons08.png" />
+    <Content Include="Example\magic360-trial\magic360-trial\magic360\graphics\buttons09.png" />
+    <Content Include="Example\magic360-trial\magic360-trial\magic360\graphics\buttons10.png" />
+    <Content Include="Example\magic360-trial\magic360-trial\magic360\graphics\buttons11.png" />
+    <Content Include="Example\magic360-trial\magic360-trial\magic360\graphics\buttons12.png" />
+    <Content Include="Example\magic360-trial\magic360-trial\magic360\graphics\buttons13.png" />
+    <Content Include="Example\magic360-trial\magic360-trial\magic360\graphics\buttons14.png" />
+    <Content Include="Example\magic360-trial\magic360-trial\magic360\graphics\buttons15.png" />
+    <Content Include="Example\magic360-trial\magic360-trial\magic360\graphics\buttons16.png" />
+    <Content Include="Example\magic360-trial\magic360-trial\magic360\graphics\buttons17.png" />
+    <Content Include="Example\magic360-trial\magic360-trial\magic360\graphics\buttons18.png" />
+    <Content Include="Example\magic360-trial\magic360-trial\magic360\graphics\buttons19.png" />
+    <Content Include="Example\magic360-trial\magic360-trial\magic360\graphics\buttons20.png" />
+    <Content Include="Example\magic360-trial\magic360-trial\magic360\graphics\buttons21.png" />
+    <Content Include="Example\magic360-trial\magic360-trial\magic360\graphics\buttons22.png" />
+    <Content Include="Example\magic360-trial\magic360-trial\magic360\graphics\buttons23.png" />
+    <Content Include="Example\magic360-trial\magic360-trial\magic360\graphics\buttons24.png" />
+    <Content Include="Example\magic360-trial\magic360-trial\magic360\graphics\hint-01.png" />
+    <Content Include="Example\magic360-trial\magic360-trial\magic360\graphics\hint-02.png" />
+    <Content Include="Example\magic360-trial\magic360-trial\magic360\graphics\hint-03.png" />
+    <Content Include="Example\magic360-trial\magic360-trial\magic360\graphics\hint-04.png" />
+    <Content Include="Example\magic360-trial\magic360-trial\magic360\graphics\hint-05.png" />
+    <Content Include="Example\magic360-trial\magic360-trial\magic360\graphics\loader.gif" />
+    <Content Include="Example\magic360-trial\magic360-trial\magic360\graphics\progress.gif" />
+    <Content Include="Example\magic360-trial\magic360-trial\magic360\graphics\zoomin.cur" />
+    <Content Include="Example\magic360-trial\magic360-trial\magic360\graphics\zoomout.cur" />
+    <Content Include="Example\magic360-trial\magic360-trial\magic360\magic360.css" />
+    <Content Include="Example\magic360-trial\magic360-trial\magic360\magic360.js" />
+    <Content Include="Example\magic360-trial\magic360-trial\parameters.html" />
+    <Content Include="Example\magic360-trial\magic360-trial\wizard.html" />
+    <Content Include="Example\magic360-trial\magic360\graphics\buttons01.png" />
+    <Content Include="Example\magic360-trial\magic360\graphics\buttons02.png" />
+    <Content Include="Example\magic360-trial\magic360\graphics\buttons03.png" />
+    <Content Include="Example\magic360-trial\magic360\graphics\buttons04.png" />
+    <Content Include="Example\magic360-trial\magic360\graphics\buttons05.png" />
+    <Content Include="Example\magic360-trial\magic360\graphics\buttons06.png" />
+    <Content Include="Example\magic360-trial\magic360\graphics\buttons07.png" />
+    <Content Include="Example\magic360-trial\magic360\graphics\buttons08.png" />
+    <Content Include="Example\magic360-trial\magic360\graphics\buttons09.png" />
+    <Content Include="Example\magic360-trial\magic360\graphics\buttons10.png" />
+    <Content Include="Example\magic360-trial\magic360\graphics\buttons11.png" />
+    <Content Include="Example\magic360-trial\magic360\graphics\buttons12.png" />
+    <Content Include="Example\magic360-trial\magic360\graphics\buttons13.png" />
+    <Content Include="Example\magic360-trial\magic360\graphics\buttons14.png" />
+    <Content Include="Example\magic360-trial\magic360\graphics\buttons15.png" />
+    <Content Include="Example\magic360-trial\magic360\graphics\buttons16.png" />
+    <Content Include="Example\magic360-trial\magic360\graphics\buttons17.png" />
+    <Content Include="Example\magic360-trial\magic360\graphics\buttons18.png" />
+    <Content Include="Example\magic360-trial\magic360\graphics\buttons19.png" />
+    <Content Include="Example\magic360-trial\magic360\graphics\buttons20.png" />
+    <Content Include="Example\magic360-trial\magic360\graphics\buttons21.png" />
+    <Content Include="Example\magic360-trial\magic360\graphics\buttons22.png" />
+    <Content Include="Example\magic360-trial\magic360\graphics\buttons23.png" />
+    <Content Include="Example\magic360-trial\magic360\graphics\buttons24.png" />
+    <Content Include="Example\magic360-trial\magic360\graphics\hint-01.png" />
+    <Content Include="Example\magic360-trial\magic360\graphics\hint-02.png" />
+    <Content Include="Example\magic360-trial\magic360\graphics\hint-03.png" />
+    <Content Include="Example\magic360-trial\magic360\graphics\hint-04.png" />
+    <Content Include="Example\magic360-trial\magic360\graphics\hint-05.png" />
+    <Content Include="Example\magic360-trial\magic360\graphics\loader.gif" />
+    <Content Include="Example\magic360-trial\magic360\graphics\progress.gif" />
+    <Content Include="Example\magic360-trial\magic360\graphics\zoomin.cur" />
+    <Content Include="Example\magic360-trial\magic360\graphics\zoomout.cur" />
+    <Content Include="Example\magic360-trial\magic360\magic360.css" />
+    <Content Include="Example\magic360-trial\magic360\magic360.js" />
+    <Content Include="Example\magic360-trial\magic360\副本 magic360.js" />
+    <Content Include="Example\magic360-trial\parameters.html" />
+    <Content Include="Example\magic360-trial\wizard.html" />
+    <Content Include="Example\magic360flash-trial\example1.html" />
+    <Content Include="Example\magic360flash-trial\example10.html" />
+    <Content Include="Example\magic360flash-trial\example2.html" />
+    <Content Include="Example\magic360flash-trial\example3.html" />
+    <Content Include="Example\magic360flash-trial\example4.html" />
+    <Content Include="Example\magic360flash-trial\example5.html" />
+    <Content Include="Example\magic360flash-trial\example6.html" />
+    <Content Include="Example\magic360flash-trial\example7.html" />
+    <Content Include="Example\magic360flash-trial\example8.html" />
+    <Content Include="Example\magic360flash-trial\example9.html" />
+    <Content Include="Example\magic360flash-trial\images\big\01.jpg" />
+    <Content Include="Example\magic360flash-trial\images\big\02.jpg" />
+    <Content Include="Example\magic360flash-trial\images\big\03.jpg" />
+    <Content Include="Example\magic360flash-trial\images\big\04.jpg" />
+    <Content Include="Example\magic360flash-trial\images\big\05.jpg" />
+    <Content Include="Example\magic360flash-trial\images\big\06.jpg" />
+    <Content Include="Example\magic360flash-trial\images\big\07.jpg" />
+    <Content Include="Example\magic360flash-trial\images\big\08.jpg" />
+    <Content Include="Example\magic360flash-trial\images\big\09.jpg" />
+    <Content Include="Example\magic360flash-trial\images\big\10.jpg" />
+    <Content Include="Example\magic360flash-trial\images\big\11.jpg" />
+    <Content Include="Example\magic360flash-trial\images\big\12.jpg" />
+    <Content Include="Example\magic360flash-trial\images\big\13.jpg" />
+    <Content Include="Example\magic360flash-trial\images\big\14.jpg" />
+    <Content Include="Example\magic360flash-trial\images\big\15.jpg" />
+    <Content Include="Example\magic360flash-trial\images\big\16.jpg" />
+    <Content Include="Example\magic360flash-trial\images\big\17.jpg" />
+    <Content Include="Example\magic360flash-trial\images\big\18.jpg" />
+    <Content Include="Example\magic360flash-trial\images\big\19.jpg" />
+    <Content Include="Example\magic360flash-trial\images\big\20.jpg" />
+    <Content Include="Example\magic360flash-trial\images\big\21.jpg" />
+    <Content Include="Example\magic360flash-trial\images\big\22.jpg" />
+    <Content Include="Example\magic360flash-trial\images\big\23.jpg" />
+    <Content Include="Example\magic360flash-trial\images\big\24.jpg" />
+    <Content Include="Example\magic360flash-trial\images\big\25.jpg" />
+    <Content Include="Example\magic360flash-trial\images\big\26.jpg" />
+    <Content Include="Example\magic360flash-trial\images\big\27.jpg" />
+    <Content Include="Example\magic360flash-trial\images\big\28.jpg" />
+    <Content Include="Example\magic360flash-trial\images\big\29.jpg" />
+    <Content Include="Example\magic360flash-trial\images\big\30.jpg" />
+    <Content Include="Example\magic360flash-trial\images\big\31.jpg" />
+    <Content Include="Example\magic360flash-trial\images\big\32.jpg" />
+    <Content Include="Example\magic360flash-trial\images\small\01.jpg" />
+    <Content Include="Example\magic360flash-trial\images\small\02.jpg" />
+    <Content Include="Example\magic360flash-trial\images\small\03.jpg" />
+    <Content Include="Example\magic360flash-trial\images\small\04.jpg" />
+    <Content Include="Example\magic360flash-trial\images\small\05.jpg" />
+    <Content Include="Example\magic360flash-trial\images\small\06.jpg" />
+    <Content Include="Example\magic360flash-trial\images\small\07.jpg" />
+    <Content Include="Example\magic360flash-trial\images\small\08.jpg" />
+    <Content Include="Example\magic360flash-trial\images\small\09.jpg" />
+    <Content Include="Example\magic360flash-trial\images\small\10.jpg" />
+    <Content Include="Example\magic360flash-trial\images\small\11.jpg" />
+    <Content Include="Example\magic360flash-trial\images\small\12.jpg" />
+    <Content Include="Example\magic360flash-trial\images\small\13.jpg" />
+    <Content Include="Example\magic360flash-trial\images\small\14.jpg" />
+    <Content Include="Example\magic360flash-trial\images\small\15.jpg" />
+    <Content Include="Example\magic360flash-trial\images\small\16.jpg" />
+    <Content Include="Example\magic360flash-trial\images\small\17.jpg" />
+    <Content Include="Example\magic360flash-trial\images\small\18.jpg" />
+    <Content Include="Example\magic360flash-trial\images\small\19.jpg" />
+    <Content Include="Example\magic360flash-trial\images\small\20.jpg" />
+    <Content Include="Example\magic360flash-trial\images\small\21.jpg" />
+    <Content Include="Example\magic360flash-trial\images\small\22.jpg" />
+    <Content Include="Example\magic360flash-trial\images\small\23.jpg" />
+    <Content Include="Example\magic360flash-trial\images\small\24.jpg" />
+    <Content Include="Example\magic360flash-trial\images\small\25.jpg" />
+    <Content Include="Example\magic360flash-trial\images\small\26.jpg" />
+    <Content Include="Example\magic360flash-trial\images\small\27.jpg" />
+    <Content Include="Example\magic360flash-trial\images\small\28.jpg" />
+    <Content Include="Example\magic360flash-trial\images\small\29.jpg" />
+    <Content Include="Example\magic360flash-trial\images\small\30.jpg" />
+    <Content Include="Example\magic360flash-trial\images\small\31.jpg" />
+    <Content Include="Example\magic360flash-trial\images\small\32.jpg" />
+    <Content Include="Example\magic360flash-trial\index.html" />
+    <Content Include="Example\magic360flash-trial\LICENSE.txt" />
+    <Content Include="Example\magic360flash-trial\magic360flash\loader.gif" />
+    <Content Include="Example\magic360flash-trial\magic360flash\magic360flash.js" />
+    <Content Include="Example\magic360flash-trial\magic360flash\magic360flash.swf" />
+    <Content Include="Example\magic360flash-trial\parameters.html" />
+    <Content Include="Example\magic360flash-trial\wizard.html" />
+    <Content Include="Example\magicmagnify-trial\example1.html" />
+    <Content Include="Example\magicmagnify-trial\example10.html" />
+    <Content Include="Example\magicmagnify-trial\example11.html" />
+    <Content Include="Example\magicmagnify-trial\example12.html" />
+    <Content Include="Example\magicmagnify-trial\example13.html" />
+    <Content Include="Example\magicmagnify-trial\example2.html" />
+    <Content Include="Example\magicmagnify-trial\example3.html" />
+    <Content Include="Example\magicmagnify-trial\example4.html" />
+    <Content Include="Example\magicmagnify-trial\example5.html" />
+    <Content Include="Example\magicmagnify-trial\example6.html" />
+    <Content Include="Example\magicmagnify-trial\example7.html" />
+    <Content Include="Example\magicmagnify-trial\example8.html" />
+    <Content Include="Example\magicmagnify-trial\example9.html" />
+    <Content Include="Example\magicmagnify-trial\images\lense.png" />
+    <Content Include="Example\magicmagnify-trial\images\lense2.png" />
+    <Content Include="Example\magicmagnify-trial\images\lense3.png" />
+    <Content Include="Example\magicmagnify-trial\images\sel.jpg" />
+    <Content Include="Example\magicmagnify-trial\images\sel1.jpg" />
+    <Content Include="Example\magicmagnify-trial\images\sel2.jpg" />
+    <Content Include="Example\magicmagnify-trial\images\shoe_large.jpg" />
+    <Content Include="Example\magicmagnify-trial\images\shoe_large1.jpg" />
+    <Content Include="Example\magicmagnify-trial\images\shoe_large2.jpg" />
+    <Content Include="Example\magicmagnify-trial\images\shoe_small.jpg" />
+    <Content Include="Example\magicmagnify-trial\images\shoe_small1.jpg" />
+    <Content Include="Example\magicmagnify-trial\images\shoe_small2.jpg" />
+    <Content Include="Example\magicmagnify-trial\index.html" />
+    <Content Include="Example\magicmagnify-trial\LICENSE.txt" />
+    <Content Include="Example\magicmagnify-trial\magicmagnify\loader.gif" />
+    <Content Include="Example\magicmagnify-trial\magicmagnify\magicmagnify.js" />
+    <Content Include="Example\magicmagnify-trial\magicmagnify\magicmagnify.swf" />
+    <Content Include="Example\magicmagnify-trial\magicmagnify\副本 magicmagnify.js" />
+    <Content Include="Example\magicmagnify-trial\wizard.html" />
+    <Content Include="Example\magicmagnifyplus-trial\example1.html" />
+    <Content Include="Example\magicmagnifyplus-trial\example10.html" />
+    <Content Include="Example\magicmagnifyplus-trial\example2.html" />
+    <Content Include="Example\magicmagnifyplus-trial\example3.html" />
+    <Content Include="Example\magicmagnifyplus-trial\example4.html" />
+    <Content Include="Example\magicmagnifyplus-trial\example5.html" />
+    <Content Include="Example\magicmagnifyplus-trial\example6.html" />
+    <Content Include="Example\magicmagnifyplus-trial\example7.html" />
+    <Content Include="Example\magicmagnifyplus-trial\example8.html" />
+    <Content Include="Example\magicmagnifyplus-trial\example9.html" />
+    <Content Include="Example\magicmagnifyplus-trial\images\lense.png" />
+    <Content Include="Example\magicmagnifyplus-trial\images\lense2.png" />
+    <Content Include="Example\magicmagnifyplus-trial\images\lense3.png" />
+    <Content Include="Example\magicmagnifyplus-trial\images\sel.jpg" />
+    <Content Include="Example\magicmagnifyplus-trial\images\sel1.jpg" />
+    <Content Include="Example\magicmagnifyplus-trial\images\sel2.jpg" />
+    <Content Include="Example\magicmagnifyplus-trial\images\shoe_large.jpg" />
+    <Content Include="Example\magicmagnifyplus-trial\images\shoe_large1.jpg" />
+    <Content Include="Example\magicmagnifyplus-trial\images\shoe_large2.jpg" />
+    <Content Include="Example\magicmagnifyplus-trial\images\shoe_small.jpg" />
+    <Content Include="Example\magicmagnifyplus-trial\images\shoe_small1.jpg" />
+    <Content Include="Example\magicmagnifyplus-trial\images\shoe_small2.jpg" />
+    <Content Include="Example\magicmagnifyplus-trial\index.html" />
+    <Content Include="Example\magicmagnifyplus-trial\LICENSE.txt" />
+    <Content Include="Example\magicmagnifyplus-trial\magicmagnifyplus\graphics\buttons1-big.png" />
+    <Content Include="Example\magicmagnifyplus-trial\magicmagnifyplus\graphics\buttons1-small.png" />
+    <Content Include="Example\magicmagnifyplus-trial\magicmagnifyplus\graphics\buttons1.png" />
+    <Content Include="Example\magicmagnifyplus-trial\magicmagnifyplus\graphics\buttons2-big.png" />
+    <Content Include="Example\magicmagnifyplus-trial\magicmagnifyplus\graphics\buttons2-small.png" />
+    <Content Include="Example\magicmagnifyplus-trial\magicmagnifyplus\graphics\buttons2.png" />
+    <Content Include="Example\magicmagnifyplus-trial\magicmagnifyplus\graphics\buttons3-big.png" />
+    <Content Include="Example\magicmagnifyplus-trial\magicmagnifyplus\graphics\buttons3-small.png" />
+    <Content Include="Example\magicmagnifyplus-trial\magicmagnifyplus\graphics\buttons3.png" />
+    <Content Include="Example\magicmagnifyplus-trial\magicmagnifyplus\graphics\buttons4-big.png" />
+    <Content Include="Example\magicmagnifyplus-trial\magicmagnifyplus\graphics\buttons4-small.png" />
+    <Content Include="Example\magicmagnifyplus-trial\magicmagnifyplus\graphics\buttons4.png" />
+    <Content Include="Example\magicmagnifyplus-trial\magicmagnifyplus\graphics\buttons5-big.png" />
+    <Content Include="Example\magicmagnifyplus-trial\magicmagnifyplus\graphics\buttons5-small.png" />
+    <Content Include="Example\magicmagnifyplus-trial\magicmagnifyplus\graphics\buttons5.png" />
+    <Content Include="Example\magicmagnifyplus-trial\magicmagnifyplus\graphics\buttons6-big.png" />
+    <Content Include="Example\magicmagnifyplus-trial\magicmagnifyplus\graphics\buttons6-small.png" />
+    <Content Include="Example\magicmagnifyplus-trial\magicmagnifyplus\graphics\buttons6.png" />
+    <Content Include="Example\magicmagnifyplus-trial\magicmagnifyplus\graphics\buttons7-big.png" />
+    <Content Include="Example\magicmagnifyplus-trial\magicmagnifyplus\graphics\buttons7-small.png" />
+    <Content Include="Example\magicmagnifyplus-trial\magicmagnifyplus\graphics\buttons7.png" />
+    <Content Include="Example\magicmagnifyplus-trial\magicmagnifyplus\graphics\loader.gif" />
+    <Content Include="Example\magicmagnifyplus-trial\magicmagnifyplus\graphics\zoomin.cur" />
+    <Content Include="Example\magicmagnifyplus-trial\magicmagnifyplus\graphics\zoomout.cur" />
+    <Content Include="Example\magicmagnifyplus-trial\magicmagnifyplus\loader.gif" />
+    <Content Include="Example\magicmagnifyplus-trial\magicmagnifyplus\magicmagnifyplus.css" />
+    <Content Include="Example\magicmagnifyplus-trial\magicmagnifyplus\magicmagnifyplus.js" />
+    <Content Include="Example\magicmagnifyplus-trial\magicmagnifyplus\magicmagnifyplus.swf" />
+    <Content Include="Example\magicmagnifyplus-trial\magicmagnifyplus\副本 magicmagnifyplus.js" />
+    <Content Include="Example\magicmagnifyplus-trial\wizard.html" />
+    <Content Include="Example\magicscroll-trial\example1.html" />
+    <Content Include="Example\magicscroll-trial\example10.html" />
+    <Content Include="Example\magicscroll-trial\example11.html" />
+    <Content Include="Example\magicscroll-trial\example12.html" />
+    <Content Include="Example\magicscroll-trial\example13.html" />
+    <Content Include="Example\magicscroll-trial\example14.html" />
+    <Content Include="Example\magicscroll-trial\example15.html" />
+    <Content Include="Example\magicscroll-trial\example2.html" />
+    <Content Include="Example\magicscroll-trial\example3.html" />
+    <Content Include="Example\magicscroll-trial\example4.html" />
+    <Content Include="Example\magicscroll-trial\example5.html" />
+    <Content Include="Example\magicscroll-trial\example6.html" />
+    <Content Include="Example\magicscroll-trial\example7.html" />
+    <Content Include="Example\magicscroll-trial\example8.html" />
+    <Content Include="Example\magicscroll-trial\example9.html" />
+    <Content Include="Example\magicscroll-trial\images\flash.swf" />
+    <Content Include="Example\magicscroll-trial\images\logos_big.jpg" />
+    <Content Include="Example\magicscroll-trial\images\magic360.jpg" />
+    <Content Include="Example\magicscroll-trial\images\magicmagnify.jpg" />
+    <Content Include="Example\magicscroll-trial\images\magicmagnifyplus.jpg" />
+    <Content Include="Example\magicscroll-trial\images\magicslideshow.jpg" />
+    <Content Include="Example\magicscroll-trial\images\magicthumb.jpg" />
+    <Content Include="Example\magicscroll-trial\images\magictouch.jpg" />
+    <Content Include="Example\magicscroll-trial\images\magiczoom.jpg" />
+    <Content Include="Example\magicscroll-trial\images\magiczoomplus.jpg" />
+    <Content Include="Example\magicscroll-trial\images\shoes1.jpg" />
+    <Content Include="Example\magicscroll-trial\images\shoes10.jpg" />
+    <Content Include="Example\magicscroll-trial\images\shoes11.jpg" />
+    <Content Include="Example\magicscroll-trial\images\shoes12.jpg" />
+    <Content Include="Example\magicscroll-trial\images\shoes2.jpg" />
+    <Content Include="Example\magicscroll-trial\images\shoes3.jpg" />
+    <Content Include="Example\magicscroll-trial\images\shoes4.jpg" />
+    <Content Include="Example\magicscroll-trial\images\shoes5.jpg" />
+    <Content Include="Example\magicscroll-trial\images\shoes6.jpg" />
+    <Content Include="Example\magicscroll-trial\images\shoes7.jpg" />
+    <Content Include="Example\magicscroll-trial\images\shoes8.jpg" />
+    <Content Include="Example\magicscroll-trial\images\shoes9.jpg" />
+    <Content Include="Example\magicscroll-trial\images\yummy1.jpg" />
+    <Content Include="Example\magicscroll-trial\images\yummy2.jpg" />
+    <Content Include="Example\magicscroll-trial\images\yummy3.jpg" />
+    <Content Include="Example\magicscroll-trial\images\yummy4.jpg" />
+    <Content Include="Example\magicscroll-trial\images\yummy5.jpg" />
+    <Content Include="Example\magicscroll-trial\images\yummy6.jpg" />
+    <Content Include="Example\magicscroll-trial\index.html" />
+    <Content Include="Example\magicscroll-trial\installation.html" />
+    <Content Include="Example\magicscroll-trial\LICENSE.txt" />
+    <Content Include="Example\magicscroll-trial\magicscroll\graphics\arrows-big.png" />
+    <Content Include="Example\magicscroll-trial\magicscroll\graphics\arrows-padding.png" />
+    <Content Include="Example\magicscroll-trial\magicscroll\graphics\arrows-small.png" />
+    <Content Include="Example\magicscroll-trial\magicscroll\graphics\arrows.png" />
+    <Content Include="Example\magicscroll-trial\magicscroll\magicscroll.css" />
+    <Content Include="Example\magicscroll-trial\magicscroll\magicscroll.js" />
+    <Content Include="Example\magicscroll-trial\magicscroll\副本 magicscroll.js" />
+    <Content Include="Example\magicscroll-trial\parameters.html" />
+    <Content Include="Example\magicscroll-trial\wizard.html" />
+    <Content Include="Example\magicslideshow-trial\example1.html" />
+    <Content Include="Example\magicslideshow-trial\example2.html" />
+    <Content Include="Example\magicslideshow-trial\example3.html" />
+    <Content Include="Example\magicslideshow-trial\example4.html" />
+    <Content Include="Example\magicslideshow-trial\example5.html" />
+    <Content Include="Example\magicslideshow-trial\example6.html" />
+    <Content Include="Example\magicslideshow-trial\example7.html" />
+    <Content Include="Example\magicslideshow-trial\example8.html" />
+    <Content Include="Example\magicslideshow-trial\example9.html" />
+    <Content Include="Example\magicslideshow-trial\images\background.jpg" />
+    <Content Include="Example\magicslideshow-trial\images\four_seasons1-small.jpg" />
+    <Content Include="Example\magicslideshow-trial\images\four_seasons1.jpg" />
+    <Content Include="Example\magicslideshow-trial\images\four_seasons2-small.jpg" />
+    <Content Include="Example\magicslideshow-trial\images\four_seasons2.jpg" />
+    <Content Include="Example\magicslideshow-trial\images\four_seasons3-small.jpg" />
+    <Content Include="Example\magicslideshow-trial\images\four_seasons3.jpg" />
+    <Content Include="Example\magicslideshow-trial\images\four_seasons4-small.jpg" />
+    <Content Include="Example\magicslideshow-trial\images\four_seasons4.jpg" />
+    <Content Include="Example\magicslideshow-trial\images\four_seasons5-small.jpg" />
+    <Content Include="Example\magicslideshow-trial\images\four_seasons5.jpg" />
+    <Content Include="Example\magicslideshow-trial\images\four_seasons6-small.jpg" />
+    <Content Include="Example\magicslideshow-trial\images\four_seasons6.jpg" />
+    <Content Include="Example\magicslideshow-trial\images\four_seasons7-small.jpg" />
+    <Content Include="Example\magicslideshow-trial\images\four_seasons7.jpg" />
+    <Content Include="Example\magicslideshow-trial\images\four_seasons8-small.jpg" />
+    <Content Include="Example\magicslideshow-trial\images\four_seasons8.jpg" />
+    <Content Include="Example\magicslideshow-trial\images\fruits_apples.jpg" />
+    <Content Include="Example\magicslideshow-trial\images\fruits_grapefruit.jpg" />
+    <Content Include="Example\magicslideshow-trial\images\fruits_lime.jpg" />
+    <Content Include="Example\magicslideshow-trial\images\fruits_raspberry.jpg" />
+    <Content Include="Example\magicslideshow-trial\images\fruits_strawberry.jpg" />
+    <Content Include="Example\magicslideshow-trial\images\nokia1-small.jpg" />
+    <Content Include="Example\magicslideshow-trial\images\nokia1.jpg" />
+    <Content Include="Example\magicslideshow-trial\images\nokia2-small.jpg" />
+    <Content Include="Example\magicslideshow-trial\images\nokia2.jpg" />
+    <Content Include="Example\magicslideshow-trial\images\nokia3-small.jpg" />
+    <Content Include="Example\magicslideshow-trial\images\nokia3.jpg" />
+    <Content Include="Example\magicslideshow-trial\images\nokia4-small.jpg" />
+    <Content Include="Example\magicslideshow-trial\images\nokia4.jpg" />
+    <Content Include="Example\magicslideshow-trial\images\nokia5-small.jpg" />
+    <Content Include="Example\magicslideshow-trial\images\nokia5.jpg" />
+    <Content Include="Example\magicslideshow-trial\images\nokia6-small.jpg" />
+    <Content Include="Example\magicslideshow-trial\images\nokia6.jpg" />
+    <Content Include="Example\magicslideshow-trial\images\nokia7-small.jpg" />
+    <Content Include="Example\magicslideshow-trial\images\nokia7.jpg" />
+    <Content Include="Example\magicslideshow-trial\images\nokia8-small.jpg" />
+    <Content Include="Example\magicslideshow-trial\images\nokia8.jpg" />
+    <Content Include="Example\magicslideshow-trial\images\nokia9-small.jpg" />
+    <Content Include="Example\magicslideshow-trial\images\nokia9.jpg" />
+    <Content Include="Example\magicslideshow-trial\images\s.png" />
+    <Content Include="Example\magicslideshow-trial\images\sony-bravia.jpg" />
+    <Content Include="Example\magicslideshow-trial\images\sony-bravia2.jpg" />
+    <Content Include="Example\magicslideshow-trial\images\sony-cybershot.jpg" />
+    <Content Include="Example\magicslideshow-trial\images\sony-cybershot2.jpg" />
+    <Content Include="Example\magicslideshow-trial\images\sony-phone.jpg" />
+    <Content Include="Example\magicslideshow-trial\images\sony-phone2.jpg" />
+    <Content Include="Example\magicslideshow-trial\images\sony-reader.jpg" />
+    <Content Include="Example\magicslideshow-trial\images\sony-reader2.jpg" />
+    <Content Include="Example\magicslideshow-trial\images\sony-readerA.jpg" />
+    <Content Include="Example\magicslideshow-trial\images\sony-readerA2.jpg" />
+    <Content Include="Example\magicslideshow-trial\images\sony-vaio.jpg" />
+    <Content Include="Example\magicslideshow-trial\images\sony-vaio2.jpg" />
+    <Content Include="Example\magicslideshow-trial\images\supercar6-small.jpg" />
+    <Content Include="Example\magicslideshow-trial\images\supercar6.jpg" />
+    <Content Include="Example\magicslideshow-trial\images\supercar7-small.jpg" />
+    <Content Include="Example\magicslideshow-trial\images\supercar7.jpg" />
+    <Content Include="Example\magicslideshow-trial\images\supercar8-small.jpg" />
+    <Content Include="Example\magicslideshow-trial\images\supercar8.jpg" />
+    <Content Include="Example\magicslideshow-trial\images\supercar9-small.jpg" />
+    <Content Include="Example\magicslideshow-trial\images\supercar9.jpg" />
+    <Content Include="Example\magicslideshow-trial\index.html" />
+    <Content Include="Example\magicslideshow-trial\installation.html" />
+    <Content Include="Example\magicslideshow-trial\LICENSE.txt" />
+    <Content Include="Example\magicslideshow-trial\magicslideshow\graphics\arrows01.png" />
+    <Content Include="Example\magicslideshow-trial\magicslideshow\graphics\arrows02.png" />
+    <Content Include="Example\magicslideshow-trial\magicslideshow\graphics\arrows03.png" />
+    <Content Include="Example\magicslideshow-trial\magicslideshow\graphics\arrows04.png" />
+    <Content Include="Example\magicslideshow-trial\magicslideshow\graphics\arrows05.png" />
+    <Content Include="Example\magicslideshow-trial\magicslideshow\graphics\arrows06.png" />
+    <Content Include="Example\magicslideshow-trial\magicslideshow\graphics\arrows07-small.png" />
+    <Content Include="Example\magicslideshow-trial\magicslideshow\graphics\arrows07.png" />
+    <Content Include="Example\magicslideshow-trial\magicslideshow\graphics\arrows08-full.gif" />
+    <Content Include="Example\magicslideshow-trial\magicslideshow\graphics\arrows08.gif" />
+    <Content Include="Example\magicslideshow-trial\magicslideshow\graphics\arrows09.png" />
+    <Content Include="Example\magicslideshow-trial\magicslideshow\graphics\loader.gif" />
+    <Content Include="Example\magicslideshow-trial\magicslideshow\magicslideshow.css" />
+    <Content Include="Example\magicslideshow-trial\magicslideshow\magicslideshow.js" />
+    <Content Include="Example\magicslideshow-trial\magicslideshow\副本 magicslideshow.js" />
+    <Content Include="Example\magicslideshow-trial\parameters.html" />
+    <Content Include="Example\magicthumb-trial\example1.html" />
+    <Content Include="Example\magicthumb-trial\example10.html" />
+    <Content Include="Example\magicthumb-trial\example11.html" />
+    <Content Include="Example\magicthumb-trial\example12.html" />
+    <Content Include="Example\magicthumb-trial\example13.html" />
+    <Content Include="Example\magicthumb-trial\example14.html" />
+    <Content Include="Example\magicthumb-trial\example2.html" />
+    <Content Include="Example\magicthumb-trial\example3.html" />
+    <Content Include="Example\magicthumb-trial\example4.html" />
+    <Content Include="Example\magicthumb-trial\example5.html" />
+    <Content Include="Example\magicthumb-trial\example6.html" />
+    <Content Include="Example\magicthumb-trial\example7.html" />
+    <Content Include="Example\magicthumb-trial\example8.html" />
+    <Content Include="Example\magicthumb-trial\example9.html" />
+    <Content Include="Example\magicthumb-trial\images\imac-backtoback-50.jpg" />
+    <Content Include="Example\magicthumb-trial\images\imac-backtoback-600.jpg" />
+    <Content Include="Example\magicthumb-trial\images\imac-backtoback-90.jpg" />
+    <Content Include="Example\magicthumb-trial\images\imac-family-50.jpg" />
+    <Content Include="Example\magicthumb-trial\images\imac-family-600.jpg" />
+    <Content Include="Example\magicthumb-trial\images\imac-family-90.jpg" />
+    <Content Include="Example\magicthumb-trial\images\imac-side-150.jpg" />
+    <Content Include="Example\magicthumb-trial\images\imac-side-300.jpg" />
+    <Content Include="Example\magicthumb-trial\images\imac-side-50.jpg" />
+    <Content Include="Example\magicthumb-trial\images\imac-side-600.jpg" />
+    <Content Include="Example\magicthumb-trial\images\imac-side-768.jpg" />
+    <Content Include="Example\magicthumb-trial\images\imac-side-90.jpg" />
+    <Content Include="Example\magicthumb-trial\images\nano_large.jpg" />
+    <Content Include="Example\magicthumb-trial\images\nano_small.jpg" />
+    <Content Include="Example\magicthumb-trial\index.html" />
+    <Content Include="Example\magicthumb-trial\LICENSE.txt" />
+    <Content Include="Example\magicthumb-trial\magicthumb\graphics\buttons1-big.png" />
+    <Content Include="Example\magicthumb-trial\magicthumb\graphics\buttons1-small.png" />
+    <Content Include="Example\magicthumb-trial\magicthumb\graphics\buttons1.png" />
+    <Content Include="Example\magicthumb-trial\magicthumb\graphics\buttons2-big.png" />
+    <Content Include="Example\magicthumb-trial\magicthumb\graphics\buttons2-small.png" />
+    <Content Include="Example\magicthumb-trial\magicthumb\graphics\buttons2.png" />
+    <Content Include="Example\magicthumb-trial\magicthumb\graphics\buttons3-big.png" />
+    <Content Include="Example\magicthumb-trial\magicthumb\graphics\buttons3-small.png" />
+    <Content Include="Example\magicthumb-trial\magicthumb\graphics\buttons3.png" />
+    <Content Include="Example\magicthumb-trial\magicthumb\graphics\buttons4-big.png" />
+    <Content Include="Example\magicthumb-trial\magicthumb\graphics\buttons4-small.png" />
+    <Content Include="Example\magicthumb-trial\magicthumb\graphics\buttons4.png" />
+    <Content Include="Example\magicthumb-trial\magicthumb\graphics\buttons5-big.png" />
+    <Content Include="Example\magicthumb-trial\magicthumb\graphics\buttons5-small.png" />
+    <Content Include="Example\magicthumb-trial\magicthumb\graphics\buttons5.png" />
+    <Content Include="Example\magicthumb-trial\magicthumb\graphics\buttons6-big.png" />
+    <Content Include="Example\magicthumb-trial\magicthumb\graphics\buttons6-small.png" />
+    <Content Include="Example\magicthumb-trial\magicthumb\graphics\buttons6.png" />
+    <Content Include="Example\magicthumb-trial\magicthumb\graphics\buttons7-big.png" />
+    <Content Include="Example\magicthumb-trial\magicthumb\graphics\buttons7-small.png" />
+    <Content Include="Example\magicthumb-trial\magicthumb\graphics\buttons7.png" />
+    <Content Include="Example\magicthumb-trial\magicthumb\graphics\loader.gif" />
+    <Content Include="Example\magicthumb-trial\magicthumb\graphics\zoomin.cur" />
+    <Content Include="Example\magicthumb-trial\magicthumb\graphics\zoomout.cur" />
+    <Content Include="Example\magicthumb-trial\magicthumb\magicthumb.css" />
+    <Content Include="Example\magicthumb-trial\magicthumb\magicthumb.js" />
+    <Content Include="Example\magicthumb-trial\magicthumb\副本 magicthumb.js" />
+    <Content Include="Example\magicthumb-trial\parameters.html" />
+    <Content Include="Example\magicthumb-trial\wizard.html" />
+    <Content Include="Example\magiczoom-trial\example1.html" />
+    <Content Include="Example\magiczoom-trial\example10.html" />
+    <Content Include="Example\magiczoom-trial\example11.html" />
+    <Content Include="Example\magiczoom-trial\example12.html" />
+    <Content Include="Example\magiczoom-trial\example13.html" />
+    <Content Include="Example\magiczoom-trial\example14.html" />
+    <Content Include="Example\magiczoom-trial\example15.html" />
+    <Content Include="Example\magiczoom-trial\example16.html" />
+    <Content Include="Example\magiczoom-trial\example17.html" />
+    <Content Include="Example\magiczoom-trial\example2.html" />
+    <Content Include="Example\magiczoom-trial\example3.html" />
+    <Content Include="Example\magiczoom-trial\example4.html" />
+    <Content Include="Example\magiczoom-trial\example5.html" />
+    <Content Include="Example\magiczoom-trial\example6.html" />
+    <Content Include="Example\magiczoom-trial\example7.html" />
+    <Content Include="Example\magiczoom-trial\example8.html" />
+    <Content Include="Example\magiczoom-trial\example9.html" />
+    <Content Include="Example\magiczoom-trial\images\platforms.jpg" />
+    <Content Include="Example\magiczoom-trial\images\r1-black-1.jpg" />
+    <Content Include="Example\magiczoom-trial\images\r1-black-2.jpg" />
+    <Content Include="Example\magiczoom-trial\images\r1-black-3.jpg" />
+    <Content Include="Example\magiczoom-trial\images\r1-blue-1.jpg" />
+    <Content Include="Example\magiczoom-trial\images\r1-blue-160.jpg" />
+    <Content Include="Example\magiczoom-trial\images\r1-blue-2.jpg" />
+    <Content Include="Example\magiczoom-trial\images\r1-blue-3.jpg" />
+    <Content Include="Example\magiczoom-trial\images\r1-blue-480.jpg" />
+    <Content Include="Example\magiczoom-trial\images\r1-red-1.jpg" />
+    <Content Include="Example\magiczoom-trial\images\r1-red-2.jpg" />
+    <Content Include="Example\magiczoom-trial\images\r1-red-3.jpg" />
+    <Content Include="Example\magiczoom-trial\index.html" />
+    <Content Include="Example\magiczoom-trial\LICENSE.txt" />
+    <Content Include="Example\magiczoom-trial\magiczoom\graphics\hint.gif" />
+    <Content Include="Example\magiczoom-trial\magiczoom\graphics\loader.gif" />
+    <Content Include="Example\magiczoom-trial\magiczoom\magiczoom.css" />
+    <Content Include="Example\magiczoom-trial\magiczoom\magiczoom.js" />
+    <Content Include="Example\magiczoom-trial\magiczoom\副本 magiczoom.js" />
+    <Content Include="Example\magiczoom-trial\parameters.html" />
+    <Content Include="Example\magiczoom-trial\wizard.html" />
+    <Content Include="Example\magiczoomplus-trial\example1.html" />
+    <Content Include="Example\magiczoomplus-trial\example10.html" />
+    <Content Include="Example\magiczoomplus-trial\example11.html" />
+    <Content Include="Example\magiczoomplus-trial\example12.html" />
+    <Content Include="Example\magiczoomplus-trial\example13.html" />
+    <Content Include="Example\magiczoomplus-trial\example14.html" />
+    <Content Include="Example\magiczoomplus-trial\example15.html" />
+    <Content Include="Example\magiczoomplus-trial\example16.html" />
+    <Content Include="Example\magiczoomplus-trial\example17.html" />
+    <Content Include="Example\magiczoomplus-trial\example18.html" />
+    <Content Include="Example\magiczoomplus-trial\example2.html" />
+    <Content Include="Example\magiczoomplus-trial\example3.html" />
+    <Content Include="Example\magiczoomplus-trial\example4.html" />
+    <Content Include="Example\magiczoomplus-trial\example5.html" />
+    <Content Include="Example\magiczoomplus-trial\example6.html" />
+    <Content Include="Example\magiczoomplus-trial\example7.html" />
+    <Content Include="Example\magiczoomplus-trial\example8.html" />
+    <Content Include="Example\magiczoomplus-trial\example9.html" />
+    <Content Include="Example\magiczoomplus-trial\images\harley1a.jpg" />
+    <Content Include="Example\magiczoomplus-trial\images\harley1b.jpg" />
+    <Content Include="Example\magiczoomplus-trial\images\harley1c-large.jpg" />
+    <Content Include="Example\magiczoomplus-trial\images\harley1c.jpg" />
+    <Content Include="Example\magiczoomplus-trial\images\harley2a.jpg" />
+    <Content Include="Example\magiczoomplus-trial\images\harley2b.jpg" />
+    <Content Include="Example\magiczoomplus-trial\images\harley2c.jpg" />
+    <Content Include="Example\magiczoomplus-trial\images\harley3.jpg" />
+    <Content Include="Example\magiczoomplus-trial\images\harley4.jpg" />
+    <Content Include="Example\magiczoomplus-trial\images\harley5.jpg" />
+    <Content Include="Example\magiczoomplus-trial\images\harley6.jpg" />
+    <Content Include="Example\magiczoomplus-trial\images\harley7.jpg" />
+    <Content Include="Example\magiczoomplus-trial\images\platforms.jpg" />
+    <Content Include="Example\magiczoomplus-trial\index.html" />
+    <Content Include="Example\magiczoomplus-trial\LICENSE.txt" />
+    <Content Include="Example\magiczoomplus-trial\magiczoomplus\graphics\buttons1-big.png" />
+    <Content Include="Example\magiczoomplus-trial\magiczoomplus\graphics\buttons1-small.png" />
+    <Content Include="Example\magiczoomplus-trial\magiczoomplus\graphics\buttons1.png" />
+    <Content Include="Example\magiczoomplus-trial\magiczoomplus\graphics\buttons2-big.png" />
+    <Content Include="Example\magiczoomplus-trial\magiczoomplus\graphics\buttons2-small.png" />
+    <Content Include="Example\magiczoomplus-trial\magiczoomplus\graphics\buttons2.png" />
+    <Content Include="Example\magiczoomplus-trial\magiczoomplus\graphics\buttons3-big.png" />
+    <Content Include="Example\magiczoomplus-trial\magiczoomplus\graphics\buttons3-small.png" />
+    <Content Include="Example\magiczoomplus-trial\magiczoomplus\graphics\buttons3.png" />
+    <Content Include="Example\magiczoomplus-trial\magiczoomplus\graphics\buttons4-big.png" />
+    <Content Include="Example\magiczoomplus-trial\magiczoomplus\graphics\buttons4-small.png" />
+    <Content Include="Example\magiczoomplus-trial\magiczoomplus\graphics\buttons4.png" />
+    <Content Include="Example\magiczoomplus-trial\magiczoomplus\graphics\buttons5-big.png" />
+    <Content Include="Example\magiczoomplus-trial\magiczoomplus\graphics\buttons5-small.png" />
+    <Content Include="Example\magiczoomplus-trial\magiczoomplus\graphics\buttons5.png" />
+    <Content Include="Example\magiczoomplus-trial\magiczoomplus\graphics\buttons6-big.png" />
+    <Content Include="Example\magiczoomplus-trial\magiczoomplus\graphics\buttons6-small.png" />
+    <Content Include="Example\magiczoomplus-trial\magiczoomplus\graphics\buttons6.png" />
+    <Content Include="Example\magiczoomplus-trial\magiczoomplus\graphics\buttons7-big.png" />
+    <Content Include="Example\magiczoomplus-trial\magiczoomplus\graphics\buttons7-small.png" />
+    <Content Include="Example\magiczoomplus-trial\magiczoomplus\graphics\buttons7.png" />
+    <Content Include="Example\magiczoomplus-trial\magiczoomplus\graphics\hint.gif" />
+    <Content Include="Example\magiczoomplus-trial\magiczoomplus\graphics\loader.gif" />
+    <Content Include="Example\magiczoomplus-trial\magiczoomplus\graphics\zoomin.cur" />
+    <Content Include="Example\magiczoomplus-trial\magiczoomplus\graphics\zoomin2.cur" />
+    <Content Include="Example\magiczoomplus-trial\magiczoomplus\graphics\zoomout.cur" />
+    <Content Include="Example\magiczoomplus-trial\magiczoomplus\graphics\zoomout2.cur" />
+    <Content Include="Example\magiczoomplus-trial\magiczoomplus\magiczoomplus.css" />
+    <Content Include="Example\magiczoomplus-trial\magiczoomplus\magiczoomplus.js" />
+    <Content Include="Example\magiczoomplus-trial\magiczoomplus\副本 magiczoomplus.js" />
+    <Content Include="Example\magiczoomplus-trial\parameters.html" />
+    <Content Include="Example\magiczoomplus-trial\wizard.html" />
+    <Content Include="Example\magiczoomplus\graphics\buttons1-big.png" />
+    <Content Include="Example\magiczoomplus\graphics\buttons1-small.png" />
+    <Content Include="Example\magiczoomplus\graphics\buttons1.png" />
+    <Content Include="Example\magiczoomplus\graphics\buttons2-big.png" />
+    <Content Include="Example\magiczoomplus\graphics\buttons2-small.png" />
+    <Content Include="Example\magiczoomplus\graphics\buttons2.png" />
+    <Content Include="Example\magiczoomplus\graphics\buttons3-big.png" />
+    <Content Include="Example\magiczoomplus\graphics\buttons3-small.png" />
+    <Content Include="Example\magiczoomplus\graphics\buttons3.png" />
+    <Content Include="Example\magiczoomplus\graphics\buttons4-big.png" />
+    <Content Include="Example\magiczoomplus\graphics\buttons4-small.png" />
+    <Content Include="Example\magiczoomplus\graphics\buttons4.png" />
+    <Content Include="Example\magiczoomplus\graphics\buttons5-big.png" />
+    <Content Include="Example\magiczoomplus\graphics\buttons5-small.png" />
+    <Content Include="Example\magiczoomplus\graphics\buttons5.png" />
+    <Content Include="Example\magiczoomplus\graphics\buttons6-big.png" />
+    <Content Include="Example\magiczoomplus\graphics\buttons6-small.png" />
+    <Content Include="Example\magiczoomplus\graphics\buttons6.png" />
+    <Content Include="Example\magiczoomplus\graphics\buttons7-big.png" />
+    <Content Include="Example\magiczoomplus\graphics\buttons7-small.png" />
+    <Content Include="Example\magiczoomplus\graphics\buttons7.png" />
+    <Content Include="Example\magiczoomplus\graphics\loader.gif" />
+    <Content Include="Example\magiczoomplus\graphics\zoomin.cur" />
+    <Content Include="Example\magiczoomplus\graphics\zoomout.cur" />
+    <Content Include="Example\magiczoomplus\magiczoomplus.css" />
+    <Content Include="Example\magiczoomplus\magiczoomplus.js" />
+    <Content Include="Example\magiczoomplus\副本 magiczoomplus.js" />
+    <Content Include="Example\magiczoomplus\副本%282%29 magiczoomplus.js" />
+    <Content Include="Example\marquee 无缝滚动\images\Blue hills.jpg" />
+    <Content Include="Example\marquee 无缝滚动\images\Sunset.jpg" />
+    <Content Include="Example\marquee 无缝滚动\images\Water lilies.jpg" />
+    <Content Include="Example\marquee 无缝滚动\images\Winter.jpg" />
+    <Content Include="Example\marquee 无缝滚动\index.html" />
+    <Content Include="Example\marquee 无缝滚动\js\marquee.js" />
+    <Content Include="Example\marquee 无缝滚动\js\mootools-1.2-core.js" />
+    <Content Include="Example\marquee 无缝滚动\Y\images\Blue hills.jpg" />
+    <Content Include="Example\marquee 无缝滚动\Y\images\Sunset.jpg" />
+    <Content Include="Example\marquee 无缝滚动\Y\images\Water lilies.jpg" />
+    <Content Include="Example\marquee 无缝滚动\Y\images\Winter.jpg" />
+    <Content Include="Example\marquee 无缝滚动\Y\index.html" />
+    <Content Include="Example\marquee 无缝滚动\Y\js\marquee.js" />
+    <Content Include="Example\marquee 无缝滚动\Y\js\mootools-1.2-core.js" />
+    <Content Include="Example\marquee 无缝滚动\读我.txt" />
+    <Content Include="Example\MooBox\css\doc.css" />
+    <Content Include="Example\MooBox\css\fonts.css" />
+    <Content Include="Example\MooBox\css\MooBox.css" />
+    <Content Include="Example\MooBox\css\reset.css" />
+    <Content Include="Example\MooBox\demo.html" />
+    <Content Include="Example\MooBox\doc.html" />
+    <Content Include="Example\MooBox\image\resize.png" />
+    <Content Include="Example\MooBox\js\doc.js" />
+    <Content Include="Example\MooBox\js\MooBox.js" />
+    <Content Include="Example\MooBox\js\mootools-core-1.4.2.js" />
+    <Content Include="Example\MooBox\js\mootools-more-1.4.0.js" />
+    <Content Include="Example\MooBox\prototype.html" />
+    <Content Include="Example\mootools\JSON格式化工具.html" />
+    <Content Include="Example\mootools\mt-customScrollBar\mootools-custom-scroll-bar.html" />
+    <Content Include="Example\mootools\mt-customScrollBar\mt-customScrollBar-min.js" />
+    <Content Include="Example\mootools\mt-customScrollBar\mt-customScrollBar.js" />
+    <Content Include="Example\mootools\mt.mbox\demo\demo.html" />
+    <Content Include="Example\mootools\mt.mbox\demo\loaded.html" />
+    <Content Include="Example\mootools\mt.mbox\image\loading.gif" />
+    <Content Include="Example\mootools\mt.mbox\js\mt.mbox-min.js" />
+    <Content Include="Example\mootools\mt.mbox\js\mt.mbox.js" />
+    <Content Include="Example\mootools\test.htm" />
+    <Content Include="Example\mootools\动态加载留言效果.html" />
+    <Content Include="Example\mootools\抽奖.html" />
+    <Content Include="Example\mootools\滚动超过DIV时DIV浮动.html" />
+    <Content Include="Example\mootools\省市联动.htm" />
+    <Content Include="Example\mootools\表单验证.html" />
+    <Content Include="Example\mootools\跟随浏览器滚动的窗口.html" />
+    <Content Include="Example\mootools\返回顶部功能.htm" />
+    <Content Include="Example\player.htm" />
+    <Content Include="Example\player.swf" />
+    <Content Include="Example\SlideShow 轮显\!抓图\2009-8-26 22-06-21.png" />
+    <Content Include="Example\SlideShow 轮显\css\cycle.css" />
+    <Content Include="Example\SlideShow 轮显\images\back.jpg" />
+    <Content Include="Example\SlideShow 轮显\images\bg.gif" />
+    <Content Include="Example\SlideShow 轮显\images\Blue hills.jpg" />
+    <Content Include="Example\SlideShow 轮显\images\Sunset.jpg" />
+    <Content Include="Example\SlideShow 轮显\images\Water lilies.jpg" />
+    <Content Include="Example\SlideShow 轮显\images\Winter.jpg" />
+    <Content Include="Example\SlideShow 轮显\index.html" />
+    <Content Include="Example\SlideShow 轮显\js\mootools-1.2-core.js" />
+    <Content Include="Example\SlideShow 轮显\js\mootools-1.2-more.js" />
+    <Content Include="Example\SlideShow 轮显\js\slideshow.js" />
+    <Content Include="Example\SlideShow 轮显\读我.txt" />
+    <Content Include="Example\swfobject\expressInstall.swf" />
+    <Content Include="Example\swfobject\index.html" />
+    <Content Include="Example\swfobject\index_dynamic.html" />
+    <Content Include="Example\swfobject\src\swfobject.js" />
+    <Content Include="Example\swfobject\swfobject.js" />
+    <Content Include="Example\swfobject\test.swf" />
+    <Content Include="Example\Vcastr 3.0 Example\javaScriptPlugIn.swf" />
+    <Content Include="Example\Vcastr 3.0 Example\logoPlugIn.swf" />
+    <Content Include="Example\Vcastr 3.0 Example\readme.txt" />
+    <Content Include="Example\Vcastr 3.0 Example\vcastr.xml" />
+    <Content Include="Example\Vcastr 3.0 Example\vcastr3.html" />
+    <Content Include="Example\Vcastr 3.0 Example\vcastr3.swf" />
+    <Content Include="Example\Vcastr 3.0 Example\vcastr3_w3c.html" />
+    <Content Include="Example\Vcastr 3.0 Example\vcastr3_xml.html" />
+    <Content Include="Example\Vcastr 3.0 Example\vcastr_javaScript_example.html" />
+    <Content Include="Example\wingdings图形Html字体对照程序.htm" />
+    <Content Include="Example\ymPrompt\changelog.txt" />
+    <Content Include="Example\ymPrompt\demo.html" />
+    <Content Include="Example\ymPrompt\Dialog_source.js" />
+    <Content Include="Example\ymPrompt\frameset.html" />
+    <Content Include="Example\ymPrompt\iframe.html" />
+    <Content Include="Example\ymPrompt\readme.txt" />
+    <Content Include="Example\ymPrompt\skin\black\images\ask.gif" />
+    <Content Include="Example\ymPrompt\skin\black\images\btn_bg.gif" />
+    <Content Include="Example\ymPrompt\skin\black\images\err.gif" />
+    <Content Include="Example\ymPrompt\skin\black\images\ico.gif" />
+    <Content Include="Example\ymPrompt\skin\black\images\info.gif" />
+    <Content Include="Example\ymPrompt\skin\black\images\right.gif" />
+    <Content Include="Example\ymPrompt\skin\black\images\title_bg_center.gif" />
+    <Content Include="Example\ymPrompt\skin\black\images\title_bg_left.gif" />
+    <Content Include="Example\ymPrompt\skin\black\images\title_bg_right.gif" />
+    <Content Include="Example\ymPrompt\skin\black\ymPrompt.css" />
+    <Content Include="Example\ymPrompt\skin\bluebar\images\ask.gif" />
+    <Content Include="Example\ymPrompt\skin\bluebar\images\btn_bg.gif" />
+    <Content Include="Example\ymPrompt\skin\bluebar\images\err.gif" />
+    <Content Include="Example\ymPrompt\skin\bluebar\images\ico.gif" />
+    <Content Include="Example\ymPrompt\skin\bluebar\images\info.gif" />
+    <Content Include="Example\ymPrompt\skin\bluebar\images\right.gif" />
+    <Content Include="Example\ymPrompt\skin\bluebar\images\title_bg_center.gif" />
+    <Content Include="Example\ymPrompt\skin\bluebar\images\title_bg_left.gif" />
+    <Content Include="Example\ymPrompt\skin\bluebar\images\title_bg_right.gif" />
+    <Content Include="Example\ymPrompt\skin\bluebar\ymPrompt.css" />
+    <Content Include="Example\ymPrompt\skin\dmm-green\images\ask.gif" />
+    <Content Include="Example\ymPrompt\skin\dmm-green\images\btn_bg.gif" />
+    <Content Include="Example\ymPrompt\skin\dmm-green\images\err.gif" />
+    <Content Include="Example\ymPrompt\skin\dmm-green\images\ico.gif" />
+    <Content Include="Example\ymPrompt\skin\dmm-green\images\info.gif" />
+    <Content Include="Example\ymPrompt\skin\dmm-green\images\right.gif" />
+    <Content Include="Example\ymPrompt\skin\dmm-green\images\titleIco.gif" />
+    <Content Include="Example\ymPrompt\skin\dmm-green\images\title_bg_center.gif" />
+    <Content Include="Example\ymPrompt\skin\dmm-green\images\title_bg_left.gif" />
+    <Content Include="Example\ymPrompt\skin\dmm-green\images\title_bg_right.gif" />
+    <Content Include="Example\ymPrompt\skin\dmm-green\images\win_b.gif" />
+    <Content Include="Example\ymPrompt\skin\dmm-green\images\win_l.gif" />
+    <Content Include="Example\ymPrompt\skin\dmm-green\images\win_lb.gif" />
+    <Content Include="Example\ymPrompt\skin\dmm-green\images\win_r.gif" />
+    <Content Include="Example\ymPrompt\skin\dmm-green\images\win_rb.gif" />
+    <Content Include="Example\ymPrompt\skin\dmm-green\ymPrompt.css" />
+    <Content Include="Example\ymPrompt\skin\qq\images\ask.gif" />
+    <Content Include="Example\ymPrompt\skin\qq\images\btn_bg.gif" />
+    <Content Include="Example\ymPrompt\skin\qq\images\content_bg.gif" />
+    <Content Include="Example\ymPrompt\skin\qq\images\err.gif" />
+    <Content Include="Example\ymPrompt\skin\qq\images\ico.gif" />
+    <Content Include="Example\ymPrompt\skin\qq\images\info.gif" />
+    <Content Include="Example\ymPrompt\skin\qq\images\right.gif" />
+    <Content Include="Example\ymPrompt\skin\qq\images\title_bg_center.gif" />
+    <Content Include="Example\ymPrompt\skin\qq\images\title_bg_left.gif" />
+    <Content Include="Example\ymPrompt\skin\qq\images\title_bg_right.gif" />
+    <Content Include="Example\ymPrompt\skin\qq\images\win_b.gif" />
+    <Content Include="Example\ymPrompt\skin\qq\images\win_l.gif" />
+    <Content Include="Example\ymPrompt\skin\qq\images\win_lb.gif" />
+    <Content Include="Example\ymPrompt\skin\qq\images\win_r.gif" />
+    <Content Include="Example\ymPrompt\skin\qq\images\win_rb.gif" />
+    <Content Include="Example\ymPrompt\skin\qq\ymPrompt.css" />
+    <Content Include="Example\ymPrompt\skin\simple\images\ask.gif" />
+    <Content Include="Example\ymPrompt\skin\simple\images\err.gif" />
+    <Content Include="Example\ymPrompt\skin\simple\images\ico.gif" />
+    <Content Include="Example\ymPrompt\skin\simple\images\info.gif" />
+    <Content Include="Example\ymPrompt\skin\simple\images\right.gif" />
+    <Content Include="Example\ymPrompt\skin\simple\ymPrompt.css" />
+    <Content Include="Example\ymPrompt\skin\simple_gray\images\ask.gif" />
+    <Content Include="Example\ymPrompt\skin\simple_gray\images\err.gif" />
+    <Content Include="Example\ymPrompt\skin\simple_gray\images\info.gif" />
+    <Content Include="Example\ymPrompt\skin\simple_gray\images\right.gif" />
+    <Content Include="Example\ymPrompt\skin\simple_gray\ymPrompt.css" />
+    <Content Include="Example\ymPrompt\skin\vista\images\ask.gif" />
+    <Content Include="Example\ymPrompt\skin\vista\images\btn_bg.gif" />
+    <Content Include="Example\ymPrompt\skin\vista\images\err.gif" />
+    <Content Include="Example\ymPrompt\skin\vista\images\ico.gif" />
+    <Content Include="Example\ymPrompt\skin\vista\images\info.gif" />
+    <Content Include="Example\ymPrompt\skin\vista\images\right.gif" />
+    <Content Include="Example\ymPrompt\skin\vista\images\title_bg_center.gif" />
+    <Content Include="Example\ymPrompt\skin\vista\images\title_bg_left.gif" />
+    <Content Include="Example\ymPrompt\skin\vista\images\title_bg_right.gif" />
+    <Content Include="Example\ymPrompt\skin\vista\images\win_b.gif" />
+    <Content Include="Example\ymPrompt\skin\vista\images\win_l.gif" />
+    <Content Include="Example\ymPrompt\skin\vista\images\win_lb.gif" />
+    <Content Include="Example\ymPrompt\skin\vista\images\win_r.gif" />
+    <Content Include="Example\ymPrompt\skin\vista\images\win_rb.gif" />
+    <Content Include="Example\ymPrompt\skin\vista\ymPrompt.css" />
+    <Content Include="Example\ymPrompt\ymPrompt.js" />
+    <Content Include="Example\ymPrompt\ymPrompt_Ex.js" />
+    <Content Include="Example\ymPrompt\ymPrompt_source.js" />
+    <Content Include="Example\兼容的向左连续滚动.htm" />
+    <Content Include="Example\团购抢购JS代码.html" />
+    <Content Include="Example\星级评论控件 - 副本\demo.php.htm" />
+    <Content Include="Example\星级评论控件 - 副本\img\ajax-loading.gif" />
+    <Content Include="Example\星级评论控件 - 副本\img\hearts.png" />
+    <Content Include="Example\星级评论控件 - 副本\mootools-1.2.4.js" />
+    <Content Include="Example\星级评论控件 - 副本\ratings.css" />
+    <Content Include="Example\星级评论控件 - 副本\ratings.js" />
+    <Content Include="Example\星级评论控件\demo.htm" />
+    <Content Include="Example\星级评论控件\demo.php.htm" />
+    <Content Include="Example\星级评论控件\img\ajax-loading.gif" />
+    <Content Include="Example\星级评论控件\img\hearts-diagram.png" />
+    <Content Include="Example\星级评论控件\img\hearts.png" />
+    <Content Include="Example\星级评论控件\img\preview.png" />
+    <Content Include="Example\星级评论控件\mootools-1.2.4.js" />
+    <Content Include="Example\星级评论控件\ratings.css" />
+    <Content Include="Example\星级评论控件\ratings.js" />
+    <Content Include="Example\星级评论控件\README.txt" />
+    <Content Include="Example\选择颜色.htm" />
+    <Content Include="Global.asax" />
+    <Content Include="App_Data\data.db" />
+    <Content Include="App_Data\Alipay.config" />
+    <Content Include="Content\kroppr\v1.4\kroppr v1.4.aspx" />
+    <Content Include="Content\kroppr\v1.5\kroppr\50.jpg" />
+    <Content Include="Content\kroppr\v1.5\kroppr\accept.gif" />
+    <Content Include="Content\kroppr\v1.5\kroppr\cancel.gif" />
+    <Content Include="Content\kroppr\v1.5\kroppr\knob_v.gif" />
+    <Content Include="Content\kroppr\v1.5\kroppr\kroppr.js" />
+    <Content Include="Content\kroppr\v1.5\kroppr\k_style.css" />
+    <Content Include="Content\kroppr\v1.5\kroppr\lem.jpg" />
+    <Content Include="Content\kroppr\v1.5\kroppr\load.gif" />
+    <Content Include="Content\kroppr\v1.5\kroppr\slider_v.gif" />
+    <Content Include="Content\kroppr\v1.4\kroppr\50.jpg" />
+    <Content Include="Content\kroppr\v1.4\kroppr\accept.gif" />
+    <Content Include="Content\kroppr\v1.4\kroppr\cancel.gif" />
+    <Content Include="Content\kroppr\v1.4\kroppr\knob_v.gif" />
+    <Content Include="Content\kroppr\v1.4\kroppr\kroppr.js" />
+    <Content Include="Content\kroppr\v1.4\kroppr\k_style.css" />
+    <Content Include="Content\kroppr\v1.4\kroppr\lem.jpg" />
+    <Content Include="Content\kroppr\v1.4\kroppr\load.gif" />
+    <Content Include="Content\kroppr\v1.4\kroppr\slider_v.gif" />
+    <Content Include="Scripts\base64.js" />
+    <Content Include="Scripts\Index.js" />
+    <Content Include="Scripts\jquery-dateFormat.js" />
+    <Content Include="Scripts\jquery-dateFormat.min.js" />
+    <Content Include="Scripts\lib\jquery-1.11.1.min.js" />
+    <Content Include="Scripts\js旋转效果.js" />
+    <Content Include="Scripts\lib\jquery-1.11.1.js" />
+    <Content Include="Scripts\lib\jquery-1.6.4.js" />
+    <Content Include="Scripts\lib\jquery-1.7.2.js" />
+    <Content Include="Scripts\lib\jquery-1.8.3.js" />
+    <Content Include="Scripts\lib\jquery-1.9.1.js" />
+    <Content Include="Scripts\lib\jquery.form.js" />
+    <Content Include="Scripts\lib\jquery.js" />
+    <Content Include="Scripts\lib\jquery.mockjax.js" />
+    <Content Include="Scripts\lib\jquery.simulate.js" />
+    <Content Include="Scripts\lib\require.js" />
+    <Content Include="Scripts\md5.js" />
+    <Content Include="Scripts\modernizr-2.6.2.js" />
+    <Content Include="Scripts\mootools-core-1.5.1.js" />
+    <Content Include="Scripts\mootools-core-1.5.1.min.js" />
+    <Content Include="Scripts\mootools-more-1.5.1.js" />
+    <Content Include="Scripts\mootools-more-1.5.1.min.js" />
+    <Content Include="Scripts\pinyin.js" />
+    <Content Include="Scripts\TimeSpan.js" />
+    <Content Include="Scripts\uploadify\jquery.uploadify.js" />
+    <Content Include="Scripts\uploadify\jquery.uploadify.min.js" />
+    <Content Include="Scripts\uploadify\uploadify-cancel.png" />
+    <Content Include="Scripts\uploadify\uploadify.css" />
+    <Content Include="Scripts\uploadify\uploadify.swf" />
+    <Content Include="Scripts\validation\additional-methods.js" />
+    <Content Include="Scripts\validation\additional-methods.min.js" />
+    <Content Include="Scripts\validation\jquery.validate.js" />
+    <Content Include="Scripts\validation\jquery.validate.min.js" />
+    <Content Include="Scripts\validation\messages_zh.js" />
+    <Content Include="Scripts\validation\messages_zh.min.js" />
+    <Content Include="Scripts\副本 test.js" />
+    <Content Include="Skin\black\images\ask.gif" />
+    <Content Include="Skin\black\images\btn_bg.gif" />
+    <Content Include="Skin\black\images\err.gif" />
+    <Content Include="Skin\black\images\ico.gif" />
+    <Content Include="Skin\black\images\info.gif" />
+    <Content Include="Skin\black\images\right.gif" />
+    <Content Include="Skin\black\images\title_bg_center.gif" />
+    <Content Include="Skin\black\images\title_bg_left.gif" />
+    <Content Include="Skin\black\images\title_bg_right.gif" />
+    <Content Include="Skin\black\ymPrompt.css" />
+    <Content Include="Skin\bluebar\images\ask.gif" />
+    <Content Include="Skin\bluebar\images\btn_bg.gif" />
+    <Content Include="Skin\bluebar\images\err.gif" />
+    <Content Include="Skin\bluebar\images\ico.gif" />
+    <Content Include="Skin\bluebar\images\info.gif" />
+    <Content Include="Skin\bluebar\images\right.gif" />
+    <Content Include="Skin\bluebar\images\title_bg_center.gif" />
+    <Content Include="Skin\bluebar\images\title_bg_left.gif" />
+    <Content Include="Skin\bluebar\images\title_bg_right.gif" />
+    <Content Include="Skin\bluebar\ymPrompt.css" />
+    <Content Include="Skin\dialog\loading.gif" />
+    <Content Include="Skin\dialog\msg_blue.gif" />
+    <Content Include="Skin\dialog\msg_green.gif" />
+    <Content Include="Skin\dialog\msg_red.gif" />
+    <Content Include="Skin\dmm-green\images\ask.gif" />
+    <Content Include="Skin\dmm-green\images\btn_bg.gif" />
+    <Content Include="Skin\dmm-green\images\err.gif" />
+    <Content Include="Skin\dmm-green\images\ico.gif" />
+    <Content Include="Skin\dmm-green\images\info.gif" />
+    <Content Include="Skin\dmm-green\images\right.gif" />
+    <Content Include="Skin\dmm-green\images\titleIco.gif" />
+    <Content Include="Skin\dmm-green\images\title_bg_center.gif" />
+    <Content Include="Skin\dmm-green\images\title_bg_left.gif" />
+    <Content Include="Skin\dmm-green\images\title_bg_right.gif" />
+    <Content Include="Skin\dmm-green\images\win_b.gif" />
+    <Content Include="Skin\dmm-green\images\win_l.gif" />
+    <Content Include="Skin\dmm-green\images\win_lb.gif" />
+    <Content Include="Skin\dmm-green\images\win_r.gif" />
+    <Content Include="Skin\dmm-green\images\win_rb.gif" />
+    <Content Include="Skin\dmm-green\ymPrompt.css" />
+    <Content Include="Skin\qq\images\ask.gif" />
+    <Content Include="Skin\qq\images\btn_bg.gif" />
+    <Content Include="Skin\qq\images\content_bg.gif" />
+    <Content Include="Skin\qq\images\err.gif" />
+    <Content Include="Skin\qq\images\ico.gif" />
+    <Content Include="Skin\qq\images\info.gif" />
+    <Content Include="Skin\qq\images\right.gif" />
+    <Content Include="Skin\qq\images\title_bg_center.gif" />
+    <Content Include="Skin\qq\images\title_bg_left.gif" />
+    <Content Include="Skin\qq\images\title_bg_right.gif" />
+    <Content Include="Skin\qq\images\win_b.gif" />
+    <Content Include="Skin\qq\images\win_l.gif" />
+    <Content Include="Skin\qq\images\win_lb.gif" />
+    <Content Include="Skin\qq\images\win_r.gif" />
+    <Content Include="Skin\qq\images\win_rb.gif" />
+    <Content Include="Skin\qq\ymPrompt.css" />
+    <Content Include="Skin\simple\images\ask.gif" />
+    <Content Include="Skin\simple\images\err.gif" />
+    <Content Include="Skin\simple\images\ico.gif" />
+    <Content Include="Skin\simple\images\info.gif" />
+    <Content Include="Skin\simple\images\right.gif" />
+    <Content Include="Skin\simple\ymPrompt.css" />
+    <Content Include="Skin\simple_gray\images\ask.gif" />
+    <Content Include="Skin\simple_gray\images\err.gif" />
+    <Content Include="Skin\simple_gray\images\info.gif" />
+    <Content Include="Skin\simple_gray\images\right.gif" />
+    <Content Include="Skin\simple_gray\ymPrompt.css" />
+    <Content Include="Skin\vista\images\ask.gif" />
+    <Content Include="Skin\vista\images\btn_bg.gif" />
+    <Content Include="Skin\vista\images\err.gif" />
+    <Content Include="Skin\vista\images\ico.gif" />
+    <Content Include="Skin\vista\images\info.gif" />
+    <Content Include="Skin\vista\images\right.gif" />
+    <Content Include="Skin\vista\images\title_bg_center.gif" />
+    <Content Include="Skin\vista\images\title_bg_left.gif" />
+    <Content Include="Skin\vista\images\title_bg_right.gif" />
+    <Content Include="Skin\vista\images\win_b.gif" />
+    <Content Include="Skin\vista\images\win_l.gif" />
+    <Content Include="Skin\vista\images\win_lb.gif" />
+    <Content Include="Skin\vista\images\win_r.gif" />
+    <Content Include="Skin\vista\images\win_rb.gif" />
+    <Content Include="Skin\vista\ymPrompt.css" />
+    <Content Include="Skin\ymPrompt.js" />
+    <Content Include="UpFiles\Hermione Jane Granger%28艾玛·沃特森%29\1421145.jpg" />
+    <Content Include="UpFiles\Hermione Jane Granger%28艾玛·沃特森%29\1421966.jpg" />
+    <Content Include="UpFiles\Hermione Jane Granger%28艾玛·沃特森%29\1421967.jpg" />
+    <Content Include="UpFiles\Hermione Jane Granger%28艾玛·沃特森%29\1422471.jpg" />
+    <Content Include="UpFiles\Hermione Jane Granger%28艾玛·沃特森%29\1440x900_emma-watson-hermione-granger-wallpaper.jpg" />
+    <Content Include="UpFiles\Hermione Jane Granger%28艾玛·沃特森%29\1440x900_emma-watson-wallpaper-[30].jpg" />
+    <Content Include="UpFiles\Hermione Jane Granger%28艾玛·沃特森%29\269634_Papel-de-Parede-Hermione-Granger-Harry-Potter--269634_1440x900.jpg" />
+    <Content Include="UpFiles\Hermione Jane Granger%28艾玛·沃特森%29\5-140613161A4.jpg" />
+    <Content Include="UpFiles\Hermione Jane Granger%28艾玛·沃特森%29\592f48b9735648558f4d3fb3f5c1a248.jpg" />
+    <Content Include="UpFiles\Hermione Jane Granger%28艾玛·沃特森%29\emma-watson-029-07.jpg" />
+    <Content Include="UpFiles\Hermione Jane Granger%28艾玛·沃特森%29\emma-watson-desktop-hd-grey-shirt.jpg" />
+    <Content Include="UpFiles\Hermione Jane Granger%28艾玛·沃特森%29\emma-watson-harry-potter-hermione-312186-1440x900.jpg" />
+    <Content Include="UpFiles\Hermione Jane Granger%28艾玛·沃特森%29\emma-watson-hermione-granger-black-background-in-red.jpg" />
+    <Content Include="UpFiles\Hermione Jane Granger%28艾玛·沃特森%29\Emma-Watson-Wallpapers-girl-beauty-actress-black-background.jpg" />
+    <Content Include="UpFiles\Hermione Jane Granger%28艾玛·沃特森%29\emma_watson_284-wide.jpg" />
+    <Content Include="UpFiles\Hermione Jane Granger%28艾玛·沃特森%29\emma_watson_in_deathly_hallows_part_2-wide.jpg" />
+    <Content Include="UpFiles\Hermione Jane Granger%28艾玛·沃特森%29\post-15855-1314344954.jpg" />
+    <Content Include="UpFiles\Hermione Jane Granger%28艾玛·沃特森%29\The-best-top-desktop-emma-watson-wallpapers-emma-watson-wallpaper-hd-35.jpg" />
+    <Content Include="UpFiles\Lê Lý Lan Hương\%281%29.jpg" />
+    <Content Include="UpFiles\Lê Lý Lan Hương\%2810%29.jpg" />
+    <Content Include="UpFiles\Lê Lý Lan Hương\%2811%29.jpg" />
+    <Content Include="UpFiles\Lê Lý Lan Hương\%2812%29.jpg" />
+    <Content Include="UpFiles\Lê Lý Lan Hương\%2813%29.jpg" />
+    <Content Include="UpFiles\Lê Lý Lan Hương\%2814%29.jpg" />
+    <Content Include="UpFiles\Lê Lý Lan Hương\%2815%29.jpg" />
+    <Content Include="UpFiles\Lê Lý Lan Hương\%2816%29.jpg" />
+    <Content Include="UpFiles\Lê Lý Lan Hương\%2817%29.jpg" />
+    <Content Include="UpFiles\Lê Lý Lan Hương\%2818%29.jpg" />
+    <Content Include="UpFiles\Lê Lý Lan Hương\%2819%29.jpg" />
+    <Content Include="UpFiles\Lê Lý Lan Hương\%282%29.jpg" />
+    <Content Include="UpFiles\Lê Lý Lan Hương\%2820%29.jpg" />
+    <Content Include="UpFiles\Lê Lý Lan Hương\%2821%29.jpg" />
+    <Content Include="UpFiles\Lê Lý Lan Hương\%2822%29.jpg" />
+    <Content Include="UpFiles\Lê Lý Lan Hương\%2823%29.jpg" />
+    <Content Include="UpFiles\Lê Lý Lan Hương\%2824%29.jpg" />
+    <Content Include="UpFiles\Lê Lý Lan Hương\%2825%29.jpg" />
+    <Content Include="UpFiles\Lê Lý Lan Hương\%2826%29.jpg" />
+    <Content Include="UpFiles\Lê Lý Lan Hương\%2827%29.jpg" />
+    <Content Include="UpFiles\Lê Lý Lan Hương\%2828%29.jpg" />
+    <Content Include="UpFiles\Lê Lý Lan Hương\%283%29.jpg" />
+    <Content Include="UpFiles\Lê Lý Lan Hương\%284%29.jpg" />
+    <Content Include="UpFiles\Lê Lý Lan Hương\%285%29.jpg" />
+    <Content Include="UpFiles\Lê Lý Lan Hương\%286%29.jpg" />
+    <Content Include="UpFiles\Lê Lý Lan Hương\%287%29.jpg" />
+    <Content Include="UpFiles\Lê Lý Lan Hương\%288%29.jpg" />
+    <Content Include="UpFiles\Lê Lý Lan Hương\%289%29.jpg" />
+    <Content Include="UpFiles\壁纸\0010.jpg" />
+    <Content Include="UpFiles\壁纸\01.jpg" />
+    <Content Include="UpFiles\壁纸\02.jpg" />
+    <Content Include="UpFiles\壁纸\03.jpg" />
+    <Content Include="UpFiles\壁纸\04.jpg" />
+    <Content Include="UpFiles\壁纸\05.jpg" />
+    <Content Include="UpFiles\壁纸\06.jpg" />
+    <Content Include="UpFiles\壁纸\07.jpg" />
+    <Content Include="UpFiles\壁纸\08.jpg" />
+    <Content Include="UpFiles\壁纸\09.jpg" />
+    <Content Include="UpFiles\壁纸\10.jpg" />
+    <Content Include="UpFiles\壁纸\11.jpg" />
+    <Content Include="UpFiles\壁纸\12.jpg" />
+    <Content Include="UpFiles\壁纸\13.jpg" />
+    <Content Include="UpFiles\壁纸\14.jpg" />
+    <Content Include="UpFiles\壁纸\15.jpg" />
+    <Content Include="UpFiles\壁纸\1554.jpg" />
+    <Content Include="UpFiles\壁纸\16.jpg" />
+    <Content Include="UpFiles\壁纸\17.jpg" />
+    <Content Include="UpFiles\壁纸\18.jpg" />
+    <Content Include="UpFiles\壁纸\19.jpg" />
+    <Content Include="UpFiles\壁纸\20.jpg" />
+    <Content Include="UpFiles\壁纸\21.jpg" />
+    <Content Include="UpFiles\壁纸\22.jpg" />
+    <Content Include="UpFiles\壁纸\23.jpeg" />
+    <Content Include="UpFiles\壁纸\23651.jpg" />
+    <Content Include="UpFiles\壁纸\24.jpg" />
+    <Content Include="UpFiles\壁纸\25.jpg" />
+    <Content Include="UpFiles\壁纸\2577.jpg" />
+    <Content Include="UpFiles\壁纸\26.jpg" />
+    <Content Include="UpFiles\壁纸\27.jpg" />
+    <Content Include="UpFiles\壁纸\28.jpg" />
+    <Content Include="UpFiles\壁纸\29.jpg" />
+    <Content Include="UpFiles\壁纸\30.jpg" />
+    <Content Include="UpFiles\壁纸\31.jpg" />
+    <Content Include="UpFiles\壁纸\32.jpg" />
+    <Content Include="UpFiles\壁纸\33.jpg" />
+    <Content Include="UpFiles\壁纸\34.jpg" />
+    <Content Include="UpFiles\壁纸\35.jpg" />
+    <Content Include="UpFiles\壁纸\36.jpg" />
+    <Content Include="UpFiles\壁纸\37.jpg" />
+    <Content Include="UpFiles\壁纸\38.jpg" />
+    <Content Include="UpFiles\壁纸\39.jpg" />
+    <Content Include="UpFiles\壁纸\40.jpg" />
+    <Content Include="UpFiles\壁纸\41.jpg" />
+    <Content Include="UpFiles\壁纸\42.jpg" />
+    <Content Include="UpFiles\壁纸\43.jpg" />
+    <Content Include="UpFiles\壁纸\44.jpg" />
+    <Content Include="UpFiles\壁纸\45.jpg" />
+    <Content Include="UpFiles\壁纸\46.jpg" />
+    <Content Include="UpFiles\壁纸\47 %282%29.jpg" />
+    <Content Include="UpFiles\壁纸\47.jpg" />
+    <Content Include="UpFiles\壁纸\48.jpg" />
+    <Content Include="UpFiles\壁纸\49.jpg" />
+    <Content Include="UpFiles\壁纸\50.jpg" />
+    <Content Include="UpFiles\壁纸\51.jpg" />
+    <Content Include="UpFiles\壁纸\52.jpg" />
+    <Content Include="UpFiles\壁纸\53.jpg" />
+    <Content Include="UpFiles\壁纸\54.jpg" />
+    <Content Include="UpFiles\壁纸\55.jpg" />
+    <Content Include="UpFiles\壁纸\56.jpg" />
+    <Content Include="UpFiles\壁纸\57.jpg" />
+    <Content Include="UpFiles\壁纸\58.jpg" />
+    <Content Include="UpFiles\壁纸\59.jpg" />
+    <Content Include="UpFiles\张予曦\%281%29.jpg" />
+    <Content Include="UpFiles\张予曦\%2810%29.jpg" />
+    <Content Include="UpFiles\张予曦\%2811%29.jpg" />
+    <Content Include="UpFiles\张予曦\%2812%29.jpg" />
+    <Content Include="UpFiles\张予曦\%2813%29.jpg" />
+    <Content Include="UpFiles\张予曦\%2814%29.jpg" />
+    <Content Include="UpFiles\张予曦\%282%29.jpg" />
+    <Content Include="UpFiles\张予曦\%283%29.jpg" />
+    <Content Include="UpFiles\张予曦\%284%29.jpg" />
+    <Content Include="UpFiles\张予曦\%285%29.jpg" />
+    <Content Include="UpFiles\张予曦\%286%29.jpg" />
+    <Content Include="UpFiles\张予曦\%287%29.jpg" />
+    <Content Include="UpFiles\张予曦\%288%29.jpg" />
+    <Content Include="UpFiles\张予曦\%289%29.jpg" />
+    <Content Include="Views\Account\ChangePassword.aspx" />
+    <Content Include="Views\Account\ChangePasswordSuccess.aspx" />
+    <Content Include="Views\Account\LogOn.aspx" />
+    <Content Include="Views\Account\Register.aspx" />
+    <Content Include="Views\Calendar\Index.aspx" />
+    <Content Include="Views\EF6\Index.aspx" />
+    <Content Include="Views\Home\Compress.aspx" />
+    <Content Include="Views\Home\DateTime.aspx" />
+    <Content Include="Views\Home\Edit.aspx" />
+    <Content Include="Views\Home\PartialView1.aspx" />
+    <Content Include="Views\Home\List.aspx" />
+    <Content Include="Views\Home\Radios.aspx" />
+    <Content Include="Views\Home\Uploadify.aspx" />
+    <Content Include="Views\Home\Validate.aspx" />
+    <Content Include="Views\Home\MvcPagingList.aspx" />
+    <Content Include="Views\Shared\AjaxView.ascx" />
+    <Content Include="Views\Home\SaveForm.aspx" />
+    <Content Include="Views\Home\Index.aspx" />
+    <Content Include="Views\Calendar\Calendar.ascx" />
+    <Content Include="Views\Shared\JsonpPartialView1.ascx" />
+    <Content Include="Views\Shared\LogOnUserControl.ascx" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Views\Web.config" />
+    <Content Include="Views\Shared\Error.aspx" />
+    <Content Include="Views\Shared\Site.Master" />
+    <Content Include="WebForm1.aspx" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Example\mootools\mt.mbox\css\" />
+    <Folder Include="Models\Entity Framework 6\Helper\" />
+    <Folder Include="UpFiles\Temp\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\CommonUtils\CommonUtils.csproj">
+      <Project>{ab19409b-693d-4efb-a445-c8b4820a1c27}</Project>
+      <Name>CommonUtils</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\MSSQLDB\MSSQLDB.csproj">
+      <Project>{7c765658-1c2d-40d2-8388-1df1790a3fed}</Project>
+      <Name>MSSQLDB</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Handler1.ashx" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Example\crop.rar" />
+    <Content Include="Example\mootools\mt.mbox\Mbox弹框插件.mht" />
+    <Content Include="Example\scrollbar-master.zip" />
+    <Content Include="Example\swfobject\src\expressInstall.as" />
+    <Content Include="Example\swfobject\src\expressInstall.fla" />
+    <Content Include="Example\星级评论控件\img\hearts.psd" />
+    <Content Include="Example\星级评论控件\ratings.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Content\kroppr\v1.5\Kroppr.ashx" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="packages.config" />
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <Target Name="MvcBuildViews" AfterTargets="AfterBuild" Condition="'$(MvcBuildViews)'=='true'">
+    <AspNetCompiler VirtualPath="temp" PhysicalPath="$(WebProjectOutputDir)" />
+  </Target>
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>False</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>5420</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:2906/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <Import Project="..\..\Library\System.Data.SQLite.Core.1.0.94.0\build\net40\System.Data.SQLite.Core.targets" Condition="Exists('..\..\Library\System.Data.SQLite.Core.1.0.94.0\build\net40\System.Data.SQLite.Core.targets')" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>这台计算机上缺少此项目引用的 NuGet 程序包。启用“NuGet 程序包还原”可下载这些程序包。有关详细信息，请参阅 http://go.microsoft.com/fwlink/?LinkID=322105。缺少的文件是 {0}。</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\..\Library\System.Data.SQLite.Core.1.0.94.0\build\net40\System.Data.SQLite.Core.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\..\Library\System.Data.SQLite.Core.1.0.94.0\build\net40\System.Data.SQLite.Core.targets'))" />
+  </Target>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target> -->
+</Project>

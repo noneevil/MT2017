@@ -1,0 +1,53 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>返回顶部功能</title>
+    <script src="/Scripts/mootools-core-1.4.5.js" type="text/javascript"></script>
+    <style type="text/css">
+        body { font-size: 12px; }
+        .backToTop { display: none; width: 18px; line-height: 1.2; padding: 5px 0; background-color: #000; color: #fff; font-size: 12px; text-align: center; position: fixed; _position: absolute; right: 10px; bottom: 100px; _bottom: "auto"; cursor: pointer; opacity: .6; filter: Alpha(opacity=60); }
+    </style>
+    <script type="text/ecmascript">
+        var $backToTopEle;
+        window.addEvents({
+            scroll: function () {
+                var st = document.getScroll().y;
+                var winh = window.getSize().y;
+                (st > 0) ? $backToTopEle.setStyle("display", "block") : $backToTopEle.setStyle("display", "none");
+                //IE6下的定位
+                if (Browser.ie6) {
+                    $backToTopEle.setStyle("top", st + winh - 166);
+                }
+            },
+            domready: function () {
+                $backToTopEle = new Element("div.backToTop", { text: '返回顶部' });
+                $backToTopEle.addEvent("click", function () {
+                    var st = document.getScroll().y;
+                    var speed = st / 6;
+                    var funScroll = function () {
+                        st -= speed;
+                        if (st <= 0) { st = 0; }
+                        window.scrollTo(0, st);
+                        if (st > 0) { setTimeout(funScroll, 20); }
+                    };
+                    funScroll();
+                }).inject(document.body);
+            }
+        });
+    </script>
+</head>
+<body>
+    <div>
+        <img src="http://image.zhangxinxu.com/image/study/s/s512/mm11.jpg" /></div>
+    <div>
+        <img src="http://image.zhangxinxu.com/image/study/s/s512/mm11.jpg" /></div>
+    <div>
+        <img src="http://image.zhangxinxu.com/image/study/s/s512/mm11.jpg" /></div>
+    <div>
+        <img src="http://image.zhangxinxu.com/image/study/s/s512/mm11.jpg" /></div>
+    <div>
+        <img src="http://image.zhangxinxu.com/image/study/s/s512/mm11.jpg" /></div>
+    <div>
+        <img src="http://image.zhangxinxu.com/image/study/s/s512/mm11.jpg" /></div>
+</body>
+</html>

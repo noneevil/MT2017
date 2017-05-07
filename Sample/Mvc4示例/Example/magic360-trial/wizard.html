@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<title>Settings wizard</title>
+	
+        <!-- link to magic360.css file -->
+        <link rel="stylesheet" type="text/css" href="magic360/magic360.css" />
+        <!-- link to magic360.js file -->
+        <script type="text/javascript" src="magic360/magic360.js"></script>
+        <script type="text/javascript">
+            var tpl = '&lt;<span style="color: #000000; font-weight: bold;">a</span> <span style="color: #000066;">href</span><span style="color: #66cc66;">=</span><span style="color: #ff0000;">"#"</span> <span style="color: #000066;">class</span><span style="color: #66cc66;">=</span><span style="color: #ff0000;">"Magic360"</span> <span style="color: #000066;">rel</span><span style="color: #66cc66;">=</span><span style="color: #ff0000;">"{options}"</span>&gt;'
+                    + '&lt;<span style="color: #000000; font-weight: bold;">img</span> <span style="color: #000066;">src</span><span style="color: #66cc66;">=</span><span style="color: #ff0000;">"images/dress/dress-400-01.jpg"</span> <span style="color: #66cc66;">/</span>&gt;'
+                    + '&lt;<span style="color: #66cc66;">/a</span>&gt;';
+
+            function refreshOptions() {
+                Magic360.stop();
+                applySettings();
+                Magic360.start();
+            }
+
+            function applySettings(){
+                var  value = null, isDefault = true, newParams = Array(), newParamsS = '', lang = {};
+                magicJS.$(magicJS.$A(magicJS.$('params').getElementsByTagName("INPUT"))
+                    .concat(magicJS.$A(magicJS.$('params').getElementsByTagName('SELECT'))))
+                    .forEach(function(param){
+                        value = ('checkbox'==param.type) ? param.checked.toString() : param.value;
+
+                        isDefault = ('checkbox'==param.type) ? value == param.defaultChecked.toString() :
+                            ('SELECT'==param.tagName) ? 0 == param.selectedIndex : value == param.defaultValue;
+
+                        if ( magicJS.$(['filename','large-filename','columns','rows']).contains(param.name) ) {isDefault = false;}
+                        if ( null != value && !isDefault) {
+                            if ( /(mobile\-)?hint\-text/i.test(param.name) ) {
+                                lang[param.name] = value;
+                            } else {
+                                newParams.push( param.name+': '+ value);
+                            }
+                        }
+                });
+
+                newParamsS = newParams.join('; ');
+                magicJS.$('magic-360').setAttribute('data-magic360-options', newParamsS);
+                Magic360.lang = magicJS.extend(Magic360.lang,lang);
+                changeContent(newParamsS);
+            }
+
+            function changeContent(str) {
+                txt = magicJS.$('_code_').innerHTML;
+                var re= new RegExp('(<span[^>]+>class</span><span[^>]+>=</span><span[^>]+>.*Magic360.*</span> data\\-magic360\\-options<span[^>]+>=</span><span[^>]+>)[^<]+(</span>)', 'i');
+                txt = txt.replace( re, '\$1"'+str+'"\$2') ;
+                magicJS.$('_code_').innerHTML = txt;
+            }
+        </script>
+        <style type="text/css">
+            td acronym {white-space: nowrap;}
+            input {width: 95% !important;}
+        </style>
+		
+
+	<style type="text/css"><!--
+		body {background:#fff; margin:0; padding:0; font-size: 100%;}
+		body, td {font-family:"Lucida Grande", Tahoma, Arial, Verdana, sans-serif; line-height: 1.5em;}
+		h1 {font-size:1.5em; font-weight:normal; color:#555;}
+		h2 {font-size:1.3em; font-weight:normal; color:#555;}
+		h2.caption {margin: 2.5em 0 0;}
+        h3 {font-size:1.1em; font-weight: normal; color:#555;}
+        h3.pad { margin: 2em 0 1em; }
+        h4 {font-size: 1em; font-weight:normal; color:#555;}
+		a {outline: none;}
+        p {font-size: 0.9em;}
+        p.pad { margin-top: 4em; }
+		table {margin:0; padding:0; border-collapse: collapse;}
+		th {background:#CCC; text-align: left; padding: 2px 4px; font-weight: normal;}
+		td {vertical-align: top; border: 1px;}
+		images {border:0;}
+		.leftcol {background:#EDF6CA; padding: 20px; height: 100%}
+		.nav {width: 180px;}
+		.nav h2 {background: #658F11; margin:10px 0 0 0; padding: 3px 3px 5px 10px; font-size: 0.9em; color:#FFF;}
+		.nav ul {list-style-type: none; padding: 0 0 10px 0; margin:0 0 20px; background:#99CC33;}
+		.nav li a {text-decoration: none; display: block; padding: 5px 3px 5px 10px; margin: 0; font-size: 0.9em; color:#FFF; zoom: 1; line-height:normal; }
+		.nav li a:hover {background: #B5DF61;}
+		.active {font-weight: bold;}
+		.arrow {text-align: right;}
+		.menuTd a {color:#fff; font-weight:bold;}
+		.code {font-size:12px; line-height:18px; margin:10px 0; display:block; padding:3px; border:1px solid #aaa;}
+		span.r {color:red;}
+		span.g {color:green;}
+		span.b {color:blue;}
+
+		caption {text-align: left; padding: 4px 12px; background: #999; color: #fff; font-size: 1.1em; margin: 0 0 0 -1px;}
+		caption a {color: #fff; padding: 2px;}
+		caption a:hover {background:#FFF; color: #999;}
+
+        table.params {background:#aaa; margin-bottom: 20px; font-size: 0.9em; border: 1px solid #999;}
+        .params th {background:#fff; padding:4px 8px 4px 16px;}
+        .params td {background:#fff; padding:4px 8px 4px 16px; vertical-align:top; text-alilgn: left; border-bottom: 1px #f0f0f0 solid; }
+        .params .sline, .params .sline td {background:#eee;}
+        .params td.name { font-weight: bold; white-space: nowrap; }
+        .params td .new { color: red; font-weight: bold; }
+        .params .last td { border-bottom: 0; }
+        .params th.caption { background: #c0c0c0; padding: 6px 10px; font-weight: normal; font-size: 125%; }
+        .params .header th {border-bottom: 1px solid #ccc;}
+
+		table.tbl {background:#aaa; margin-bottom: 20px; font-size: 0.9em; border: 1px solid #999;}
+		.tbl th {background:#c0c0c0; padding:4px 8px 4px 16px;}
+        .tbl td {background:#fff; padding:4px 8px 4px 16px; vertical-align:top; border-bottom: 1px #999 solid;}
+		.tbl .tr1 td {background:#fff;}
+		.tbl .tr2 td {background:#f2f2f2;}
+		.tbl tr.odd td { background:#f3f3f3; }
+
+		.mtbl {width:100%; height:100%;}
+		.rTd {padding:20px; width:100%;}
+		div.exmpl {margin:0 0 5px 0; font-weight:bold;}
+		.html4strict {border:1px solid #AAAAAA; display:block; font-size:12px; line-height:18px; margin:10px 0pt; padding:3px;}
+		.html4strict .de1, .html4strict .de2 {font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;}
+		.html4strict {font-family:monospace;}
+		.html4strict .imp {font-weight: bold; color: red;}
+		.html4strict li, .html4strict .li1 {font-weight: normal; vertical-align:top;}
+		.html4strict .ln {width:1px; text-align:right; margin:0; padding:0 2px; vertical-align:top;}
+		.html4strict .li2 {font-weight: bold; vertical-align:top;}
+		.html4strict .kw2 {color: #000000; font-weight: bold;}
+		.html4strict .kw3 {color: #000066;}
+		.html4strict .es0 {color: #000099; font-weight: bold;}
+		.html4strict .br0 {color: #66cc66;}
+		.html4strict .sy0 {color: #66cc66;}
+		.html4strict .st0 {color: #ff0000;}
+		.html4strict .nu0 {color: #cc66cc;}
+		.html4strict .sc-1 {color: #808080; font-style: italic;}
+		.html4strict .sc0 {color: #00bbdd;}
+		.html4strict .sc1 {color: #ddbb00;}
+		.html4strict .sc2 {color: #009900;}
+		.html4strict .ln-xtra, .html4strict li.ln-xtra, .html4strict div.ln-xtra {background-color: #ffc;}
+		.html4strict span.xtra {display:block;}
+
+
+		input { width:100%; }
+		.comment { color:#999;}
+		acronym {border-bottom:1px dotted #666; cursor:help;}
+
+        p.buttons {float: right; margin: -40px 0px 10px 0} 
+        p.buttons a { 
+                background: #FA9C0F; padding: 4px 10px 4px 12px; 
+                margin-right: 6px; font-size: 1em; color:#fff; text-decoration: none; 
+                line-height: 1em;outline: none; border: 1px solid #CF7E00
+        } 
+        p.buttons a:hover {background: #FFBA4F} 
+        
+        .clear {clear:both;}
+        div.source {
+            font-size:1em;
+            margin:0.5em 0 1em 0;
+            padding:0 10px 0 20px;
+            border:1px solid #c3c38a;
+            background:#ffffb2;
+        }
+        div.source.tiny { width: 500px; }
+        div.source p { border-color:#e1e19e; word-wrap: break-word;}
+
+        div.apply-btn { text-align: center; }
+        div.apply-btn button {
+            font-size: 1.4em;
+        }
+
+        ul.carts { list-style:none; margin:0 0 0 0; padding:0; }
+        ul.carts li { display:block; margin: 0 10px 0 0; float:left;}
+        ul.carts li a { border:2px solid #FFFFFF; display:block; line-height:0; font-size:0; }
+        ul.carts li a:hover { border:2px solid #93be1c; }
+        ul.carts li a span { border:4px solid #FFFFFF; border-right-width:6px; border-left-width:6px; display:block; width:80px; height:20px; text-indent:-5000px; background-image:url(images/platforms.jpg); line-height:0; font-size:0; }
+
+        .we span { background-position:0 -617px; }
+        .eb span { background-position:0 -597px; }
+        .vm span { background-position:0 -20px; }
+        .xt span { background-position:0 -40px; }
+        .oc span { background-position:0 -60px; }
+        .xc span { background-position:0 -80px; }
+        .wp span { background-position:0 -100px; }
+        .gl span { background-position:0 -120px; }
+        .dp span { background-position:0 -140px; }
+        .zc span { background-position:0 -160px; }
+        .ma span { background-position:0 -180px; }
+        .ns span { background-position:0 -200px; }
+        .cc span { background-position:0 -220px; }
+        .cl span { background-position:0 -240px; }
+        .wy span { background-position:0 -260px; }
+        .cs span { background-position:0 -280px; }
+        .et span { background-position:0 -300px; }
+        .ox span { background-position:0 -320px; }
+        .om span { background-position:0 -340px; }
+        .ps span { background-position:0 -360px; }
+        .rs span { background-position:0 -997px; }
+        .asp span { background-position:0 -897px; }
+        .blv span { background-position:0 -917px; }
+        .ltc span { background-position:0 -937px; }
+        .mmr span { background-position:0 -957px; }
+        .sf span { background-position:0 -977px; }
+        .op span { background-position:0 -637px; }
+        .vt span { background-position:0 -657px; }
+        .dp5 span { background-position:0 -677px; }
+        .dp6 span { background-position:0 -697px; }
+        .dp7 span { background-position:0 -717px; }
+        .jm1 span { background-position:0 -737px; }
+        .jm15 span { background-position:0 -757px; }
+        .jm16 span { background-position:0 -817px; }
+        .oc2 span { background-position:0 -777px; }
+        .oc3 span { background-position:0 -797px; }
+        .gl2 span { background-position:0 -857px; }
+        .gl3 span { background-position:0 -877px; }
+        .av span { background-position:0 -837px; }
+
+        .js span { background-position:0 -1117px; }
+        .ek span { background-position:0 -1137px; }
+        .cs2 span { background-position:0 -1157px; }
+        .cs3 span { background-position:0 -1177px; }
+        .cc34 span { background-position:0 -1037px; }
+        .cc5 span { background-position:0 -1057px; }
+        .vm1 span { background-position:0 -1077px; }
+        .vm2 span { background-position:0 -1097px; }
+    --></style>
+</head>
+<body>
+<table class="mtbl">
+<tr>
+    <td class="leftcol">
+        <div class="nav">
+            <h2>Magic 360&trade;</h2>
+            <ul>
+                <li><a  href="index.html">Overview</a></li>
+                <li><a  href="installation.html">Installation</a></li>
+                <li><a  href="parameters.html">Parameters</a></li>
+                <li><a class="active" href="wizard.html">Settings wizard</a></li>
+            </ul>
+        </div>
+        <div class="nav">
+            <h2>Examples</h2>
+            <ul>
+                <li><a  href="example1.html">360 spin</a></li>
+                <li><a  href="example2.html">3D spin</a></li>
+                <li><a  href="example3.html">Full-screen &amp; magnify</a></li>
+                <li><a  href="example4.html">Spin on hover</a></li>
+                <li><a  href="example5.html">Autospin</a></li>
+                <li><a  href="example10.html">Message &amp; arrows</a></li>
+                <li><a  href="example8.html">Buttons &amp; text</a></li>
+                <li><a  href="example9.html">CSS styling</a></li>
+                <li><a  href="example6.html">API controls</a></li>
+                <li><a  href="example7.html">Callbacks</a></li>
+            </ul>
+        </div>
+    </td>
+    <td class="rTd">
+        <h1>Settings wizard</h1>
+        <p class="buttons"><a href="http://www.magictoolbox.com/buy/magic360/">Buy now&nbsp;&nbsp;&pound;199</a> <a href="http://www.magictoolbox.com/support/">Get support</a></p>
+		
+        
+        
+<p>Change the settings and click Update. The source code is shown underneath.</p>
+
+<table cellpadding="10">
+	<tr valign="top">
+		<td>
+            <table id="params" class="tbl" cellspacing="1" style="width:380px">
+                <caption>
+                    Choose your settings
+                </caption>					
+                <tr><td><acronym title="Number of images per row.">columns</acronym></td><td><input type="text" name="columns" value="12"/></td></tr>
+                <tr class="odd"><td><acronym title="Number of images per column.">rows</acronym></td><td><input type="text" name="rows" value="4"/></td></tr>
+                <tr><td><acronym title="Speed of the spin.">speed</acronym></td><td><input type="text" name="speed" value="50"/></td></tr>
+                <tr class="odd"><td><acronym title="The format of your image file names.">filename</acronym></td><td><input type="text" name="filename" value="bag-400-{row}-{col}.jpg"/></td></tr>
+                <!-- Autospin options -->
+                <tr><th colspan="2">Autopsin</th></tr>
+                <tr><td><acronym title="Automatically spin the image.">autospin</acronym></td>
+                    <td>
+                        <select name="autospin">
+                            <option value="once">once</option>
+                            <option value="twice">twice</option>
+                            <option value="infinite">infinite</option>
+                            <option value="off">off</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr class="odd"><td><acronym title="Speed of auto-spin.">autospin-speed</acronym></td><td><input type="text" name="autospin-speed" value="4000"/></td></tr>
+                <tr><td><acronym title="Start autospin on page load, click or hover.">autospin-start</acronym></td>
+                    <td>
+                        <select name="autospin-start">
+                            <option value="load">load</option>
+                            <option value="hover">hover</option>
+                            <option value="click">click</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr class="odd"><td><acronym title="Stop autospin on click, hover or never.">autospin-stop</acronym></td>
+                    <td>
+                        <select name="autospin-stop">
+                            <option value="click">click</option>
+                            <option value="hover">hover</option>
+                            <option value="never">never</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr><td><acronym title="Direction of autospin.">autospin-direction</acronym></td>
+                    <td>
+                        <select name="autospin-direction">
+                            <option value="clockwise">clockwise</option>
+                            <option value="anticlockwise">anticlockwise</option>
+                        </select>
+                    </td>
+                </tr>
+                <!-- Full-screen / Magnifier options -->
+                <tr>
+                    <th colspan="2">Full-screen / Magnifier</th>
+                </tr>
+                <tr><td><acronym title="Enable full-screen spin.">fullscreen</acronym></td>
+                    <td>
+                        <select name="fullscreen">
+                            <option value="true">true</option>
+                            <option value="false">false</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr class="odd"><td><acronym title="Enable magnifier.">magnify</acronym></td>
+                    <td>
+                        <select name="magnify">
+                            <option value="true">true</option>
+                            <option value="false">false</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr><td><acronym title="Shape of magnifying glass.">magnifier-shape</acronym></td>
+                    <td>
+                        <select name="magnifier-shape">
+                            <option value="inner">inner</option>
+                            <option value="circle">circle</option>
+                            <option value="square">square</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr class="odd"><td><acronym title="Width of magnifying glass (if circle or square).">magnifier-width</acronym></td><td><input type="text" name="magnifier-width" value="80%"/></td></tr>
+                <!-- Hint options -->
+                <tr>
+                    <th colspan="2">Hint</th>
+                </tr>
+                <tr><td><acronym title="Show hint message &amp; arrows.">hint</acronym></td>
+                    <td>
+                        <select name="hint">
+                            <option value="true">true</option>
+                            <option value="false">false</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr class="odd"><td><acronym title="Text shown on image (for computers).">hint-text</acronym></td><td><input type="text" name="hint-text" value="Drag to spin"/></td></tr>
+                <tr><td><acronym title="Text shown on image (for mobile devices).">mobile-hint-text</acronym></td><td><input type="text" name="mobile-hint-text" value="Swipe to spin"/></td></tr>
+                <!-- Other settings -->
+                <tr><th colspan="2">Other settings</th></tr>
+                <tr><td><acronym title="When to download the images.">initialize-on</acronym></td>
+                    <td>
+                        <select name="initialize-on">
+                            <option value="load">load</option>
+                            <option value="click">click</option>
+                            <option value="hover">hover</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr class="odd"><td><acronym title="Smoothly stop the image spinning.">smoothing</acronym></td>
+                    <td>
+                        <select name="smoothing">
+                            <option value="true">true</option>
+                            <option value="false">false</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr><td><acronym title="Method for spinning the image.">spin</acronym></td>
+                    <td>
+                        <select name="spin">
+                            <option value="drag">drag</option>
+                            <option value="hover">hover</option>
+                            <option value="none">none</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr class="odd"><td><acronym title="Folder for  images. Only needed if different from img src folder.">filepath</acronym></td><td><input type="text" name="filepath" value=""/></td></tr>
+                <tr><td><acronym title="The format of your large image file names.">large-filename</acronym></td><td><input type="text" name="large-filename" value="bag-800-{row}-{col}.jpg"/></td></tr>
+                <tr class="odd"><td><acronym title="Folder for large images. Only needed if different from href folder.">large-filepath</acronym></td><td><input type="text" name="large-filepath" value=""/></td></tr>
+                <tr><td><acronym title="Number of frames to spin on mousewheel.">mousewheel-step</acronym></td><td><input type="text" name="mousewheel-step" value="3"/></td></tr>
+                <tr class="odd"><td><acronym title="Continue spin after the last image on X-axis.">loop-column</acronym></td>
+                    <td>
+                        <select name="loop-column">
+                            <option value="true">true</option>
+                            <option value="false">false</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr><td><acronym title="Continue spin after the last image on Y-axis.">loop-row</acronym></td>
+                    <td>
+                        <select name="loop-row">
+                            <option value="false">false</option>
+                            <option value="true">true</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr class="odd"><td><acronym title="Column from which to start spin. &quot;auto&quot; will start from middle.">start-column</acronym></td><td><input type="text" name="start-column" value="auto"/></td></tr>
+                <tr><td><acronym title="Row from which to start spin. &quot;auto&quot; will start from middle.">start-row</acronym></td><td><input type="text" name="start-row" value="auto"/></td></tr>
+                <tr class="odd"><td><acronym title="Load only every second (2) or third (3) column so that spins load faster.">column-increment</acronym></td><td><input type="text" name="column-increment" value="1"/></td></tr>
+                <tr><td><acronym title="Load only every second (2) or third (3) row so that spins load faster.">row-increment</acronym></td><td><input type="text" name="row-increment" value="1"/></td></tr>
+            </table>
+            <div class="apply-btn">
+                <button onclick="refreshOptions(); return false;">Update</button>
+            </div>
+		</td>
+		<td style="width:100%; vartical-align: middle;">
+            
+            <a class="Magic360" href="images/bag/bag-800-01-01.jpg" data-magic360-options="filename: bag-400-{row}-{col}.jpg; magnify-filename: bag-800-{row}-{col}.jpg; rows: 4; columns:12;" id="magic-360"><img src="images/bag/bag-400-01-01.jpg"/></a>
+            
+		</td>
+	</tr>
+</table>
+
+	
+
+        <h2>Here's the code:</h2>
+        <div id="_code_">
+        <div class="html4strict" style="font-family:monospace;"><ol><li style="font-weight: normal; vertical-align:top;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;"><span style="color: #009900;">&lt;<span style="color: #000000; font-weight: bold;">a</span> <span style="color: #000066;">class</span><span style="color: #66cc66;">=</span><span style="color: #ff0000;">&quot;Magic360&quot;</span> <span style="color: #000066;">href</span><span style="color: #66cc66;">=</span><span style="color: #ff0000;">&quot;images/bag/bag-800-01-01.jpg&quot;</span> data-magic360-options<span style="color: #66cc66;">=</span><span style="color: #ff0000;">&quot;filename: bag-400-{row}-{col}.jpg; magnify-filename: bag-800-{row}-{col}.jpg; rows: 4; columns:12;&quot;</span> <span style="color: #000066;">id</span><span style="color: #66cc66;">=</span><span style="color: #ff0000;">&quot;magic-360&quot;</span>&gt;&lt;<span style="color: #000000; font-weight: bold;">img</span> <span style="color: #000066;">src</span><span style="color: #66cc66;">=</span><span style="color: #ff0000;">&quot;images/bag/bag-400-01-01.jpg&quot;</span><span style="color: #66cc66;">/</span>&gt;&lt;<span style="color: #66cc66;">/</span><span style="color: #000000; font-weight: bold;">a</span>&gt;</span></div></li>
+</ol></div>
+        </div>
+    </td>
+</tr></table></body></html>

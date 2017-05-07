@@ -1,0 +1,142 @@
+﻿/* 全局样式定义, 最好可以用类似yui的reset.css和fonts.css,
+   来去除默认样式和定义基本样式, 这样你可以删了这里的"全局样式" */
+/** 全局样式 **/
+.moo-box-container * {
+	padding:0;
+	margin:0;
+}
+.moo-box-container {
+	font-size: 13px;
+	line-height: 1.5;
+}
+/** 全局样式 **/
+.moo-box-modal {
+	background: #999;
+	opacity: 0.8;
+	filter: alpha(opacity=80);
+}
+
+/* moobox container */
+.moo-box-container {
+	background: #F7F7F7;
+	border: 1px solid #dcdcdc;
+	padding: 0.2em;
+	
+	box-shadow: 0 0 0.3em #000;
+	border-radius: 4px;
+	position: absolute;
+	overflow: hidden;
+}
+
+/* moobox titlebar */ 
+.moo-box-container .moo-box-titlebar {
+	overflow: hidden;
+	position: relative;
+	border: 1px solid #5858FF;
+	font-size: 110%;
+	border-radius: 4px;
+	
+	background: -webkit-linear-gradient(top, #6db3f2 0%, #54a3ee 50%, #3690f0 51%, #1e69de 100%);
+	background: -moz-linear-gradient(top, #6db3f2 0%, #54a3ee 50%, #3690f0 51%, #1e69de 100%);
+	background: -o-linear-gradient(top, #6db3f2 0%, #54a3ee 50%, #3690f0 51%, #1e69de 100%);
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#6db3f2', endColorstr='#1e69de',GradientType=0 ); 
+	
+	zoom: 1; /* fix IE6,7 */
+}
+
+.moo-box-container .moo-box-title {
+	height: 1.9em;
+	line-height: 1.9em;
+	padding-left: 10px;
+	color: #fff;
+	font-size: 1em;
+}
+
+/*moobox min-button and max-button */
+.moo-box-container .moo-box-toggle,
+.moo-box-container .moo-box-close {
+	display: block;
+	position: absolute;
+	width: 17px;
+	height: 17px;
+	line-height: 17px;
+	text-align: center;
+	top: 0.35em;
+	color: #fff;
+	font-weight: bold;
+}
+.moo-box-container a.moo-box-close:link,
+.moo-box-container a.moo-box-close:visited {
+	right: 0.3em;
+	text-decoration: none;
+}
+.moo-box-container a.moo-box-toggle:link,
+.moo-box-container a.moo-box-toggle:visited {
+	right: 1.8em;
+	text-decoration: none;
+}
+.moo-box-container a.moo-box-toggle:hover,
+.moo-box-container a.moo-box-close:hover {
+	background: #fff;
+	color: #4646FF;
+	border-radius: 2px;
+}
+
+/* moobox body */ 
+.moo-box-container .moo-box-body {
+	overflow: auto;
+	padding: 6.5px 13px;
+	position: relative;
+}
+
+/* moobox buttonbar */
+.moo-box-container .moo-box-buttonbar {
+	border-top: 1px solid #dcdcdc;
+	overflow: hidden;
+	
+	margin: 6.5px 0 0;
+	padding: 0.2em 0.5em 0.2em 0.5em;
+	
+	zoom: 1; /* fix IE6 */
+}
+.moo-box-container .moo-box-buttonset {
+	float: right;
+}
+
+/* moobox buttonbar button */
+.moo-box-container .moo-box-btn {
+	padding: 0;
+	border: 1px solid #5858FF;
+	border-radius: 4px;
+	margin: 0.5em 0.4em 0.5em 0;
+	font-weight: bold;
+	font-size: 0.8em;
+    text-align: center;
+	cursor: pointer;
+	color: #fff;
+	
+	background: -webkit-linear-gradient(top, #cfe7fa 0%, #6393c1 100%);
+	background: -o-linear-gradient(top, #cfe7fa 0%, #6393c1 100%);
+	background: -moz-linear-gradient(top, #cfe7fa 0%, #6393c1 100%);
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#cfe7fa', endColorstr='#6393c1',GradientType=0 );
+	
+	zoom: 1; /* fix IE6, 7 */
+    position: relative;
+	overflow: visible;
+	display: inline-block;
+}
+.moo-box-container .moo-box-btn .moo-box-btn-text {
+	padding: 0.2em 0.8em;
+	display: block;
+	line-height: 1.2;
+}
+
+.moo-box-container .moo-box-resize {
+	background: url(../image/resize.png) no-repeat top left;
+	width: 12px;
+	height: 12px;
+	position: absolute;
+	right: 2px;
+	bottom: 2px;
+	cursor: se-resize;
+}

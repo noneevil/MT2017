@@ -1,0 +1,502 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+	<title>Settings wizard</title>
+	
+        <!--[if IE 6]>
+        <xml:namespace ns="urn:schemas-microsoft-com:vml" prefix="v"/>
+        <style>v\: * { behavior: url(#default#VML);display:inline-block; }</style>
+        <script type="text/javascript">
+            function fixpng() {
+                var re = /\.png$/i, img = null, css = '';
+                for( var i=0; i<document.images.length; i++ ) {
+                    img = document.images[i];
+                    if ( re.test(img.src) ) {
+                        css= 'width:' + img.width + 'px; height:' + img.height + 'px;';
+                        img.outerHTML = '<v:image src="'+img.src+'" style="' + css + '" />';
+                        i -= 1;
+                    }
+                }
+            }
+            window.attachEvent('onload', fixpng);
+        </script>
+        <![endif]--> 
+        <style type="text/css">
+            input { width: 124px; }
+            input.chk { width: auto; }
+            legend { font-weight: bold; color: #555; }
+            tr.sep td { font-size: 0em; height: 8px; }
+            
+            .button { width: 72px !important; height: 48px !important; }
+            .button-big { width: 96px !important; height: 64px !important; }
+            .button-small { width: 54px !important; height: 36px !important; }
+            
+             #buttons-design span {display: inline-block; padding: 0.2em 0.8em;  text-align: center; position: static; }
+            #buttons-design span b {  display: block; margin-top: 2px;}
+            #buttons-design span b input { font-size: 0.6em; }
+        </style>
+        
+        <script type="text/javascript">
+            var buttonsSize = '', cssRules = {box: null, a: null};
+            
+	        function applyNewThumbSettings(){
+	            var  value = null, isDefault = true, newParams = Array();
+	            magicJS.$(magicJS.$A(magicJS.$('thumb-params').getElementsByTagName("INPUT"))
+	                .concat(magicJS.$A(magicJS.$('thumb-params').getElementsByTagName('SELECT'))))
+	                .forEach(function(param){
+	                    if ( 'buttons-design' == param.name || 'buttons-size' == param.name ) {return;}
+                        value = ('checkbox'==param.type) ? param.checked.toString() : param.value;
+
+                        isDefault = ('checkbox'==param.type) ? value == param.defaultChecked.toString() :
+                            ('SELECT'==param.tagName) ? 0 == param.selectedIndex : value == param.defaultValue;
+
+                        if ( null != value && !isDefault) { 
+                            newParams.push( param.name+': '+ value);
+                        }
+	            });
+	
+	            magicJS.$('magicthumb-1').rel = newParams.join('; ');
+	            changeContent(newParams.join('; '));
+	
+	            var designs = magicJS.$A(document.getElementsByName("buttons-design"));
+	            for (var i=0, l=designs.length; i<l; i++) {
+	                if (designs[i].checked) {
+	                    applyDesign(designs[i].parentNode.previousSibling);
+	                    break;
+	                }
+	            }
+	
+	            MagicThumb.refresh('magicthumb-1');
+	        }
+	        
+	        function changeButtonsPreview(size) {
+	            if (  buttonsSize == size ) { return; }
+	            buttonsSize = size;
+	            var reg = /(.*)\/([^\/\-]+)[\-]{0,1}.*\.png$/i,
+	                    tag = magicJS.j21.trident4 ? 'image' : 'img';
+	            
+	            magicJS.$A(magicJS.$('buttons-design').getElementsByTagName(tag)).forEach(function(img){
+	                    if ( magicJS.j21.trident4 ) {
+	                        img.outerHTML = '<v:image src="'+img.src.replace(reg, '\$1/\$2'+size+'.png')+'" class="' + 'button'+size + '" />';
+	                    } else {
+	                        img.src = img.src.replace(reg, '\$1/\$2'+size+'.png');
+	                    } 
+	                });
+	        }
+
+	        function applyDesign(img) {
+	            var sheets = document.styleSheets, rules = null;
+	            for (var i=0,sl=sheets.length; i<sl; i++) {
+	                if (  cssRules.box && cssRules.a ) {
+	                    break;
+	                }
+	                rules=sheets[i].cssRules? sheets[i].cssRules: sheets[i].rules;
+	                for (var j=0, rl=rules.length; j<rl; j++) {
+	                    if ('.magicthumb-buttons' == rules[j].selectorText.toLowerCase()) {
+	                        cssRules.box = rules[j];
+	                    }
+	                    if ('.magicthumb-buttons a' == rules[j].selectorText.toLowerCase()) {
+	                        cssRules.a = rules[j];
+	                    }
+	                }
+	            }
+	
+	            cssRules.box.style.backgroundImage = 'url(' + img.src + ')';
+	            cssRules.box.style.height = (img.offsetHeight/2) + 'px';
+	
+	            cssRules.a.style.height = (img.offsetHeight/2) + 'px';
+	            cssRules.a.style.width = (img.offsetWidth/3) + 'px';
+	        }
+	        
+	        function changeContent(str) {
+	            txt = magicJS.$('_code_').innerHTML;
+                var re= new RegExp('(<span[^>]+>class</span><span[^>]+>=</span><span[^>]+>.*MagicThumb.*</span> <span[^>]+>rel</span><span[^>]+>=</span><span[^>]+>)[^<]+(</span>)', 'i');
+                txt = txt.replace( re, '\$1"'+str+'"\$2') ;
+	            magicJS.$('_code_').innerHTML = txt;
+	        }
+        </script>
+
+        <!-- link to magicthumb.css file -->
+        <link href="magicthumb/magicthumb.css" rel="stylesheet" type="text/css" media="screen"/>
+        <!-- link to magicthumb.js file -->
+        <script src="magicthumb/magicthumb.js" type="text/javascript"></script>
+		
+    <!--[if IE]>
+    <style type="text/css">
+    .MagicThumb, .MagicThumb:hover { cursor: url(magicthumb/graphics/zoomin.cur), pointer; }
+    .MagicThumb-expanded { cursor: url(magicthumb/graphics/zoomout.cur), pointer; }
+    </style>
+    <![endif]--> 
+	<style type="text/css"><!--
+		body {background:#fff; margin:0; padding:0; font-size: 100%;}
+		body, td {font-family:"Lucida Grande", Tahoma, Arial, Verdana, sans-serif; line-height: 1.5em;}
+		h1 {font-size:1.5em; font-weight:normal; color:#555;}
+		h2 {font-size:1.3em; font-weight:normal; color:#555;}
+		h2.caption {margin: 2.5em 0 0;}
+		h4 {font-size: 1em; font-weight:normal; color:#555;}
+		p { font-size: 0.9em; }
+		a {outline: none;}
+		table {margin:0; padding:0; border-collapse: collapse;}
+		th {background:#CCC; text-align: left; padding: 2px 4px; font-weight: normal;}
+		td {vertical-align: top; border: 1px;}
+		img {border:0;}
+		.leftcol {background:#EDF6CA; padding: 20px; height: 100%}
+		.nav {width: 180px;}
+		.nav h2 {background: #658F11; margin:10px 0 0 0; padding: 3px 3px 5px 10px; font-size: 0.9em; color:#FFF;}
+		.nav ul {list-style-type: none; padding: 0 0 10px 0; margin:0 0 20px; background:#99CC33;}
+		.nav li a {text-decoration: none; display: block; padding: 3px 3px 3px 10px; margin: 0; font-size: 0.9em; color:#FFF; zoom: 1;}
+		.nav li a:hover {background: #B5DF61;}
+		.active {font-weight: bold;}
+		.arrow {text-align: right;}
+		.menuTd a {color:#fff; font-weight:bold;}
+		.code {font-size:12px; line-height:18px; margin:10px 0; display:block; padding:3px; border:1px solid #aaa;}
+		span.r {color:red;}
+		span.g {color:green;}
+		span.b {color:blue;}
+		table.tbl {background:#aaa; margin-bottom: 20px; font-size: 0.9em; border: 1px solid #999;}
+		caption {text-align: left; padding: 4px 12px; background: #999; color: #fff; font-size: 1.1em; margin: 0 0 0 -1px;}
+		caption a {color: #fff; padding: 2px;}
+		caption a:hover {background:#FFF; color: #999;}
+		.tbl th {background:#eee; padding:4px 8px 4px 16px;}
+        .tbl td {background:#fff; padding:4px 8px 4px 16px; vertical-align:top; border-bottom: 1px #999 solid;}
+		.tbl .tr1 td {background:#fff;}
+		.tbl .tr2 td {background:#f2f2f2;}
+		.mtbl {width:100%; height:100%;}
+		.rTd {padding:20px; width:100%;}
+		div.exmpl {margin:0 0 5px 0; font-weight:bold;}
+		.html4strict {border:1px solid #AAAAAA; display:block; font-size:12px; line-height:18px; margin:10px 0pt; padding:3px;}
+		.html4strict .de1, .html4strict .de2 {font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;}
+		.html4strict {font-family:monospace;}
+		.html4strict .imp {font-weight: bold; color: red;}
+		.html4strict li, .html4strict .li1 {font-weight: normal; vertical-align:top;}
+		.html4strict .ln {width:1px; text-align:right; margin:0; padding:0 2px; vertical-align:top;}
+		.html4strict .li2 {font-weight: bold; vertical-align:top;}
+		.html4strict .kw2 {color: #000000; font-weight: bold;}
+		.html4strict .kw3 {color: #000066;}
+		.html4strict .es0 {color: #000099; font-weight: bold;}
+		.html4strict .br0 {color: #66cc66;}
+		.html4strict .sy0 {color: #66cc66;}
+		.html4strict .st0 {color: #ff0000;}
+		.html4strict .nu0 {color: #cc66cc;}
+		.html4strict .sc-1 {color: #808080; font-style: italic;}
+		.html4strict .sc0 {color: #00bbdd;}
+		.html4strict .sc1 {color: #ddbb00;}
+		.html4strict .sc2 {color: #009900;}
+		.html4strict .ln-xtra, .html4strict li.ln-xtra, .html4strict div.ln-xtra {background-color: #ffc;}
+		.html4strict span.xtra {display:block;}
+
+        p.buttons {float: right; margin: -40px 0px 10px 0} 
+        p.buttons a { 
+                background: #FA9C0F; padding: 4px 10px 4px 12px; 
+                margin-right: 6px; font-size: 1em; color:#fff; text-decoration: none; 
+                line-height: 1em;outline: none; border: 1px solid #CF7E00
+        } 
+        p.buttons a:hover {background: #FFBA4F} 
+	--></style>
+</head>
+<body>
+<table class="mtbl">
+<tr>
+    <td class="leftcol">
+		<div class="nav">
+			<h2>Magic Thumb&trade;</h2>
+			<ul>
+                <li><a  href="index.html">Overview</a></li>
+                <li><a  href="parameters.html">Parameters</a></li>
+                <li><a class="active" href="wizard.html">Settings wizard</a></li>
+			</ul>
+		</div>
+		<div class="nav">
+			<h2>Examples</h2>
+			<ul>
+	            <li><a  href="example1.html">Default</a></li>
+	            <li><a  href="example2.html">Multiple images</a></li>
+	            <li><a  href="example3.html">Caption</a></li>
+	            <li><a  href="example4.html">Position</a></li>
+	            <li><a  href="example5.html">Background</a></li>
+	            <li><a  href="example6.html">Effects</a></li>
+	            <li><a  href="example7.html">Image size</a></li>
+	            <li><a  href="example8.html">Buttons</a></li>
+                <li><a  href="example9.html">Slideshow</a></li>
+	            <li><a  href="example10.html">Initialize on click</a></li>
+	            <li><a  href="example11.html">Link on image</a></li>
+	            <li><a  href="example12.html">Thumbnail effects</a></li>
+	            <li><a  href="example13.html">Global options</a></li>
+	            <li><a  href="example14.html">Magic Thumb&trade; API</a></li>
+			</ul>
+		</div>
+	</td>
+	<td class="rTd">
+		<h1>Settings wizard</h1>
+		<p class="buttons"><a href="http://www.magictoolbox.com/buy/magicthumb/">Buy now&nbsp;&nbsp;&pound;25</a> <a href="http://www.magictoolbox.com/support/">Get support</a></p>
+	
+	    
+        <h4>1. Choose your settings</h4>
+        <table style="font-size: 12px" id="thumb-params">
+            <tr>
+                <td>
+                    <fieldset>
+                        <legend>User experience</legend>
+                        <table>
+                        <tr><td>Expand duration, ms:</td><td><input type="text" name="expand-speed" id="expand-speed" value="500"/></td></tr>
+                        <tr><td>Restore duration, ms:</td><td><input type="text" name="restore-speed" id="restore-speed" value=""/></td></tr>
+                        <tr><td>Effect for expanding image:</td>
+                                <td><select name="expand-effect">
+                                            <option value="linear">linear</option>
+                                            <option value="cubic">cubic</option>
+                                            <option value="back">back</option>
+                                            <option value="elastic">elastic</option>
+                                            <option value="bounce">bounce</option>
+                                        </select>
+                                </td>
+                        </tr>
+                        <tr><td>Effect for restoring image:</td>
+                                <td><select name="restore-effect">
+                                            <option value="auto">auto</option>
+                                            <option value="linear">linear</option>
+                                            <option value="cubic">cubic</option>
+                                            <option value="back">back</option>
+                                            <option value="elastic">elastic</option>
+                                            <option value="bounce">bounce</option>
+                                        </select>
+                                </td>
+                        </tr>
+                        <tr class="sep"><td colspan="2">&nbsp;</td></tr>
+                        <tr><td>Show thumbnail when image enlarged:</td><td><input type="checkbox" name="keep-thumbnail" value="true" style="width: auto;"/></td></tr>
+                        
+                        <tr class="sep"><td colspan="2">&nbsp;</td></tr>
+                        <!-- Fade background -->
+                        <tr><td>Background color behind large image:</td><td><input type="text" name="background-color" value="#000000"/></td></tr>
+                        <tr><td>Opacity of the background, 0-100 (0 = disabled):</td><td><input type="text" name="background-opacity" value="0"/></td></tr>
+                        <tr><td>Duration of background fade, ms:</td><td><input type="text" name="background-speed" value="200"/></td></tr>
+                        
+                        <tr class="sep"><td colspan="2">&nbsp;</td></tr>
+                        <!-- Caption -->
+                        <tr><td>Source of caption text:</td>
+                                <td><select name="caption-source">
+                                            <option value="span">span</option>
+                                            <option value="img:alt">alt of image</option>
+                                            <option value="img:title">title of image</option>
+                                            <option value="a:title">title of link</option>
+                                            <option value="#custom-caption-source">custom</option>
+                                        </select>
+                                </td>
+                        </tr>
+                        <tr><td>Speed of caption slide effect, ms:</td><td><input type="text" name="caption-speed" value="250"/></td></tr>
+                        <tr><td>Where to position the caption:</td>
+                                <td><select name="caption-position" onchange="magicJS.$('max-caption-width').disabled = !(magicJS.$('max-caption-height').disabled = 'bottom' != this.value); ">
+                                            <option value="bottom">bottom</option>
+                                            <option value="right">right</option>
+                                            <option value="left">left</option>
+                                        </select>
+                                </td>
+                        </tr>
+                        <tr><td>Max height of bottom caption, px:</td><td><input type="text" name="caption-height" id="max-caption-height" value="300"/></td></tr>
+                        <tr><td>Max width of left/right caption, ms:</td><td><input type="text" name="caption-width" disabled="true" id="max-caption-width" value="300"/></td></tr>
+
+                        <tr class="sep"><td colspan="2">&nbsp;</td></tr>
+                        <!-- Loading message -->
+                        <tr><td>Show loading box:</td><td><input type="checkbox" name="show-loading" value="true" checked="true" style="width: auto;" onclick="this.blur();" onchange="magicJS.$('loading-msg').disabled = magicJS.$('loading-opacity').disabled = !this.checked;"/></td></tr>
+                        <tr><td>Text of the loading message:</td><td><input type="text" name="loading-msg" id="loading-msg" value="Loading..."/></td></tr>
+                        <tr><td>Opacity of the loading box, 0-100:</td><td><input type="text" name="loading-opacity" id="loading-opacity" value="75"/></td></tr>
+                        
+                        </table>
+                    </fieldset>
+                    <fieldset>
+                        <legend>Geometry</legend>
+                        <table>
+                        <tr><td>Size of the enlarged image:</td><td>
+                            <select name="image-size">
+                                <option value="fit-screen">fit-screen</option>
+                                <option value="original">original</option>
+                            </select>
+                            </td>
+                        </tr>
+                        <tr><td>Align image relative to :</td><td>
+                            <select name="expand-align">
+                                <option value="screen">screen</option>
+                                <option value="image">image</option>
+                            </select>
+                            </td>
+                        </tr>
+                        <tr><td>Precise position of enlarged image, px:</td>
+                                <td>
+                                    <input type="text" name="expand-position" value="center"/><br/>
+                                    <small>Hint: <i>top:0, left:0</i> / <i>top:0, right:0</i> / <i>bottom:100, left:100</i></small>
+                                </td>
+                        </tr>
+                        </table>
+                    </fieldset>
+                    <fieldset>
+                        <legend>Miscellaneous</legend>
+                        <table>
+                        <!--  Link -->
+                        <tr><td>Link enlarged image to a URL:</td>
+                            <td><input type="text" name="link" id="link" value=""/></td>
+                        </tr>
+                        <tr><td>Open link in:</td><td>
+                            <select name="link-target">
+                                <option value="_self">self</option>
+                                <option value="_blank">blank</option>
+                                <option value="_parent">parent</option>
+                                <option value="_top">top</option>
+                            </select> window
+                            </td>
+                        </tr>
+                        
+                        <tr class="sep"><td colspan="2">&nbsp;</td></tr>
+                        <!--  Keyboard -->
+                        <tr><td>Use keyboard shortcuts:</td><td><input type="checkbox" name="keyboard" value="true" checked="true" style="width: auto;" onclick="this.blur();" onchange="magicJS.$('keyboard-ctrl').disabled = !this.checked;"/></td></tr>
+                        <tr><td>Require the Ctrl key to permit shortcuts:</td><td><input type="checkbox" name="keyboard-ctrl" id="keyboard-ctrl" value="true" style="width: auto;" onclick="this.blur();"/></td></tr>
+                        </table>
+                    </fieldset>
+                </td>
+                <td valign="top">
+                    <fieldset>
+                        <legend>Expand mode</legend>
+                        <table>
+                        <tr><td>Trigger for the enlarge effect:</td><td>
+                            <select name="expand-trigger" onchange="magicJS.$('expand-trigger-delay').disabled = !(this.value == 'mouseover');">
+                                <option value="click">click</option>
+                                <option value="mouseover">mouseover</option>
+                            </select>
+                            </td>
+                        </tr>
+                        <tr><td>Delay before mouseover triggers enlargement, ms:</td>
+                                <td><input type="text" name="expand-trigger-delay" id="expand-trigger-delay" disabled="true" value="200"/></td>
+                        </tr>
+                        <tr><td>Trigger to restore image to its small state:</td><td>
+                            <select name="restore-trigger">
+                                <option value="auto">auto</option>
+                                <option value="click">click</option>
+                                <option value="mouseout">mouseout</option>
+                            </select>
+                            </td>
+                        </tr>
+                        <tr><td>Click to initialise:</td><td><input type="checkbox" name="click-to-initialize" value="true" style="width: auto;"/></td></tr>
+
+                        <!--  Selectors -->
+                        <tr><td>How to switch between multiple images:</td><td>
+                            <select name="swap-image" onchange="magicJS.$('swap-image-delay').disabled = !(this.value == 'mouseover');">
+                                <option value="click">click</option>
+                                <option value="mouseover">mouseover</option>
+                            </select>
+                            </td>
+                        </tr>
+                        <tr><td>Delay before switching images, ms:</td>
+                                <td><input type="text" name="swap-image-delay" id="swap-image-delay" disabled="true" value="200"/></td>
+                        </tr>
+                        <tr class="sep"><td colspan="2">&nbsp;</td></tr>
+                        <!--  Slideshow -->
+                        <tr><td>Visual effect for switching enlarged images:</td><td>
+                            <select name="slideshow-effect" onchange="magicJS.$('slideshow-speed').disabled = (this.value == 'expand');">
+                                <option value="dissolve">dissolve</option>
+                                <option value="fade">fade</option>
+                                <option value="expand">expand</option>
+                            </select>
+                            </td>
+                        </tr>
+                        <tr><td>Speed of slideshow effect, ms:</td>
+                                <td><input type="text" name="slideshow-speed" id="slideshow-speed" value="1000"/></td>
+                        </tr>
+                        <tr><td>Restart slideshow after last image:</td><td><input type="checkbox" name="slideshow-loop" value="true" checked="true" style="width: auto;" /></td></tr>
+                        </table>
+                    </fieldset>
+                    <fieldset>
+                        <legend>Buttons</legend>
+                        <table>
+                        <!-- Buttons -->
+                        <tr><td>Whether or not to show buttons:</td>
+                                <td><select name="buttons">
+                                            <option value="show">show</option>
+                                            <option value="hide">hide</option>
+                                            <option value="autohide">autohide</option>
+                                        </select>
+                                </td>
+                        </tr>
+                        <tr><td>Buttons position:</td>
+                                <td><select name="buttons-position">
+                                            <option value="auto">auto</option>
+                                            <option value="top left">top left</option>
+                                            <option value="top right">top right</option>
+                                            <option value="bottom left">bottom left</option>
+                                            <option value="bottom right">bottom right</option>
+                                        </select>
+                                </td>
+                        </tr>
+                        <tr><td>Which buttons to show:</td><td><input type="text" name="buttons-display" value="previous, next, close"/></td></tr>
+                        <tr>
+                            <td colspan="2">
+                                 <p>Choose size of buttons:
+                                    <select name="buttons-size" onchange="changeButtonsPreview(this.value);">
+                                        <option value="">Normal</option>
+                                        <option value="-big">Large</option>
+                                        <option value="-small">Small</option>
+                                    </select>
+                                </p>
+                                <p>Choose prefer design:</p>
+                                <div id="buttons-design">
+                                    <p>
+                                        <span><img src="magicthumb/graphics/buttons1.png" alt=""/><b><input class="chk" type="radio" name="buttons-design" value="1" checked="true"/></b></span>
+                                        <span><img src="magicthumb/graphics/buttons2.png" alt=""/><b><input class="chk" type="radio" name="buttons-design" value="2" /></b></span>
+                                        <span><img src="magicthumb/graphics/buttons3.png" alt=""/><b><input class="chk" type="radio" name="buttons-design" value="3" /></b></span>
+                                    </p>
+                                    <p>
+                                        <span><img src="magicthumb/graphics/buttons4.png" alt=""/><b><input class="chk" type="radio" name="buttons-design" value="4" /></b></span>
+                                        <span><img src="magicthumb/graphics/buttons5.png" alt=""/><b><input class="chk" type="radio" name="buttons-design" value="5" /></b></span>
+                                        <span><img src="magicthumb/graphics/buttons6.png" alt=""/><b><input class="chk" type="radio" name="buttons-design" value="6" /></b></span>
+                                    </p>
+                                    <p>
+                                        <span><img src="magicthumb/graphics/buttons7.png" alt=""/><b><input class="chk" type="radio" name="buttons-design" value="7" /></b></span>
+                                    </p>
+                                </div>
+                            </td>
+                        </tr>
+                        </table>
+                    </fieldset>
+                </td>
+            </tr>
+        </table>
+        <h4>2. <button style="width: 100px; font-size: 1.3em" onclick="applyNewThumbSettings();">Apply</button></h4>
+        <p>Your customised thumb and HTML are below.</p>
+
+        
+        <p>
+            <!-- define main Magic Thumb -->
+            <a href="images/imac-family-600.jpg" id="magicthumb-1" title="Caption text from the title of the link" class="MagicThumb" rel=""><img title="Caption text from the title of the image" alt="Caption text from the alt of the image" src="images/imac-family-90.jpg"/><span>Caption text from &lt;span&gt;</span></a>
+         </p>
+         <p>
+             <!-- selector for the main image -->
+             <a href="images/imac-family-600.jpg" rev="images/imac-family-90.jpg" rel="thumb-id: magicthumb-1"><img src="images/imac-family-50.jpg" alt=""/></a>
+             <!-- selector has a white backgound with 100% opacity and own caption from <IMG> alt -->
+             <a href="images/imac-backtoback-600.jpg" rev="images/imac-backtoback-90.jpg" rel="thumb-id: magicthumb-1"><img src="images/imac-backtoback-50.jpg" alt=""/></a>
+             <!-- selector has a black backgound with 70% opacity and own caption from the <A> title -->
+             <a href="images/imac-side-600.jpg" title="" rev="images/imac-side-90.jpg" rel="thumb-id: magicthumb-1"><img src="images/imac-side-50.jpg" alt=""/></a>
+         </p>
+         <div id="custom-caption-source" class="MagicThumb-external-caption">
+                Caption text from the external div
+         </div>
+        
+		
+
+        <h2>Here's the code:</h2>
+        <div id="_code_">
+		<div class="html4strict" style="font-family:monospace;"><ol><li style="font-weight: normal; vertical-align:top;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;"><span style="color: #009900;">&lt;<span style="color: #000000; font-weight: bold;">p</span>&gt;</span></div></li>
+<li style="font-weight: normal; vertical-align:top;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #808080; font-style: italic;">&lt;!-- define main Magic Thumb --&gt;</span></div></li>
+<li style="font-weight: normal; vertical-align:top;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #009900;">&lt;<span style="color: #000000; font-weight: bold;">a</span> <span style="color: #000066;">href</span><span style="color: #66cc66;">=</span><span style="color: #ff0000;">&quot;images/imac-family-600.jpg&quot;</span> <span style="color: #000066;">id</span><span style="color: #66cc66;">=</span><span style="color: #ff0000;">&quot;magicthumb-1&quot;</span> <span style="color: #000066;">title</span><span style="color: #66cc66;">=</span><span style="color: #ff0000;">&quot;Caption text from the title of the link&quot;</span> <span style="color: #000066;">class</span><span style="color: #66cc66;">=</span><span style="color: #ff0000;">&quot;MagicThumb&quot;</span> <span style="color: #000066;">rel</span><span style="color: #66cc66;">=</span><span style="color: #ff0000;">&quot;&quot;</span>&gt;&lt;<span style="color: #000000; font-weight: bold;">img</span> <span style="color: #000066;">title</span><span style="color: #66cc66;">=</span><span style="color: #ff0000;">&quot;Caption text from the title of the image&quot;</span> <span style="color: #000066;">alt</span><span style="color: #66cc66;">=</span><span style="color: #ff0000;">&quot;Caption text from the alt of the image&quot;</span> <span style="color: #000066;">src</span><span style="color: #66cc66;">=</span><span style="color: #ff0000;">&quot;images/imac-family-90.jpg&quot;</span><span style="color: #66cc66;">/</span>&gt;&lt;<span style="color: #000000; font-weight: bold;">span</span>&gt;</span>Caption text from <span style="color: #ddbb00;">&amp;lt;</span>span<span style="color: #ddbb00;">&amp;gt;</span><span style="color: #009900;">&lt;<span style="color: #66cc66;">/</span><span style="color: #000000; font-weight: bold;">span</span>&gt;&lt;<span style="color: #66cc66;">/</span><span style="color: #000000; font-weight: bold;">a</span>&gt;</span></div></li>
+<li style="font-weight: normal; vertical-align:top;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<span style="color: #009900;">&lt;<span style="color: #66cc66;">/</span><span style="color: #000000; font-weight: bold;">p</span>&gt;</span></div></li>
+<li style="font-weight: bold; vertical-align:top;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<span style="color: #009900;">&lt;<span style="color: #000000; font-weight: bold;">p</span>&gt;</span></div></li>
+<li style="font-weight: normal; vertical-align:top;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<span style="color: #808080; font-style: italic;">&lt;!-- selector for the main image --&gt;</span></div></li>
+<li style="font-weight: normal; vertical-align:top;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<span style="color: #009900;">&lt;<span style="color: #000000; font-weight: bold;">a</span> <span style="color: #000066;">href</span><span style="color: #66cc66;">=</span><span style="color: #ff0000;">&quot;images/imac-family-600.jpg&quot;</span> <span style="color: #000066;">rev</span><span style="color: #66cc66;">=</span><span style="color: #ff0000;">&quot;images/imac-family-90.jpg&quot;</span> <span style="color: #000066;">rel</span><span style="color: #66cc66;">=</span><span style="color: #ff0000;">&quot;thumb-id: magicthumb-1&quot;</span>&gt;&lt;<span style="color: #000000; font-weight: bold;">img</span> <span style="color: #000066;">src</span><span style="color: #66cc66;">=</span><span style="color: #ff0000;">&quot;images/imac-family-50.jpg&quot;</span> <span style="color: #000066;">alt</span><span style="color: #66cc66;">=</span><span style="color: #ff0000;">&quot;&quot;</span><span style="color: #66cc66;">/</span>&gt;&lt;<span style="color: #66cc66;">/</span><span style="color: #000000; font-weight: bold;">a</span>&gt;</span></div></li>
+<li style="font-weight: normal; vertical-align:top;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<span style="color: #808080; font-style: italic;">&lt;!-- selector has a white backgound with 100% opacity and own caption from &lt;IMG&gt; alt --&gt;</span></div></li>
+<li style="font-weight: normal; vertical-align:top;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<span style="color: #009900;">&lt;<span style="color: #000000; font-weight: bold;">a</span> <span style="color: #000066;">href</span><span style="color: #66cc66;">=</span><span style="color: #ff0000;">&quot;images/imac-backtoback-600.jpg&quot;</span> <span style="color: #000066;">rev</span><span style="color: #66cc66;">=</span><span style="color: #ff0000;">&quot;images/imac-backtoback-90.jpg&quot;</span> <span style="color: #000066;">rel</span><span style="color: #66cc66;">=</span><span style="color: #ff0000;">&quot;thumb-id: magicthumb-1&quot;</span>&gt;&lt;<span style="color: #000000; font-weight: bold;">img</span> <span style="color: #000066;">src</span><span style="color: #66cc66;">=</span><span style="color: #ff0000;">&quot;images/imac-backtoback-50.jpg&quot;</span> <span style="color: #000066;">alt</span><span style="color: #66cc66;">=</span><span style="color: #ff0000;">&quot;&quot;</span><span style="color: #66cc66;">/</span>&gt;&lt;<span style="color: #66cc66;">/</span><span style="color: #000000; font-weight: bold;">a</span>&gt;</span></div></li>
+<li style="font-weight: bold; vertical-align:top;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<span style="color: #808080; font-style: italic;">&lt;!-- selector has a black backgound with 70% opacity and own caption from the &lt;A&gt; title --&gt;</span></div></li>
+<li style="font-weight: normal; vertical-align:top;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<span style="color: #009900;">&lt;<span style="color: #000000; font-weight: bold;">a</span> <span style="color: #000066;">href</span><span style="color: #66cc66;">=</span><span style="color: #ff0000;">&quot;images/imac-side-600.jpg&quot;</span> <span style="color: #000066;">title</span><span style="color: #66cc66;">=</span><span style="color: #ff0000;">&quot;&quot;</span> <span style="color: #000066;">rev</span><span style="color: #66cc66;">=</span><span style="color: #ff0000;">&quot;images/imac-side-90.jpg&quot;</span> <span style="color: #000066;">rel</span><span style="color: #66cc66;">=</span><span style="color: #ff0000;">&quot;thumb-id: magicthumb-1&quot;</span>&gt;&lt;<span style="color: #000000; font-weight: bold;">img</span> <span style="color: #000066;">src</span><span style="color: #66cc66;">=</span><span style="color: #ff0000;">&quot;images/imac-side-50.jpg&quot;</span> <span style="color: #000066;">alt</span><span style="color: #66cc66;">=</span><span style="color: #ff0000;">&quot;&quot;</span><span style="color: #66cc66;">/</span>&gt;&lt;<span style="color: #66cc66;">/</span><span style="color: #000000; font-weight: bold;">a</span>&gt;</span></div></li>
+<li style="font-weight: normal; vertical-align:top;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<span style="color: #009900;">&lt;<span style="color: #66cc66;">/</span><span style="color: #000000; font-weight: bold;">p</span>&gt;</span></div></li>
+<li style="font-weight: normal; vertical-align:top;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<span style="color: #009900;">&lt;<span style="color: #000000; font-weight: bold;">div</span> <span style="color: #000066;">id</span><span style="color: #66cc66;">=</span><span style="color: #ff0000;">&quot;custom-caption-source&quot;</span> <span style="color: #000066;">class</span><span style="color: #66cc66;">=</span><span style="color: #ff0000;">&quot;MagicThumb-external-caption&quot;</span>&gt;</span></div></li>
+<li style="font-weight: normal; vertical-align:top;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Caption text from the external div</div></li>
+<li style="font-weight: bold; vertical-align:top;"><div style="font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<span style="color: #009900;">&lt;<span style="color: #66cc66;">/</span><span style="color: #000000; font-weight: bold;">div</span>&gt;</span></div></li>
+</ol></div>
+        </div>
+	</td>
+</tr></table></body></html>

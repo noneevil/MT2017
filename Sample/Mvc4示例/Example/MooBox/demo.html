@@ -1,0 +1,120 @@
+﻿<!DOCTYPE HTML>
+<html lang="en-US">
+<head>
+	<meta charset="UTF-8">
+	<title>MooBox demo</title>
+	<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7" />  
+	<link rel="stylesheet" type="text/css" href="css/reset.css" media="all" />
+	<link rel="stylesheet" type="text/css" href="css/fonts.css" media="all" />
+	<link rel="stylesheet" type="text/css" href="css/MooBox.css" media="all" />
+	<script type="text/javascript" src="js/mootools-core-1.4.2.js"></script>
+	<script type="text/javascript" src="js/mootools-more-1.4.0.js"></script>
+	<script type="text/javascript" src="js/MooBox.js"></script>
+	<style type="text/css">
+		html, body {
+			height: 1500px;
+		}
+		div.btnSet {
+			position: relative;
+			top: 100px;
+			left: 100px;
+			background: #fff;
+			padding: 10px;
+			border: 1px solid #acacac;
+			width: 300px;
+		}
+		div.btnSet button {
+			overflow: visible;
+			padding: 3px 5px;
+			border: 1px solid #333;
+			background: #dcdcdc;
+			margin: 5px;
+		}
+	</style>
+</head>
+<body>
+	<div class="btnSet">
+		<button id="open">open</button>
+		<button id="close">close</button>
+		<button id="destroy">Destroy</button>
+		<button id="restore">restore</button>
+	</div>
+	
+	<div id="dialog" title="Hello world">
+		<p>Hi, This is my dialog</p>
+	</div>
+	
+	<script type="text/javascript">
+		// box instance
+		var box = new MooBox({
+			modal: true,
+			source: 'dialog', 
+			height: 180,
+			width: 250,
+			// showPos: ['left','top'], // default 'center'
+			// showPos: ['left', 'center'],
+			// showPos: ['left', 'bottom'],
+			// showPos: ['right','top'],
+			// showPos: ['right','center'],
+			// showPos: ['right','bottom'],
+			showPos: [200, 300],
+			toggleBtn: true,
+			resizable: true,
+			// events
+			onBeforeClose: function(ui) {
+				// ui is then box container
+				// this is the box instance
+				console.log('before close');
+				// this.enableClose = false, then it can not be closed 
+			},
+			onClose: function(ui) {
+				console.log('closed');
+			},
+			onOpen: function(ui) {
+				console.log('opened')
+			},
+			buttons: {
+				'yes': function(event) {
+					// event is 'click event'
+					// this is the box instance
+					console.log('yes button');
+					this.close();
+				},
+				'cancel': function(event) {
+					console.log('cancel button');
+					this.close();
+				}
+			}
+		});
+		
+		// test open
+		$('open').addEvent('click', function() {
+			box.open();
+		});
+		
+		// test close
+		$('close').addEvent('click', function() {
+			box.close();
+		});
+		
+		// test destroy
+		$('destroy').addEvent('click', function() {
+			var src = box.destroy();
+			if(src !== undefined)
+				document.body.appendChild(src);
+		});
+		
+		// test restore
+		$('restore').addEvent('click', function() {
+			// we can use new options to override old ones
+			box.restore({
+				title: 'I am new born',
+				modal: false,
+				toggleBtn: false,
+				maxWidth: 400,
+				maxHeight: 400
+			});
+		});
+	</script>
+</body>
+</html>
