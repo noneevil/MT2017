@@ -1,0 +1,13 @@
+﻿<!--Web.config配置-->
+<system.web>
+	<caching>
+		<outputCache defaultProvider="InMemory">
+			<providers>
+			  <add name="InMemory" type="WebSite.Plugins.InMemoryOutputCacheProvider"/>
+			</providers>
+		  </outputCache>
+	</caching>
+</system.web>
+
+ //页面
+<%@ OutputCache Duration="15" VaryByParam="*" %>

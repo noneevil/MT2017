@@ -1,0 +1,71 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+
+public class BaseAdmin : System.Web.UI.Page
+{
+    #region 使用文件存储ViewState
+
+    //protected override Object LoadPageStateFromPersistenceMedium()
+    //{
+    //    String hashid = (String)((Pair)base.LoadPageStateFromPersistenceMedium()).Second;
+    //    String file = Server.MapPath("/App_Data/ViewState/" + hashid);
+    //    String stateStr = File.ReadAllText(file);
+    //    return new ObjectStateFormatter().Deserialize(stateStr);
+    //}
+    //protected override void SavePageStateToPersistenceMedium(Object state)
+    //{
+    //    String value = new ObjectStateFormatter().Serialize(state);
+    //    String hashid = (Request.Url.GetHashCode() + Admin.ID.GetHashCode()).ToString();
+    //    String file = Server.MapPath("/App_Data/ViewState/" + hashid);
+    //    File.WriteAllText(file, value);
+    //    base.SavePageStateToPersistenceMedium(hashid);
+    //}
+
+    #endregion
+
+    #region 使用SQLite存储ViewState
+
+    //protected override Object LoadPageStateFromPersistenceMedium()
+    //{
+    //    String hashid = (String)((Pair)base.LoadPageStateFromPersistenceMedium()).Second;
+
+    //    ViewStateStore store = new ViewStateStore();
+    //    String stateStr = store.GetStoreItem(hashid);
+
+    //    return new ObjectStateFormatter().Deserialize(stateStr);
+    //}
+    //protected override void SavePageStateToPersistenceMedium(Object state)
+    //{
+    //    String value = new ObjectStateFormatter().Serialize(state);
+    //    String hashid = (Request.Url.GetHashCode() + Admin.ID.GetHashCode()).ToString();
+
+    //    ViewStateStore store = new ViewStateStore();
+    //    store.CreateStoreItem(hashid, value);
+
+    //    base.SavePageStateToPersistenceMedium(hashid);
+    //}       
+    #endregion
+
+
+    #region 使用压缩方式压缩ViewState
+
+    //protected override Object LoadPageStateFromPersistenceMedium()
+    //{
+    //    String value = (String)((Pair)base.LoadPageStateFromPersistenceMedium()).Second;
+    //    Byte[] buffer = Convert.FromBase64String(value);
+    //    buffer = SevenZipSharpHelper.Decompress(buffer);
+    //    return new ObjectStateFormatter().Deserialize(Convert.ToBase64String(buffer));
+    //}
+    //protected override void SavePageStateToPersistenceMedium(Object state)
+    //{
+    //    String value = new ObjectStateFormatter().Serialize(state);
+    //    Byte[] buffer = Convert.FromBase64String(value);
+    //    buffer = SevenZipSharpHelper.Compress(buffer);
+    //    base.SavePageStateToPersistenceMedium(Convert.ToBase64String(buffer));
+    //}
+
+    #endregion
+
+}

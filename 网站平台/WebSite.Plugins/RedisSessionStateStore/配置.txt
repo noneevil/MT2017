@@ -1,0 +1,10 @@
+﻿<!--Web.config配置-->
+<system.web>
+	<!--Redis托管Session-->
+    <sessionState mode="Custom" customProvider="RedisSessionStateProvider">
+      <providers>
+        <clear />
+        <add name="RedisSessionStateProvider" type="WebSite.Plugins.RedisSessionStateStoreProvider,WebSite.Plugins" />
+      </providers>
+    </sessionState>
+</system.web>

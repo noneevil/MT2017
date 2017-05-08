@@ -1,0 +1,109 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{19FED993-15C2-450B-802E-4ED28D5FAC7D}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>WebSite.BackgroundPages</RootNamespace>
+    <AssemblyName>WebSite.BackgroundPages</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Library\Newtonsoft.Json.6.0.6\lib\net40\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+    <Reference Include="WebSite.Config">
+      <HintPath>..\WEB\Web(SQL版)\Bin\WebSite.Config.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Admin.cs" />
+    <Compile Include="BaseAdmin.cs">
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ManagePage.cs">
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PageValidate.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\CommonUtils\CommonUtils.csproj">
+      <Project>{AB19409B-693D-4EFB-A445-C8B4820A1C27}</Project>
+      <Name>CommonUtils</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\MSSQLDB\MSSQLDB.csproj">
+      <Project>{7C765658-1C2D-40D2-8388-1DF1790A3FED}</Project>
+      <Name>MSSQLDB</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\WebSite.Controls\WebSite.Controls.csproj">
+      <Project>{501C2DC1-5E0E-44F4-8C81-93584BCB8CE9}</Project>
+      <Name>WebSite.Controls</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\WebSite.Core\WebSite.Core.csproj">
+      <Project>{7546EC99-7F73-43AD-B490-79F8317D1A93}</Project>
+      <Name>WebSite.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\WebSite.DAL\WebSite.DAL.csproj">
+      <Project>{7A5134D6-1FFF-40B4-9F68-EC8E1F4D5185}</Project>
+      <Name>WebSite.DAL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\WebSite.Interface\WebSite.Interface.csproj">
+      <Project>{4AB63BB5-01B1-42BA-912C-9A6BA704CBCF}</Project>
+      <Name>WebSite.Interface</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\WebSite.Models\WebSite.Models.csproj">
+      <Project>{1B72B5F7-3BB9-4B2D-9ACF-549068199890}</Project>
+      <Name>WebSite.Models</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\WebSite.Plugins\WebSite.Plugins.csproj">
+      <Project>{6C8F9E65-A819-467D-BEA2-91049CFE459A}</Project>
+      <Name>WebSite.Plugins</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="说明.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

@@ -1,0 +1,9 @@
+﻿<!--Web.config配置-->
+<system.web>
+	<!--Sqlite3托管Session-->
+    <sessionState mode="Custom" customProvider="Sqlite" cookieName="sessionid" timeout="30" cookieless="false">
+      <providers>
+        <add name="Sqlite" type="WebSite.Plugins.SQLiteSessionStateStoreProvider,WebSite.Plugins" />
+      </providers>
+    </sessionState>
+</system.web>
