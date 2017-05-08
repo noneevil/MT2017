@@ -1,0 +1,1 @@
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="AuthCode.aspx.cs" Inherits="WebSite.Web.AuthCode" %>

@@ -1,0 +1,28 @@
+﻿body { margin: 0; padding: 0; background: #fff; }
+/*
+v\:image,v\:imagedata { behavior: url(#default#VML);}
+*/
+.tip { padding: 0; color: #fff; border: 1px solid #fff; background: #000; z-index: 2; }
+.tip-title { font-size: 12px; margin: 0; color: #fff; padding: 3px; font-family: 宋体; }
+.tip--text { font-size: 10px; margin: 0; color: #fff; padding: 3px; }
+
+.op { background: #000; z-index: 2; position: absolute; }
+
+#kdiv_rotate { text-align: center; position: absolute; width: 26px; z-index: 1; background: #fff; border: 1px solid #000; }
+#kdiv_rotate span { font-size: 10px; color: #000; font-family: verdana; font-weight: bold; line-height: 14px; }
+#kdiv_rotate div#slider_rotate { margin-top: 5px; margin-bottom: 5px; margin-left: 6px; width: 14px; height: 150px; background: url(slider_v.gif) no-repeat; }
+
+#kdiv_zoom { text-align: center; position: absolute; width: 16px; z-index: 1; background: #fff; border: 1px solid #000; }
+#kdiv_zoom span { font-size: 14px; color: #000; font-family: verdana; font-weight: bold; line-height: 14px; }
+#kdiv_zoom div#slider_zoom { margin-top: 5px; margin-bottom: 5px; margin-left: 2px; width: 14px; height: 150px; background: url(slider_v.gif) no-repeat; }
+
+span.menu { padding: 3px 3px 3px 18px; margin-right: 6px; display: block; height: 16px; width: 50px; float: left; line-height: 16px; vertical-align: middle; color: #fff; font-family: 宋体, Arial, Helvetica, sans-serif; font-size: 12px; font-weight: bold; position: absolute; border: 1px solid #fff; z-index: 2; cursor: pointer; text-align: center; }
+#k_accept { background: url(accept.gif) no-repeat #000 5px center; }
+#k_reset { background: url(cancel.gif) no-repeat #000 5px center; }
+
+#k_load { width: 100%; height: 100%; position: absolute; top: 0; left: 0; background: url(load.gif) no-repeat center center #000000; z-index: 3; font-family: verdana; font-weight: bold; font-size: 16px; color: #fff; line-height: 100%; text-align: center; vertical-align: middle; display: none; }
+#k_load_cancel { background: url(cancel.gif) no-repeat #000; margin-top: -50px; position: absolute; top: 100%; left: 50%; margin-left: -40px; z-index: 3; width: 100px; }
+#k_loading { font-size: 16px; background: url(load.gif) no-repeat top left #000000; font-family: verdana; padding-left: 18px; position: absolute; color: #ffffff; }
+
+
+.kroppr { width: 700px; position: relative; }

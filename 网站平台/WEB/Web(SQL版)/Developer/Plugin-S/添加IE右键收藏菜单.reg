@@ -1,0 +1,6 @@
+Windows Registry Editor Version 5.00
+
+[HKEY_CURRENT_USER\Software\Microsoft\Internet Explorer\MenuExt]
+
+[HKEY_CURRENT_USER\Software\Microsoft\Internet Explorer\MenuExt\ ’≤ÿ(&w)]
+@="http://localhost:51491/Developer/system/RightClick.aspx"
