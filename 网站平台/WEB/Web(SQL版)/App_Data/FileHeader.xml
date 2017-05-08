@@ -1,0 +1,154 @@
+<?xml version="1.0"?>
+<Root xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <item extension=".asax" header="239 187 191 60 37 64" />
+  <item extension=".ascx" header="239 187 191 60 37 64" />
+  <item extension=".ashx" header="239 187 191 60 37 64" />
+  <item extension=".asmx" header="239 187 191 60 37 64" />
+  <item extension=".aspx" header="239 187 191 60 37 64" />
+  <item extension=".bas" header="65 116 116 114 105 98" />
+  <item extension=".bat" header="64 99 97 108 108 32" />
+  <item extension=".bin" header="28 48 56 49 0 0" />
+  <item extension=".bmp" header="66 77 246 4 0 0" />
+  <item extension=".Browser" header="239 187 191 60 33 45" />
+  <item extension=".Browser" header="239 187 191 60 33 45" />
+  <item extension=".Browser" header="239 187 191 60 33 45" />
+  <item extension=".Browser" header="239 187 191 60 33 45" />
+  <item extension=".cab" header="77 83 67 70 0 0" />
+  <item extension=".caplugin" header="60 67 111 100 101 65" />
+  <item extension=".cd" header="32" />
+  <item extension=".chm" header="73 84 83 70 3 0" />
+  <item extension=".com" header="77 90 144 0 3 0" />
+  <item extension=".config" header="239 187 191 60 63 120" />
+  <item extension=".cpp" header="35 105 110 99 108 117" />
+  <item extension=".cs" header="255 254 117 0 115 0" />
+  <item extension=".cshtml" header="239 187 191 60 33 68" />
+  <item extension=".csproj" header="60 80 114 111 106 101" />
+  <item extension=".css" header="239 187 191 98 111 100" />
+  <item extension=".cur" header="0 0 2 0 1 0" />
+  <item extension=".customdata" header="60 86 66 77 121 69" />
+  <item extension=".dat" header="59 32 65 117 116 111" />
+  <item extension=".dbml" header="239 187 191" />
+  <item extension=".dbproj" header="239 187 191 60 63 120" />
+  <item extension=".dbschema" header="239 187 191 60 63 120" />
+  <item extension=".def" header="59 32 65 100 100 73" />
+  <item extension=".deleteme" header="60 63 120 109 108 32" />
+  <item extension=".dgen" header="239 187 191" />
+  <item extension=".dir" header="" />
+  <item extension=".dll" header="77 90 144 0 3 0" />
+  <item extension=".doc" header="208 207 17 224 161 177" />
+  <item extension=".docx" header="80 75 3 4 20 0" />
+  <item extension=".dtq" header="255 254 0 0" />
+  <item extension=".exe" header="77 90 144 0 3 0" />
+  <item extension=".filters" header="239 187 191 60 63 120" />
+  <item extension=".gif" header="71 73 70 56 57 97" />
+  <item extension=".h" header="35 112 114 97 103 109" />
+  <item extension=".htm" header="239 187 191 60 33 68" />
+  <item extension=".html" header="239 187 191 60 33 68" />
+  <item extension=".ico" header="0 0 1 0 10 0" />
+  <item extension=".idl" header="47 47 32 65 100 100" />
+  <item extension=".inf" header="65 115 115 101 109 98" />
+  <item extension=".ini" header="91 66 97 110 110 101" />
+  <item extension=".jpg" header="255 216 255 224 0 16" />
+  <item extension=".js" header="239 187 191 105 102 32" />
+  <item extension=".layout" header="239 187 191" />
+  <item extension=".lex" header="69 0 67 76 101 120" />
+  <item extension=".lib" header="33 60 97 114 99 104" />
+  <item extension=".manifest" header="60 63 120 109 108 32" />
+  <item extension=".master" header="239 187 191 60 37 64" />
+  <item extension=".Master" header="239 187 191 60 37 64" />
+  <item extension=".mdf" header="13 10" />
+  <item extension=".mht" header="239 187 191 70 114 111" />
+  <item extension=".msg" header="104 2 0 0 84 43" />
+  <item extension=".msi" header="208 207 17 224 161 177" />
+  <item extension=".msm" header="208 207 17 224 161 177" />
+  <item extension=".myapp" header="239 187 191 60 63 120" />
+  <item extension=".odf" header="77 90 144 0 3 0" />
+  <item extension=".orderedtest" header="239 187 191 60 63 120" />
+  <item extension=".pdb" header="77 105 99 114 111 115" />
+  <item extension=".pdf" header="37 80 68 70 45 49" />
+  <item extension=".pdi" header="255 254 91 0 86 0" />
+  <item extension=".pkgdef" header="91 36 73 110 105 116" />
+  <item extension=".png" header="137 80 78 71 13 10" />
+  <item extension=".prf" header="140 119 0 0 0 0" />
+  <item extension=".ps1" header="35 13 10 35 32 80" />
+  <item extension=".ps1xml" header="239 187 191 60 63 120" />
+  <item extension=".psd1" header="64 123 13 10 13 10" />
+  <item extension=".psdor" header="" />
+  <item extension=".psdsxs" header="60 63 120 109 108 32" />
+  <item extension=".psm1" header="35 32 109 97 107 101" />
+  <item extension=".rc" header="47 47 32 77 105 99" />
+  <item extension=".rct" header="0 0 0 0 32 0" />
+  <item extension=".rdlc" header="60 63 120 109 108 32" />
+  <item extension=".reg" header="87 105 110 100 111 119" />
+  <item extension=".rels" header="60 63 120 109 108 32" />
+  <item extension=".resx" header="239 187 191 60 63 120" />
+  <item extension=".resX" header="239 187 191 60 63 120" />
+  <item extension=".resX" header="239 187 191 60 63 120" />
+  <item extension=".rgs" header="72 75 67 82 13 10" />
+  <item extension=".rtf" header="123 92 114 116 102 49" />
+  <item extension=".ruleset" header="239 187 191 60 63 120" />
+  <item extension=".scmp" header="239 187 191" />
+  <item extension=".SDB" header="255 254 91 0 86 0" />
+  <item extension=".sdf" header="156 28 149 171 0 0" />
+  <item extension=".settings" header="239 187 191 60 63 120" />
+  <item extension=".sitemap" header="239 187 191 60 63 120" />
+  <item extension=".skin" header="239 187 191 60 37 45" />
+  <item extension=".sln" header="32 13 10" />
+  <item extension=".snippet" header="60 63 120 109 108 32" />
+  <item extension=".sql" header="239 187 191 45 45 32" />
+  <item extension=".sqlcmdvars" header="239 187 191 60 63 120" />
+  <item extension=".sqldeployment" header="239 187 191 60 63 120" />
+  <item extension=".sqlpermissions" header="239 187 191 60 63 120" />
+  <item extension=".sqlpolicy" header="239 187 191 60 63 120" />
+  <item extension=".sqlsettings" header="239 187 191 60 63 120" />
+  <item extension=".Store" header="1 0 0 0 147 26" />
+  <item extension=".Store" header="1 0 0 0 223 86" />
+  <item extension=".svc" header="239 187 191 60 37 64" />
+  <item extension=".sync" header="239 187 191" />
+  <item extension=".testsettings" header="60 63 120 109 108 32" />
+  <item extension=".tlb" header="77 90 144 0 3 0" />
+  <item extension=".tt" header="60 35 64 32 116 101" />
+  <item extension=".txt" header="239 187 191 228 184 139" />
+  <item extension=".vb" header="255 254 73 0 109 0" />
+  <item extension=".vbhtml" header="239 187 191 60 33 68" />
+  <item extension=".vbproj" header="60 80 114 111 106 101" />
+  <item extension=".vcproj" header="60 63 120 109 108 32" />
+  <item extension=".vcxproj" header="239 187 191 60 80 114" />
+  <item extension=".vdproj" header="255 254 68 0 101 0" />
+  <item extension=".vsdir" header="86 105 115 117 97 108" />
+  <item extension=".vsixmanifest" header="60 63 120 109 108 32" />
+  <item extension=".vsk" header="18 6 7 32 0 0" />
+  <item extension=".vsmacros" header="208 207 17 224 161 177" />
+  <item extension=".vssettings" header="60 63 120 109 108 32" />
+  <item extension=".vstdir" header="60 84 101 109 112 108" />
+  <item extension=".VSTDIR" header="60 84 101 109 112 108" />
+  <item extension=".VSTDIR" header="60 84 101 109 112 108" />
+  <item extension=".VSTDIR" header="60 84 101 109 112 108" />
+  <item extension=".VSTDIR" header="60 84 101 109 112 108" />
+  <item extension=".VSTDIR" header="60 84 101 109 112 108" />
+  <item extension=".VSTDIR" header="60 84 101 109 112 108" />
+  <item extension=".VSTDIR" header="60 84 101 109 112 108" />
+  <item extension=".VSTDIR" header="60 84 101 109 112 108" />
+  <item extension=".VSTDIR" header="60 84 101 109 112 108" />
+  <item extension=".VSTDIR" header="60 84 101 109 112 108" />
+  <item extension=".VSTDIR" header="60 84 101 109 112 108" />
+  <item extension=".vstemplate" header="239 187 191 60 86 83" />
+  <item extension=".vsz" header="86 83 87 73 90 65" />
+  <item extension=".webinfo" header="239 187 191 60 63 120" />
+  <item extension=".webproj" header="239 187 191 67 35 13" />
+  <item extension=".wid" header="208 207 17 224 161 177" />
+  <item extension=".wim" header="208 207 17 224 161 177" />
+  <item extension=".winprf" header="60 85 115 101 114 83" />
+  <item extension=".wsf" header="239 187 191 60 63 120" />
+  <item extension=".wtm" header="60 87 111 114 107 102" />
+  <item extension=".xaml" header="239 187 191 60 67 97" />
+  <item extension=".xamlx" header="239 187 191 60 87 111" />
+  <item extension=".xml" header="239 187 191 60 63 120" />
+  <item extension=".xoml" header="239 187 191 60 83 101" />
+  <item extension=".xrm-ms" header="239 187 191 60 63 120" />
+  <item extension=".xsd" header="239 187 191 60 63 120" />
+  <item extension=".xsl" header="60 63 120 109 108 32" />
+  <item extension=".xslt" header="60 63 120 109 108 32" />
+  <item extension=".yes" header="49" />
+  <item extension=".zip" header="80 75 3 4 20 0" />
+</Root>

@@ -1,0 +1,556 @@
+<?xml version="1.0"?>
+<Root xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <Table ID="dafb5780-e4ff-4afb-b65a-5cece356b410" TableName="sys_basic" Description="">
+    <Field ID="4440f30c-45c8-4862-82c3-d5ad23b78090" FieldName="abstract" Position="5" isVirtual="false" DataType="11" Length="1073741823" Control="Text" isNullable="true" DefaultValue="" />
+    <Field ID="fb73f5e5-6c64-4d2f-b26c-521cb90d5aa0" FieldName="content" Position="6" isVirtual="false" DataType="11" Length="1073741823" Control="Text" isNullable="true" DefaultValue="" />
+    <Field ID="bd8fe14a-e1b3-4bc7-a3d8-a4640c9da94a" FieldName="id" Position="1" isVirtual="false" DataType="8" Length="0" Control="Text" isNullable="false" DefaultValue="" />
+    <Field ID="bd442514-ce5d-4173-8a9f-6e7690a47c50" FieldName="imageurl" Position="8" isVirtual="false" DataType="22" Length="100" Control="Text" isNullable="true" DefaultValue="" />
+    <Field ID="7f38f9bc-0b6c-4a65-8e67-1c1e31c881f8" FieldName="issystem" Position="4" isVirtual="false" DataType="2" Length="0" Control="Text" isNullable="false" DefaultValue="" />
+    <Field ID="ce7d29bc-357e-4082-bbb6-cdfc49b37e4b" FieldName="pid" Position="2" isVirtual="false" DataType="8" Length="0" Control="Text" isNullable="true" DefaultValue="0" />
+    <Field ID="4b2c927e-a40a-4d0d-ad97-6ba56099b2b9" FieldName="tag" Position="7" isVirtual="false" DataType="12" Length="5" Control="Text" isNullable="true" DefaultValue="" />
+    <Field ID="4096b740-dd69-4e1c-aff7-d51f32c67f69" FieldName="title" Position="3" isVirtual="false" DataType="12" Length="30" Control="Text" isNullable="true" DefaultValue="" />
+  </Table>
+  <Table ID="562d6882-07b9-4f05-acda-82879e78ac65" TableName="sys_files" Description="">
+    <Field ID="2f70f1c6-753b-49c7-bd2b-9fb7adb8fdf8" FieldName="fileurl" Position="3" isVirtual="false" DataType="12" Length="100" Control="Text" isNullable="true" DefaultValue="" />
+    <Field ID="49b0772e-c9e9-4317-966f-5e0df806f280" FieldName="id" Position="1" isVirtual="false" DataType="0" Length="0" Control="Text" isNullable="false" DefaultValue="" />
+    <Field ID="9235368a-19f0-4d71-993e-334e298301a0" FieldName="savefile" Position="4" isVirtual="false" DataType="22" Length="100" Control="Text" isNullable="true" DefaultValue="" />
+    <Field ID="d9ed85c4-b8dc-421d-acea-31f5bf42419f" FieldName="type" Position="2" isVirtual="false" DataType="12" Length="50" Control="Text" isNullable="true" DefaultValue="" />
+  </Table>
+  <Table ID="40e560be-8e8c-4723-9171-43f3e98d75d8" TableName="sys_photo" Description="">
+    <Field ID="ea7a34c4-d4b9-4d99-818f-427516f0f9fa" FieldName="abstract" Position="7" isVirtual="false" DataType="11" Length="1073741823" Control="Text" isNullable="true" DefaultValue="" />
+    <Field ID="b9ea85a3-cf91-4e35-8f8c-00ce35898425" FieldName="groupid" Position="3" isVirtual="false" DataType="8" Length="0" Control="Text" isNullable="true" DefaultValue="" />
+    <Field ID="cd9a3d41-ed04-40ce-afe6-c5aea53e4393" FieldName="id" Position="1" isVirtual="false" DataType="0" Length="0" Control="Text" isNullable="false" DefaultValue="" />
+    <Field ID="a7db8a2a-b922-4f54-9680-16e26c8b531d" FieldName="images" Position="6" isVirtual="false" DataType="12" Length="4000" Control="Text" isNullable="true" DefaultValue="" />
+    <Field ID="963ab911-1af1-4e01-90b6-a060f43f51e0" FieldName="imageurl" Position="5" isVirtual="false" DataType="12" Length="100" Control="Text" isNullable="true" DefaultValue="" />
+    <Field ID="0effd24a-6765-4aa7-8208-94ffbbf37ff1" FieldName="pubdate" Position="4" isVirtual="false" DataType="4" Length="0" Control="Text" isNullable="true" DefaultValue="" />
+    <Field ID="93d160c1-9fed-4f32-8f3d-fce44db3bdd3" FieldName="title" Position="2" isVirtual="false" DataType="12" Length="100" Control="Text" isNullable="true" DefaultValue="" />
+  </Table>
+  <Table ID="93e3d3c8-3a28-44f8-8846-a2cc0df8d4ce" TableName="t_accesscontrol" Description="">
+    <Field ID="c878fa2a-8d04-4658-80e6-f276b8141a68" FieldName="create" Position="4" isVirtual="false" DataType="2" Length="0" Control="Text" isNullable="true" DefaultValue="0" />
+    <Field ID="200a2fef-8169-4edd-8342-7fdfcfb505e1" FieldName="delete" Position="7" isVirtual="false" DataType="2" Length="0" Control="Text" isNullable="true" DefaultValue="0" />
+    <Field ID="d08808aa-e3ac-42bd-bfad-3393a9402f76" FieldName="edit" Position="6" isVirtual="false" DataType="2" Length="0" Control="Text" isNullable="true" DefaultValue="0" />
+    <Field ID="5f12e280-49d9-49e0-badc-ce3e665137dd" FieldName="id" Position="1" isVirtual="false" DataType="8" Length="0" Control="Text" isNullable="false" DefaultValue="" />
+    <Field ID="876fab19-93af-4c68-8426-52148a17436a" FieldName="node" Position="3" isVirtual="false" DataType="8" Length="0" Control="Text" isNullable="true" DefaultValue="" />
+    <Field ID="a039c8fc-08c8-4caf-97e0-ae48838d6db9" FieldName="power" Position="4" isVirtual="false" DataType="16" Length="0" Control="Text" isNullable="true" DefaultValue="0" />
+    <Field ID="45e1fa58-10ff-496d-a3db-14a5b1ebcf87" FieldName="role" Position="8" isVirtual="false" DataType="8" Length="0" Control="Text" isNullable="true" DefaultValue="0" />
+    <Field ID="6a959ee5-de8f-4edf-a341-1236a868f090" FieldName="tablename" Position="2" isVirtual="false" DataType="12" Length="50" Control="Text" isNullable="true" DefaultValue="" />
+    <Field ID="0024b882-5d6a-49a0-866d-8d025d836233" FieldName="url" Position="10" isVirtual="false" DataType="12" Length="255" Control="Text" isNullable="true" DefaultValue="" />
+    <Field ID="9b1caf3e-8c42-478c-8721-91fec1698b1e" FieldName="user" Position="9" isVirtual="false" DataType="8" Length="0" Control="Text" isNullable="true" DefaultValue="0" />
+    <Field ID="9a004752-fbee-4349-af77-98b653cd74ef" FieldName="view" Position="5" isVirtual="false" DataType="2" Length="0" Control="Text" isNullable="true" DefaultValue="0" />
+  </Table>
+  <Table ID="275aab6a-80ac-48d7-aa0c-652f00236417" TableName="t_ad" Description="">
+    <Field ID="984a9b56-2d83-4a70-b636-9c04a0227c15" FieldName="groupid" Position="2" isVirtual="false" DataType="8" Length="0" Control="Text" isNullable="true" DefaultValue="0" />
+    <Field ID="73b711ef-c5bb-4438-8bf5-9c14f53f8efc" FieldName="height" Position="6" isVirtual="false" DataType="8" Length="0" Control="Text" isNullable="true" DefaultValue="0" />
+    <Field ID="c72ce813-e455-42ad-937e-43a833ec5b9d" FieldName="hits" Position="9" isVirtual="false" DataType="8" Length="0" Control="Text" isNullable="true" DefaultValue="0" />
+    <Field ID="398923d2-dddd-40b2-b62b-3b8e63b8ff94" FieldName="id" Position="1" isVirtual="false" DataType="0" Length="0" Control="Text" isNullable="false" DefaultValue="" />
+    <Field ID="079e342e-1584-4b78-95ae-90b3a8dd426c" FieldName="linksrc" Position="4" isVirtual="false" DataType="12" Length="255" Control="Text" isNullable="true" DefaultValue="" />
+    <Field ID="57b36023-9b88-40b2-b3ec-c9fea1fd816b" FieldName="linkurl" Position="8" isVirtual="false" DataType="12" Length="255" Control="Text" isNullable="true" DefaultValue="" />
+    <Field ID="6a439c1e-5a15-4dff-b7f1-47a23171191c" FieldName="shownum" Position="10" isVirtual="false" DataType="8" Length="0" Control="Text" isNullable="true" DefaultValue="0" />
+    <Field ID="26289d9d-a4be-43bf-aa0a-1dbe62e00712" FieldName="target" Position="7" isVirtual="false" DataType="8" Length="0" Control="Text" isNullable="true" DefaultValue="0" />
+    <Field ID="fad3f1af-c160-4a47-a270-487bc6ead894" FieldName="title" Position="3" isVirtual="false" DataType="12" Length="200" Control="Text" isNullable="true" DefaultValue="" />
+    <Field ID="d0333ff1-6c3c-4e40-9bd3-b95ab46e5c0e" FieldName="width" Position="5" isVirtual="false" DataType="8" Length="0" Control="Text" isNullable="true" DefaultValue="0" />
+  </Table>
+  <Table ID="93967e89-d556-444d-b2e4-0fe812323662" TableName="T_User" Description="">
+    <Field ID="84ea06ff-c524-48ff-a6f6-6375e3946fb3" FieldName="id" Position="1" isVirtual="false" DataType="8" Length="0" Control="Text" isNullable="false" DefaultValue="" />
+    <Field ID="668ed6db-7e9f-4785-8cf7-5a577a06ef41" FieldName="joindate" Position="7" isVirtual="false" DataType="4" Length="0" Control="Text" isNullable="true" DefaultValue="getdate" />
+    <Field ID="6cd05391-3019-4e04-93f0-9f0b93d7bd9d" FieldName="lastsigntime" Position="8" isVirtual="false" DataType="4" Length="0" Control="Text" isNullable="true" DefaultValue="getdate" />
+    <Field ID="45f5874b-e3f1-41e6-a302-fb328f3ce6a8" FieldName="password" Position="3" isVirtual="false" DataType="12" Length="36" Control="Text" isNullable="true" DefaultValue="" />
+    <Field ID="e4304eb9-0f08-44e5-b7a5-d0f0e44f8432" FieldName="roleid" Position="4" isVirtual="false" DataType="8" Length="0" Control="Text" isNullable="true" DefaultValue="0" />
+    <Field ID="0e96db33-363b-4801-ba16-8cf5ee91720f" FieldName="status" Position="6" isVirtual="false" DataType="2" Length="0" Control="Text" isNullable="false" DefaultValue="" />
+    <Field ID="1280f760-8615-4632-8cdf-c018df1c4814" FieldName="super" Position="5" isVirtual="false" DataType="2" Length="0" Control="Text" isNullable="true" DefaultValue="0" />
+    <Field ID="3b00edc3-ee9e-4ce0-af72-fdb9f5aebc98" FieldName="username" Position="2" isVirtual="false" DataType="12" Length="25" Control="Text" isNullable="true" DefaultValue="" />
+  </Table>
+  <Table ID="36eaa6db-db9a-4868-a3da-29d4de82891e" TableName="t_books" Description="">
+    <Field ID="71e8000b-7540-4591-83e7-3cd97859b1f0" FieldName="booktime" Position="4" isVirtual="false" DataType="4" Length="0" Description="留言时间" Control="Text" isNullable="true" DefaultValue="getdate" Regex="">
+      <BindData DataSourceType="SQL">
+        <Layout Columns="1" Direction="Horizontal" Layout="Table" />
+        <SQL sql="" Text="" Value="" />
+        <ListItem />
+      </BindData>
+    </Field>
+    <Field ID="1d53f835-5cfd-47a5-9b70-f8b6cca1d656" FieldName="content" Position="3" isVirtual="false" DataType="11" Length="1073741823" Description="留言内容" Control="Text" isNullable="true" DefaultValue="" Regex="">
+      <BindData DataSourceType="SQL">
+        <Layout Columns="1" Direction="Horizontal" Layout="Table" />
+        <SQL sql="" Text="" Value="" />
+        <ListItem />
+      </BindData>
+    </Field>
+    <Field ID="11285d18-1370-4a7f-92ac-78b9404b1540" FieldName="id" Position="1" isVirtual="false" DataType="0" Length="0" Description="编号" Control="Text" isNullable="false" DefaultValue="" Regex="">
+      <BindData DataSourceType="SQL">
+        <Layout Columns="1" Direction="Horizontal" Layout="Table" />
+        <SQL sql="" Text="" Value="" />
+        <ListItem />
+      </BindData>
+    </Field>
+    <Field ID="814c78c3-96c2-45f7-9af3-f1c1f433ff5f" FieldName="ipaddress" Position="11" isVirtual="false" DataType="12" Length="16" Description="IP地址" Control="Text" isNullable="true" DefaultValue="" Regex="">
+      <BindData DataSourceType="SQL">
+        <Layout Columns="1" Direction="Horizontal" Layout="Table" />
+        <SQL sql="" Text="" Value="" />
+        <ListItem />
+      </BindData>
+    </Field>
+    <Field ID="549e951c-3f31-4568-9146-03137d842899" FieldName="memberid" Position="8" isVirtual="false" DataType="0" Length="0" Description="会员编号" Control="Text" isNullable="true" DefaultValue="" Regex="">
+      <BindData DataSourceType="SQL">
+        <Layout Columns="1" Direction="Horizontal" Layout="Table" />
+        <SQL sql="" Text="" Value="" />
+        <ListItem />
+      </BindData>
+    </Field>
+    <Field ID="e5b88fa7-77cc-429f-a22e-ca403496c9e4" FieldName="recontent" Position="5" isVirtual="false" DataType="11" Length="1073741823" Description="回复内容" Control="Text" isNullable="true" DefaultValue="" Regex="">
+      <BindData DataSourceType="SQL">
+        <Layout Columns="1" Direction="Horizontal" Layout="Table" />
+        <SQL sql="" Text="" Value="" />
+        <ListItem />
+      </BindData>
+    </Field>
+    <Field ID="ff75e92d-95ca-4308-8595-80d90cce75e1" FieldName="retime" Position="6" isVirtual="false" DataType="4" Length="0" Description="回复时间" Control="Text" isNullable="true" DefaultValue="" Regex="">
+      <BindData DataSourceType="SQL">
+        <Layout Columns="1" Direction="Horizontal" Layout="Table" />
+        <SQL sql="" Text="" Value="" />
+        <ListItem />
+      </BindData>
+    </Field>
+    <Field ID="12d19a6e-62cc-42fc-9d89-641e4df5d6d6" FieldName="status" Position="7" isVirtual="false" DataType="2" Length="0" Description="状态" Control="Text" isNullable="true" DefaultValue="0" Regex="">
+      <BindData DataSourceType="SQL">
+        <Layout Columns="1" Direction="Horizontal" Layout="Table" />
+        <SQL sql="" Text="" Value="" />
+        <ListItem />
+      </BindData>
+    </Field>
+    <Field ID="6dce586e-bcd7-4d7b-87c3-f803be8109e2" FieldName="telephone" Position="10" isVirtual="false" DataType="12" Length="15" Description="联系电话" Control="Text" isNullable="true" DefaultValue="" Regex="">
+      <BindData DataSourceType="SQL">
+        <Layout Columns="1" Direction="Horizontal" Layout="Table" />
+        <SQL sql="" Text="" Value="" />
+        <ListItem />
+      </BindData>
+    </Field>
+    <Field ID="668ae7dd-e6b9-4132-aa82-f9d19961f6d4" FieldName="title" Position="2" isVirtual="false" DataType="12" Length="300" Description="留言标题" Control="Text" isNullable="true" DefaultValue="" Regex="">
+      <BindData DataSourceType="SQL">
+        <Layout Columns="1" Direction="Horizontal" Layout="Table" />
+        <SQL sql="" Text="" Value="" />
+        <ListItem />
+      </BindData>
+    </Field>
+    <Field ID="121b4dab-b553-4571-ac5c-9311d866f12a" FieldName="username" Position="9" isVirtual="false" DataType="12" Length="30" Description="用户名" Control="Text" isNullable="true" DefaultValue="" Regex="">
+      <BindData DataSourceType="SQL">
+        <Layout Columns="1" Direction="Horizontal" Layout="Table" />
+        <SQL sql="" Text="" Value="" />
+        <ListItem />
+      </BindData>
+    </Field>
+  </Table>
+  <Table ID="54d2e7e8-1659-4197-915b-67425ac2b034" TableName="t_comment" Description="">
+    <Field ID="2b84d674-bef0-407e-b118-a73d69de7d16" FieldName="audit" Position="7" isVirtual="false" DataType="2" Length="0" Description="审核" Control="Text" isNullable="true" DefaultValue="0" Regex="">
+      <BindData DataSourceType="SQL">
+        <Layout Columns="1" Direction="Horizontal" Layout="Table" />
+        <SQL sql="" Text="" Value="" />
+        <ListItem />
+      </BindData>
+    </Field>
+    <Field ID="503e05ff-7406-4169-a41f-cb630be29d10" FieldName="clientip" Position="10" isVirtual="false" DataType="12" Length="15" Description="IP地址" Control="Text" isNullable="true" DefaultValue="" Regex="">
+      <BindData DataSourceType="SQL">
+        <Layout Columns="1" Direction="Horizontal" Layout="Table" />
+        <SQL sql="" Text="" Value="" />
+        <ListItem />
+      </BindData>
+    </Field>
+    <Field ID="f131be84-4d79-47a7-bf9a-9e65d9fcfb38" FieldName="content" Position="6" isVirtual="false" DataType="12" Length="4000" Description="评论内容" Control="Text" isNullable="true" DefaultValue="" Regex="">
+      <BindData DataSourceType="SQL">
+        <Layout Columns="1" Direction="Horizontal" Layout="Table" />
+        <SQL sql="" Text="" Value="" />
+        <ListItem />
+      </BindData>
+    </Field>
+    <Field ID="6fb94ed7-c5c9-4cf5-9d9f-e0130742400f" FieldName="groupid" Position="3" isVirtual="false" DataType="8" Length="0" Description="分类编号" Control="Text" isNullable="true" DefaultValue="0" Regex="">
+      <BindData DataSourceType="SQL">
+        <Layout Columns="1" Direction="Horizontal" Layout="Table" />
+        <SQL sql="" Text="" Value="" />
+        <ListItem />
+      </BindData>
+    </Field>
+    <Field ID="f0530bdd-e916-4997-a5e3-f047b8d2d9b2" FieldName="id" Position="1" isVirtual="false" DataType="0" Length="0" Description="编号" Control="Text" isNullable="false" DefaultValue="" Regex="">
+      <BindData DataSourceType="SQL">
+        <Layout Columns="1" Direction="Horizontal" Layout="Table" />
+        <SQL sql="" Text="" Value="" />
+        <ListItem />
+      </BindData>
+    </Field>
+    <Field ID="a5037f1d-f25e-46a7-bda2-2190680989f9" FieldName="joindate" Position="11" isVirtual="false" DataType="4" Length="0" Description="评论日期" Control="Text" isNullable="true" DefaultValue="getdate" Regex="">
+      <BindData DataSourceType="SQL">
+        <Layout Columns="1" Direction="Horizontal" Layout="Table" />
+        <SQL sql="" Text="" Value="" />
+        <ListItem />
+      </BindData>
+    </Field>
+    <Field ID="7ce5300a-4ce8-4c7e-a1a0-989cf01414a6" FieldName="memberid" Position="4" isVirtual="false" DataType="8" Length="0" Description="会员编号" Control="Text" isNullable="true" DefaultValue="0" Regex="">
+      <BindData DataSourceType="SQL">
+        <Layout Columns="1" Direction="Horizontal" Layout="Table" />
+        <SQL sql="" Text="" Value="" />
+        <ListItem />
+      </BindData>
+    </Field>
+    <Field ID="20644c31-40c5-4980-b249-82af10ee4a1e" FieldName="minus" Position="9" isVirtual="false" DataType="8" Length="0" Description="支持" Control="Text" isNullable="true" DefaultValue="0" Regex="">
+      <BindData DataSourceType="SQL">
+        <Layout Columns="1" Direction="Horizontal" Layout="Table" />
+        <SQL sql="" Text="" Value="" />
+        <ListItem />
+      </BindData>
+    </Field>
+    <Field ID="e5ae77e7-6a0b-4edf-89ec-eb29b3d337cc" FieldName="plus" Position="8" isVirtual="false" DataType="8" Length="0" Description="反对" Control="Text" isNullable="true" DefaultValue="0" Regex="">
+      <BindData DataSourceType="SQL">
+        <Layout Columns="1" Direction="Horizontal" Layout="Table" />
+        <SQL sql="" Text="" Value="" />
+        <ListItem />
+      </BindData>
+    </Field>
+    <Field ID="c84bcf2e-d916-4b4f-a42d-952952376f43" FieldName="title" Position="5" isVirtual="false" DataType="12" Length="100" Description="评论标题" Control="Text" isNullable="true" DefaultValue="" Regex="">
+      <BindData DataSourceType="SQL">
+        <Layout Columns="1" Direction="Horizontal" Layout="Table" />
+        <SQL sql="" Text="" Value="" />
+        <ListItem />
+      </BindData>
+    </Field>
+    <Field ID="80abdc0b-46e2-4b46-9254-614514ab18ba" FieldName="username" Position="2" isVirtual="false" DataType="12" Length="50" Description="用户名称" Control="Text" isNullable="true" DefaultValue="" Regex="">
+      <BindData DataSourceType="SQL">
+        <Layout Columns="1" Direction="Horizontal" Layout="Table" />
+        <SQL sql="" Text="" Value="" />
+        <ListItem />
+      </BindData>
+    </Field>
+  </Table>
+  <Table ID="09ef719f-cec2-4b33-a67e-2d0a7e874d73" TableName="t_group" Description="">
+    <Field ID="4d9f07c7-bc5b-48e1-ad65-584b747cc1ef" FieldName="field" Position="6" isVirtual="false" DataType="12" Length="4000" Control="Text" isNullable="true" DefaultValue="" />
+    <Field ID="13108994-c401-4960-bdb3-325299f8db7c" FieldName="groupname" Position="3" isVirtual="false" DataType="12" Length="30" Control="Text" isNullable="true" DefaultValue="" />
+    <Field ID="8a937a38-aa76-4917-b670-5c9658d055ad" FieldName="id" Position="1" isVirtual="false" DataType="8" Length="0" Control="Text" isNullable="false" DefaultValue="" />
+    <Field ID="134d1f69-d600-481a-8922-e09bb7155df1" FieldName="parentid" Position="2" isVirtual="false" DataType="8" Length="0" Control="Text" isNullable="true" DefaultValue="" />
+    <Field ID="0d8b5d95-a583-4eb5-9c72-eb1e34695068" FieldName="tablename" Position="4" isVirtual="false" DataType="12" Length="30" Control="Text" isNullable="true" DefaultValue="" />
+    <Field ID="560b8cca-19e5-441a-b96d-523146b287c4" FieldName="template" Position="5" isVirtual="false" DataType="16" Length="0" Control="Text" isNullable="true" DefaultValue="0" />
+  </Table>
+  <Table ID="f8f57f20-f7b7-43a3-9faf-5990d4adfcad" TableName="t_links" Description="">
+    <Field ID="deb4e92b-abbe-45b9-835b-b7559da6ee31" FieldName="groupid" Position="2" isVirtual="false" DataType="16" Length="0" Control="Text" isNullable="true" DefaultValue="" />
+    <Field ID="792a1803-7df5-487c-a6ee-b6efb0a21d95" FieldName="id" Position="1" isVirtual="false" DataType="8" Length="0" Control="Text" isNullable="false" DefaultValue="" />
+    <Field ID="bf0408a3-355a-45a5-924a-a48b026cf431" FieldName="linkimage" Position="4" isVirtual="false" DataType="12" Length="100" Control="Text" isNullable="true" DefaultValue="" />
+    <Field ID="76b457e4-d955-434a-9489-a1d7d760b0ef" FieldName="linkname" Position="3" isVirtual="false" DataType="12" Length="20" Control="Text" isNullable="true" DefaultValue="" />
+    <Field ID="ee609b5f-38f6-4af1-b7cf-6511bab7c9c2" FieldName="linkurl" Position="5" isVirtual="false" DataType="12" Length="40" Control="Text" isNullable="true" DefaultValue="" />
+  </Table>
+  <Table ID="316be88e-d365-4723-bffe-4f7054d2fb93" TableName="t_logs" Description="">
+    <Field ID="27167d06-59af-4a42-b857-2e13e0d4b6e0" FieldName="content" Position="4" isVirtual="false" DataType="12" Length="1000" Control="Text" isNullable="true" DefaultValue="" />
+    <Field ID="a716b458-7e06-40f1-8d38-967785351778" FieldName="groupid" Position="2" isVirtual="false" DataType="16" Length="0" Control="Text" isNullable="true" DefaultValue="0" />
+    <Field ID="09be324b-97b9-424f-8c96-4826e07b2d2e" FieldName="id" Position="1" isVirtual="false" DataType="0" Length="0" Control="Text" isNullable="false" DefaultValue="" />
+    <Field ID="2bf903ec-b1cf-48cb-bffb-633a7820f8df" FieldName="pubdate" Position="5" isVirtual="false" DataType="4" Length="0" Control="Text" isNullable="true" DefaultValue="getdate" />
+    <Field ID="0cbc831e-32c3-47c2-9db5-107c97a77086" FieldName="userid" Position="3" isVirtual="false" DataType="8" Length="0" Control="Text" isNullable="true" DefaultValue="0" />
+  </Table>
+  <Table ID="bcbcdce0-25b5-4808-98da-546beef56733" TableName="t_members" Description="">
+    <Field ID="fe1342ae-5d5e-4a24-81a1-db61bb1ccbe6" FieldName="address" Position="14" isVirtual="false" DataType="12" Length="300" Description="联系地址" Control="Text" isNullable="true" DefaultValue="" Regex="">
+      <BindData DataSourceType="SQL">
+        <Layout Columns="1" Direction="Horizontal" Layout="Table" />
+        <SQL sql="" Text="" Value="" />
+        <ListItem />
+      </BindData>
+    </Field>
+    <Field ID="90784b29-a41a-4e75-8a8e-b00c091f0a20" FieldName="birthday" Position="8" isVirtual="false" DataType="4" Length="0" Description="会员生日" Control="Text" isNullable="true" DefaultValue="" Regex="">
+      <BindData DataSourceType="SQL">
+        <Layout Columns="1" Direction="Horizontal" Layout="Table" />
+        <SQL sql="" Text="" Value="" />
+        <ListItem />
+      </BindData>
+    </Field>
+    <Field ID="9b86a535-845c-480b-bb2f-5a693e16d391" FieldName="email" Position="6" isVirtual="false" DataType="12" Length="100" Description="联系邮箱" Control="Text" isNullable="false" DefaultValue="" Regex="">
+      <BindData DataSourceType="SQL">
+        <Layout Columns="1" Direction="Horizontal" Layout="Table" />
+        <SQL sql="" Text="" Value="" />
+        <ListItem />
+      </BindData>
+    </Field>
+    <Field ID="2289f309-fff6-409f-976b-dfae19fe3c9f" FieldName="id" Position="1" isVirtual="false" DataType="0" Length="0" Description="会员编号" Control="Text" isNullable="false" DefaultValue="" Regex="">
+      <BindData DataSourceType="SQL">
+        <Layout Columns="1" Direction="Horizontal" Layout="Table" />
+        <SQL sql="" Text="" Value="" />
+        <ListItem />
+      </BindData>
+    </Field>
+    <Field ID="ba72b67d-7a63-4e4a-b215-e83546f359c4" FieldName="idcard" Position="9" isVirtual="false" DataType="12" Length="30" Description="身份证" Control="Text" isNullable="true" DefaultValue="" Regex="">
+      <BindData DataSourceType="SQL">
+        <Layout Columns="1" Direction="Horizontal" Layout="Table" />
+        <SQL sql="" Text="" Value="" />
+        <ListItem />
+      </BindData>
+    </Field>
+    <Field ID="9c6ee45f-7bd9-48a1-9651-3d7daa213654" FieldName="joindate" Position="16" isVirtual="false" DataType="4" Length="0" Description="注册日期" Control="Text" isNullable="true" DefaultValue="getdate" Regex="">
+      <BindData DataSourceType="SQL">
+        <Layout Columns="1" Direction="Horizontal" Layout="Table" />
+        <SQL sql="" Text="" Value="" />
+        <ListItem />
+      </BindData>
+    </Field>
+    <Field ID="08546e83-c8f2-4270-afbb-dcb5a3c8a381" FieldName="lastsigntime" Position="17" isVirtual="false" DataType="4" Length="0" Description="最后登录时间" Control="Text" isNullable="true" DefaultValue="" Regex="">
+      <BindData DataSourceType="SQL">
+        <Layout Columns="1" Direction="Horizontal" Layout="Table" />
+        <SQL sql="" Text="" Value="" />
+        <ListItem />
+      </BindData>
+    </Field>
+    <Field ID="171a206f-391c-4a21-bdef-c0d05f5faa52" FieldName="memberlevel" Position="4" isVirtual="false" DataType="16" Length="0" Description="会员等级" Control="Text" isNullable="true" DefaultValue="" Regex="">
+      <BindData DataSourceType="SQL">
+        <Layout Columns="1" Direction="Horizontal" Layout="Table" />
+        <SQL sql="" Text="" Value="" />
+        <ListItem />
+      </BindData>
+    </Field>
+    <Field ID="56f49d2a-4e3a-4d42-bf3b-e85a3025fd04" FieldName="membername" Position="2" isVirtual="false" DataType="12" Length="32" Description="会员名称" Control="Text" isNullable="false" DefaultValue="" Regex="">
+      <BindData DataSourceType="SQL">
+        <Layout Columns="1" Direction="Horizontal" Layout="Table" />
+        <SQL sql="" Text="" Value="" />
+        <ListItem />
+      </BindData>
+    </Field>
+    <Field ID="868ab702-700a-4285-98b0-0ecd180dc95d" FieldName="membertype" Position="3" isVirtual="false" DataType="16" Length="0" Description="会员类型" Control="Text" isNullable="true" DefaultValue="" Regex="">
+      <BindData DataSourceType="SQL">
+        <Layout Columns="1" Direction="Horizontal" Layout="Table" />
+        <SQL sql="" Text="" Value="" />
+        <ListItem />
+      </BindData>
+    </Field>
+    <Field ID="0b0a2d86-77a9-4e25-86fb-7f02f77785e1" FieldName="mobile" Position="11" isVirtual="false" DataType="12" Length="16" Description="手机号" Control="Text" isNullable="true" DefaultValue="" Regex="">
+      <BindData DataSourceType="SQL">
+        <Layout Columns="1" Direction="Horizontal" Layout="Table" />
+        <SQL sql="" Text="" Value="" />
+        <ListItem />
+      </BindData>
+    </Field>
+    <Field ID="7071295f-d780-4263-a589-89f9f8a97e74" FieldName="password" Position="3" isVirtual="false" DataType="12" Length="32" Description="登录密码" Control="Text" isNullable="true" DefaultValue="" Regex="">
+      <BindData DataSourceType="SQL">
+        <Layout Columns="1" Direction="Horizontal" Layout="Table" />
+        <SQL sql="" Text="" Value="" />
+        <ListItem />
+      </BindData>
+    </Field>
+    <Field ID="483edafb-8c78-4ba9-a0e7-e564c59fbb78" FieldName="phone" Position="10" isVirtual="false" DataType="12" Length="16" Description="坐机" Control="Text" isNullable="true" DefaultValue="" Regex="">
+      <BindData DataSourceType="SQL">
+        <Layout Columns="1" Direction="Horizontal" Layout="Table" />
+        <SQL sql="" Text="" Value="" />
+        <ListItem />
+      </BindData>
+    </Field>
+    <Field ID="3a47af6b-984f-45a9-9d2d-7cfba5596b02" FieldName="picture" Position="5" isVirtual="false" DataType="12" Length="255" Description="头像" Control="Text" isNullable="true" DefaultValue="" Regex="">
+      <BindData DataSourceType="SQL">
+        <Layout Columns="1" Direction="Horizontal" Layout="Table" />
+        <SQL sql="" Text="" Value="" />
+        <ListItem />
+      </BindData>
+    </Field>
+    <Field ID="33b23dcb-eac7-44c9-9608-acb4ca9fa550" FieldName="qq" Position="12" isVirtual="false" DataType="12" Length="16" Description="QQ" Control="Text" isNullable="true" DefaultValue="" Regex="">
+      <BindData DataSourceType="SQL">
+        <Layout Columns="1" Direction="Horizontal" Layout="Table" />
+        <SQL sql="" Text="" Value="" />
+        <ListItem />
+      </BindData>
+    </Field>
+    <Field ID="1ac4f2b0-579f-4910-823c-17aaed29aacc" FieldName="sex" Position="7" isVirtual="false" DataType="2" Length="0" Description="性别" Control="Text" isNullable="true" DefaultValue="0" Regex="">
+      <BindData DataSourceType="SQL">
+        <Layout Columns="1" Direction="Horizontal" Layout="Table" />
+        <SQL sql="" Text="" Value="" />
+        <ListItem />
+      </BindData>
+    </Field>
+    <Field ID="164b5ceb-105e-4882-806a-906e9a022884" FieldName="status" Position="7" isVirtual="false" DataType="2" Length="0" Description="状态" Control="Text" isNullable="true" DefaultValue="" Regex="">
+      <BindData DataSourceType="SQL">
+        <Layout Columns="1" Direction="Horizontal" Layout="Table" />
+        <SQL sql="" Text="" Value="" />
+        <ListItem />
+      </BindData>
+    </Field>
+    <Field ID="beba3a78-ddff-4ae2-ab5e-1a0797219a00" FieldName="username" Position="5" isVirtual="false" DataType="12" Length="32" Description="真实姓名" Control="Text" isNullable="true" DefaultValue="" Regex="">
+      <BindData DataSourceType="SQL">
+        <Layout Columns="1" Direction="Horizontal" Layout="Table" />
+        <SQL sql="" Text="" Value="" />
+        <ListItem />
+      </BindData>
+    </Field>
+  </Table>
+  <Table ID="1e7c2dbe-701e-42a7-9d5a-72e083fe3094" TableName="t_news" Description="">
+    <Field ID="0ea1c0ed-9025-4dd2-9d04-705dc213bb53" FieldName="abstract" Position="5" isVirtual="false" DataType="11" Length="1073741823" Description="摘要" Control="Text" isNullable="true" DefaultValue="" Regex="">
+      <BindData DataSourceType="SQL">
+        <Layout Columns="1" Direction="Horizontal" Layout="Table" />
+        <SQL sql="" Text="" Value="" />
+        <ListItem />
+      </BindData>
+    </Field>
+    <Field ID="32637e8d-71d5-4515-ad50-5a66c34f41b2" FieldName="attacurl" Position="21" isVirtual="false" DataType="12" Length="255" Description="附件" Control="Text" isNullable="true" DefaultValue="" Regex="">
+      <BindData DataSourceType="SQL">
+        <Layout Columns="1" Direction="Horizontal" Layout="Table" />
+        <SQL sql="" Text="" Value="" />
+        <ListItem />
+      </BindData>
+    </Field>
+    <Field ID="8ba2a327-9748-435a-9305-aa31a10b2886" FieldName="audit" Position="18" isVirtual="false" DataType="2" Length="0" Description="审核" Control="Text" isNullable="false" DefaultValue="0" Regex="">
+      <BindData DataSourceType="SQL">
+        <Layout Columns="1" Direction="Horizontal" Layout="Table" />
+        <SQL sql="" Text="" Value="" />
+        <ListItem />
+      </BindData>
+    </Field>
+    <Field ID="4851f772-9661-4e57-b38f-0ab20e2948e8" FieldName="author" Position="7" isVirtual="false" DataType="12" Length="20" Description="作者" Control="Text" isNullable="true" DefaultValue="" Regex="">
+      <BindData DataSourceType="SQL">
+        <Layout Columns="1" Direction="Horizontal" Layout="Table" />
+        <SQL sql="" Text="" Value="" />
+        <ListItem />
+      </BindData>
+    </Field>
+    <Field ID="adec8b3a-34c4-4f2e-98df-db4a1b2aae7d" FieldName="color" Position="2" isVirtual="false" DataType="12" Length="7" Description="标题颜色" Control="Text" isNullable="true" DefaultValue="" Regex="">
+      <BindData DataSourceType="SQL">
+        <Layout Columns="1" Direction="Horizontal" Layout="Table" />
+        <SQL sql="" Text="" Value="" />
+        <ListItem />
+      </BindData>
+    </Field>
+    <Field ID="910bd39a-c4cd-417e-8403-3dfde6a53cd8" FieldName="content" Position="6" isVirtual="false" DataType="11" Length="1073741823" Description="文章内容" Control="Text" isNullable="true" DefaultValue="" Regex="">
+      <BindData DataSourceType="SQL">
+        <Layout Columns="1" Direction="Horizontal" Layout="Table" />
+        <SQL sql="" Text="" Value="" />
+        <ListItem />
+      </BindData>
+    </Field>
+    <Field ID="304922ef-1c1f-4872-b111-1e352fc24e34" FieldName="editdate" Position="10" isVirtual="false" DataType="4" Length="0" Description="编辑日期" Control="Text" isNullable="true" DefaultValue="getdate" Regex="">
+      <BindData DataSourceType="SQL">
+        <Layout Columns="1" Direction="Horizontal" Layout="Table" />
+        <SQL sql="" Text="" Value="" />
+        <ListItem />
+      </BindData>
+    </Field>
+    <Field ID="2d174dab-1803-4b5b-a73c-f51496fd6d0b" FieldName="focus" Position="15" isVirtual="false" DataType="2" Length="0" Description="焦点" Control="Text" isNullable="true" DefaultValue="0" Regex="">
+      <BindData DataSourceType="SQL">
+        <Layout Columns="1" Direction="Horizontal" Layout="Table" />
+        <SQL sql="" Text="" Value="" />
+        <ListItem />
+      </BindData>
+    </Field>
+    <Field ID="89e536b6-45d0-4b2e-9100-5aa0f6a772ab" FieldName="groupid" Position="3" isVirtual="false" DataType="8" Length="0" Description="分类编号" Control="Text" isNullable="true" DefaultValue="0" Regex="">
+      <BindData DataSourceType="SQL">
+        <Layout Columns="1" Direction="Horizontal" Layout="Table" />
+        <SQL sql="" Text="" Value="" />
+        <ListItem />
+      </BindData>
+    </Field>
+    <Field ID="fb904966-9ef2-4847-b823-e95c07762fba" FieldName="hotspot" Position="14" isVirtual="false" DataType="2" Length="0" Description="热门" Control="Text" isNullable="false" DefaultValue="0" Regex="">
+      <BindData DataSourceType="SQL">
+        <Layout Columns="1" Direction="Horizontal" Layout="Table" />
+        <SQL sql="" Text="" Value="" />
+        <ListItem />
+      </BindData>
+    </Field>
+    <Field ID="11ca1e22-286a-4e8a-913f-f435601d4d4a" FieldName="id" Position="1" isVirtual="false" DataType="0" Length="0" Description="编号" Control="Text" isNullable="false" DefaultValue="" Regex="">
+      <BindData DataSourceType="SQL">
+        <Layout Columns="1" Direction="Horizontal" Layout="Table" />
+        <SQL sql="" Text="" Value="" />
+        <ListItem />
+      </BindData>
+    </Field>
+    <Field ID="6fb96e6e-3360-4180-965c-8402d44905dd" FieldName="imageurl" Position="11" isVirtual="false" DataType="22" Length="255" Description="缩略图" Control="Text" isNullable="true" DefaultValue="" Regex="">
+      <BindData DataSourceType="SQL">
+        <Layout Columns="1" Direction="Horizontal" Layout="Table" />
+        <SQL sql="" Text="" Value="" />
+        <ListItem />
+      </BindData>
+    </Field>
+    <Field ID="7e1307ae-e9b4-478e-ad36-1ed887c56216" FieldName="iscomments" Position="19" isVirtual="false" DataType="2" Length="0" Description="允许评论" Control="Text" isNullable="true" DefaultValue="0" Regex="">
+      <BindData DataSourceType="SQL">
+        <Layout Columns="1" Direction="Horizontal" Layout="Table" />
+        <SQL sql="" Text="" Value="" />
+        <ListItem />
+      </BindData>
+    </Field>
+    <Field ID="b28476df-d515-47be-8c5a-f5e5646ebb89" FieldName="nominate" Position="13" isVirtual="false" DataType="2" Length="0" Description="推荐" Control="Text" isNullable="true" DefaultValue="0" Regex="">
+      <BindData DataSourceType="SQL">
+        <Layout Columns="1" Direction="Horizontal" Layout="Table" />
+        <SQL sql="" Text="" Value="" />
+        <ListItem />
+      </BindData>
+    </Field>
+    <Field ID="a31f6a14-4359-48c5-9ae7-6e66846dbbfe" FieldName="pubdate" Position="9" isVirtual="false" DataType="4" Length="0" Description="发布日期" Control="Text" isNullable="true" DefaultValue="getdate" Regex="">
+      <BindData DataSourceType="SQL">
+        <Layout Columns="1" Direction="Horizontal" Layout="Table" />
+        <SQL sql="" Text="" Value="" />
+        <ListItem />
+      </BindData>
+    </Field>
+    <Field ID="7984eed4-f8f3-4041-9788-a76da528e2f9" FieldName="settingsxml" Position="23" isVirtual="false" DataType="11" Length="1073741823" Description="扩展" Control="Text" isNullable="true" DefaultValue="" Regex="">
+      <BindData DataSourceType="SQL">
+        <Layout Columns="1" Direction="Horizontal" Layout="Table" />
+        <SQL sql="" Text="" Value="" />
+      </BindData>
+    </Field>
+    <Field ID="f18a662b-3de5-44dc-98eb-e8af017b0cf9" FieldName="source" Position="8" isVirtual="false" DataType="12" Length="50" Description="来源" Control="Text" isNullable="true" DefaultValue="" Regex="">
+      <BindData DataSourceType="SQL">
+        <Layout Columns="1" Direction="Horizontal" Layout="Table" />
+        <SQL sql="" Text="" Value="" />
+        <ListItem />
+      </BindData>
+    </Field>
+    <Field ID="fdfb5337-9a10-4d26-afee-e48ff1c3000d" FieldName="status" Position="17" isVirtual="false" DataType="2" Length="0" Description="启用状态" Control="Text" isNullable="false" DefaultValue="0" Regex="">
+      <BindData DataSourceType="SQL">
+        <Layout Columns="1" Direction="Horizontal" Layout="Table" />
+        <SQL sql="" Text="" Value="" />
+        <ListItem />
+      </BindData>
+    </Field>
+    <Field ID="bce7b603-9daf-41e2-a2f7-10818e6ca78c" FieldName="stick" Position="16" isVirtual="false" DataType="2" Length="0" Description="置顶" Control="Text" isNullable="false" DefaultValue="0" Regex="">
+      <BindData DataSourceType="SQL">
+        <Layout Columns="1" Direction="Horizontal" Layout="Table" />
+        <SQL sql="" Text="" Value="" />
+        <ListItem />
+      </BindData>
+    </Field>
+    <Field ID="173d5b63-f453-41f6-b591-5626832affb4" FieldName="test" Position="0" isVirtual="true" DataType="9" Length="0" Description="虚拟字段" Control="Text" isNullable="false" DefaultValue="" Regex="">
+      <BindData DataSourceType="SQL">
+        <Layout Columns="1" Direction="Horizontal" Layout="Table" />
+        <SQL sql="" Text="" Value="" />
+        <ListItem />
+      </BindData>
+    </Field>
+    <Field ID="6565b58e-0722-47b7-a582-abbaf68a6f6d" FieldName="title" Position="4" isVirtual="false" DataType="12" Length="150" Description="标题" Control="Text" isNullable="true" DefaultValue="" Regex="">
+      <BindData DataSourceType="SQL">
+        <Layout Columns="1" Direction="Horizontal" Layout="Table" />
+        <SQL sql="" Text="" Value="" />
+        <ListItem />
+      </BindData>
+    </Field>
+    <Field ID="75124ed4-233a-430c-8507-9c640b89445b" FieldName="url" Position="12" isVirtual="false" DataType="12" Length="255" Description="外连地址" Control="Text" isNullable="true" DefaultValue="" Regex="">
+      <BindData DataSourceType="SQL">
+        <Layout Columns="1" Direction="Horizontal" Layout="Table" />
+        <SQL sql="" Text="" Value="" />
+        <ListItem />
+      </BindData>
+    </Field>
+    <Field ID="a28ab41a-ceef-4dcd-b405-68fc9d69db23" FieldName="videourl" Position="22" isVirtual="false" DataType="12" Length="255" Description="视频地址" Control="Text" isNullable="true" DefaultValue="" Regex="">
+      <BindData DataSourceType="SQL">
+        <Layout Columns="1" Direction="Horizontal" Layout="Table" />
+        <SQL sql="" Text="" Value="" />
+        <ListItem />
+      </BindData>
+    </Field>
+    <Field ID="5726270d-25e0-44a6-a4a1-07473b861e32" FieldName="viewnum" Position="20" isVirtual="false" DataType="8" Length="0" Description="浏览量" Control="Text" isNullable="true" DefaultValue="0" Regex="">
+      <BindData DataSourceType="SQL">
+        <Layout Columns="1" Direction="Horizontal" Layout="Table" />
+        <SQL sql="" Text="" Value="" />
+        <ListItem />
+      </BindData>
+    </Field>
+  </Table>
+  <Table ID="4d9d8ec5-abd3-420e-83fd-332bc3d18fd0" TableName="t_sitemenu" Description="">
+    <Field ID="3e4a385a-d014-4277-aaf4-f97dc12628cf" FieldName="action" Position="4" isVirtual="false" DataType="22" Length="80" Control="Text" isNullable="true" DefaultValue="" />
+    <Field ID="5199b335-8a49-4767-b9a5-482fdff8a432" FieldName="id" Position="1" isVirtual="false" DataType="8" Length="0" Control="Text" isNullable="false" DefaultValue="" />
+    <Field ID="17243a47-61d7-495d-8d25-57a4641a8bff" FieldName="internal" Position="8" isVirtual="false" DataType="2" Length="0" Control="Text" isNullable="true" DefaultValue="0" />
+    <Field ID="953fc3ba-dd1c-4cab-b431-4ff9d2ac73c2" FieldName="menuname" Position="3" isVirtual="false" DataType="12" Length="20" Control="Text" isNullable="true" DefaultValue="" />
+    <Field ID="061afd66-6d96-43d0-86e8-21095385b14f" FieldName="open" Position="7" isVirtual="false" DataType="2" Length="0" Control="Text" isNullable="true" DefaultValue="0" />
+    <Field ID="8026aac1-ccf9-4eb8-8278-10907f7263e4" FieldName="parentid" Position="2" isVirtual="false" DataType="8" Length="0" Control="Text" isNullable="true" DefaultValue="0" />
+    <Field ID="1749fccc-e775-474e-95f2-81954f36ed79" FieldName="sort" Position="5" isVirtual="false" DataType="16" Length="0" Control="Text" isNullable="true" DefaultValue="0" />
+    <Field ID="0e30edc9-0736-42b6-a59d-85f71e17aa74" FieldName="status" Position="6" isVirtual="false" DataType="2" Length="0" Control="Text" isNullable="true" DefaultValue="1" />
+  </Table>
+  <Table ID="b5824bd0-998f-496a-8b6e-e1f6bc331e54" TableName="t_userrole" Description="">
+    <Field ID="80f896d7-8e8b-40a8-bacf-7e0ebff43bda" FieldName="id" Position="1" isVirtual="false" DataType="8" Length="0" Control="Text" isNullable="false" DefaultValue="" />
+    <Field ID="2589c510-6853-41c8-8b1f-5dadea81dc40" FieldName="name" Position="2" isVirtual="false" DataType="12" Length="50" Control="Text" isNullable="true" DefaultValue="" />
+    <Field ID="1138a345-894d-40cd-a1bf-c6186f605eb3" FieldName="powernodes" Position="4" isVirtual="false" DataType="12" Length="4000" Control="Text" isNullable="true" DefaultValue="" />
+    <Field ID="ecac1637-7f8d-4645-8e61-c21ac1313fc7" FieldName="remark" Position="3" isVirtual="false" DataType="12" Length="300" Control="Text" isNullable="true" DefaultValue="" />
+  </Table>
+</Root>

@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<Service xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <item>
+    <RPC>http://ping.baidu.com/ping/RPC2</RPC>
+    <MethodName>weblogUpdates.ping</MethodName>
+    <NodePath>/methodResponse/params/param/value/int</NodePath>
+    <Success>0</Success>
+    <Failure>1</Failure>
+  </item>
+  <item>
+    <RPC>http://blogsearch.google.com/ping/RPC2</RPC>
+    <MethodName>weblogUpdates.extendedPing</MethodName>
+    <NodePath>/methodResponse/params/param/value/struct/member/value/boolean</NodePath>
+    <Success>0</Success>
+    <Failure>1</Failure>
+  </item>
+</Service>
