@@ -1,0 +1,33 @@
+﻿#ym-window { background: #fff; overflow: hidden; }
+/*header*/
+.ym-tl { padding-left: 1px; background: #185A7B; }
+.ym-tr { padding-right: 1px; }
+.ym-tc { overflow: hidden; height: 25px; line-height: 25px; }
+.ym-ttc { height: 1px; }
+.ym-header-text { font-size: 14px; color: #fff; margin-left: 5px; float: left; font-weight: bold; }
+.ym-header-tools { float: right; margin: 5px 5px 0 0; }
+.ym-header-tools strong { display: none; }
+/*body*/
+.ym-ml { background: #185A7B; padding-left: 1px; }
+.ym-mr { padding-right: 1px; }
+.ym-mc { background: #fff; padding: 0; }
+.ym-body { overflow: auto; padding: 0; }
+/*button*/
+.ym-btn { background: #fff; text-align: center;  padding:5px 0;}
+/*footer*/
+.ym-bl { background: #185A7B; padding-left: 1px; }
+.ym-br { padding-right: 1px; }
+.ym-bc { height: 1px; font-size: 1px; }
+/*icon*/
+.ymPrompt_alert { padding-left: 90px; background: url(images/info.gif) no-repeat 20px 50%; }
+.ymPrompt_succeed { padding-left: 90px; background: url(images/right.gif) no-repeat 20px 50%; }
+.ymPrompt_error { padding-left: 90px; background: url(images/err.gif) no-repeat 20px 50%; }
+.ymPrompt_confirm { padding-left: 90px; background: url(images/ask.gif) no-repeat 20px 50%; }
+.ymPrompt_alert .ym-content, .ymPrompt_succeed .ym-content, .ymPrompt_error .ym-content, .ymPrompt_confirm .ym-content { padding: 50px 0 0; }
+/*图标公共定义*/
+.ym-header-tools div { cursor: pointer; width: 16px; height: 16px; float: left; }
+.ymPrompt_close, .ymPrompt_max, .ymPrompt_min, .ymPrompt_normal { background: url(images/ico.gif) no-repeat 0 0; }
+.ymPrompt_close { background-position: -48px; }
+.ymPrompt_max { background-position: -16px; }
+.ymPrompt_min { }
+.ymPrompt_normal { background-position: -32px; }

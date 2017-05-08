@@ -1,0 +1,14 @@
+name: Mooniform
+author: stecb
+current: 1.0
+category: Forms
+tags: [Form, Select, Checkbox, Radio, File]
+demo: http://stecb.github.com/Mooniform
+docs: http://github.com/stecb/mooniform/blob/master/README.md
+copyright: "&copy; [Stefano Ceschi Berrini](http://www.steweb.it) and [pixelmatrix](https://github.com/pixelmatrix)"
+license: MIT
+web: "[http://stecb.github.com/Mooniform](http://stecb.github.com/Mooniform/)"
+description: Mooniform class
+
+sources:
+  - "Source/mooniform.js"
