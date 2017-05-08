@@ -1,0 +1,14 @@
+http://www.cnblogs.com/waw/archive/2011/09/02/2163132.html
+
+在Visual Studio中载入自定义代码段
+
+　　在Visual Studio中有两种方法载入上面的自定义代码段：
+
+　　最直接的方法是将.snippet文件放在Visual Studio的代码段目录下，默认位置是C:\Users\<UserName>\Documents\Visual Studio 2010\Code Snippets\，这个目录会根据所使用的语言生成对应的子目录，如我们这里使用的C#，因此应该将自定义代码段文件放在Visual C#子目录下，Visual Studio会自动发现新放进去的.snippet文件，无需重启Visual Studio。
+
+　　第二种方法是将.snippet文件导入到Visual Studio中，选择“工具”*“代码段管理器”（Ctrl+K,Ctrl+B），在代码段管理器中，点击“导入”按钮，浏览到.snippet文件所在位置，选择它，然后点击“确定”。
+
+　　使用自定义代码段
+
+　　在Visual Studio的编辑器中，输入自定义代码段名字的前几个字符，按Tab键，在弹出的代码提示窗口中便可看到前面自定义的代码段名称（快捷名称和完全名称Tip提示）,
+    你也可以在编辑器中按CTRL+K，再按CTRL+X调出“插入代码段”菜单

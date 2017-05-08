@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<CodeSnippet Format="1.0.0" xmlns="http://schemas.microsoft.com/VisualStudio/2005/CodeSnippet">
+  <Header>
+    <Title>Stopwatch</Title>
+    <Author>noneevil</Author>
+    <Shortcut>Stopwatch</Shortcut>
+    <Description>Stopwatch.</Description>
+    <SnippetTypes>
+      <SnippetType>SurroundsWith</SnippetType>
+      <SnippetType>Expansion</SnippetType>
+    </SnippetTypes>
+  </Header>
+  <Snippet>
+    <Declarations>
+      <Literal>
+        <ID>T</ID>
+        <Default>sw</Default>
+      </Literal>
+    </Declarations>
+    <Code Language="CSharp">
+      <![CDATA[
+          Stopwatch $T$ = new Stopwatch();
+          $T$.Start();
+            //测试代码
+            
+          $T$.Stop();
+          Response.Write($T$.ElapsedMilliseconds);
+          //$T$.Reset();
+      ]]>
+    </Code>
+  </Snippet>
+</CodeSnippet>

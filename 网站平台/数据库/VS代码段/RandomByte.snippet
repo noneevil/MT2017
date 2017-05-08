@@ -1,0 +1,31 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<CodeSnippet Format="1.0.0" xmlns="http://schemas.microsoft.com/VisualStudio/2005/CodeSnippet">
+  <Header>
+    <Title>RandomByte</Title>
+    <Author>noneevil</Author>
+    <Shortcut>RandomByte</Shortcut>
+    <Description>产生随机二进制数据流</Description>
+    <SnippetTypes>
+      <SnippetType>SurroundsWith</SnippetType>
+      <SnippetType>Expansion</SnippetType>
+    </SnippetTypes>
+  </Header>
+  <Snippet>
+    <Declarations>
+      <Literal>
+        <ID>ID</ID>
+        <Default>buffer</Default>
+      </Literal>
+    </Declarations>
+    <Code Language="CSharp">
+      <![CDATA[
+        Byte[] $ID$ = new Byte[1024 * 1024 * 1];//产生1M流
+        using (System.Security.Cryptography.RNGCryptoServiceProvider pr = new System.Security.Cryptography.RNGCryptoServiceProvider())
+        {
+            pr.GetNonZeroBytes($ID$);
+        }
+        return $ID$;
+      ]]>
+    </Code>
+  </Snippet>
+</CodeSnippet>

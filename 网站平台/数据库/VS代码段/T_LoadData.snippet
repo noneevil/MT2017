@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<CodeSnippet Format="1.0.0" xmlns="http://schemas.microsoft.com/VisualStudio/2005/CodeSnippet">
+  <Header>
+    <Title>T_LoadData</Title>
+    <Author>noneevil</Author>
+    <Shortcut>T_LoadData</Shortcut>
+    <Description>将模型数据还原到表单</Description>
+    <SnippetTypes>
+      <SnippetType>SurroundsWith</SnippetType>
+      <SnippetType>Expansion</SnippetType>
+    </SnippetTypes>
+  </Header>
+  <Snippet>
+    <Declarations>
+      <Literal>
+        <ID>T</ID>
+        <Default>T</Default>
+      </Literal>
+    </Declarations>
+    <Code Language="CSharp">
+      <![CDATA[
+        $T$ data = db.ExecuteObject<$T$>("SELECT * FROM [$T$] WHERE id=" + EditID);
+        ViewState["data"] = data;
+        ControlHelper.SetFormValue(this, data);
+      ]]>
+    </Code>
+  </Snippet>
+</CodeSnippet>

@@ -1,0 +1,322 @@
+﻿<#@ template language="c#" HostSpecific="True" #>
+<#@ output extension= ".cs" #>
+<#
+	TableHost host = (TableHost)(Host);	
+	String DbParaHead=host.DbParaHead;
+	String DbParaDbType=host.DbParaDbType;
+	String preParameter=host.preParameter;
+	String ModelSpace = host.GetModelClass(host.TableName)+"Entity";
+	ColumnInfo identityKey=host.IdentityKey;
+	String returnValue = "void";
+    if (identityKey!=null)
+    {         
+         returnValue = CodeCommon.DbTypeToCS(identityKey.TypeName);              
+    }
+#>
+using System;
+using System.Collections.Generic;
+using System.Data;
+using System.Text;
+using System.Web.UI;
+using MSSQLDB;
+using WebSite.Models;
+
+namespace WebSite.DAL
+<# if( host.Folder.Length > 0){ #>
+	.<#= host.Folder #>
+<# } #>
+{
+	<# if( host.TableDescription.Length > 0) {#>
+	/// <summary>
+    /// <#= host.TableDescription #> 数据访问层
+    /// </summary>
+	<# } #>
+	public partial class <#= host.GetDALClass(host.TableName) #>Helper
+	{
+		#region 增加
+
+		/// <summary>
+        /// 增加一条数据
+        /// </summary>
+        /// <param name="data">实体</param>
+        /// <returns>成功返回True 失败返回False</returns>
+		public Boolean Add(<#= ModelSpace #> data)
+		{
+			return db.ExecuteCommand<<#= ModelSpace #>>(data, CmdType.INSERT);
+		}
+		/// <summary>
+        /// 增加一条数据
+        /// </summary>
+        /// <param name="data">封装数据</param>
+        /// <returns>成功返回True 失败返回False</returns>
+		public Boolean Add(ExecuteObject data)
+		{
+			data.tableName = "<#= host.TableName #>";
+			data.cmdtype = CmdType.INSERT;
+			return db.ExecuteCommand(data);
+		}
+
+		#endregion
+
+		#region 更新
+
+		/// <summary>
+        /// 更新一条数据
+        /// </summary>
+        /// <param name="data">实体</param>
+        /// <returns>成功返回True 失败返回False</returns>
+		public Boolean Update(<#= ModelSpace #> data)
+		{
+			return db.ExecuteCommand<<#= ModelSpace #>>(data, CmdType.UPDATE);
+		}
+		/// <summary>
+        /// 更新一条数据
+        /// </summary>
+        /// <param name="data">封装数据</param>
+        /// <returns>成功返回True 失败返回False</returns>
+		public Boolean Update(ExecuteObject data)
+		{
+			data.tableName = "<#= host.TableName #>";
+			data.cmdtype = CmdType.UPDATE;
+			return db.ExecuteCommand(data);
+		}
+		/// <summary>
+        /// 更新单个字段
+        /// </summary>
+        /// <param name="data">Triplet结构(First:更新ID编号值,Second:更新字段名称,Third:数据值)</param>
+        /// <returns>成功返回True 失败返回False</returns>
+        public Boolean Update(Triplet data)
+        {
+            ExecuteObject obj = new ExecuteObject();
+            obj.tableName = "<#= host.TableName #>";
+            obj.cmdtype = CmdType.UPDATE;
+            obj.terms.Add("id", data.First);
+            obj.cells.Add(data.Second, data.Third);
+            return db.ExecuteCommand(obj);
+        }
+		/// <summary>
+        /// 更新多个字段
+        /// </summary>
+        /// <param name="data">Triplet结构(First:键名，Second:键值,Third:bool是否为主键)</param>
+        /// <returns>成功返回True 失败返回False</returns>
+        public Boolean Update(List<Triplet> data)
+        {
+            Boolean flag = false;
+            if (data.Count > 0)
+            {
+                ExecuteObject obj = new ExecuteObject();
+                obj.tableName = "<#= host.TableName #>";
+                obj.cmdtype = CmdType.UPDATE;
+
+                foreach (Triplet p in data)
+                {
+                    //如果设置为更新条件
+                    if (Convert.ToBoolean(p.Third))
+                    {
+                        obj.terms.Add(p.First, p.Second);
+                    }
+                    else
+                    {
+                        obj.cells.Add(p.First, p.Second);
+                    }
+                }
+
+                flag = db.ExecuteCommand(obj);
+            }
+            return flag;
+        }
+
+		#endregion
+
+		#region 删除
+
+		/// <summary>
+        /// 根据编号删除一条数据
+        /// </summary>
+        /// <param name="id">删除ID</param>
+        /// <returns>成功返回True 失败返回False</returns>
+		public Boolean Delete(Int32 <#=identityKey.ColumnName#>)
+		{
+			ExecuteObject obj = new ExecuteObject();
+			obj.cmdtype = CmdType.DELETE;
+			obj.tableName = "<#= host.TableName #>";
+			obj.terms.Add("ID", <#=identityKey.ColumnName#>);//删除条件
+			return db.ExecuteCommand(obj);
+		}
+		<#if (identityKey!=null) {#>
+		/// <summary>
+		/// 批量删除一批数据
+		/// </summary>
+		/// <param name="IDCollection">删除ID集合</param>
+        /// <returns>成功返回True 失败返回False</returns>
+		public Boolean Delete(params Object[] IDCollection)
+		{
+			String strSql = String.Format("DELETE FROM [<#= host.TableName #>] WHERE id IN({0})", String.Join(",", IDCollection));
+			return db.ExecuteCommand(strSql);
+		}
+		<#}#>
+
+		#endregion
+
+		#region 获取Table
+
+		/// <summary>
+		/// 获得数据列表
+		/// </summary>
+		public DataTable GetListTable(String strWhere)
+		{
+			String strSql="SELECT * FROM [<#= host.TableName #>]";
+			if(!String.IsNullOrEmpty(strWhere.Trim()))
+			{
+				strSql+=" WHERE "+strWhere;
+			}
+			return db.ExecuteDataTable(strSql);
+		}
+
+		/// <summary>
+		/// 获得前几行数据
+		/// </summary>
+		public DataTable GetListTable(Int32 Top,String strWhere,String filedOrder)
+		{
+			StringBuilder strSql=new StringBuilder();
+			strSql.Append("SELECT ");
+			if(Top>0) strSql.Append(" TOP " + Top);
+			strSql.Append(" * FROM [<#= host.TableName #>] ");
+			if(!String.IsNullOrEmpty(strWhere.Trim()))
+			{
+				strSql.Append(" WHERE "+strWhere);
+			}
+			strSql.Append(" ORDER BY " + filedOrder);
+			return db.ExecuteDataTable(strSql.ToString());
+		}
+        /// <summary>
+        /// 获得数据列表
+        /// </summary>
+        /// <param name="QueryKeys">条件集合</param>
+        /// <param name="QueryField">查询字段</param>
+        /// <returns></returns>
+        public DataTable GetListTable(List<Pair> QueryKeys, params String[] QueryField)
+        {
+            ExecuteObject obj = new ExecuteObject();
+            obj.cmdtype = CmdType.SELECT;
+            obj.tableName = "<#= host.TableName #>";
+            //查询条件
+            foreach (Pair k in QueryKeys)
+            {
+                obj.terms.Add(k.First, k.Second);
+            }
+            //查询字段 未设置时返回所有字段
+            if (QueryField != null && QueryField.Length > 0)
+            {
+                foreach (String k in QueryField)
+                {
+                    obj.cells.Add(k, String.Empty);
+                }
+            }
+            return db.ExecuteDataTable(obj);
+        }
+
+		#endregion
+
+		#region 获取实体
+
+		/// <summary>
+		/// 得到一个对象实体
+		/// </summary>
+		public <#= ModelSpace #> GetEntity(Int32 <#=identityKey.ColumnName#>)
+		{
+			String strSql = String.Format("SELECT * FROM [<#= host.TableName #>] WHERE id={0}", <#=identityKey.ColumnName#>);
+			return db.ExecuteObject<<#= ModelSpace #>>(strSql);
+		}
+        /// <summary>
+        /// 获得实体数据列表
+        /// </summary>
+        /// <param name="QueryKeys">条件集合</param>
+        /// <param name="QueryField">查询字段</param>
+        /// <returns></returns>
+        public List<<#= ModelSpace #>> GetEntity(List<Pair> QueryKeys, params String[] QueryField)
+        {
+            ExecuteObject obj = new ExecuteObject();
+            obj.cmdtype = CmdType.SELECT;
+            obj.tableName = "<#= host.TableName #>";
+            //查询条件
+            foreach (Pair k in QueryKeys)
+            {
+                obj.terms.Add(k.First, k.Second);
+            }
+            //查询字段 未设置时返回所有字段
+            if (QueryField != null && QueryField.Length > 0)
+            {
+                foreach (String k in QueryField)
+                {
+                    obj.cells.Add(k, String.Empty);
+                }
+            }
+            return db.ExecuteObject<List<<#= ModelSpace #>>>(obj);
+        }
+		/// <summary>
+		/// 获得实体数据列表
+		/// </summary>
+		public List<<#= ModelSpace #>> GetListEntity(String strWhere)
+		{
+			String strSql="SELECT * FROM [<#= host.TableName #>]";
+			if(!String.IsNullOrEmpty(strWhere.Trim()))
+			{
+				strSql+=" WHERE "+strWhere;
+			}
+			return db.ExecuteObject<List<<#= ModelSpace #>>>(strSql.ToString());
+		}
+
+		/// <summary>
+		/// 获得前几行数据
+		/// </summary>
+		public List<<#= ModelSpace #>> GetListEntity(Int32 Top,String strWhere,String filedOrder)
+		{
+			StringBuilder strSql=new StringBuilder();
+			strSql.Append("SELECT ");
+			if(Top>0) strSql.Append(" TOP " + Top);
+			strSql.Append(" * FROM [<#= host.TableName #>] ");
+			if(!String.IsNullOrEmpty(strWhere.Trim()))
+			{
+				strSql.Append(" WHERE "+strWhere);
+			}
+			strSql.Append(" ORDER BY " + filedOrder);
+			return db.ExecuteObject<List<<#= ModelSpace #>>>(strSql.ToString());
+		}
+
+		#endregion
+
+		/// <summary>
+		/// 检查数据
+		/// </summary>
+		/// <param name="<#=identityKey.ColumnName#>"></param>
+		/// <returns></returns>
+		public Boolean Exists(Int32 <#=identityKey.ColumnName#>)
+		{
+			ExecuteObject obj = new ExecuteObject();
+			obj.cmdtype = CmdType.SELECT;
+			obj.tableName = "<#= host.TableName #>";
+			obj.terms.Add("ID", <#=identityKey.ColumnName#>);//查询条件
+			//查询字段,默认为*
+			obj.cells.Add("<#=identityKey.ColumnName#>", null);
+			Object data = db.ExecuteScalar(obj);
+			return Convert.ToInt32(data) > 0;
+		}
+		/// <summary>
+        /// 检查数据
+        /// </summary>
+        /// <param name="query">Pair 结构 First:查询键名  Second:查询键值</param>
+        /// <returns></returns>
+        public Boolean Exists(Pair query)
+        {
+            ExecuteObject obj = new ExecuteObject();
+            obj.cmdtype = CmdType.SELECT;
+            obj.tableName = "<#= host.TableName #>";
+            obj.terms.Add(query.First, query.Second);//查询条件
+            //查询字段,默认为*
+            obj.cells.Add("id", null);
+            Object result = db.ExecuteScalar(obj);
+            return Convert.ToInt32(result) > 0;
+        }
+	}
+}

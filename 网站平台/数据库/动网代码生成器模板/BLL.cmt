@@ -1,0 +1,215 @@
+﻿<#@ template language="c#" HostSpecific="True" #>
+<#@ output extension= ".cs" #>
+<#
+	TableHost host = (TableHost)(Host);		
+	String ModelSpace = host.GetModelClass(host.TableName) + "Entity";
+	String DALSpace= host.GetDALClass(host.TableName)+ "Helper";
+	ColumnInfo identityKey=host.IdentityKey;
+	String returnValue = "void";
+    if (identityKey!=null)
+    {         
+         returnValue = CodeCommon.DbTypeToCS(identityKey.TypeName);              
+    }
+#>
+using System;
+using System.Collections.Generic;
+using System.Data;
+using System.Web.UI;
+using MSSQLDB;
+using WebSite.DAL;
+using WebSite.Models;
+
+namespace WebSite.Core	
+{
+	<# if( host.TableDescription.Length > 0) {#>
+	/// <summary>
+    /// <#= host.TableDescription #> 操作辅助类
+    /// </summary>
+	<# } #>
+	public partial class <#= host.GetBLLClass(host.TableName) #>Utility
+	{
+		private readonly <#= DALSpace #> dal=new <#= DALSpace #>();
+		public <#= host.GetBLLClass(host.TableName) #>Utility()
+		{
+
+		}
+		#region  增加方法
+
+		/// <summary>
+		/// 增加一条数据
+		/// </summary>
+		public Boolean Add(<#= ModelSpace #> data)
+		{
+			return dal.Add(data);
+		}
+		/// <summary>
+		/// 增加一条数据
+		/// </summary>
+		public Boolean Add(ExecuteObject data)
+		{
+			return dal.Add(data);
+		}
+		#endregion
+
+		#region  更新方法
+
+		/// <summary>
+		/// 更新一条数据
+		/// </summary>
+		public Boolean Update(<#= ModelSpace #> data)
+		{
+			return dal.Update(data);
+		}
+		/// <summary>
+		/// 更新一条数据
+		/// </summary>
+		public Boolean Update(ExecuteObject data)
+		{
+			return dal.Update(data);
+		}
+		/// <summary>
+        /// 更新单个字段
+        /// </summary>
+        /// <param name="data">Triplet结构(First:更新ID编号值,Second:更新字段名称,Third:数据值)</param>
+        /// <returns>成功返回True 失败返回False</returns>
+        public Boolean Update(Triplet data)
+        {
+            return dal.Update(data);
+        }
+		/// <summary>
+        /// 更新多个字段
+        /// </summary>
+        /// <param name="data">Triplet结构(First:键名，Second:键值,Third:bool是否为主键)</param>
+        /// <returns>成功返回True 失败返回False</returns>
+        public Boolean Update(List<Triplet> data)
+        {
+            return dal.Update(data);
+		}
+
+		#endregion
+
+		#region  删除方法
+
+		/// <summary>
+		/// 删除一条数据
+		/// </summary>
+		public Boolean Delete(Int32 <#=identityKey.ColumnName#>)
+		{
+			return dal.Delete(<#=identityKey.ColumnName#>);
+		}
+		<#if (identityKey!=null) {#>
+		/// <summary>
+		/// 批量删除一批数据
+		/// </summary>
+		public Boolean Delete(params Object[] IDCollection)
+		{
+			return dal.Delete(IDCollection);
+		}
+		<#}#>
+
+		#endregion
+
+		#region 获取Table
+
+		/// <summary>
+		/// 获得数据列表
+		/// </summary>
+		public DataTable GetListTable(String strWhere)
+		{
+			return dal.GetListTable(strWhere);
+		}
+		/// <summary>
+		/// 获得前几行数据
+		/// </summary>
+		public DataTable GetListTable(Int32 Top,String strWhere,String filedOrder)
+		{
+			return dal.GetListTable(Top,strWhere,filedOrder);
+		}
+		/// <summary>
+        /// 获得数据列表
+        /// </summary>
+        /// <param name="QueryKeys">条件集合</param>
+        /// <returns></returns>
+        public DataTable GetListTable(List<Pair> QueryKeys)
+        {
+            return dal.GetListTable(QueryKeys, null);
+        }
+        /// <summary>
+        /// 获得数据列表
+        /// </summary>
+        /// <param name="QueryKeys">条件集合</param>
+        /// <param name="QueryField">查询字段</param>
+        /// <returns></returns>
+        public DataTable GetListTable(List<Pair> QueryKeys, params String[] QueryField)
+        {
+            return dal.GetListTable(QueryKeys,QueryField);
+        }
+
+		#endregion
+
+		#region  获取实体
+
+		/// <summary>
+		/// 得到一个对象实体
+		/// </summary>
+		public <#= ModelSpace #> GetEntity(Int32 <#=identityKey.ColumnName#>)
+		{
+			return dal.GetEntity(<#=identityKey.ColumnName#>);
+		}
+		/// <summary>
+        /// 获得实体数据列表
+        /// </summary>
+        /// <param name="QueryKeys">条件集合</param>
+        /// <returns></returns>
+        public List<<#= ModelSpace #>> GetEntity(List<Pair> QueryKeys)
+        {
+            return dal.GetEntity(QueryKeys, null);
+        }
+        /// <summary>
+        /// 获得实体数据列表
+        /// </summary>
+        /// <param name="QueryKeys">条件集合</param>
+        /// <param name="QueryField">查询字段</param>
+        /// <returns></returns>
+        public List<<#= ModelSpace #>> GetEntity(List<Pair> QueryKeys, params String[] QueryField)
+        {
+            return dal.GetEntity(QueryKeys,QueryField);
+        }
+		/// <summary>
+		/// 获得数据列表
+		/// </summary>
+		public List<<#= ModelSpace #>> GetListEntity(String strWhere)
+		{
+			return dal.GetListEntity(strWhere);
+		}
+		/// <summary>
+		/// 获得数据列表
+		/// </summary>
+		public List<<#= ModelSpace #>> GetListEntity(Int32 Top,String strWhere,String filedOrder)
+		{
+			return dal.GetListEntity(Top,strWhere,filedOrder);
+		}
+
+		#endregion
+
+		#region  Method
+
+		/// <summary>
+		/// 是否存在该记录
+		/// </summary>
+		public Boolean Exists(Int32 <#=identityKey.ColumnName#>)
+		{
+			return dal.Exists(<#=identityKey.ColumnName#>);
+		}
+		/// <summary>
+        /// 检查数据
+        /// </summary>
+        /// <param name="query">Pair 结构 First:查询键名  Second:查询键值</param>
+        /// <returns></returns>
+        public Boolean Exists(Pair query)
+        {
+			return dal.Exists(query);
+		}
+		#endregion
+	}
+}

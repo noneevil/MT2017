@@ -1,0 +1,37 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<CodeSnippet Format="1.0.0" xmlns="http://schemas.microsoft.com/VisualStudio/2005/CodeSnippet">
+  <Header>
+    <Title>ExecuteObject.SELECT</Title>
+    <Author>noneevil</Author>
+    <Shortcut>select</Shortcut>
+    <Description>ExecuteObject 查询表数据</Description>
+    <SnippetTypes>
+      <SnippetType>SurroundsWith</SnippetType>
+      <SnippetType>Expansion</SnippetType>
+    </SnippetTypes>
+  </Header>
+  <Snippet>
+    <Declarations>
+      <Literal>
+        <ID>obj</ID>
+        <Default>obj</Default>
+      </Literal>
+      <Literal>
+        <ID>T</ID>
+        <Default>T</Default>
+      </Literal>
+    </Declarations>
+    <Code Language="CSharp">
+      <![CDATA[
+        ExecuteObject $obj$ = new ExecuteObject();
+        $obj$.cmdtype = CmdType.SELECT;
+        $obj$.tableName = "表名";
+        $obj$.terms.Add("ID", 0);//查询条件
+        //查询字段,默认为*
+        $obj$.cells.Add("字段1", null);
+        $obj$.cells.Add("字段2", null);
+        var data = db.ExecuteObject<$T$>($obj$);
+      ]]>
+    </Code>
+  </Snippet>
+</CodeSnippet>

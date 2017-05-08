@@ -1,0 +1,34 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<CodeSnippet Format="1.0.0" xmlns="http://schemas.microsoft.com/VisualStudio/2005/CodeSnippet">
+  <Header>
+    <Title>T_SaveData</Title>
+    <Author>noneevil</Author>
+    <Shortcut>T_SaveData</Shortcut>
+    <Description>保存表单数据.</Description>
+    <SnippetTypes>
+      <SnippetType>SurroundsWith</SnippetType>
+      <SnippetType>Expansion</SnippetType>
+    </SnippetTypes>
+  </Header>
+  <Snippet>
+    <Declarations>
+      <Literal>
+        <ID>T</ID>
+        <Default>T</Default>
+      </Literal>
+    </Declarations>
+    <Code Language="CSharp">
+      <![CDATA[
+        $T$ data = ($T$)ViewState["data"];
+        data = ControlHelper.GetFormValue<$T$>(data);
+        if (!IsEdit) data.LastSignTime = data.JoinDate;
+        CmdType cmd = IsEdit ? CmdType.UPDATE : CmdType.INSERT;
+        if (db.ExecuteCommand<$T$>(data, cmd))
+        {
+            if (!IsEdit) UserName.Text = "";
+            Alert(Label1, "保存成功！", "line1px_3");
+        }
+      ]]>
+    </Code>
+  </Snippet>
+</CodeSnippet>
