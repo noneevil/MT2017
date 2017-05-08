@@ -1,0 +1,33 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<CodeSnippet Format="1.0.0" xmlns="http://schemas.microsoft.com/VisualStudio/2005/CodeSnippet">
+  <Header>
+    <Title>ExecuteObject.DELETE</Title>
+    <Author>noneevil</Author>
+    <Shortcut>delete</Shortcut>
+    <Description>ExecuteObject 删除表数据</Description>
+    <SnippetTypes>
+      <SnippetType>SurroundsWith</SnippetType>
+      <SnippetType>Expansion</SnippetType>
+    </SnippetTypes>
+  </Header>
+  <Snippet>
+    <Declarations>
+      <Literal>
+        <ID>obj</ID>
+        <Default>obj</Default>
+      </Literal>
+    </Declarations>
+    <Code Language="CSharp">
+      <![CDATA[
+        ExecuteObject $obj$ = new ExecuteObject();
+        $obj$.cmdtype = CmdType.DELETE;
+        $obj$.tableName = "表名";
+        $obj$.terms.Add("ID", 0);//删除条件
+        if (db.ExecuteCommand($obj$))
+        {
+          //数据删除成功！
+        }
+      ]]>
+    </Code>
+  </Snippet>
+</CodeSnippet>
