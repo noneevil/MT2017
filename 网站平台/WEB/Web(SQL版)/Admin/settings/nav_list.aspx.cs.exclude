@@ -1,0 +1,106 @@
+﻿using System;
+using System.Data;
+using System.Web.UI;
+using System.Web.UI.WebControls;
+using WebSite.BackgroundPages;
+using WebSite.Core;
+
+public partial class nav_list : ManagePage
+{
+    T_NavigationUtility bll = new T_NavigationUtility();
+    protected void Page_Load(Object sender, EventArgs e)
+    {
+        if (!Page.IsPostBack)
+        {
+            RptBind();
+        }
+    }
+    /// <summary>
+    /// 数据绑定
+    /// </summary>
+    private void RptBind()
+    {
+        DataTable dt = bll.GetList();
+        this.rptList.DataSource = dt;
+        this.rptList.DataBind();
+    }
+    /// <summary>
+    /// 美化列表
+    /// </summary>
+    /// <param name="sender"></param>
+    /// <param name="e"></param>
+    protected void rptList_ItemDataBound(Object sender, RepeaterItemEventArgs e)
+    {
+        if (e.Item.ItemType == ListItemType.AlternatingItem || e.Item.ItemType == ListItemType.Item)
+        {
+            Literal LitFirst = (Literal)e.Item.FindControl("LitFirst");
+            HiddenField hidLayer = (HiddenField)e.Item.FindControl("hidLayer");
+            String LitStyle = "<span style=\"display:inline-block;width:{0}px;\"></span>{1}{2}";
+            String LitImg1 = "<span class=\"folder-open\"></span>";
+            String LitImg2 = "<span class=\"folder-line\"></span>";
+
+            Int32 classLayer = Convert.ToInt32(hidLayer.Value);
+            if (classLayer == 1)
+            {
+                LitFirst.Text = LitImg1;
+            }
+            else
+            {
+                LitFirst.Text = String.Format(LitStyle, (classLayer - 2) * 24, LitImg2, LitImg1);
+            }
+        }
+    }
+    /// <summary>
+    /// 保存排序
+    /// </summary>
+    /// <param name="sender"></param>
+    /// <param name="e"></param>
+    protected void btnSave_Click(Object sender, EventArgs e)
+    {
+        foreach (RepeaterItem item in rptList.Items)
+        {
+            TextBox txtSortId = item.FindControl("txtSortId") as TextBox;
+            CheckBox chkId = (CheckBox)item.FindControl("chkId");
+            HiddenField hidSortId = item.FindControl("hidSortId") as HiddenField;
+            Int32 id = Convert.ToInt32(chkId.Text);
+            Int32 oldsortid = Convert.ToInt32(hidSortId.Value);
+            Int32 sortId;
+            if (!Int32.TryParse(txtSortId.Text, out sortId))
+            {
+                sortId = 99;
+            }
+
+            if (sortId != oldsortid)
+            {
+                Triplet data = new Triplet()
+                {
+                    First = id,
+                    Second = "sort_id",
+                    Third = sortId
+                };
+                bll.Update(data);
+            }
+        }
+        RptBind();
+        JscriptMsg("保存排序成功！", "nav_list.aspx", "Success");
+    }
+    /// <summary>
+    /// 删除导航
+    /// </summary>
+    /// <param name="sender"></param>
+    /// <param name="e"></param>
+    protected void btnDelete_Click(Object sender, EventArgs e)
+    {
+        foreach (RepeaterItem item in rptList.Items)
+        {
+            CheckBox chkId = (CheckBox)item.FindControl("chkId");
+            if (chkId.Checked)
+            {
+                Int32 id = Convert.ToInt32(chkId.Text);
+                bll.DeleteNodeAndChilds(id);
+            }
+        } 
+        RptBind();
+        JscriptMsg("删除数据成功！", "nav_list.aspx", "Success", "parent.loadMenuTree");
+    }
+}

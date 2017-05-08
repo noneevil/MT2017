@@ -1,0 +1,179 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Data;
+using System.Web;
+using System.Web.UI.WebControls;
+using CommonUtils;
+using MSSQLDB;
+using Newtonsoft.Json;
+using WebSite.BackgroundPages;
+using WebSite.Core;
+using WebSite.Models;
+using System.ComponentModel;
+using System.Reflection;
+
+public partial class nav_edit : ManagePage
+{
+    T_NavigationUtility bll = new T_NavigationUtility();
+    protected void Page_Load(Object sender, EventArgs e)
+    {
+        if (!IsPostBack)
+        {
+            LoadInit();
+
+            if (IsEdit)
+            {
+                LoadData();
+            }
+        }
+    }
+    /// <summary>
+    /// 初始化
+    /// </summary>
+    private void LoadInit()
+    {
+        #region 绑定导航菜单
+
+        parent_id.Items.Clear();
+        parent_id.Items.Add(new ListItem("顶级导航", "0"));
+
+        DataTable dt = bll.GetList();
+        foreach (DataRow dr in dt.Rows)
+        {
+            String id = dr["id"].ToString();
+            Int32 layer = Int32.Parse(dr["class_layer"].ToString());
+            String title = dr["title"].ToString();
+            if (layer == 1)
+            {
+                parent_id.Items.Add(new ListItem(title, id));
+            }
+            else
+            {
+                title = "├ " + title;
+                title = StringOfChar(layer - 1, "　") + title;
+                parent_id.Items.Add(new ListItem(title, id));
+            }
+        }
+
+        String pid = Request["pid"];
+        if (!String.IsNullOrEmpty(pid)) parent_id.SelectedValue = pid;
+
+        #endregion
+
+        #region 绑定操作权限类型
+
+        foreach (FieldInfo field in typeof(ACLOptions).GetFields())
+        {
+            //if (field.Name == "None") continue;
+            Object[] atts = field.GetCustomAttributes(typeof(DescriptionAttribute), true);
+            if (atts.Length > 0)
+            {
+                DescriptionAttribute att = (DescriptionAttribute)atts[0];
+                action_type.Items.Add(new ListItem(field.Name + "(" + att.Description + ")", field.Name));
+            }
+        }
+
+        #endregion
+    }
+    private String StringOfChar(Int32 strLong, String str)
+    {
+        String ReturnStr = "";
+        for (Int32 i = 0; i < strLong; i++)
+        {
+            ReturnStr += str;
+        }
+        return ReturnStr;
+    }
+    /// <summary>
+    /// 初始化编辑数据
+    /// </summary>
+    private void LoadData()
+    {
+        String sql = "SELECT * FROM [T_Navigation] WHERE id=" + EditID;
+        T_NavigationEntity data = db.ExecuteObject<T_NavigationEntity>(sql);
+        ViewState["data"] = data;
+        this.SetFormValue(data);
+
+        name.Attributes["ajaxurl"] = "../ajax.ashx?data=json&action=validate_navigation&old_name=" + HttpUtility.UrlEncode(data.Name);
+        name.Focus(); //设置焦点，防止JS无法提交
+
+        if (data.Is_Sys)
+        {
+            name.ReadOnly = true;
+            parent_id.Enabled = false;
+        }
+    }
+
+    private Int32 Layer = 0;
+    /// <summary>
+    /// 更新层级关系
+    /// </summary>
+    private void UpdateLayer(DataTable dt, String ParentID)
+    {
+        Layer++;
+        foreach (DataRow dr in dt.Select("parent_id=" + ParentID))
+        {
+            String id = dr["id"].ToString();
+            List<String> IdList = new List<String>();
+            GetParentList(dt, dr["parent_id"].ToString(), IdList);
+            IdList.Add(id);
+
+            dr["class_layer"] = Layer;
+            dr["class_list"] = "," + String.Join(",", IdList.ToArray()) + ",";
+            UpdateLayer(dt, id);
+        }
+        Layer--;
+    }
+    /// <summary>
+    /// 获取所有父节点ID
+    /// </summary>
+    /// <param name="dt"></param>
+    /// <param name="id"></param>
+    /// <param name="IdList"></param>
+    private void GetParentList(DataTable dt, String id, List<String> IdList)
+    {
+        foreach (DataRow dr in dt.Select("id=" + id))
+        {
+            IdList.Insert(0, dr["id"].ToString());
+            GetParentList(dt, dr["parent_id"].ToString(), IdList);
+        }
+    }
+    /// <summary>
+    /// 保存
+    /// </summary>
+    /// <param name="sender"></param>
+    /// <param name="e"></param>
+    protected void btnSubmit_Click(Object sender, EventArgs e)
+    {
+        T_NavigationEntity data = (T_NavigationEntity)ViewState["data"];
+        data = this.GetFormValue<T_NavigationEntity>(data);
+        data.Nav_Type = "System";
+        CmdType cmd = IsEdit ? CmdType.UPDATE : CmdType.INSERT;
+
+        if (db.ExecuteCommand<T_NavigationEntity>(data, cmd))
+        {
+            if (!IsEdit) this.ClearFromValue();
+
+            String sql = "SELECT id,title,parent_id,class_list,class_layer,class_list as list,class_layer as layer FROM [T_Navigation]";
+            DataTable dt = db.ExecuteDataTable(sql);
+            UpdateLayer(dt, "0");
+            foreach (DataRow dr in dt.Rows)
+            {
+                if (dr["class_list"].ToString() != dr["list"].ToString() ||
+                    Convert.ToInt32(dr["class_layer"]) != Convert.ToInt32(dr["layer"]))
+                {
+                    ExecuteObject obj = new ExecuteObject();
+                    obj.cmdtype = CmdType.UPDATE;
+                    obj.tableName = "T_Navigation";
+                    obj.terms.Add("ID", dr["id"]);
+                    obj.cells.Add("class_list", dr["class_list"]);
+                    obj.cells.Add("class_layer", dr["class_layer"]);
+                    db.ExecuteCommand(obj);
+                }
+            }
+
+            JscriptMsg("保存成功！", "nav_list.aspx", "Success", "parent.loadMenuTree");
+        }
+    }
+
+}
