@@ -1,0 +1,8 @@
+User-agent: *
+Crawl-delay: 5
+Disallow:/images/
+Disallow:/upload/
+Disallow:/js/
+Disallow:/*.shtml
+Disallow:/*.aspx
+Sitemap:sitemaps/channels.xml

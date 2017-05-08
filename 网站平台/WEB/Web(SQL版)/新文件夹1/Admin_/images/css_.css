@@ -1,0 +1,205 @@
+﻿* { margin: 0; padding: 0; border: 0; list-style-type: none; outline: 0; }
+body { font-size: 12px; font-family: 宋体, Arial, Helvetica, sans-serif; color: #000; padding: 3px; margin: 0; height: 100%; overflow-x: hidden; }
+a { text-decoration: none; }
+a:link { color: #000; }
+a:visited { color: #000; }
+a:hover { color: #000; }
+a:active { color: #000; }
+/*
+img { border: 0px; }
+ul, ol { list-style: none; }
+ul li, ol li { vertical-align: bottom; }
+h1, h2, h3, h4, h5, h6, form, img, ul, ol { margin: 0; padding: 0; font-size: 12px; }
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, font, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td { background: transparent; border: 0; margin: 0; padding: 0; vertical-align: baseline; }
+select { +margin-left:3px;}
+*/
+.show { }
+.hide { display: none; }
+.page { float: left; text-align: left; }
+.swfupload { margin: 0; padding: 0; vertical-align: top; }
+code { padding: 10px; background-color: #ddedfb; border: #55aaff 1px solid; clear: both; color: #333; line-height: 18px; }
+
+.tabs { border: 1px solid #bbb; line-height: 21px; overflow: hidden; }
+.tabs ul.tabs-nav { display: block; height: 34px; border-bottom: 1px solid #bbb; background: url(thead.png) #eee repeat-x; position: relative; }
+.tabs ul.tabs-nav li { display: inline-block; float: left; line-height: 20px; list-style-position: outside; }
+.tabs ul.tabs-nav a:hover { background-image: none; background-color: #ddd; }
+.tabs ul.tabs-nav a { padding: 7px 20px; font-weight: bold; color: #666; background: url(titlebg.png) repeat-x; border-bottom: 1px solid #bbb; border-right: 1px solid #bbb; display: block; }
+.tabs ul.tabs-nav li.on a { color: #333; border-bottom: 1px solid #fff; background-image: none; background-color: #fff !important; }
+.tabs div.box { padding: 10px; }
+
+.absolutebox { position: absolute; left: 0; top: 0; z-index: 99; width: 150px; text-align: left; }
+
+/*头部*/
+#header { height: 57px; overflow: hidden; background: url(main_03.gif) repeat-x; }
+#header .left { float: left; width: 378px; height: 57px; background: url(main_01.gif); }
+#header .right { float: right; width: 281px; padding-top: 30px; text-indent: 50px; }
+#header .right div { height: 23px; padding-top: 4px; padding-left: 40px; background: url(main_02.gif); }
+#header .right a { display: block; width: 69px; height: 17px; float: left; margin: 0 3px; }
+#header .right a.nav { background: url(main_nav.gif); }
+#header .right a.pwd { background: url(main_pass.gif); }
+#header .right a.quit { background: url(main_quit.gif); }
+/*工具条*/
+#frameNav { height: 40px; overflow: hidden; background: url(main_10.gif) repeat-x; }
+#frameNav .left { float: left; width: 194px; height: 40px; background: url(main_04.gif); }
+#frameNav .right { float: right; width: 248px; height: 40px; background: url(main_05.gif); color: #fff; line-height: 40px; text-indent: 45px; }
+/*框架顶部*/
+#frameInfo { height: 30px; overflow: hidden; background: url(main_31.gif) repeat-x; line-height: 30px; }
+#frameInfo .left { float: left; height: 30px; text-indent: 195px; background: url(main_06.gif) no-repeat; }
+#frameInfo .right { float: right; height: 30px; padding-right: 20px; background: url(main_07.gif) right no-repeat; }
+/*框架中部*/
+#winFrame { width: 100%; height: 100%; /* _width: expression(document.body.offsetWidth - 192 + 'px');  *height:expression(document.body.offsetHeight - 77 + 'px');*/ }
+#frameBody { }
+#frameBody .spac { width: 8px; background-color: #353c44; }
+#frameBody .close { width: 10px; background-color: #add2da; }
+#frameBody .close div { width: 9px; height: 50px; overflow: hidden; background: url(main_p3.gif); cursor: pointer; }
+#frameBody .close div.menuhide { background: url(main_p4.gif); }
+#frameBody .close img { cursor: pointer; }
+#menu { width: 147px; overflow: hidden; vertical-align: top; }
+#menu div { height: 15px; padding-left: 12px; padding-top: 5px; background-color: #add2da; }
+/*框架底部*/
+#frameBottom { height: 11px; overflow: hidden; background: url(main_72.gif) repeat-x; }
+#frameBottom .left { float: left; width: 165px; height: 11px; overflow: hidden; background: url(main_71.gif); }
+#frameBottom .right { float: right; width: 17px; height: 11px; overflow: hidden; background: url(main_73.gif); }
+/*功能菜单*/
+#nav { width: 147px; line-height: 23px; text-indent: 30px; }
+#nav a { display: block; height: 23px; overflow: hidden; cursor: pointer; }
+a.head, a.head2 { background: url(left_head.gif) no-repeat; font-weight: bold; }
+a.head2 { background: url(left_head.gif) no-repeat 0 bottom; }
+#nav li li a { background: url(left_menu0.gif) no-repeat 11px center; outline-style: none; }
+#nav li li a:hover, #nav li li a.hover { background: url(left_menu1.gif) no-repeat; }
+/*子框架*/
+.location { height: 25px; overflow: hidden; background: url(location.gif) #353c44 no-repeat 5px center; color: #ffffff; padding-left: 25px; line-height: 25px; }
+.table { border-top: 1px solid #add2da; border-left: 1px solid #add2da; border-collapse: collapse; empty-cells: show; }
+.table thead { background-color: #add2da; text-align: center; font-weight: bold; font-size: 13px; }
+.table td, .table th { border-bottom: 1px solid #add2da; border-right: 1px solid #add2da; }
+td input, td img { vertical-align: middle; }
+td label img, td span img { margin-right: 5px; }
+.button { border: 1px solid #DCDCDC !important; width: 100px !important; height: 35px !important; overflow: hidden; cursor: pointer; background-color: #F5F5F5; }
+.button.hover { background-color: #E6E6E6; border: 1px solid #DCDCDC !important; }
+.txt { width: 200px; height: 19px; text-indent: 3px; border: 1px solid #ADD2DA; }
+/*消息提示*/
+.line1px_1, .line1px_2, .line1px_3, .line1px_4, .line1px_5 { padding-left: 25px; line-height: 25px; display: block; }
+.line1px_1, .line1px_5 { background: url(msg_red.gif) no-repeat 0 50%; }
+.line1px_4, .loading { background: url(loading.gif) no-repeat 5px center; }
+.line1px_1 { border: #238CBC 1px solid; background: url(msg_blue.gif) #e2f5ff no-repeat 5px 50%; }
+.line1px_2 { border: #f60 1px solid; background: url(msg_red.gif) #fff2e9 no-repeat 5px 50%; }
+.line1px_3 { border: #00be00 1px solid; background: url(msg_green.gif) #e6ffe6 no-repeat 5px 50%; }
+.line1px_4 { border: #00be00 1px solid; background-color: #e6ffe6; }
+.line1px_5 { border: 0; padding: 0; width: 16px; height: 20px; }
+.loading { height: 25px; line-height: 25px; padding-left: 30px; font-weight: bold; }
+/*错误消息列表*/
+.errlist { border: #f60 1px solid; width: 692px; padding-left: 5px; background-color: #FCFAF0; }
+.errlist ul { list-style-type: decimal; margin-left: 23px; line-height: 25px; }
+.errlist ul li { vertical-align: text-top; }
+/*网站参数设置*/
+.site { height: 95%; }
+.site th { text-align: right; }
+.site td, .site th { padding: 4px; color: #666; }
+.site input, .site textarea, .site select { line-height: 26px; padding: 0 3px; word-break: normal; border: #bbb 1px solid; width: 500px; height: 28px; }
+.site textarea { height: 75px; }
+.site .char { width: 100px; }
+.site .chkbox { width: auto; height: auto; border: none; }
+/*修改密码*/
+.PassWord { height: 95%; background: url(pwd_lock.gif) no-repeat 90% 30px; line-height: 30px; border: 1px #bbb solid; }
+.PassWord td, .PassWord th { padding: 4px; color: #666; }
+.PassWord table input { padding: 0 3px; height: 28px; line-height: 26px; border: #bbb 1px solid; width: 230px; }
+.PassWord div { text-align: center; padding-top: 10px; }
+.PassWord .logpwd { background: url(login.gif) no-repeat 100% 50%; }
+.PassWord .msg * { width: 205px; overflow: hidden; }
+/*功能导航*/
+.navigation { padding: 10px; border: 1px solid #add2da; height: 100%; }
+.navigation ul { list-style-type: none; }
+.navigation ul.widgeticons { }
+.navigation ul.widgeticons li { float: left; width: 112px; height: 114px; overflow: hidden; margin: 11px; }
+.navigation ul.widgeticons li a { box-shadow: 1px 1px 2px #ccc; outline-style: none; border: 1px solid #ccc; display: block; text-align: center; }
+.navigation ul.widgeticons li span { padding: 2px; line-height: 20px; color: #546f8e; display: block; font-weight: bold; font-size: 14px; margin-bottom: 5px; }
+.navigation ul.widgeticons li img { margin-bottom: 5px; margin-top: 10px; }
+/*对话框*/
+#ym-window { background: #fff; overflow: hidden; }
+/*header*/
+.ym-tl { padding-left: 1px; background: #185A7B; }
+.ym-tr { padding-right: 1px; }
+.ym-tc { overflow: hidden; height: 25px; line-height: 25px; }
+.ym-ttc { height: 1px; }
+.ym-header-text { font-size: 14px; color: #fff; margin-left: 5px; float: left; font-weight: bold; }
+.ym-header-tools { float: right; margin: 5px 5px 0 0; }
+.ym-header-tools strong { display: none; }
+/*body*/
+.ym-ml { background: #185A7B; padding-left: 1px; }
+.ym-mr { padding-right: 1px; }
+.ym-mc { background: #fff; padding: 0; }
+.ym-body { overflow: auto; padding: 0; }
+/*button*/
+.ym-btn { background: #fff; text-align: center; }
+/*footer*/
+.ym-bl { background: #185A7B; padding-left: 1px; }
+.ym-br { padding-right: 1px; }
+.ym-bc { height: 1px; font-size: 1px; }
+/*icon*/
+.ymPrompt_alert { padding-left: 90px; background: url(Dialog_info.gif) no-repeat 20px 50%; }
+.ymPrompt_succeed { padding-left: 90px; background: url(Dialog_right.gif) no-repeat 20px 50%; }
+.ymPrompt_error { padding-left: 90px; background: url(Dialog_err.gif) no-repeat 20px 50%; }
+.ymPrompt_confirm { padding-left: 90px; background: url(Dialog_ask.gif) no-repeat 20px 50%; }
+.ymPrompt_alert .ym-content, .ymPrompt_succeed .ym-content, .ymPrompt_error .ym-content, .ymPrompt_confirm .ym-content { padding: 50px 0 0; }
+/*图标公共定义*/
+.ym-header-tools div { cursor: pointer; width: 16px; height: 16px; float: left; }
+.ymPrompt_close, .ymPrompt_max, .ymPrompt_min, .ymPrompt_normal { background: url(Dialog_ico.gif) no-repeat 0 0; }
+.ymPrompt_close { background-position: -48px; }
+.ymPrompt_max { background-position: -16px; }
+.ymPrompt_min { }
+.ymPrompt_normal { background-position: -32px; }
+/*取消确认按钮样式*/
+input.btnStyle { background: #48BBFA; width: 80px; height: 21px; line-height: 21px; font-size: 12px; color: #fff; border: 0; margin: 10px 0; }
+
+/*datepicker*/
+.datepicker { position: absolute; border: 2px solid #185A7B; font-size: 11px; width: 194px; padding: 3px; height: 221px; background: #fff; line-height: normal; z-index: 3003; }
+.datepicker.column_2 { width: 393px; }
+.datepicker.column_3 { width: 592px; }
+.datepicker.column_4 { width: 791px; }
+.datepicker.column_5 { width: 990px; }
+/* header********************************************************/
+.datepicker .header { position: relative; background: #185A7B; height: 21px; padding-top: 4px; margin-bottom: 3px; overflow: hidden; }
+.datepicker .header .title { text-align: center; padding-top: 1px; position: absolute; color: #fff; font-weight: bold; width: 99999px; }
+.datepicker .header .titleText { }
+.datepicker .header .next, .datepicker .header .previous, .datepicker .header .closeButton { position: absolute; width: 15px; height: 15px; background: #fff; text-align: center; color: #666; top: 5px; cursor: pointer; }
+.datepicker .header .previous { left: 5px; }
+.datepicker .header .next { right: 28px; }
+.datepicker .header .closeButton { right: 5px; }
+/* body********************************************************/
+.datepicker .body { position: relative; top: 0px; left: 0px; height: 193px; overflow: hidden; }
+/* Columns */.datepicker .body .column { float: left; width: 194px; min-height: 193px; margin-left: 5px; }
+.datepicker .body .column.column_1 { margin-left: 0; }
+.datepicker .titleText .column { float: left; width: 194px; margin-left: 5px; }
+.datepicker .titleText .column.column_1 { margin-left: 0; }
+/* Footer */.datepicker.footer { height: 280px; }
+.datepicker .footer { margin-top: 3px; padding: 15px 5px; height: 26px; }
+/* time********************************************************/
+.datepicker .time { width: 100%; height: 100%; background: #eee; }
+.datepicker .time .hour, .datepicker .time .separator, .datepicker .time .minutes { border: 1px solid #ccc; background: #fff; line-height: 32px; width: 50px; font-size: 32px; position: absolute; top: 50px; text-align: center; padding: 2px; }
+.datepicker .time .hour { left: 30px; }
+.datepicker .time .separator { background: transparent; border: 0px; width: 10px; left: 91px; }
+.datepicker .time .minutes { left: 110px; }
+.datepicker .time .ok { position: absolute; top: 105px; width: 136px; left: 30px; font-size: 20px; }
+/* days-grid********************************************************/
+.datepicker .days .day { float: left; background: #ccc; cursor: pointer; text-align: center; padding-top: 4px; width: 25px; overflow: hidden; height: 21px; margin: 0 3px 3px 0; }
+.datepicker .days .day0 { margin-right: 0; }
+.datepicker .days .week5 .day { margin-bottom: 0; }
+/* days-colors********************************************************/
+.datepicker .days .title { background: #ADD2DA; font-weight: bold; color: #000; cursor: default; }
+.datepicker .days .otherMonth { background: #eee; color: #aaa; }
+/* months********************************************************/
+.datepicker .months .month { float: left; background: #eee; cursor: pointer; text-align: center; overflow: hidden; width: 62px; height: 31px; padding-top: 15px; margin: 0 3px 3px 0; }
+.datepicker .months .month3, .datepicker .months .month6, .datepicker .months .month9, .datepicker .months .month12 { margin-right: 0; width: 64px; }
+.datepicker .months .month10, .datepicker .months .month11, .datepicker .months .month12 { margin-bottom: 0; }
+/* years********************************************************/.datepicker .years .year { float: left; background: #eee; cursor: pointer; text-align: center; padding-top: 11px; width: 46px; overflow: hidden; height: 25px; margin: 0 3px 3px 0; }
+.datepicker .years .year3, .datepicker .years .year7, .datepicker .years .year11, .datepicker .years .year15, .datepicker .years .year19 { margin-right: 0; width: 47px; }
+.datepicker .years .year16, .datepicker .years .year17, .datepicker .years .year18, .datepicker .years .year19 { margin-bottom: 0; height: 26px; }
+/* global********************************************************/
+.datepicker .selected { background: #ED6F32 !important; color: #fff !important; }
+.datepicker .days .otherMonth.selected { background: #bbbfc8 !important; }
+.datepicker .unavailable, .datepicker .body .days .week .day.unavailable:hover { background: #edd !important; color: #b88 !important; cursor: default !important; }
+.datepicker .days .week .day:hover, .datepicker .months .month:hover, .datepicker .years .year:hover { background: #ED6F32 !important; color: #fff !important; }
+.datepicker .days.weeknumbers .day { width: 22px; }
+.datepicker .days.weeknumbers .day.weeknumber, .datepicker .days.weeknumbers .day.weeknumber:hover { color: #AAA !important; width: 16px !important; background: #EEE !important; }
+.datepicker table { border-spacing: 0; }
+.datepicker th, .datepicker td { padding: 0; }

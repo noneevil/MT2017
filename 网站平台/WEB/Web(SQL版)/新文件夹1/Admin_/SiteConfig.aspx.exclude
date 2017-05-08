@@ -1,0 +1,168 @@
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="SiteConfig.aspx.cs" Inherits="Developer_SiteConfig" %>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title>站点配置</title>
+    <link href="css/reset.css" rel="stylesheet" type="text/css" />
+    <link href="css/base.css" rel="stylesheet" type="text/css" />
+    <link href="css/widgets.css" rel="stylesheet" type="text/css" />
+    <link href="css/icons.css" rel="stylesheet" type="text/css" />
+    <link href="css/uniform.css" rel="stylesheet" type="text/css" />
+    <!--[if lte IE 7]><script src="css/lte-ie7.js"></script><![endif]-->
+    <script src="js/mootools.js" type="text/javascript"></script>
+    <script src="js/public.js" type="text/javascript"></script>
+    <script src="js/mooniform.js" type="text/javascript"></script>
+    <script type="text/javascript">
+        window.addEvent('domready', function () {
+            new Mooniform($$('input[type="radio"],input[type="checkbox"]'));
+        });
+    </script>
+</head>
+<body>
+<form id="form1" runat="server">
+    <div class="widget">
+        <div class="widgettitle"><i class="icon0-cog-2"></i>网站参数设置</div>
+        <div class="widgetcontent noborder siteconfig">
+            <div id="tabs" class="ui-tabs">
+                <ul class="ui-tabs-nav">
+                    <li class="ui-state-active"><a href="#tabs-1">基本配置</a></li>
+                    <li><a href="#tabs-2">数据库配置</a></li>
+                    <li><a href="#tabs-3">会员设置</a></li>
+                    <li><a href="#tabs-4">邮件设置</a></li>
+                </ul>
+                <div id="tabs-1" class="ui-tabs-panel">
+                    <table border="0" width="96%" align="center" cellpadding="4" cellspacing="0" style="border-collapse: collapse;">
+                        <tr>
+                            <th>站点语言：</th>
+                            <td>
+                                <asp:DropDownList ID="Language" runat="server" ToolTip="站点语言" onselectedindexchanged="language_SelectedIndexChanged" AutoPostBack="true">
+                                    <asp:ListItem value="CN">中文</asp:ListItem>
+                                    <asp:ListItem value="US">英文</asp:ListItem>
+                                    <asp:ListItem value="TW">繁体</asp:ListItem>
+                                </asp:DropDownList>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>站点名称：</th>
+                            <td><input type="text" id="SiteName" class="text" runat="server" title="站点名称" /></td>
+                        </tr>
+                        <tr>
+                            <th>站点域名：</th>
+                            <td><input type="text" id="SiteURL" class="text" runat="server" title="站点域名" /></td>
+                        </tr>
+                        <tr>
+                            <th>SEO关键字：</th>
+                            <td>
+                                <textarea id="KeyWords" runat="server" title="SEO关键字"></textarea>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th></th>
+                            <td>
+                                <p>提示：用于表示搜索引擎中输入指定的关键字能更容易找到网站信息</p>
+                                <p>(可填写多个,每项用“,”号分开)。</p></td>
+                        </tr>
+                        <tr>
+                            <th>SEO介绍信息：</th>
+                            <td><textarea id="Description" runat="server" title="SEO介绍信息"></textarea></td>
+                        </tr>
+                        <tr>
+                            <th></th>
+                            <td>提示：用于表示搜索引擎搜索到本网站是显示的部分介绍信息。</td>
+                        </tr>    
+                        <tr>
+                            <th>版权信息：</th>
+                            <td><textarea id="Copyright" runat="server" title="版权信息" HtmlDecode="true" HtmlEncode="true"></textarea></td>
+                        </tr>
+                        <tr>
+                            <th></th>
+                            <td><p>提示：用于表示网站底部显示的版权相关信息及联系电话信息等。</p></td>
+                        </tr>  
+                        <tr>
+                            <th>私钥：</th>
+                            <td><input type="text" id="Keys" class="text" runat="server" title="私钥" /></td>
+                        </tr>
+                    </table>
+                </div>
+                <div id="tabs-2" class="ui-tabs-panel ui-tabs-hide">
+                    <table border="0" width="96%" align="center" cellpadding="4" cellspacing="0" style="border-collapse: collapse;">
+                        <tr>
+                            <th>数据库类型：</th>
+                            <td>
+                                <asp:DropDownList ID="SiteDataType" runat="server" ToolTip="数据库类型">
+                                    <asp:ListItem value="ACCESS">ACCESS</asp:ListItem>
+                                    <asp:ListItem value="MSSQL">MSSQL</asp:ListItem>
+                                    <asp:ListItem value="SQLite">SQLite</asp:ListItem>
+                                </asp:DropDownList>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>连接字符：</th>
+                            <td>
+                                <input type="text" class="text" id="ConnectionString" runat="server" title="连接字符串" />
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+                <div id="tabs-3" class="ui-tabs-panel ui-tabs-hide">
+                    <table border="0" width="96%" align="center" cellpadding="4" cellspacing="0" style="border-collapse: collapse;">
+                        <tr>
+                            <th>留言信息：</th>
+                            <td><input id="AuditBook" class="chkbox" type="checkbox" runat="server" title="留言审核" /><label for="AuditBook">审核/不审核</label></td>
+                        </tr>
+                        <tr>
+                            <th>会员注册：</th>
+                            <td><input id="AuditReg" class="chkbox" type="checkbox" runat="server" title="会员注册审核" /><label for="AuditReg">审核/不审核</label></td>
+                        </tr>
+                        <tr>
+                            <th valign="top">不良信息过滤关键字：</th>
+                            <td><textarea id="BadKeywords" style="height:350px;" runat="server" title="过滤关键字"></textarea></td>
+                        </tr>
+                        <tr>
+                            <th></th>
+                            <td>提示：用于过滤前台网站上传时提交的不良信息。</td>
+                        </tr>
+                        <tr>
+                            <th>过滤关键字替换字符：</th>
+                            <td><input type="text" class="char" id="SubStitute" runat="server" value="*" title="替换字符" /> 注：默认为*号为替换。</td>
+                        </tr>
+                    </table>
+                </div>
+                <div id="tabs-4" class="ui-tabs-panel ui-tabs-hide">
+                    <table border="0" width="96%" align="center" cellpadding="4" cellspacing="0" style="border-collapse: collapse;">
+                        <tr>
+                            <th>服务器：</th>
+                            <td>
+                                <input type="text" class="text" id="Smtp" runat="server" title="邮件服务器" /> 如：smtp.163.com
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>邮件账户：</th>
+                            <td>
+                                <input type="text" class="text" id="Email" runat="server" title="邮件地址" /> 如：***@163.com
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>用户名：</th>
+                            <td>
+                                <input type="text" class="text" id="MailUser" runat="server" title="邮箱用户" />  邮箱登录名称。
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>账户密码：</th>
+                            <td>
+                                <input type="text" class="text" id="MailPass" runat="server" title="邮箱密码" />  邮箱登录密码。
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+            <div style=" padding:3px; text-align:center;">
+                <label id="Label1" runat="server"></label>
+                <asp:Button ID="btnSave" hidefocus="hidefocus" runat="server" Text="保存" CssClass="ui-btn" onclick="btnSave_Click" />
+            </div>
+        </div>
+    </div>
+</form>
+</body>
+</html>

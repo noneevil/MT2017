@@ -1,0 +1,37 @@
+﻿/*头部*/
+#header { height: 57px; overflow: hidden; background: url(../images/main_03.gif) repeat-x; }
+#header .left { float: left; width: 378px; height: 57px; background: url(../images/main_01.gif); }
+#header .right { float: right; width: 281px; padding-top: 30px; text-indent: 50px; }
+#header .right div { height: 23px; padding-top: 4px; padding-left: 40px; background: url(../images/main_02.gif); }
+#header .right a { display: block; width: 69px; height: 17px; float: left; margin: 0 3px; }
+#header .right a.nav { background: url(../images/main_nav.gif); }
+#header .right a.pwd { background: url(../images/main_pass.gif); }
+#header .right a.quit { background: url(../images/main_quit.gif); }
+/*工具条*/
+#toolbar { height: 40px; overflow: hidden; background: url(../images/main_10.gif) repeat-x; }
+#toolbar .left { float: left; width: 194px; height: 40px; background: url(../images/main_04.gif); }
+#toolbar .right { float: right; width: 248px; height: 40px; background: url(../images/main_05.gif); color: #fff; line-height: 40px; text-indent: 45px; }
+/*框架顶部信息栏*/
+#infobar { height: 30px; overflow: hidden; background: url(../images/main_31.gif) repeat-x; line-height: 30px; }
+#infobar .left { float: left; height: 30px; text-indent: 195px; background: url(../images/main_06.gif) no-repeat; }
+#infobar .right { float: right; height: 30px; padding-right: 20px; background: url(../images/main_07.gif) right no-repeat; }
+/*框架中部*/
+#winFrame { width: 100%; height: 100%; }
+#main .spac { width: 8px; background-color: #353c44; }
+#main .close { width: 10px; background-color: #add2da; }
+#main .close div { width: 9px; height: 50px; overflow: hidden; background: url(../images/main_p3.gif); cursor: pointer; }
+#main .close div.menuhide { background: url(../images/main_p4.gif); }
+#main .close img { cursor: pointer; }
+#menu { width: 147px; overflow: hidden; vertical-align: top; }
+#menu div { height: 15px; padding-left: 12px; padding-top: 5px; background-color: #add2da; }
+/*框架底部*/
+#footer { height: 11px; overflow: hidden; background: url(../images/main_72.gif) repeat-x; }
+#footer .left { float: left; width: 165px; height: 11px; overflow: hidden; background: url(../images/main_71.gif); }
+#footer .right { float: right; width: 17px; height: 11px; overflow: hidden; background: url(../images/main_73.gif); }
+/*功能菜单*/
+#nav { width: 147px; line-height: 23px; text-indent: 30px; }
+#nav a { display: block; height: 23px; overflow: hidden; cursor: pointer; }
+#nav a.head, #nav a.head2 { background: url(../images/left_head.gif) no-repeat; font-weight: bold; }
+#nav a.head2 { background: url(../images/left_head.gif) no-repeat 0 bottom; }
+#nav li li a { background: url(../images/left_menu0.gif) no-repeat 11px center; outline-style: none; }
+#nav li li a:hover, #nav li li a.hover { background: url(../images/left_menu1.gif) no-repeat; }

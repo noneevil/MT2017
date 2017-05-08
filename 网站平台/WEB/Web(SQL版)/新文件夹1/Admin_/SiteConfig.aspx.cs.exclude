@@ -1,0 +1,190 @@
+﻿using System;
+using System.Collections.Generic;
+using System.IO;
+using System.Reflection;
+using System.Text;
+using System.Text.RegularExpressions;
+using System.Web;
+using System.Web.UI;
+using System.Web.UI.HtmlControls;
+using System.Web.UI.WebControls;
+using System.Xml.Serialization;
+using CommonUtils;
+using WebSite.BackgroundPages;
+using WebSite.Models;
+
+public partial class Developer_SiteConfig : BaseAdmin
+{
+    protected override void OnPreInit(EventArgs e)
+    {
+        StreamReader sr = new StreamReader(Server.MapPath("/App_Data/Param.xml"));
+        XmlSerializer xs = new XmlSerializer(typeof(List<SiteParameter>), new XmlRootAttribute("Root"));
+        LanguageItems = xs.Deserialize(sr) as List<SiteParameter>;
+        sr.Close();
+        base.OnPreInit(e);
+    }
+
+    protected void Page_Load(Object sender, EventArgs e)
+    {
+        if (!IsPostBack)
+        {
+            language_SelectedIndexChanged(sender, e);
+        }
+    }
+    /// <summary>
+    /// 语言列表
+    /// </summary>
+    protected List<SiteParameter> LanguageItems;
+    /// <summary>
+    /// 保存数据
+    /// </summary>
+    /// <param name="sender"></param>
+    /// <param name="e"></param>
+    protected void btnSave_Click(Object sender, EventArgs e)
+    {
+        #region 保存更改
+
+        SiteParameter config = LanguageItems.Find(s => { return s.Language == Language.SelectedValue; });
+        if (config == null)
+        {
+            config = new SiteParameter();
+            LanguageItems.Add(config);
+        }
+        PropertyInfo[] properties = config.GetType().GetProperties();
+
+        foreach (PropertyInfo item in properties)
+        {
+            Control c = this.FindControl(item.Name);
+            if (c == null) continue;
+            if (c is HtmlInputText)
+            {
+                HtmlInputText _c = (HtmlInputText)c;
+                item.SetValue(config, _c.Value, null);
+            }
+            else if (c is HtmlTextArea)
+            {
+                HtmlTextArea _c = (HtmlTextArea)c;
+                if (Convert.ToBoolean(_c.Attributes["HtmlEncode"]))
+                    item.SetValue(config, HttpUtility.HtmlEncode(_c.Value), null);
+                else
+                    item.SetValue(config, _c.Value, null);
+            }
+            else if (c is HtmlInputCheckBox)
+            {
+                HtmlInputCheckBox _c = (HtmlInputCheckBox)c;
+                item.SetValue(config, _c.Checked, null);
+            }
+            else if (c is DropDownList)
+            {
+                DropDownList _c = (DropDownList)c;
+                item.SetValue(config, _c.SelectedValue, null);
+            }
+        }
+        XmlSerializer serializer = new XmlSerializer(typeof(List<SiteParameter>), new XmlRootAttribute("Root"));
+        FileStream fs = new FileStream(Server.MapPath("/App_Data/Param.xml"), FileMode.Create, FileAccess.Write);
+        serializer.Serialize(fs, LanguageItems);
+        fs.Close();
+
+        #endregion
+
+        #region 动态编译DLL
+
+        StringBuilder code = new StringBuilder();
+        code.Append("namespace WebSite.Config{\r");
+        foreach (var item in LanguageItems)
+        {
+            code.Append("[Serializable]\r\n");
+            code.AppendFormat("public class {0}{{", item.Language);
+            foreach (PropertyInfo p in properties)
+            {
+                Control c = this.FindControl(p.Name);
+                if (c == null) continue;
+                Object v = p.GetValue(item, null);
+                if (v == null) v = "";
+                String description = String.Empty;
+                if (c is HtmlControl)
+                {
+                    HtmlControl _c = c as HtmlControl;
+                    description = _c.Attributes["title"];
+                }
+                else
+                {
+                    WebControl _c = c as WebControl;
+                    description = _c.ToolTip;
+                }
+
+                code.AppendFormat("[Description(\"{0}\")]\r\n", description);
+                if (p.PropertyType == typeof(Boolean))
+                {
+                    code.AppendFormat("public const Boolean {0}={1};\r\n", p.Name, Convert.ToString(v).ToLower());
+                }
+                else
+                {
+                    String _v = Regex.Replace(v.ToString(), @"([\r\n])[\s/g]+", "", RegexOptions.IgnoreCase);
+                    code.AppendFormat("public const String {0}=@\"{1}\";\r\n", p.Name, _v.Trim());
+                }
+            }
+            code.AppendLine("}");
+        }
+        code.Append("}");
+        CodeCompiled.CompileAssemblyFromSource(code, new String[] { }, Server.MapPath("/bin/WebSite.Config.dll"));
+
+        #endregion
+
+        ClientScript.RegisterStartupScript(this.GetType(), "", "<script>top.Dialog.succeedInfo({ title: '提示', message: '保存成功!', width: 300, height: 150 });</script>");
+    }
+    /// <summary>
+    /// 语言选择
+    /// </summary>
+    /// <param name="sender"></param>
+    /// <param name="e"></param>
+    protected void language_SelectedIndexChanged(Object sender, EventArgs e)
+    {
+        String value = Language.SelectedValue;
+        if (sender is Page)
+        {
+            String lang =CookieHelper.GetValue("Language");
+            if (!String.IsNullOrEmpty(lang)) value = lang;
+        }
+        Language.Text = value;
+        CookieHelper.AddCookie("Language", value);
+
+        SiteParameter config = LanguageItems.Find(s => { return s.Language == value; });
+        if (config != null)
+        {
+            PropertyInfo[] properties = config.GetType().GetProperties();
+
+            foreach (PropertyInfo item in properties)
+            {
+                Control c = this.FindControl(item.Name);
+                if (c == null) continue;
+                Object v = item.GetValue(config, null);
+                if (v == null) continue;
+
+                if (c is HtmlInputText)
+                {
+                    HtmlInputText _c = (HtmlInputText)c;
+                    _c.Value = v.ToString();
+                }
+                else if (c is HtmlTextArea)
+                {
+                    HtmlTextArea _c = (HtmlTextArea)c;
+                    if (Convert.ToBoolean(_c.Attributes["HtmlDecode"]))
+                        _c.Value = HttpUtility.HtmlDecode(v.ToString());
+                    else
+                        _c.Value = v.ToString();
+                }
+                else if (c is HtmlInputCheckBox)
+                {
+                    HtmlInputCheckBox _c = (HtmlInputCheckBox)c;
+                    _c.Checked = Convert.ToBoolean(v);
+                }
+                else if (c is DropDownList)
+                {
+                    DropDownList _c = (DropDownList)c;
+                    _c.Text = v.ToString();
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,16 @@
+﻿body { overflow: hidden; font: 12px 宋体, Arial, Helvetica, sans-serif; background: url(../images/login_03.gif) repeat-x #152753; color: #adc9d9; }
+#top { margin: 0 auto; clear: both; height: 318px; width: 847px; background: url(../images/login.png) no-repeat; }
+#center { width: 847px; height: 84px; text-align: center; margin: 0 auto; overflow: hidden; }
+#center_left { float: left; background: url(../images/login.png) no-repeat 0 -323px; height: 84px; width: 381px; }
+* + html #center_left { _margin-left: 206px !important; }
+#center_middle { float: left; text-align: left; padding-top: 3px; background: url(../images/login.png) no-repeat -386px -323px; width: 162px; height: 84px; }
+#center_middle_right { float: left; background: url(../images/login.png) no-repeat -551px -323px; height: 84px; width: 26px; }
+#center_submit { float: left; background: url(../images/login.png) no-repeat -580px -323px; height: 84px; width: 67px; }
+#center_right { float: left; background: url(../images/login.png) no-repeat 0 -412px; height: 84px; width: 211px; }
+#footer { margin: 0 auto; background: url(../images/login.png) no-repeat 0 -503px; height: 206px; width: 847px; }
+input { width: 100px; height: 17px; padding: 1px; background-color: #87adbf; border: solid 1px #153966; color: #283439; }
+.button { margin: 15px auto; }
+.img { cursor: pointer; width: 48px; height: 19px; }
+.btnsub, .btnrest { width: 57px; height: 20px; cursor: pointer; }
+.btnsub { background: url(../images/login.png) -650px -346px; }
+.btnrest { background: url(../images/login.png) -650px -323px; }

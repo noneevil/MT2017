@@ -1,0 +1,55 @@
+﻿* { margin: 0; padding: 0; border: 0; list-style-type: none; outline: 0; }
+body { font-size: 12px; font-family: 宋体, Arial, Helvetica, sans-serif; color: #000; height: 100%; overflow-x: hidden; overflow-y: auto; margin: 0; padding: 3px; }
+a { text-decoration: none; }
+a:link { color: #000; }
+a:visited { color: #000; }
+a:hover { color: #000; }
+a:active { color: #000; }
+
+.show { }
+.hide { display: none; }
+
+/****************************界面UI开始****************************/
+/*头部*/
+#header { height: 57px; overflow: hidden; background: url(main_03.gif) repeat-x; }
+#header .left { float: left; width: 378px; height: 57px; background: url(main_01.gif); }
+#header .right { float: right; width: 281px; padding-top: 30px; text-indent: 50px; }
+#header .right div { height: 23px; padding-top: 4px; padding-left: 40px; background: url(main_02.gif); }
+#header .right a { display: block; width: 69px; height: 17px; float: left; margin: 0 3px; }
+#header .right a.nav { background: url(main_nav.gif); }
+#header .right a.pwd { background: url(main_pass.gif); }
+#header .right a.quit { background: url(main_quit.gif); }
+/*工具条*/
+#frameNav { height: 40px; overflow: hidden; background: url(main_10.gif) repeat-x; }
+#frameNav .left { float: left; width: 194px; height: 40px; background: url(main_04.gif); }
+#frameNav .right { float: right; width: 248px; height: 40px; background: url(main_05.gif); color: #fff; line-height: 40px; text-indent: 45px; }
+/*框架顶部*/
+#frameInfo { height: 30px; overflow: hidden; background: url(main_31.gif) repeat-x; line-height: 30px; }
+#frameInfo .left { float: left; height: 30px; text-indent: 195px; background: url(main_06.gif) no-repeat; }
+#frameInfo .right { float: right; height: 30px; padding-right: 20px; background: url(main_07.gif) right no-repeat; }
+/*框架中部*/
+#winFrame { width: 100%; height: 100%; }
+#frameBody .spac { width: 8px; background-color: #353c44; }
+#frameBody .close { width: 10px; background-color: #add2da; }
+#frameBody .close div { width: 9px; height: 50px; overflow: hidden; background: url(main_p3.gif); cursor: pointer; }
+#frameBody .close div.menuhide { background: url(main_p4.gif); }
+#frameBody .close img { cursor: pointer; }
+#menu { width: 147px; overflow: hidden; vertical-align: top; }
+#menu div { height: 15px; padding-left: 12px; padding-top: 5px; background-color: #add2da; }
+/*框架底部*/
+#frameBottom { height: 11px; overflow: hidden; background: url(main_72.gif) repeat-x; }
+#frameBottom .left { float: left; width: 165px; height: 11px; overflow: hidden; background: url(main_71.gif); }
+#frameBottom .right { float: right; width: 17px; height: 11px; overflow: hidden; background: url(main_73.gif); }
+/*功能菜单*/
+#nav { width: 147px; line-height: 23px; text-indent: 30px; }
+#nav a { display: block; height: 23px; overflow: hidden; cursor: pointer; }
+a.head, a.head2 { background: url(left_head.gif) no-repeat; font-weight: bold; }
+a.head2 { background: url(left_head.gif) no-repeat 0 bottom; }
+#nav li li a { background: url(left_menu0.gif) no-repeat 11px center; outline-style: none; }
+#nav li li a:hover, #nav li li a.hover { background: url(left_menu1.gif) no-repeat; }
+/****************************界面UI结束****************************/
+
+/*子框架UI开始*/
+.box { height: 100%; border: 1px solid #BBBBBB; }
+.widgettitle { height: 30px; line-height: 30px; color: #666; border-bottom: 1px solid #BBBBBB; font-weight: bold; overflow: hidden; background-color: #E5E5E5; }
+.widgettitle i { }
