@@ -1,0 +1,68 @@
+﻿<html lang="en" xml:lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>Vcastr - JavaScript Example</title>
+<style type="text/css">
+
+div {
+	margin:5px 0;
+}
+input{
+	margin:0 3px 0 0;
+}
+</style>
+</head>
+
+<body>
+
+<object id="vcastr3" data="vcastr3.swf" height="500" type="application/x-shockwave-flash" width="650">
+	<param name="movie" value="vcastr3.swf"/>
+	<param name="allowFullScreen" value="true" />
+	<param name="FlashVars" value="xml=
+	<vcastr>
+		<plugIns>
+			<javaScriptPlugIn>
+				<url>javaScriptPlugIn.swf</url>
+			</javaScriptPlugIn>
+		</plugIns>
+		<channel>
+			<item>
+				<source>http://vcastr.ruochi.com/video/happy_feet.flv</source>
+			</item>
+		</channel>
+	</vcastr>" />
+</object>
+<form name="form1">
+	<div>
+		<input onclick="getVcastr().playPause();" type="button" value="playPasue" />
+		<input onclick="getVcastr().videoPlay();" type="button" value="play" />
+		<input onclick="getVcastr().pause();" type="button" value="pause" />
+		<input onclick="getVcastr().videoStop();" type="button" value="stop" />
+		<input onclick="getVcastr().ff();" type="button" value="ff" />
+		<input onclick="getVcastr().rew();" type="button" value="rew" />
+		<input onclick="getVcastr().next();" type="button" value="next" />
+		<input onclick="getVcastr().prev();" type="button" value="prev" />
+		<input onclick="getVcastr().volumeTo(this.form.volume.value);" type="button" value="volumeTo" /><input name="volume" type="text" value="0.2" /></div>
+	<div>
+		<input onclick="getVcastr().seek(this.form.position.value);" type="button" value="seek" /><input name="position" type="text" value="10" /></div>
+	<div>
+		<input onclick="getVcastr().playerSizeTo(this.form.w.value,this.form.h.value);" type="button" value="playerSizeTo" /><input name="w" type="text" value="240" /><input name="h" type="text" value="180" /></div>
+	<div>
+		<input onclick="getVcastr().playerMoveTo(this.form.px.value,this.form.py.value);" type="button" value="playerMoveTo" /><input name="px" type="text" value="100" /><input name="py" type="text" value="100" /></div>
+	<div>
+		<textarea cols="60" name="output" readonly="true" rows="20"></textarea></div>
+</form>
+<script language="JavaScript">
+     function vcastrEvent(type,state,playHeadTime,loadPersent) {
+        document.forms["form1"].output.value = "\ntype:"+type+", state:"+state+", playHeadTime:"+playHeadTime+", loadPersent:"+loadPersent +document.forms["form1"].output.value;
+     }
+     function getVcastr() {
+         if (navigator.appName.indexOf("Microsoft") != -1) {
+             return window["vcastr3"];
+         } else {
+             return document["vcastr3"];
+         }
+     }
+</script>
+</body>
+
+</html>

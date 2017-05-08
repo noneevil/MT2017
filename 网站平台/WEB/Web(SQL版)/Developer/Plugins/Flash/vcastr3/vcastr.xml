@@ -1,0 +1,50 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<vcastr>
+	<channel>
+		<item>
+			<source>http://vcastr.ruochi.com/video/happy_feet.flv</source>
+			<duration></duration>
+			<title>Happy Feet Trailer</title>
+			<link>http://www.ruochi.com/</link>
+		</item>
+		<item>
+			<source>http://www.transformersmovie.com/transformers_640.flv</source>
+			<duration></duration>
+			<title>Transformersmovie Trailer</title>
+		</item>
+	</channel>
+	<config>
+		<bufferTime>4</bufferTime>
+		<contralPanelAlpha>0.75</contralPanelAlpha>
+		<controlPanelBgColor>0xff6600</controlPanelBgColor>
+		<controlPanelBtnColor>0xffffff</controlPanelBtnColor>
+		<contralPanelBtnGlowColro>0xffff00</contralPanelBtnGlowColro>
+		<controlPanelMode>normal</controlPanelMode>
+		<defautVolume>0.7</defautVolume>
+		<isAutoPlay>true</isAutoPlay>
+		<isLoadBegin>true</isLoadBegin>
+		<isShowAbout>true</isShowAbout>
+		<scaleMode>showAll</scaleMode>
+		<isRepeat>false</isRepeat>
+	</config>
+	<plugIns>
+		<!--logoPlugIn>
+			<url>logoPlugIn.swf</url>
+			<logoText>www.ruochi.com</logoText>
+			<logoTextAlpha>0.75</logoTextAlpha>
+			<logoTextFontSize>30</logoTextFontSize>
+			<logoTextLink>http://www.ruochigroup.com</logoTextLink>
+			<logoTextColor>0xffffff</logoTextColor>
+			<textMargin>20 20 auto auto</textMargin>
+			<logoClipUrl></logoClipUrl>
+			<logoClipAlpha>1</logoClipAlpha>
+			<clipMargin>20 auto auto 20</clipMargin>
+		</logoPlugIn-->
+		<!--javaScriptPlugIn>
+			<url>javaScriptPlugIn.swf</url>
+		</javaScriptPlugIn-->
+		<!--formatSourceUrlPlugIn>
+			<url>formatSourceUrlPlugIn.swf</url>
+		</formatSourceUrlPlugIn-->
+	</plugIns>
+</vcastr>

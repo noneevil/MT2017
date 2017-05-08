@@ -1,0 +1,70 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>autoIMG demo</title>
+    <script src="jquery-1.5.2.min.js" type="text/javascript"></script>
+    <script src="imgAutoSize.min.js" type="text/javascript"></script>
+    <style>
+        /*demo style*/
+        body { font: 12px 'Microsoft Yahei' , Tahoma, Arial; _font-family: Tahoma, Arial; }
+        a { color: #0259C4; }
+        a:hover { color: #900; }
+        .demoInfo { padding: 10px; background: #F7F7F7; border: 1px solid #EEE; -webkit-border-radius: 5px; -moz-border-radius: 5px; border-radius: 5px; }
+        .tips { color: #CCC; }
+        #demo { width: 680px; padding: 10px; margin-top: 50px; overflow: hidden; border: 1px solid #CCC; }
+        #demo .content p { padding: 0 8px; }
+        #demo .content img { border: 0 none; }
+        img { }
+    </style>
+    <script>
+        /* demo script */
+        jQuery(function ($) {
+            $('#demo p').autoIMG();
+            $('#down').click(function () {
+                window.open(this.getAttribute('data-href') || this.href);
+                return false;
+            });
+        });
+    </script>
+</head>
+<body>
+    <div class="demoInfo">
+        <p>
+            <strong>说明</strong>：</p>
+        <p>
+            autoIMG可以快速对文章图片进行尺寸自适应，它利用浏览器 <a href="http://www.planeart.cn/?p=1121" title="再谈javascript图片预加载技术">
+                获取图片文件头尺寸数据</a> ，无需等待图片加载完成。</p>
+        <p>
+            autoIMG兼容：Chrome | Firefox | Sifari | Opera | IE6 | IE7 | IE8 | ...</p>
+        <p>
+            <strong>调用演示</strong>：</p>
+        <p>
+            $('#demo p').autoIMG()</p>
+        <p>
+            <strong>下载</strong>：</p>
+        <p>
+            <a id="down" data-href="http://goo.gl/xcRQQ" href="http://www.planeart.cn/demo/autoIMG/autoIMG.zip">
+                autoIMG.zip</a></p>
+        <p>
+            相关文章：<a href="http://www.planeart.cn/?p=1157">《大图片，请别把我的页面撑破了——不，一秒都不行。》</a></p>
+    </div>
+    <div id="demo">
+        <h1>
+            分享风景墙纸 [大图]</h1>
+        <div class="remark">
+            <span class="source">来源：</span><span>planeArt.cn</span> <span class="author">作者：</span>唐斌<span></span>
+            <span class="pub_data">发布日期：</span><span>2011-03-11</span></div>
+        <div class="content">
+            <p>（高分辨率照片，加载可能会很慢..）</p>
+            <p><a href="http://www.planeart.cn/demo/autoIMG/_demo/fenggjs44.jpg" target="_blank"><img src="http://www.planeart.cn/demo/autoIMG/_demo/fenggjs44.jpg" /></a></p>
+            <p><a href="http://www.planeart.cn/demo/autoIMG/_demo/20070717110625560.jpg" target="_blank"><img src="http://www.planeart.cn/demo/autoIMG/_demo/20070717110625560.jpg" ></a></p>
+            <p><a href="http://www.planeart.cn/demo/autoIMG/_demo/fengjs13.jpg" target="_blank"><img src="http://www.planeart.cn/demo/autoIMG/_demo/fengjs13.jpg" /></a></p>
+            <p><a href="http://www.planeart.cn/demo/autoIMG/_demo/fengjs16.jpg" target="_blank"><img src="http://www.planeart.cn/demo/autoIMG/_demo/fengjs16.jpg" /></a></p>
+            <p><a href="http://www.planeart.cn/demo/autoIMG/_demo/fengjs18.jpg" target="_blank"><img src="http://www.planeart.cn/demo/autoIMG/_demo/fengjs18.jpg" /></a></p>
+            <p><a href="http://www.planeart.cn/demo/autoIMG/_demo/feyyrts48.jpg" target="_blank"><img src="http://www.planeart.cn/demo/autoIMG/_demo/feyyrts48.jpg" /></a></p>
+	        <p><a href"http://i4.3conline.com/images/piclib/201005/20/batch/1/60470/1274325040417elvv3mijfq.jpg"><img src="http://i4.3conline.com/images/piclib/201005/20/batch/1/60470/1274325040417elvv3mijfq.jpg" /></a></p>
+        </div>
+    </div>
+</body>
+</html>

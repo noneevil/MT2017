@@ -1,0 +1,21 @@
+html, body { padding: 0px; margin: 0px; background-color: #FFFFFF; font-family: Arial, Helvetica, sans-serif; font-size: 12px; color: #FFFFFF; font-weight: bold; }
+#fbFooter { height: 80px; overflow:hidden; background-color: #000000; background-image: url('../img/footerBackground.gif'); }
+.fbPaginationMinor { color: #FFFFFF; margin-left: 10px; }
+#fbContents { float: right; height: 78px; padding: 0px; line-height: 78px; text-align: center; margin: 0px; }
+#fbMenu { float: right; margin: 0px; padding-top: 0px; padding-right: 20px; padding-bottom: 0px; padding-left: 0px; width: 340px; text-align: right; }
+#altmsg { position: absolute; background-color: #000000; padding: 20px; opacity: 0.6; filter: alpha(opacity=60); text-align: center; }
+#altmsg:hover { opacity: 0.8; filter: alpha(opacity=80); }
+a.altlink:link { color: #FFFFFF; }
+a.altlink:visited { color: #DDDDDD; }
+a.altlink:hover { color: #FFFFFF; }
+#qctitle { margin: 0px; padding: 0px; float: left; height: 78px; /*width: 150px; */ }
+#qctitle h2 { line-height: 78px; margin: 0px; padding: 0px; height: 78px; font-family: "ºÚÌå"; font-size: 30px; font-weight: normal; float: left; }
+#qctitle h3 { margin: 0px; padding: 0px; font-family: "ËÎÌå"; font-size: 12px; line-height: 78px; font-weight: normal; float: left; }
+
+
+table { height: 78px; }
+td { vertical-align: middle; }
+
+
+
+

@@ -1,0 +1,39 @@
+﻿<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+	<head>
+		<title>test</title>
+	</head>
+	<body>
+		<div>
+			this page should be test on server(http://www.aaa.com, or http://localhost), not on local files system. because the test movie <b>http://vcastr.ruochi.com/video/happy_feet.flv</b> on the server，not on the local.
+			<br/>
+			本页必须在服务器(http://www.aaa.com,或者http://localhost)上测试,不能再本地文件系统测试, 因为测试文件<b>http://vcastr.ruochi.com/video/happy_feet.flv</b>是在服务器端，不再本地
+		</div>
+		<object type="application/x-shockwave-flash" data="vcastr3.swf" width="650" height="500" id="vcastr3">
+			<param name="movie" value="vcastr3.swf"/> 
+			<param name="allowFullScreen" value="true" />
+			<param name="FlashVars" value="xml=
+				<vcastr>
+					<channel>
+						<item>
+							<source>http://vcastr.ruochi.com/video/happy_feet.flv</source>
+							<duration></duration>
+							<title></title>
+						</item>
+					</channel>
+					<config>
+					</config>
+					<plugIns>
+						<logoPlugIn>
+							<url>logoPlugIn.swf</url>
+							<logoText>www.ruochi.com</logoText>
+							<logoTextAlpha>0.75</logoTextAlpha>
+							<logoTextFontSize>30</logoTextFontSize>
+							<logoTextLink>http://www.ruochigroup.com</logoTextLink>
+							<logoTextColor>0xffffff</logoTextColor>
+							<textMargin>20 20 auto auto</textMargin>
+						</logoPlugIn>
+					</plugIns>
+				</vcastr>"/>
+		</object>
+	</body>
+</html>
