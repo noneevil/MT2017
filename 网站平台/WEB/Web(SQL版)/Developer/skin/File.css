@@ -1,0 +1,88 @@
+﻿/******文件管理**********/
+#file { height: 560px; border: 1px #238cbc solid; }
+#file .btnBan { clear: both; text-align: center; border: 1px #EEEEEE solid; padding: 6px; margin: 3px; }
+.tab { padding: 5px; height: 20px; background-color: #EEEEEE; font-weight: bold; font-size: 14px; color: #cc3380; border-bottom: #cccccc 1px solid; }
+.tab img { margin-right: 5px; cursor: pointer; border: 0px; }
+#file A { padding: 0px; display: block; float: left; width: 74px; height: 70px; margin: 1px 3px; text-align: center; overflow: hidden; line-height: 16px; }
+#file A i { margin-top: 52px; display: block; font-style: normal; }
+#file A div { float: right; display: none; cursor: pointer; width: 19px; height: 16px; background: url(filedel.gif) no-repeat; }
+#file A:hover div { display: block; }
+#file textarea { width: 100%; height: 600px; font-size: 12px; }
+.folder { background: url(file.png) no-repeat 0px 0px; }
+.folder:hover { background: url(file.png) no-repeat -76px 0px; }
+.folder:active { background: url(file.png) no-repeat -152px 0px; }
+.aspx { background: url(file.png) no-repeat 0px -72px; }
+.aspx:hover { background: url(file.png) no-repeat -76px -72px; position: relative; }
+.aspx:active { background: url(file.png) no-repeat -152px -72px; }
+.ashx { background: url(file.png) no-repeat 0px -144px; }
+.ashx:hover { background: url(file.png) no-repeat -76px -144px; }
+.ashx:active { background: url(file.png) no-repeat -152px -144px; }
+.cs { background: url(file.png) no-repeat 0px -216px; }
+.cs:hover { background: url(file.png) no-repeat -76px -216px; }
+.cs:active { background: url(file.png) no-repeat -152px -216px; }
+.config { background: url(file.png) no-repeat 0px -288px; }
+.config:hover { background: url(file.png) no-repeat -76px -288px; }
+.config:active { background: url(file.png) no-repeat -152px -288px; }
+.asax { background: url(file.png) no-repeat 0px -360px; }
+.asax:hover { background: url(file.png) no-repeat -76px -360px; }
+.asax:active { background: url(file.png) no-repeat -152px -360px; }
+.js { background: url(file.png) no-repeat 0px -504px; }
+.js:hover { background: url(file.png) no-repeat -76px -504px; }
+.js:active { background: url(file.png) no-repeat -152px -504px; }
+.css { background: url(file.png) no-repeat 0px -576px; }
+.css:hover { background: url(file.png) no-repeat -76px -576px; }
+.css:active { background: url(file.png) no-repeat -152px -576px; }
+.swf { background: url(file.png) no-repeat 0px -648px; }
+.swf:hover { background: url(file.png) no-repeat -76px -648px; }
+.swf:active { background: url(file.png) no-repeat -152px -648px; }
+.txt { background: url(file.png) no-repeat 0px -720px; }
+.txt:hover { background: url(file.png) no-repeat -76px -720px; }
+.txt:active { background: url(file.png) no-repeat -152px -720px; }
+.xml { background: url(file.png) no-repeat 0px -864px; }
+.xml:hover { background: url(file.png) no-repeat -76px -864px; }
+.xml:active { background: url(file.png) no-repeat -152px -864px; }
+.dll { background: url(file.png) no-repeat 0px -936px; }
+.dll:hover { background: url(file.png) no-repeat -76px -936px; }
+.dll:active { background: url(file.png) no-repeat -152px -936px; }
+.rar { background: url(file.png) no-repeat 0px -1008px; }
+.rar:hover { background: url(file.png) no-repeat -76px -1008px; }
+.rar:active { background: url(file.png) no-repeat -152px -1008px; }
+.pdf { background: url(file.png) no-repeat 0px -1224px; }
+.pdf:hover { background: url(file.png) no-repeat -76px -1224px; }
+.pdf:active { background: url(file.png) no-repeat -152px -1224px; }
+.bak { background: url(file.png) no-repeat 0px -1296px; }
+.bak:hover { background: url(file.png) no-repeat -76px -1296px; }
+.bak:active { background: url(file.png) no-repeat -152px -1296px; }
+.mdf { background: url(file.png) no-repeat 0px -1368px; }
+.mdf:hover { background: url(file.png) no-repeat -76px -1368px; }
+.mdf:active { background: url(file.png) no-repeat -152px -1368px; }
+.ascx { background: url(file.png) no-repeat 0px -1584px; }
+.ascx:hover { background: url(file.png) no-repeat -76px -1584px; }
+.ascx:active { background: url(file.png) no-repeat -152px -1584px; }
+.asp { background: url(file.png) no-repeat 0px -1728px; }
+.asp:hover { background: url(file.png) no-repeat -76px -1728px; }
+.asp:active { background: url(file.png) no-repeat -152px -1728px; }
+.default { background: url(file.png) no-repeat 0px -1656px; }
+.default:hover { background: url(file.png) no-repeat -76px -1656px; }
+.default:active { background: url(file.png) no-repeat -152px -1656px; }
+.html, .htm { background: url(file.png) no-repeat 0px -792px; }
+.html:hover, .htm:hover { background: url(file.png) no-repeat -76px -792px; }
+.html:active, .htm:active { background: url(file.png) no-repeat -152px -792px; }
+.xls, .xlsx { background: url(file.png) no-repeat 0px -1152px; }
+.xls:hover, .xlsx:hover { background: url(file.png) no-repeat -76px -1152px; }
+.xls:active, .xlsx:active { background: url(file.png) no-repeat -152px -1152px; }
+.mdb, .accdb { background: url(file.png) no-repeat 0px -1080px; }
+.mdb:hover, .accdb:hover { background: url(file.png) no-repeat -76px -1080px; }
+.mdb:active, .accdb:active { background: url(file.png) no-repeat -152px -1080px; }
+.pptx, .ppt { background: url(file.png) no-repeat 0px -1512px; }
+.pptx:hover, .ppt:hover { background: url(file.png) no-repeat -76px -1512px; }
+.pptx:active, .ppt:active { background: url(file.png) no-repeat -152px -1512px; }
+.doc, .docx { background: url(file.png) no-repeat 0px -1440px; }
+.doc:hover, .docx:hover { background: url(file.png) no-repeat -76px -1440px; }
+.doc:active, .docx:active { background: url(file.png) no-repeat -152px -1440px; }
+.png, .gif, .jpg { background: url(file.png) no-repeat 0px -432px; }
+.png:hover, .gif:hover, .jpg:hover { background: url(file.png) no-repeat -76px -432px; }
+.png:active, .gif:active, .jpg:active { background: url(file.png) no-repeat -152px -432px; }
+.iso { background: url(file.png) no-repeat 0px -1800px; }
+.iso:hover { background: url(file.png) no-repeat -76px -1800px; }
+.iso:active { background: url(file.png) no-repeat -152px -1800px; }
