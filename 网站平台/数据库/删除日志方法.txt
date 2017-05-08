@@ -1,0 +1,21 @@
+第一步： 
+先备份整个数据库以备不测 
+第二步： 
+备份结束后，在Query Analyzer中执行如下的语句： 
+exec sp_detach_db yourDBName,true --卸除这个DB在MSSQL中的注册信息 
+第三步： 
+到日志的物理文件所在的目录中去删除该日志文件或者将该日志文件移出该目录 
+第四步： 
+在Query Analyzer中执行如下的语句： 
+exec sp_attach_single_file_db yourDBName,'d:\mssql7\data\yourDBName_data.mdf' 
+--以单文件的方式注册该DB，如果成功则MSSQL将自动为这个DB生成一个500K的日志文件。 
+
+
+
+
+exec sp_detach_db data,true 
+
+
+exec sp_attach_single_file_db data,'J:\网站平台\数据库\Data.MDF' 
+
+TRUNCATE TABLE name 重置ID
