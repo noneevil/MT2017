@@ -1,0 +1,12 @@
+[DEFAULT]
+BASEURL=http://www.elevateweb.co.uk/image-zoom/examples
+[DOC#81]
+BASEURL=res://ieframe.dll/dnserrordiagoff.htm
+ORIGURL=http://www.facebook.com/plugins/like.php?href=http://www.elevateweb.co.uk/image-zoom&layout=box_count&show_faces=false&width=60&action=like&colorscheme=light&height=45
+[{000214A0-0000-0000-C000-000000000046}]
+Prop3=19,2
+[InternetShortcut]
+URL=http://www.elevateweb.co.uk/image-zoom/examples
+IDList=
+IconFile=http://www.elevateweb.co.uk/favicon.ico
+IconIndex=1
