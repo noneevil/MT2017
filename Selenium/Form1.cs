@@ -27,7 +27,7 @@ namespace Selenium
         }
         private void button1_Click(object sender, EventArgs e)
         {
-            driver.Navigate().GoToUrl("https://world.taobao.com/");
+            driver.Navigate().GoToUrl("https://www.taobao.com/");
             var input = driver.FindElement(By.Name("q"));
             input.SendKeys("AOU精油");
 
@@ -35,9 +35,22 @@ namespace Selenium
             submit.Click();
 
             Console.WriteLine(driver.WindowHandles.Count());
-            var link = driver.FindElement(By.XPath("//a[contains(@href,'21123252400.htm')]"));
+            var link = driver.FindElement(By.XPath("//a[contains(@href,'21123252400')]"));
             link.Click();
             Console.WriteLine(driver.WindowHandles.Count());
+
+            var screen = driver.GetScreenshot();
+            screen.SaveAsFile(@"z:\a.jpg", ScreenshotImageFormat.Jpeg);
+
+            var handle = driver.CurrentWindowHandle;
+            var win = driver.WindowHandles.FirstOrDefault(x => x != handle);
+            driver.SwitchTo().Window(win);
+            Console.WriteLine(handle);
+
+
+            var add = driver.FindElement(By.XPath("//a[@title='加入购物车']"));
+            Console.WriteLine(add);
+            add.Click();
         }
 
         private void button2_Click(object sender, EventArgs e)
