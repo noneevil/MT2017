@@ -36,19 +36,26 @@ namespace Selenium
                 var link1 = driver.FindElement(By.LinkText("我的淘宝"));
                 link1.Click();
 
+                Thread.Sleep(2000);
                 var link2 = driver.FindElement(By.LinkText("密码登录"));
                 link2.Click();
+                Thread.Sleep(2000);
 
                 var user = driver.FindElement(By.Name("TPL_username"));
                 var pass = driver.FindElement(By.Name("TPL_password"));
 
+                new Actions(driver).KeyDown(user, OpenQA.Selenium.Keys.Alt).KeyUp(user, OpenQA.Selenium.Keys.Alt);
+                new Actions(driver).KeyDown(pass, OpenQA.Selenium.Keys.Alt).KeyUp(pass, OpenQA.Selenium.Keys.Alt);
                 user.SendKeys("杭得住");
                 pass.SendKeys("aou2013ff");
 
-                //var scale = driver.FindElement(By.ClassName("nc_scale"));
-                //var nc1 = driver.FindElement(By.Id("nc_1_n1z"));
-                //new Actions(driver).Click(nc1).MoveByOffset(0, scale.Location.X).Perform();
-
+                Thread.Sleep(2000);
+                var scale = driver.FindElement(By.ClassName("nc_scale"));
+                var nc1 = driver.FindElement(By.Id("nc_1_n1z"));
+                Console.WriteLine(scale);
+                var action = new Actions(driver);
+                action.ClickAndHold(nc1).MoveByOffset(scale.Size.Width - nc1.Size.Width, 0).Build().Perform();
+                action.Release();
                 //var input = driver.FindElement(By.Name("q"));
                 //input.SendKeys("AOU精油");
 
